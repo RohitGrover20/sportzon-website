@@ -13,17 +13,24 @@ function Booking() {
     const search = searchParams.get('venue');
     const [venue, setVenue] = useState({})
     const [courts, setCourts] = useState([]);
-    const [slots, setSlots] = useState([]);
+    const [booked, setBooked] = useState([]);
     const [cart, setCart] = useState([]);
 
     useEffect(() => {
         setLoading(true)
         axios.get(`${config.API_URL}/landing/venues/${search}`).then((result) => {
-            setLoading(false)
+            // setLoading(false)
             setVenue(result && result.data && result.data.data)
             axios.get(`${config.API_URL}/landing/courts/${result.data && result.data.data && result.data.data._id}`).then((court) => {
                 setCourts(court && court.data && court.data.data);
-                setLoading(false)
+                // setLoading(false)
+                axios.post(`${config.API_URL}/landing/venues/get-slots`, { arena: result && result.data && result.data.data && result.data.data._id }).then((book) => {
+                    setLoading(false)
+                    setBooked(book && book.data && book.data.data)
+                }).catch((err) => {
+                    setLoading(false)
+                    console.log(err)
+                })
             }).catch((error) => {
                 console.log(error)
                 setLoading(false)
@@ -34,6 +41,8 @@ function Booking() {
         })
     }, [])
 
+
+    console.log(booked)
     return (
         <div>
             {loading ? <Loading /> :
@@ -43,6 +52,7 @@ function Booking() {
                             <div className="col-md-1"></div>
                             <ProductInfo venue={venue} courts={courts} cart={cart} setCart={setCart}
                                 loading={loading} setLoading={setLoading}
+                                booked={booked}
                             />
                             <Checkout cart={cart} setCart={setCart}
                                 loading={loading} setLoading={setLoading}

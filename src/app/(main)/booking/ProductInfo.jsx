@@ -12,6 +12,7 @@ function ProductInfo(props) {
     const courts = props && props.courts;
     const setCart = props && props.setCart;
     const cart = props && props.cart;
+    const booked = props && props.booked;
     var pricing = 0;
 
     const initialValues = {
@@ -32,6 +33,8 @@ function ProductInfo(props) {
         setCart([...cart, { ...values, pricing: pricing, amount: (values && values.slots && parseInt(values.slots.length) * pricing), gst: ((values && values.slots && parseInt(values.slots.length) * pricing) * 18 / 100) }])
         setFieldValue("court", "");
     }
+
+    console.log(booked)
     return (
         <div className="col-xl-4 col-lg-4 col-lg-offset-1">
             <div className="border gray-simple rounded">
@@ -51,11 +54,13 @@ function ProductInfo(props) {
                 >
                     {({ values, setFieldValue, errors, dirty, isValid }) => {
                         const filteredCourt = courts && courts.filter((ele) => ele.slug == values.court);
+                        const bookedCourt = booked && booked.filter((ele) => ele.court == values.court);
                         pricing = filteredCourt && filteredCourt[0] && filteredCourt[0].pricing;
                         const checkDate = new Date().toDateString() == new Date(values.date).toDateString();
 
-                        const dates = checkDate ? filteredCourt && filteredCourt[0] && filteredCourt[0].slots.filter(el => (el.from && el.from.slice(0, 2) > new Date().getHours())) : filteredCourt && filteredCourt[0] && filteredCourt[0].slots;
-
+                        const dates = checkDate ? filteredCourt && filteredCourt[0] && filteredCourt[0].slots.filter(el => (el.from && el.from.slice(0, 2) > new Date().getHours())
+                            && bookedCourt.some((item) => item.label == (el.from + " to " + el.to))
+                        ) : filteredCourt && filteredCourt[0] && filteredCourt[0].slots;
                         const slots = dates && dates.map((slot, index) => {
                             slot.label = slot.from + " to " + slot.to;
                             slot.value = slot.from + " to " + slot.to;

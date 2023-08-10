@@ -27,8 +27,6 @@ async function RootLayout({ children }) {
                     </div>
                 </div>
             </div>
-            {/* <Script strategy={"beforeInteractive"} src="/assets/js/jquery.min.js?layout=main"></Script>
-            <Script strategy={"beforeInteractive"} src="/assets/js/bootstrap.min.js?layout=main"></Script> */}
         </section>
     )
 }

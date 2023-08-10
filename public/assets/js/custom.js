@@ -252,6 +252,8 @@
 		]
 	});
 
+	
+
 	//Venue BY Slug Slider
 
 	$('#venuebyslug-slider').slick({

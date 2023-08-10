@@ -142,7 +142,7 @@ export default async function Home() {
                 <div className='event-slider' id="event-slider">
                   {events && events.map((item, index) => {
                     return (
-                      <EventsCard item={item} />
+                      <EventsCard item={item} key={index} />
                     )
                   })}
                 </div>

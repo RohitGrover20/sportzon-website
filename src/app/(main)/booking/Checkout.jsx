@@ -2,6 +2,8 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../../../../context/context';
 import { getVenuesBySlug } from '@/libs/fetchData';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import config from '@/config';
 
@@ -60,7 +62,6 @@ function Checkout(props) {
                 setLoading(true)
                 axios.post(`${config.API_URL}/landing/payments/verify`, {
                     response: response, data: {
-                        // ...data.values,
                         bookingType: "arena",
                         fullName: data.values && (data.values.firstName + " " + data.values.lastName) || null,
                         email: data.values && data.values.email,
@@ -75,6 +76,8 @@ function Checkout(props) {
                     }
                 }, { withCredentials: true })
                     .then(res => {
+                        setLoading(false)
+                        router.push("/user/my-bookings")
                         toast.success(res.data && res.data && res.data.message, {
                             position: "top-right",
                             autoClose: 2000,
@@ -94,7 +97,7 @@ function Checkout(props) {
     }
     return (
         <div className="col-xl-4 col-lg-4 col-lg-offset-1">
-
+            {/* <ToastContainer /> */}
             <div className="exploi  rounded py-3 px-3 border"
                 style={{ backdropFilter: "blur(10px)" }}
             >
