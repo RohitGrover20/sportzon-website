@@ -3,6 +3,7 @@ import config from '@/config';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect } from 'react'
+import ProfileImageModal from './ProfileImageModal';
 
 function ProfileSideBar(props) {
     const path = usePathname();
@@ -14,13 +15,12 @@ function ProfileSideBar(props) {
         window.document.getElementsByTagName("body")[0].removeChild(tag);
     };
     useEffect(() => {
-        // loadScript("/assets/js/slick.js");
         loadScript("/assets/js/custom.js");
     }, [path]);
     const user = props && props.user && props.user.data;
     return (
         <div className="col-xl-3 col-lg-4">
-            <button type="button" className="d-lg-none btn btn-md btn-primary w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#Sidebaruser"><i className="fa-solid fa-filter me-2"></i>Dashboard Navigation</button>
+            <button type="button" className="d-lg-none btn btn-md btn-orange w-100 rounded-0 fixed-bottom" data-bs-toggle="offcanvas" data-bs-target="#Sidebaruser"><i className="fa-solid fa-filter me-2"></i>Dashboard Navigation</button>
             <div
                 className="offcanvas-lg offcanvas-start"
                 data-bs-scroll="true"
@@ -32,15 +32,26 @@ function ProfileSideBar(props) {
                     <button className="btn-close" type="button" data-bs-dismiss="offcanvas" data-bs-target="#Sidebaruser"></button>
                 </div>
                 <div className="offcanvas-body pt-0 pe-lg-4">
-                    <div className="position-relative px-lg-4 py-lg-5 rounded-4 bg-white shadow-lg">
+                    <div className="position-relative px-lg-4 py-lg-5 rounded-4 bg-white">
                         <div className="user-prfl text-center mx-auto">
                             <div className="position-relative mb-2">
                                 <img
-                                    src={user && user.profile ? user.profile : "/assets/img/userplaceholder.png"}
+                                    src={user && user.profile ? (user.profile.includes("http") ? user.profile : config.API_URL + "/user/profile/" + user.profile) : "/assets/img/userplaceholder.png"}
                                     className="img-fluid circle"
-                                    width={120}
+                                    style={{
+                                        border: "5px solid #e9e9e9",
+                                        objectFit: "contain",
+                                        width: "120px",
+                                        height: "120px"
+                                    }}
                                     alt="img"
                                 />
+                                <i className='fa fa-pen position-absolute bg-orange p-2 circle text-white'
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#profileImage"
+                                    style={{ right: "25%", bottom: "5%" }}
+                                />
+                                <ProfileImageModal />
                             </div>
                             <div className="user-caps">
                                 <h5 className="mb-0">{user && user.firstName} {user && user.lastName}</h5>

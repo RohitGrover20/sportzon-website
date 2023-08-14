@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Arena from './Arena'
 import config from '@/config'
 import axios from 'axios'
+import Event from './Event'
 
 function MyBookings() {
     const [booking, setBooking] = useState([])
@@ -31,7 +32,7 @@ function MyBookings() {
                             aria-controls="pills-one"
                             aria-selected="true"
                         >
-                            <i className='me-1 fa fa-map-marker' />Arena/ Venue Booking
+                            <i className='me-1 fa fa-map-marker' />Venue/ Arena
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
@@ -45,7 +46,7 @@ function MyBookings() {
                             aria-controls="pills-two"
                             aria-selected="false"
                         >
-                            <i className='me-1 fa fa-calendar-check-o' />Events Booking
+                            <i className='me-1 fa fa-calendar-check-o' />Events
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
@@ -59,7 +60,7 @@ function MyBookings() {
                             aria-controls="pills-three"
                             aria-selected="false"
                         >
-                            <i className='me-1 fa fa-flag' />Classes Booking
+                            <i className='me-1 fa fa-flag' />Classes
                         </button>
                     </li>
                 </ul>
@@ -83,13 +84,7 @@ function MyBookings() {
                         aria-labelledby="pills-two-tab"
                         tabIndex={0}
                     >
-                        <p>
-                            Lorem ipsum dolor sit amet, ea eos adhuc laboramus persecuti, dignissim
-                            signiferumque no qui. Id feugiat phaedrum adolescens ius, oratio quidam
-                            reformidans in vim, vide error graeci ad est. In per iuvaret assueverit
-                            intellegebat. Vix at vidisse invidunt, ignota persius eu nec, ea debitis
-                            epicuri propriae pri.{" "}
-                        </p>
+                        <Event booking={booking.filter(item => item.bookingType == "event")}/>
                     </div>
                     <div
                         className="tab-pane fade"

@@ -33,8 +33,6 @@ function ProductInfo(props) {
         setCart([...cart, { ...values, pricing: pricing, amount: (values && values.slots && parseInt(values.slots.length) * pricing), gst: ((values && values.slots && parseInt(values.slots.length) * pricing) * 18 / 100) }])
         setFieldValue("court", "");
     }
-
-    console.log(booked)
     return (
         <div className="col-xl-4 col-lg-4 col-lg-offset-1">
             <div className="border gray-simple rounded">
@@ -53,19 +51,28 @@ function ProductInfo(props) {
                     onSubmit={onSubmit}
                 >
                     {({ values, setFieldValue, errors, dirty, isValid }) => {
+                        let slots = [];
                         const filteredCourt = courts && courts.filter((ele) => ele.slug == values.court);
-                        const bookedCourt = booked && booked.filter((ele) => ele.court == values.court);
                         pricing = filteredCourt && filteredCourt[0] && filteredCourt[0].pricing;
-                        const checkDate = new Date().toDateString() == new Date(values.date).toDateString();
 
-                        const dates = checkDate ? filteredCourt && filteredCourt[0] && filteredCourt[0].slots.filter(el => (el.from && el.from.slice(0, 2) > new Date().getHours())
-                            && bookedCourt.some((item) => item.label == (el.from + " to " + el.to))
-                        ) : filteredCourt && filteredCourt[0] && filteredCourt[0].slots;
-                        const slots = dates && dates.map((slot, index) => {
+                        const filteredSlots = filteredCourt && filteredCourt[0] && filteredCourt[0].slots && filteredCourt[0].slots.map((slot, index) => {
                             slot.label = slot.from + " to " + slot.to;
                             slot.value = slot.from + " to " + slot.to;
                             return { label: slot.label, value: slot.value }
                         })
+                        const courtBooking = booked && booked.filter((ele) => ele.court == values.court);
+                        const dateBooking = courtBooking && courtBooking.filter((ele) => new Date(ele.date).toDateString() == new Date(values.date).toDateString());
+
+                        const bookedSlots = dateBooking && dateBooking.map((ele, index) => {
+                            return ele.slots && ele.slots.map((item, index) => {
+                                return item
+                            })
+                        }).flat();
+
+                        const checkDate = new Date().toDateString() == new Date(values.date).toDateString();
+                        slots = filteredSlots && filteredSlots.filter((ele) => bookedSlots.every((item) => {
+                            return (item.value !== ele.value) && (checkDate ? ele.label && ele.label.slice(0, 2) > new Date().getHours() : item)
+                        }))
 
                         return (
                             <Form>

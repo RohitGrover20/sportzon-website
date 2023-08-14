@@ -92,7 +92,32 @@ function Registration(props) {
                 })
                 .catch(err => {
                     setLoader(false)
-                    console.log(err)
+                    if (err.response && err.response.data && err.response.data.code == "bookingclosed") {
+                        toast.warning(err.response && err.response.data && err.response.data.message, {
+                            position: "top-right",
+                            autoClose: 2000,
+                            onClose: () => {
+                                setLoader(false)
+                                setSubmitting(false);
+                                resetForm(true);
+                                const closeBtn = document && document.getElementById("registrationClose")
+                                closeBtn.click()
+                            },
+                        })
+                    }
+                    else {
+                        toast.warning(err.response && err.response.data && err.response.data.message, {
+                            position: "top-right",
+                            autoClose: 2000,
+                            onClose: () => {
+                                setLoader(false)
+                                setSubmitting(false);
+                                resetForm(true);
+                                const closeBtn = document && document.getElementById("registrationClose")
+                                closeBtn.click()
+                            },
+                        })
+                    }
                 })
 
         }
@@ -121,15 +146,13 @@ function Registration(props) {
                 "color": "#ff611a"
             },
             handler: function (response) {
-                axios.post(`${config.API_URL}/landing/payments/verify`, { response: response, data: data.values }, { withCredentials: true })
+                axios.post(`${config.API_URL}/landing/bookings/process`, { response: response, data: data.values }, { withCredentials: true })
                     .then(res => {
                         toast.success(res.data && res.data && res.data.message, {
                             position: "top-right",
                             autoClose: 2000,
                             onClose: () => {
                                 setLoader(false)
-                                // setSubmitting(false);
-                                // resetForm(true);
                                 const closeBtn = document && document.getElementById("registrationClose")
                                 closeBtn.click()
                             },
@@ -137,7 +160,17 @@ function Registration(props) {
                     })
                     .catch(err => {
                         setLoader(false)
-                        console.log(err, "sdfsd")
+                        toast.warning(err.response && err.response.data && err.response.data.message, {
+                            position: "top-right",
+                            autoClose: 2000,
+                            onClose: () => {
+                                setLoader(false)
+                                setSubmitting(false);
+                                resetForm(true);
+                                const closeBtn = document && document.getElementById("registrationClose")
+                                closeBtn.click()
+                            },
+                        })
                     })
             }
         };
@@ -279,9 +312,9 @@ function Registration(props) {
                                                             name="state"
                                                             className="form-select"
                                                         >
-                                                            {state_arr && state_arr.map((item) => {
+                                                            {state_arr && state_arr.map((item, index) => {
                                                                 return (
-                                                                    <option>{item}</option>
+                                                                    <option key={index}>{item}</option>
                                                                 )
                                                             })}
                                                         </Field>

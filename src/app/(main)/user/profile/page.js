@@ -35,7 +35,7 @@ function Profile() {
     const onSubmit = async (values, { setSubmitting, resetForm }) => {
         try {
             setLoader(true)
-            const profile = await axios.post(`${config.API_URL}/landing/profile-update`, values, { withCredentials: true });
+            const profile = await axios.post(`${config.API_URL}/landing/auth/profile-update`, values, { withCredentials: true });
             if (profile) {
                 setLoader(false)
                 toast.success(profile && profile.data && profile.data.message, {

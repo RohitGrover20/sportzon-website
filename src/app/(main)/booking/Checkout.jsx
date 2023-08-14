@@ -1,7 +1,6 @@
 "use client"
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../../../../context/context';
-import { getVenuesBySlug } from '@/libs/fetchData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -13,6 +12,7 @@ function Checkout(props) {
     const loading = props && props.loading;
     const setLoading = props && props.setLoading;
     const setCart = props && props.setCart;
+    const setPayment = props && props.setPayment;
     const subtotal = cart && cart.length > 0 && cart.reduce(function (acc, obj) { return acc + obj.amount; }, 0);
     const gst = cart && cart.length > 0 && cart.reduce(function (acc, obj) { return acc + obj.gst; }, 0);
     const context = useContext(UserContext);
@@ -76,13 +76,13 @@ function Checkout(props) {
                     }
                 }, { withCredentials: true })
                     .then(res => {
-                        setLoading(false)
-                        router.push("/user/my-bookings")
+                        // setLoading(false)
                         toast.success(res.data && res.data && res.data.message, {
                             position: "top-right",
                             autoClose: 2000,
                             onClose: () => {
                                 setLoading(false)
+                                setPayment(true)
                             },
                         })
                     })
@@ -97,7 +97,6 @@ function Checkout(props) {
     }
     return (
         <div className="col-xl-4 col-lg-4 col-lg-offset-1">
-            {/* <ToastContainer /> */}
             <div className="exploi  rounded py-3 px-3 border"
                 style={{ backdropFilter: "blur(10px)" }}
             >

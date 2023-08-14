@@ -1,8 +1,7 @@
-"use client"
 import config from '@/config';
 import React from 'react'
 
-function Arena(props) {
+function Event(props) {
     const bookings = props && props.booking;
     return (
         <div>
@@ -18,19 +17,17 @@ function Arena(props) {
                             aria-controls={`${booking.bookingId}`}
                         >
                             <div className="flex-ord-start">
-                                {booking && booking.arena && booking.arena.gallery && booking.arena.gallery[0] ?
-                                    <img
-                                        src={`${config.API_URL}/venue/${booking.arena.gallery[0]}`}
-                                        className="img-fluid rounded-circle border-2 shadow-sm"
-                                        style={{
-                                            width: "80px",
-                                            height: "80px",
-                                            objectFit: "cover",
-                                        }}
-                                        alt="image"
-                                    /> :
-                                    <p>No Image Available</p>
-                                }
+                                <img
+                                    src={`${config.API_URL}/events/${booking.event && booking.event.banner}`}
+                                    className="img-fluid rounded-circle border-2 shadow-sm"
+                                    style={{
+                                        width: "80px",
+                                        height: "80px",
+                                        objectFit: "cover",
+                                    }}
+                                    alt="image"
+                                />
+
                             </div>
 
                             <div className="flex-ord-end ps-3">
@@ -38,7 +35,7 @@ function Arena(props) {
                                     <span>{booking.bookingId}</span>
                                 </div>
                                 <h5 className="text-dark h6 mb-1">
-                                    {booking.arena && booking.arena.title}
+                                    {booking.event && booking.event.title}
                                     <span className="text-muted ms-3"></span>
                                 </h5>
                                 <p className="m-0 text-muted">Booked at - {booking.createdAt && new Date(booking.createdAt).toLocaleString()}</p>
@@ -47,7 +44,7 @@ function Arena(props) {
                         <div className="collapse" id={booking.bookingId} style={{}}>
                             <div className="card card-body">
                                 <p>
-                                    {booking && booking.arena && booking.arena.address}
+                                    {booking && booking.event && booking.event.address}
                                 </p>
                                 <p className="mb-1">
                                     Order ID:<span className="text-dark fw-medium ms-3">#{booking && booking.orderId && booking.orderId.substring(6, 35)}</span>
@@ -56,31 +53,25 @@ function Arena(props) {
                                     <table className='table table-bordered'>
                                         <thead className='bg-secondary text-white'>
                                             <tr>
-                                                <th className='p-1'>Activity</th>
-                                                <th className='p-1'>Court</th>
-                                                <th className='p-1'>Date</th>
-                                                <th className='p-1'>Slots</th>
+                                                <th className='p-1'>Event Type</th>
+                                                <th className='p-1'>No. of Tickets</th>
+                                                <th className='p-1'>Event Date</th>
+                                                <th className='p-1'>Event Time</th>
                                                 <th className='p-1'>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {booking && booking.court && booking.court.map((item, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <td className='p-1'>{item.activity}</td>
-                                                        <td className='p-1'>{item.court}</td>
-                                                        <td className='p-1'>{new Date(item.date).toDateString()}</td>
-                                                        <td className='p-1'>
-                                                            {item.slots && item.slots.map((slot, index) => {
-                                                                return (
-                                                                    <div className='badge badge-success me-1' key={index}>{slot.label}</div>
-                                                                )
-                                                            })}
-                                                        </td>
-                                                        <td className='p-1'>Upcoming</td>
-                                                    </tr>
-                                                )
-                                            })}
+                                            <tr>
+                                                <td className='p-1'>{booking.event && booking.event.eventType}</td>
+                                                <td className='p-1'>{booking.noOfTickets}</td>
+                                                <td className='p-1'>{new Date(booking.event && booking.event.eventDate).toDateString()}</td>
+                                                <td className='p-1'>
+                                                    <span className='me-1 ms-1'>From</span> {booking.event && booking.event.eventTime && booking.event.eventTime.from}
+                                                    <span className='me-1 ms-1'>to</span>{booking.event && booking.event.eventTime && booking.event.eventTime.to}
+                                                </td>
+                                                <td className='p-1'>Upcoming</td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -93,4 +84,4 @@ function Arena(props) {
     )
 }
 
-export default Arena
+export default Event

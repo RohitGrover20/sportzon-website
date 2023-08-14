@@ -4,6 +4,7 @@ import React from 'react'
 function BannerSlider() {
     return (
         <div className="row">
+
             <div className="col-xl-12 col-lg-12 col-md-12 px-0 our-banner" id="hero-slider">
                 {/* <div className="our-banner" id="hero-slider"> */}
                 <div className="single-items" style={{ height: "500px" }}>

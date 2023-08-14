@@ -3,6 +3,8 @@ import React from 'react'
 import verifySession from '@/libs/verifySession'
 import { cookies } from "next/headers"
 import Script from 'next/script'
+import { Suspense } from 'react'
+import Loading from '@/components/Loading'
 
 async function RootLayout({ children }) {
     const sessionId = cookies().get("sessionId")?.value
@@ -19,14 +21,16 @@ async function RootLayout({ children }) {
     const user = await verifySession(options);
     return (
         <section className='gray-simple'>
-            <div className="container">
-                <div className="row justify-content-between">
-                    <ProfileSideBar user={user} />
-                    <div className="col-xl-9 col-lg-8">
-                        {children}
+            <Suspense fallback={<Loading />}>
+                <div className="container">
+                    <div className="row justify-content-between">
+                        <ProfileSideBar user={user} />
+                        <div className="col-xl-9 col-lg-8">
+                            {children}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Suspense>
         </section>
     )
 }
