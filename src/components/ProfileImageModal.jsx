@@ -36,7 +36,7 @@ function ProfileImageModal() {
                 role="document"
             >
                 <div className="modal-content" id="profileImageContent">
-                    <form enctype="multipart/form-data">
+                    <form encType="multipart/form-data">
                         <span className="mod-close" data-bs-dismiss="modal" aria-hidden="true">
                             <i className="fas fa-close" />
                         </span>

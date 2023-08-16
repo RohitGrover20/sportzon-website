@@ -175,26 +175,37 @@ function Registration(props) {
             }
         };
         var rzp = new window.Razorpay(options);
-        // rzp.on('payment.failed', function (response) {
-        //     toast.error(response.error.reason, {
-        //         position: "top-right",
-        //         autoClose: 2000,
-        //         onClose: () => {
-        //             setLoader(false)
-        //             setSubmitting(false);
-        //             resetForm(true);
-        //             // const closeBtn = document && document.getElementById("registrationClose")
-        //             // closeBtn.click()
-        //         },
-        //     })
-        //     // alert(response.error.code);
-        //     // alert(response.error.description);
-        //     // alert(response.error.source);
-        //     // alert(response.error.step);
-        //     // alert(response.error.reason);
-        //     // alert(response.error.metadata.order_id);
-        //     // alert(response.error.metadata.payment_id);
-        // });
+        rzp.on('payment.failed', function (response) {
+            axios.post(`${config.API_URL}/landing/payments/failed-payment`,
+                {
+                    order_id: response.error.metadata.order_id,
+                    payment_id: response.error.metadata.payment_id,
+                    status: "failed"
+                },
+                { withCredentials: true }).then((result) => {
+                    alert(response.error.description)
+                }).catch((err) => {
+                    console.log(err)
+                })
+            // toast.error(response.error.reason, {
+            //     position: "top-right",
+            //     autoClose: 2000,
+            //     onClose: () => {
+            //         setLoader(false)
+            //         setSubmitting(false);
+            //         resetForm(true);
+            //         // const closeBtn = document && document.getElementById("registrationClose")
+            //         // closeBtn.click()
+            //     },
+            // })
+            // alert(response.error.code);
+            // alert(response.error.description);
+            // alert(response.error.source);
+            // alert(response.error.step);
+            // alert(response.error.reason);
+            // alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
         rzp.open()
 
     }

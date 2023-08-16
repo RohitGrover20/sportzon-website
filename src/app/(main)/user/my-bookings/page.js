@@ -15,11 +15,11 @@ function MyBookings() {
         })
     }, [])
     return (
-        <div className="dash-wrapsw card border-0 rounded-4 py-4 mb-4 shadow-lg">
-            <div className="card-body px-4">
+        <div className="dash-wrapsw card border-0 rounded-4 mb-4 shadow-lg">
+             <div className="card-header">
                 <h3>My Bookings</h3>
-
-
+            </div>
+            <div className="card-body px-4">
                 <ul className="nav nav-pills lights mb-3 mt-3" id="pills-tab1" role="tablist">
                     <li className="nav-item" role="presentation">
                         <button
