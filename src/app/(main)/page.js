@@ -1,16 +1,16 @@
 import ClassesCard from "@/components/Cards/ClassesCard";
 import EventsCard from "@/components/Cards/EventsCard";
 import SimpleCard from "@/components/Cards/SimpleCard";
-import HeroBanner from "@/components/Header/HeroBanner";
 import BannerSlider from "@/components/HeaderOne/BannerSlider";
 import HorizontalSearch from "@/components/HeaderOne/HorizontalSearch";
 import Newsletter from "@/components/Newsletter";
 import Testimonials from "@/components/Testimonials";
-import { getEvents } from "@/libs/fetchData";
-import Script from "next/script";
+import { getEvents, getVenue } from "@/libs/fetchData";
 
 export default async function Home() {
   const { data } = await getEvents();
+  const venuesData = await getVenue();
+  const venues = venuesData && venuesData.data;
   const events = data;
   return (
     <>
@@ -32,11 +32,11 @@ export default async function Home() {
               </div>
               <div className="row justify-content-center g-4">
                 <div className='venue-slider' id="venue-slider">
-                  <SimpleCard />
-                  <SimpleCard />
-                  <SimpleCard />
-                  <SimpleCard />
-                  <SimpleCard />
+                  {venues && venues.map((item, index) => {
+                    return (
+                      <SimpleCard key={index} item={item} />
+                    )
+                  })}
                 </div>
               </div>
 

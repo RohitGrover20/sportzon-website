@@ -9,7 +9,7 @@ function SimpleCard(props) {
             <div className="zoom-effect-wrapper">
                 <div className="zoom-effect-img">
                     <img
-                        src={`${config.API_URL}/venue/${item && item.gallery[0]}`}
+                        src={`${config.API_URL}/venue/${item && item.gallery && item.gallery[0]}`}
                         className="img-fluid rounded-4"
                         alt="Image"
                     />

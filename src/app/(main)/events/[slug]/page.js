@@ -9,7 +9,8 @@ import { getEventBySlug } from '@/libs/fetchData';
 async function EventDetails({ params }) {
     const { data } = await getEventBySlug(params.slug);
     const event = data;
-    const emptySlots = event && ((parseInt(event.emptySlots) / parseInt(event.totalSlots)) / 100);
+    const totalBooking = event.totalSlots - event.emptySlots;
+    const progress = parseInt(parseFloat(totalBooking / (event.totalSlots)) * 100);
     return (
         <section className='gray-simple'>
             <div className="container">
@@ -54,19 +55,19 @@ async function EventDetails({ params }) {
                         <div className="mt-5">
                             <div className='d-flex justify-content-between'>
                                 <h5 className='text-secondary'>Slots Available</h5>
-                                <h5 className='text-info'>{event && event.emptySlots}/{event && event.totalSlots}</h5>
+                                <h5 className='text-info'>{parseFloat(event.emptySlots)}/{event && event.totalSlots}</h5>
                             </div>
                             <div
                                 className="progress"
                                 role="progressbar"
                                 aria-label="Animated striped example"
-                                aria-valuenow={emptySlots}
+                                aria-valuenow={progress}
                                 aria-valuemin={0}
                                 aria-valuemax={100}
                             >
                                 <div
                                     className="progress-bar progress-bar-striped progress-bar-animated"
-                                    style={{ width: emptySlots }}
+                                    style={{ width: progress + "%" }}
                                 />
                             </div>
                         </div>

@@ -1,7 +1,6 @@
 "use client"
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../../../../context/context';
-import { getVenuesBySlug } from '@/libs/fetchData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -13,6 +12,7 @@ function Checkout(props) {
     const loading = props && props.loading;
     const setLoading = props && props.setLoading;
     const setCart = props && props.setCart;
+    const setPayment = props && props.setPayment;
     const subtotal = cart && cart.length > 0 && cart.reduce(function (acc, obj) { return acc + obj.amount; }, 0);
     const gst = cart && cart.length > 0 && cart.reduce(function (acc, obj) { return acc + obj.gst; }, 0);
     const context = useContext(UserContext);
@@ -60,7 +60,7 @@ function Checkout(props) {
             },
             handler: function (response) {
                 setLoading(true)
-                axios.post(`${config.API_URL}/landing/payments/verify`, {
+                axios.post(`${config.API_URL}/landing/bookings/process`, {
                     response: response, data: {
                         bookingType: "arena",
                         fullName: data.values && (data.values.firstName + " " + data.values.lastName) || null,
@@ -76,13 +76,13 @@ function Checkout(props) {
                     }
                 }, { withCredentials: true })
                     .then(res => {
-                        setLoading(false)
-                        router.push("/user/my-bookings")
+                        // setLoading(false)
                         toast.success(res.data && res.data && res.data.message, {
                             position: "top-right",
                             autoClose: 2000,
                             onClose: () => {
                                 setLoading(false)
+                                setPayment(true)
                             },
                         })
                     })
@@ -92,12 +92,42 @@ function Checkout(props) {
             }
         };
         var rzp = new window.Razorpay(options);
+        rzp.on('payment.failed', function (response) {
+            axios.post(`${config.API_URL}/landing/payments/failed-payment`,
+                {
+                    order_id: response.error.metadata.order_id,
+                    payment_id: response.error.metadata.payment_id,
+                    status: "failed"
+                },
+                { withCredentials: true }).then((result) => {
+                    alert(response.error.description)
+                }).catch((err) => {
+                    console.log(err)
+                })
+            // toast.error(response.error.reason, {
+            //     position: "top-right",
+            //     autoClose: 2000,
+            //     onClose: () => {
+            //         setLoader(false)
+            //         setSubmitting(false);
+            //         resetForm(true);
+            //         // const closeBtn = document && document.getElementById("registrationClose")
+            //         // closeBtn.click()
+            //     },
+            // })
+            // alert(response.error.code);
+            // alert(response.error.description);
+            // alert(response.error.source);
+            // alert(response.error.step);
+            // alert(response.error.reason);
+            // alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
         rzp.open()
 
     }
     return (
         <div className="col-xl-4 col-lg-4 col-lg-offset-1">
-            {/* <ToastContainer /> */}
             <div className="exploi  rounded py-3 px-3 border"
                 style={{ backdropFilter: "blur(10px)" }}
             >

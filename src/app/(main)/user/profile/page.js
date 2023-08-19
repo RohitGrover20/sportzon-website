@@ -35,7 +35,7 @@ function Profile() {
     const onSubmit = async (values, { setSubmitting, resetForm }) => {
         try {
             setLoader(true)
-            const profile = await axios.post(`${config.API_URL}/landing/profile-update`, values, { withCredentials: true });
+            const profile = await axios.post(`${config.API_URL}/landing/auth/profile-update`, values, { withCredentials: true });
             if (profile) {
                 setLoader(false)
                 toast.success(profile && profile.data && profile.data.message, {
@@ -74,11 +74,13 @@ function Profile() {
     }
 
     return (
-        <div className="dash-wrapsw card border-0 rounded-4 py-4 mb-4 shadow-lg">
+        <div className="dash-wrapsw card border-0 rounded-4 mb-4 shadow-lg">
+            <div className="card-header">
+                <h3>Personal Information</h3>
+            </div>
             <ToastContainer />
             {(!user || loader) ? <Loading /> :
-                <div className="card-body px-4">
-                    <h3>Personal Information</h3>
+                <div className="card-body">
                     <Formik
                         enableReinitialize
                         initialValues={initialValues}

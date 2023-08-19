@@ -92,7 +92,32 @@ function Registration(props) {
                 })
                 .catch(err => {
                     setLoader(false)
-                    console.log(err)
+                    if (err.response && err.response.data && err.response.data.code == "bookingclosed") {
+                        toast.warning(err.response && err.response.data && err.response.data.message, {
+                            position: "top-right",
+                            autoClose: 2000,
+                            onClose: () => {
+                                setLoader(false)
+                                setSubmitting(false);
+                                resetForm(true);
+                                const closeBtn = document && document.getElementById("registrationClose")
+                                closeBtn.click()
+                            },
+                        })
+                    }
+                    else {
+                        toast.warning(err.response && err.response.data && err.response.data.message, {
+                            position: "top-right",
+                            autoClose: 2000,
+                            onClose: () => {
+                                setLoader(false)
+                                setSubmitting(false);
+                                resetForm(true);
+                                const closeBtn = document && document.getElementById("registrationClose")
+                                closeBtn.click()
+                            },
+                        })
+                    }
                 })
 
         }
@@ -121,15 +146,13 @@ function Registration(props) {
                 "color": "#ff611a"
             },
             handler: function (response) {
-                axios.post(`${config.API_URL}/landing/payments/verify`, { response: response, data: data.values }, { withCredentials: true })
+                axios.post(`${config.API_URL}/landing/bookings/process`, { response: response, data: data.values }, { withCredentials: true })
                     .then(res => {
                         toast.success(res.data && res.data && res.data.message, {
                             position: "top-right",
                             autoClose: 2000,
                             onClose: () => {
                                 setLoader(false)
-                                // setSubmitting(false);
-                                // resetForm(true);
                                 const closeBtn = document && document.getElementById("registrationClose")
                                 closeBtn.click()
                             },
@@ -137,31 +160,52 @@ function Registration(props) {
                     })
                     .catch(err => {
                         setLoader(false)
-                        console.log(err, "sdfsd")
+                        toast.warning(err.response && err.response.data && err.response.data.message, {
+                            position: "top-right",
+                            autoClose: 2000,
+                            onClose: () => {
+                                setLoader(false)
+                                setSubmitting(false);
+                                resetForm(true);
+                                const closeBtn = document && document.getElementById("registrationClose")
+                                closeBtn.click()
+                            },
+                        })
                     })
             }
         };
         var rzp = new window.Razorpay(options);
-        // rzp.on('payment.failed', function (response) {
-        //     toast.error(response.error.reason, {
-        //         position: "top-right",
-        //         autoClose: 2000,
-        //         onClose: () => {
-        //             setLoader(false)
-        //             setSubmitting(false);
-        //             resetForm(true);
-        //             // const closeBtn = document && document.getElementById("registrationClose")
-        //             // closeBtn.click()
-        //         },
-        //     })
-        //     // alert(response.error.code);
-        //     // alert(response.error.description);
-        //     // alert(response.error.source);
-        //     // alert(response.error.step);
-        //     // alert(response.error.reason);
-        //     // alert(response.error.metadata.order_id);
-        //     // alert(response.error.metadata.payment_id);
-        // });
+        rzp.on('payment.failed', function (response) {
+            axios.post(`${config.API_URL}/landing/payments/failed-payment`,
+                {
+                    order_id: response.error.metadata.order_id,
+                    payment_id: response.error.metadata.payment_id,
+                    status: "failed"
+                },
+                { withCredentials: true }).then((result) => {
+                    alert(response.error.description)
+                }).catch((err) => {
+                    console.log(err)
+                })
+            // toast.error(response.error.reason, {
+            //     position: "top-right",
+            //     autoClose: 2000,
+            //     onClose: () => {
+            //         setLoader(false)
+            //         setSubmitting(false);
+            //         resetForm(true);
+            //         // const closeBtn = document && document.getElementById("registrationClose")
+            //         // closeBtn.click()
+            //     },
+            // })
+            // alert(response.error.code);
+            // alert(response.error.description);
+            // alert(response.error.source);
+            // alert(response.error.step);
+            // alert(response.error.reason);
+            // alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
         rzp.open()
 
     }
@@ -279,9 +323,9 @@ function Registration(props) {
                                                             name="state"
                                                             className="form-select"
                                                         >
-                                                            {state_arr && state_arr.map((item) => {
+                                                            {state_arr && state_arr.map((item, index) => {
                                                                 return (
-                                                                    <option>{item}</option>
+                                                                    <option key={index}>{item}</option>
                                                                 )
                                                             })}
                                                         </Field>
