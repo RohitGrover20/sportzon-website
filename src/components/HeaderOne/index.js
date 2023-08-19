@@ -1,10 +1,13 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Menu from './Menu'
 import { usePathname } from 'next/navigation'
 import LoginForm from '../Auth/LoginForm';
+import { UserContext } from '../../../context/context';
+import UserMenuMobile from './UserMenuMobile';
 function HeaderOne() {
 
+    const user = useContext(UserContext);
     const path = usePathname();
     var loadScript = function (src) {
         var tag = window.document.createElement("script");
@@ -14,9 +17,10 @@ function HeaderOne() {
         window.document.getElementsByTagName("body")[0].removeChild(tag);
     };
     useEffect(() => {
-        loadScript("/assets/js/slick.js");
-        loadScript("/assets/js/custom.js");
+        loadScript("/assets/js/slick.js")
+        loadScript("/assets/js/custom.js")
     }, [path]);
+
     return (
         <div className="header change-logo">
             <div className="container">
@@ -30,19 +34,23 @@ function HeaderOne() {
                         </a>
                         <div className="nav-toggle" />
                         <div className="mobile_nav">
-                            <ul>
-                                <li>
-                                    <a
-                                        href="##"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#login"
-                                        className="btn btn-orange"
-                                    >
-                                        <i className="fas fa-sign-in-alt me-2" />
-                                        Log In
-                                    </a>
-                                </li>
-                            </ul>
+                            {user && user.code == "authorised" ?
+                                <UserMenuMobile user={user} />
+                                :
+                                <ul>
+                                    <li>
+                                        <a
+                                            href="##"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#login"
+                                            className="btn btn-orange"
+                                        >
+                                            <i className="fas fa-sign-in-alt me-2" />
+                                            Log In
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
                         </div>
                     </div>
                     <Menu />

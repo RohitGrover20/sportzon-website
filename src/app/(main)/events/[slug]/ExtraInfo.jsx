@@ -76,10 +76,6 @@ function ExtraInfo(props) {
                                     className="gmap_iframe"
                                     width="100%"
                                     height="400px"
-                                    // frameBorder={0}
-                                    // scrolling="no"
-                                    // marginHeight={0}
-                                    // marginWidth={0}
                                     src={`https://maps.google.com/maps?width=600&height=400&hl=en&q=${event && event.address}&t=p&z=14&ie=UTF8&iwloc=B&output=embed`}
                                 />
                             </div>

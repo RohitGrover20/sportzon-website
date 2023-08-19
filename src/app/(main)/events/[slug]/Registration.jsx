@@ -215,7 +215,7 @@ function Registration(props) {
               onSubmit={onSubmit}
               enableReinitialize
             >
-              {({ values, setFieldValue, errors, dirty, isValid }) => {
+              {({ values, setFieldValue, dirty, isValid }) => {
                 const totalAmount = (ticket) => {
                   const fees = event && event.entryFees;
                   const netAmount = parseFloat(fees * ticket);
@@ -421,7 +421,7 @@ function Registration(props) {
                           <>
                             <h4 className="mt-4 mb-0">Member&#39;s Details</h4>
                             <FieldArray name="members">
-                              {({ insert, remove, push }) => (
+                              {({ remove, push }) => (
                                 <>
                                   <button
                                     type="button"
