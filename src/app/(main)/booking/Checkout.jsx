@@ -1,7 +1,7 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../../../context/context";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import config from "@/config";
@@ -9,7 +9,6 @@ import config from "@/config";
 function Checkout(props) {
   const cart = props && props.cart;
   const venue = props && props.venue;
-  const loading = props && props.loading;
   const setLoading = props && props.setLoading;
   const setCart = props && props.setCart;
   const setPayment = props && props.setPayment;
@@ -28,7 +27,7 @@ function Checkout(props) {
   const context = useContext(UserContext);
   const user = context && context;
 
-  const payment = async (amount) => {
+  const payment = async () => {
     setLoading(true);
     if (user && user.code == "unauthorised") {
       window.location.replace("/login");
@@ -93,9 +92,9 @@ function Checkout(props) {
                   (data.values &&
                     data.values.firstName + " " + data.values.lastName) ||
                   null,
-                email: data.values && data.values.email,
-                mobile: data.values && data.values.mobile,
-                address: data.values && data.values.address,
+                email: data?.values.email,
+                mobile: data?.values.mobile,
+                address: data?.values.address,
                 city: data.values && data.values.city,
                 state: data.values && data.values.state,
                 pincode: data.values && data.values.pincode,
@@ -117,7 +116,7 @@ function Checkout(props) {
               },
             });
           })
-          .catch((err) => {
+          .catch(() => {
             setLoading(false);
           });
       },
@@ -134,29 +133,13 @@ function Checkout(props) {
           },
           { withCredentials: true }
         )
-        .then((result) => {
+        .then(() => {
           alert(response.error.description);
         })
         .catch((err) => {
           console.log(err);
         });
-      // toast.error(response.error.reason, {
-      //     position: "top-right",
-      //     autoClose: 2000,
-      //     onClose: () => {
-      //         setLoader(false)
-      //         setSubmitting(false);
-      //         resetForm(true);
-      //         // const closeBtn = document && document.getElementById("registrationClose")
-      //         // closeBtn.click()
-      //     },
-      // })
-      // alert(response.error.code);
-      // alert(response.error.description);
-      // alert(response.error.source);
-      // alert(response.error.step);
-      // alert(response.error.reason);
-      // alert(response.error.metadata.order_id);
+
       alert(response.error.metadata.payment_id);
     });
     rzp.open();
@@ -239,8 +222,8 @@ function Checkout(props) {
                             item.slots.map((item, index) => {
                               return (
                                 <div
+                                  key={index.toString()}
                                   className="badge badge-success me-1"
-                                  key={index}
                                 >
                                   {item.label}
                                 </div>
@@ -253,26 +236,6 @@ function Checkout(props) {
                 );
               })}
 
-            {/* End of Single Product */}
-
-            {/* Coupon Code */}
-            {/* <div className="pb-3">
-        <div className="d-sm-flex align-items-center border-top pt-4">
-            <div className="input-group input-group-sm mb-3 mb-sm-0 me-sm-4 me-md-5 p-2 border rounded-3">
-                <input
-                    className="form-control form-control-md text-uppercase border-0"
-                    type="text"
-                    placeholder="Your coupon code"
-                />
-                <button
-                    className="btn btn-md btn-primary rounded-2"
-                    type="button"
-                >
-                    Apply coupon
-                </button>
-            </div>
-        </div>
-    </div> */}
             {/* Total Price & GST */}
 
             <ul className="list-unstyled py-3 mb-0 border-top">

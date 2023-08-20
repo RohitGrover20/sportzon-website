@@ -108,43 +108,7 @@ function Registration(props) {
         })
         .catch((err) => {
           setLoader(false);
-          if (
-            err.response &&
-            err.response.data &&
-            err.response.data.code == "bookingclosed"
-          ) {
-            toast.warning(
-              err.response && err.response.data && err.response.data.message,
-              {
-                position: "top-right",
-                autoClose: 2000,
-                onClose: () => {
-                  setLoader(false);
-                  setSubmitting(false);
-                  resetForm(true);
-                  const closeBtn =
-                    document && document.getElementById("registrationClose");
-                  closeBtn.click();
-                },
-              }
-            );
-          } else {
-            toast.warning(
-              err.response && err.response.data && err.response.data.message,
-              {
-                position: "top-right",
-                autoClose: 2000,
-                onClose: () => {
-                  setLoader(false);
-                  setSubmitting(false);
-                  resetForm(true);
-                  const closeBtn =
-                    document && document.getElementById("registrationClose");
-                  closeBtn.click();
-                },
-              }
-            );
-          }
+          console.log(err);
         });
     }
   };
@@ -174,7 +138,7 @@ function Registration(props) {
       handler: function (response) {
         axios
           .post(
-            `${config.API_URL}/landing/bookings/process`,
+            `${config.API_URL}/landing/payments/verify`,
             { response: response, data: data.values },
             { withCredentials: true }
           )
@@ -184,6 +148,8 @@ function Registration(props) {
               autoClose: 2000,
               onClose: () => {
                 setLoader(false);
+                // setSubmitting(false);
+                // resetForm(true);
                 const closeBtn =
                   document && document.getElementById("registrationClose");
                 closeBtn.click();
@@ -192,59 +158,31 @@ function Registration(props) {
           })
           .catch((err) => {
             setLoader(false);
-            toast.warning(
-              err.response && err.response.data && err.response.data.message,
-              {
-                position: "top-right",
-                autoClose: 2000,
-                onClose: () => {
-                  setLoader(false);
-                  const closeBtn =
-                    document && document.getElementById("registrationClose");
-                  closeBtn.click();
-                },
-              }
-            );
+            console.log(err, "sdfsd");
           });
       },
     };
     var rzp = new window.Razorpay(options);
-    rzp.on("payment.failed", function (response) {
-      axios
-        .post(
-          `${config.API_URL}/landing/payments/failed-payment`,
-          {
-            order_id: response.error.metadata.order_id,
-            payment_id: response.error.metadata.payment_id,
-            status: "failed",
-          },
-          { withCredentials: true }
-        )
-        .then((result) => {
-          alert(response.error.description);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      // toast.error(response.error.reason, {
-      //     position: "top-right",
-      //     autoClose: 2000,
-      //     onClose: () => {
-      //         setLoader(false)
-      //         setSubmitting(false);
-      //         resetForm(true);
-      //         // const closeBtn = document && document.getElementById("registrationClose")
-      //         // closeBtn.click()
-      //     },
-      // })
-      // alert(response.error.code);
-      // alert(response.error.description);
-      // alert(response.error.source);
-      // alert(response.error.step);
-      // alert(response.error.reason);
-      // alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
-    });
+    // rzp.on('payment.failed', function (response) {
+    //     toast.error(response.error.reason, {
+    //         position: "top-right",
+    //         autoClose: 2000,
+    //         onClose: () => {
+    //             setLoader(false)
+    //             setSubmitting(false);
+    //             resetForm(true);
+    //             // const closeBtn = document && document.getElementById("registrationClose")
+    //             // closeBtn.click()
+    //         },
+    //     })
+    //     // alert(response.error.code);
+    //     // alert(response.error.description);
+    //     // alert(response.error.source);
+    //     // alert(response.error.step);
+    //     // alert(response.error.reason);
+    //     // alert(response.error.metadata.order_id);
+    //     // alert(response.error.metadata.payment_id);
+    // });
     rzp.open();
   };
 
@@ -277,7 +215,7 @@ function Registration(props) {
               onSubmit={onSubmit}
               enableReinitialize
             >
-              {({ values, setFieldValue, errors, dirty, isValid }) => {
+              {({ values, setFieldValue, dirty, isValid }) => {
                 const totalAmount = (ticket) => {
                   const fees = event && event.entryFees;
                   const netAmount = parseFloat(fees * ticket);
@@ -483,7 +421,7 @@ function Registration(props) {
                           <>
                             <h4 className="mt-4 mb-0">Member&#39;s Details</h4>
                             <FieldArray name="members">
-                              {({ insert, remove, push }) => (
+                              {({ remove, push }) => (
                                 <>
                                   <button
                                     type="button"
