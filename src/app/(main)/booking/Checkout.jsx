@@ -30,7 +30,7 @@ function Checkout(props) {
   const payment = async () => {
     setLoading(true);
     if (user && user.code == "unauthorised") {
-      window.location.replace("/login");
+      window.location.replace(`/login?referrer=venues&ID=${venue?.slug}`);
     } else {
       const _data = (subtotal + gst) * 100;
       axios
