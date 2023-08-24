@@ -142,4 +142,3 @@ async function EventDetails({ params }) {
 }
 
 export default EventDetails;
-export default EventDetails;
