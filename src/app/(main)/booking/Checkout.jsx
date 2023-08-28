@@ -52,7 +52,12 @@ function Checkout(props) {
         })
         .catch((err) => {
           setLoading(false);
-          console.log(err);
+          const error = err.response;
+          toast.error(error.data && error.data && error.data.message, {
+            position: "top-right",
+            autoClose: 2000,
+            onClose: () => {},
+          });
         });
     }
   };

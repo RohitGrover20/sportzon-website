@@ -3,6 +3,8 @@ import React from "react";
 import Information from "./Information";
 import BreadCrumb from "@/components/BreadCrumb";
 import Registration from "./Registration";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 async function ClassDetails({ params }) {
   const slug = params.slug;
@@ -10,6 +12,7 @@ async function ClassDetails({ params }) {
 
   return (
     <div>
+      <ToastContainer />
       <BreadCrumb
         data={[
           { title: "Classes", link: "/classes" },

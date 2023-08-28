@@ -22,6 +22,14 @@ function Information(props) {
               <li>
                 <strong>Address</strong> : {data?.address}
               </li>
+              <li>
+                <strong>Class Timings</strong> :{" "}
+                {data?.classTiming?.map((item, index) => (
+                  <div className="badge badge-success me-1" key={index}>
+                    {item.from} - {item.to}
+                  </div>
+                ))}
+              </li>
             </ul>
           </div>
           <div className="jbs-content mb-3">
