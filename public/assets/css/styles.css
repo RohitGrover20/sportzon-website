@@ -1493,12 +1493,12 @@ div[data-overlay] p {
     border-radius: 50%;
     animation: spinner-border .75s linear infinite;
 }
-
+/* 
 .spinner-border-sm {
     width: $spinner-width-sm;
     height: $spinner-height-sm;
     border-width: $spinner-border-width-sm;
-}
+} */
 
 .sr-only {
     position: absolute;
@@ -1987,7 +1987,6 @@ ul.colored-list li:before {
 .label-light-info {
     background-color: rgba(0, 138, 255, 0.12);
     color: #FF611A;
-    .
 }
 
 .label-light-warning {
@@ -5478,7 +5477,7 @@ footer.skin-dark-footer .footer-widget .ftp-info {
         border-bottom: 1px solid #e9ecef;
         background: #12245a;
         position: fixed;
-        z-index: 999;
+        z-index: 9999;
         width: 100%;
         top: 0;
         -webkit-transition: 0.2s ease-in;

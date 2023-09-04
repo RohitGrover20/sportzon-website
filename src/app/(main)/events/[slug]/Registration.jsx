@@ -21,7 +21,7 @@ function Registration(props) {
     eventType: event && event.eventType,
     ticketSystem: event && event.ticketSystem,
     event: event && event._id,
-    club: event && event.club && event.club._id,
+    club: event && event.club,
     team: "",
     user: (user && user.data && user.data._id) || "",
     noOfTickets: 1,
@@ -138,7 +138,7 @@ function Registration(props) {
       handler: function (response) {
         axios
           .post(
-            `${config.API_URL}/landing/payments/verify`,
+            `${config.API_URL}/landing/bookings/process`,
             { response: response, data: data.values },
             { withCredentials: true }
           )
@@ -148,8 +148,6 @@ function Registration(props) {
               autoClose: 2000,
               onClose: () => {
                 setLoader(false);
-                // setSubmitting(false);
-                // resetForm(true);
                 const closeBtn =
                   document && document.getElementById("registrationClose");
                 closeBtn.click();
@@ -158,31 +156,31 @@ function Registration(props) {
           })
           .catch((err) => {
             setLoader(false);
-            console.log(err, "sdfsd");
+            console.log(err);
           });
       },
     };
     var rzp = new window.Razorpay(options);
-    // rzp.on('payment.failed', function (response) {
-    //     toast.error(response.error.reason, {
-    //         position: "top-right",
-    //         autoClose: 2000,
-    //         onClose: () => {
-    //             setLoader(false)
-    //             setSubmitting(false);
-    //             resetForm(true);
-    //             // const closeBtn = document && document.getElementById("registrationClose")
-    //             // closeBtn.click()
-    //         },
-    //     })
-    //     // alert(response.error.code);
-    //     // alert(response.error.description);
-    //     // alert(response.error.source);
-    //     // alert(response.error.step);
-    //     // alert(response.error.reason);
-    //     // alert(response.error.metadata.order_id);
-    //     // alert(response.error.metadata.payment_id);
-    // });
+    rzp.on("payment.failed", function (response) {
+      axios
+        .post(
+          `${config.API_URL}/landing/payments/failed-payment`,
+          {
+            order_id: response.error.metadata.order_id,
+            payment_id: response.error.metadata.payment_id,
+            status: "failed",
+          },
+          { withCredentials: true }
+        )
+        .then(() => {
+          alert(response.error.description);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      alert(response.error.metadata.payment_id);
+    });
     rzp.open();
   };
 
@@ -417,9 +415,11 @@ function Registration(props) {
                             </div>
                           </div>
                         ) : null}
-                        {event && event.eventType == "tournament" ? (
+                        {event && event.memberType == "team" ? (
                           <>
-                            <h4 className="mt-4 mb-0">Member&#39;s Details</h4>
+                            <strong className="mt-4 mb-2">
+                              Member&#39;s Details
+                            </strong>
                             <FieldArray name="members">
                               {({ remove, push }) => (
                                 <>

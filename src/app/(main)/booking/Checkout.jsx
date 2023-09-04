@@ -9,6 +9,7 @@ import config from "@/config";
 function Checkout(props) {
   const cart = props && props.cart;
   const venue = props && props.venue;
+  const club = venue?.club;
   const setLoading = props && props.setLoading;
   const setCart = props && props.setCart;
   const setPayment = props && props.setPayment;
@@ -47,6 +48,7 @@ function Checkout(props) {
               bookingType: "arena",
               arena: venue && venue._id,
               court: cart,
+              club: club,
             },
           });
         })
@@ -63,6 +65,7 @@ function Checkout(props) {
   };
 
   const handleOpenRazorpay = (data) => {
+    console.log(data);
     var options = {
       key: "rzp_test_UX09CkpYTnoeB5", // Enter the Key ID generated from the Dashboard
       amount: Number(data.amount * 100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -106,6 +109,7 @@ function Checkout(props) {
                 gender: data.values && data.values.gender,
                 arena: data.values && data.values.arena,
                 court: data.values && data.values.court,
+                club: data.values && data.values.club,
               },
             },
             { withCredentials: true }

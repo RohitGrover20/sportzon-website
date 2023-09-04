@@ -1,5 +1,4 @@
 import Share from "@/components/Share";
-import config from "@/config";
 import { getVenuesBySlug } from "@/libs/fetchData";
 import React from "react";
 import BookingSection from "./BookingSection";
@@ -56,10 +55,10 @@ async function VenuesBySlug({ params }) {
                       return (
                         <div className="single-items" key={index}>
                           <img
-                            className="img-fluid"
-                            src={`${config.API_URL}/venue/${item}`}
+                            className="img-fluid rounded"
+                            src={`${item}`}
                             style={{
-                              objectFit: "contain",
+                              objectFit: "cover",
                               width: "100%",
                               height: "350px",
                             }}

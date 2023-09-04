@@ -1,6 +1,7 @@
 "use client";
 import config from "@/config";
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function MyClasses() {
@@ -17,8 +18,6 @@ function MyClasses() {
         console.log(error);
       });
   }, []);
-
-  console.log(classes);
   return (
     <div>
       <div className="dash-wrapsw card border-0 rounded-4 mb-4">
@@ -71,13 +70,17 @@ function MyClasses() {
                       </div>
                     </div>
                     <div className="card-footer">
-                      <button className="btn btn-dark btn-sm me-1">
-                        <i className="fa fa-money me-1"></i> Fees Info
-                      </button>
-                      <button className="btn btn-dark btn-sm me-1">
+                      <Link
+                        href={`./my-classes/fees/${item.admissionIn?._id}/${item._id}`}
+                      >
+                        <button className="btn btn-light btn-sm me-1">
+                          <i className="fa fa-money me-1"></i> Fees Info
+                        </button>
+                      </Link>
+                      <button className="btn btn-light btn-sm me-1">
                         <i className="fa fa-users me-1"></i> Attendance
                       </button>
-                      <button className="btn btn-dark btn-sm me-1">
+                      <button className="btn btn-light btn-sm me-1">
                         <i className="fa fa-file me-1"></i>Reports
                       </button>
                       {/* <button className="btn btn-dark btn-sm me-1">

@@ -108,12 +108,12 @@ function ProfileSideBar(props) {
                     Recent Transactions
                   </Link>
                 </li>
-                <li className="py-3">
+                {/* <li className="py-3">
                   <Link href="/user/my-subscription" className="fw-medium">
                     <i className="fa-solid fa-basket-shopping me-2" />
                     My Subscription
                   </Link>
-                </li>
+                </li> */}
                 <li className="py-3">
                   <Link href="/user/settings" className="fw-medium">
                     <i className="fa-solid fa-gear me-2" />

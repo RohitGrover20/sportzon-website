@@ -11,12 +11,14 @@ import Loading from "@/components/Loading";
 
 function Registration(props) {
   const data = props?.data;
+  const club = data?.club;
   const context = useContext(UserContext);
   const user = context && context;
   const totalAmount = data?.fees + (data?.fees * 18) / 100;
 
   const initialValues = {
     class: data?._id,
+    club: club,
     classTiming: "",
     fullName: "",
     mobile: "",
@@ -35,6 +37,11 @@ function Registration(props) {
     parentEmail: "",
     emergencyName: "",
     emergencyMobile: "",
+    subtotal: data?.fees,
+    totalAmount: totalAmount * 100,
+    gst: (data?.fees * 18) / 100,
+    discount: 0,
+    balance: 0,
   };
 
   const phoneRegExp =
@@ -108,7 +115,9 @@ function Registration(props) {
     axios
       .post(
         `${config.API_URL}/landing/payments/orders`,
-        { amount: totalAmount * 100 },
+        {
+          amount: totalAmount * 100, //paidAmount
+        },
         { withCredentials: true }
       )
       .then((res) => {

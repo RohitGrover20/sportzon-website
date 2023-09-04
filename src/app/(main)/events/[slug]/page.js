@@ -1,7 +1,6 @@
 import Share from "@/components/Share";
 import React from "react";
 import ExtraInfo from "./ExtraInfo";
-import config from "@/config";
 import Registration from "./Registration";
 import { getEventBySlug } from "@/libs/fetchData";
 import BreadCrumb from "@/components/BreadCrumb";
@@ -25,7 +24,10 @@ async function EventDetails({ params }) {
           <div className="row justify-content-between mb-5">
             <div className="col-xl-6 col-lg-6 col-md-5 mb-3 mb-md-0">
               <img
-                src={`${config.API_URL}/events/${event && event.banner}`}
+                src={`${event && event.banner}`}
+                height="350px"
+                width={"100%"}
+                style={{ objectFit: "cover" }}
                 className="w-100 rounded shadow-sm"
               />
             </div>
