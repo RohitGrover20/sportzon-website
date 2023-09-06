@@ -9,12 +9,15 @@ function EventsCard(props) {
       style={{ border: "3px solid #eee" }}
     >
       <div className="zoom-effect-wrapper">
-        <div className="zoom-effect-img">
+        <div className="zoom-effect-img position-relative">
           <img
             src={`${item && item.banner}`}
             className="img-fluid rounded-4"
             alt="Image"
           />
+          <div className="position-absolute top-0 start-0 mt-3 ms-3 label text-light bg-success">
+            {item?.activity}
+          </div>
         </div>
       </div>
       <div className="pt-3">

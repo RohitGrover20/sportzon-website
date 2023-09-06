@@ -80,9 +80,13 @@ function MyClasses() {
                       <button className="btn btn-light btn-sm me-1">
                         <i className="fa fa-users me-1"></i> Attendance
                       </button>
-                      <button className="btn btn-light btn-sm me-1">
-                        <i className="fa fa-file me-1"></i>Reports
-                      </button>
+                      <Link
+                        href={`./my-classes/reports/${item.admissionIn?._id}/${item._id}`}
+                      >
+                        <button className="btn btn-light btn-sm me-1">
+                          <i className="fa fa-file me-1"></i>Reports
+                        </button>
+                      </Link>
                       {/* <button className="btn btn-dark btn-sm me-1">
                         More Info
                       </button> */}
