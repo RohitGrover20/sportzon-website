@@ -104,6 +104,37 @@ const getClasses = async () => {
   }
 };
 
+const getTestimonials = async () => {
+  try {
+    const testimonials = await axios.get(
+      `${config.API_URL}/landing/testimonials`,
+      {
+        withCredentials: true,
+      }
+    );
+    if (testimonials) {
+      return testimonials && testimonials.data;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getArenaRating = async (values) => {
+  const arena = values?.arena;
+  try {
+    const rating = await axios.post(`${config.API_URL}/landing/rating/get`, {
+      type: "Arena",
+      arena: arena,
+    });
+    if (rating) {
+      return rating && rating.data;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export {
   getEvents,
   getEventBySlug,
@@ -114,4 +145,6 @@ export {
   getClassBySlug,
   getCoachById,
   getClassesByCoach,
+  getTestimonials,
+  getArenaRating,
 };

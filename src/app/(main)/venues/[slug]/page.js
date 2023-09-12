@@ -3,6 +3,7 @@ import { getVenuesBySlug } from "@/libs/fetchData";
 import React from "react";
 import BookingSection from "./BookingSection";
 import BreadCrumb from "@/components/BreadCrumb";
+import RatingCard from "@/components/RatingCard";
 
 async function VenuesBySlug({ params }) {
   const { data } = await getVenuesBySlug(params.slug);
@@ -30,14 +31,8 @@ async function VenuesBySlug({ params }) {
                     <i className="fa fa-star text-warning" />{" "}
                     {venue && venue.rating}
                   </span>
-                  <a
-                    className="text-primary position-relative fw-semibold p-0"
-                    href="#"
-                    data-scroll=""
-                    data-scroll-offset={80}
-                  >
-                    <span className="text-success ms-2"> (Rate Venue?)</span>
-                  </a>
+
+                  <RatingCard type="Arena" arena={venue?._id} />
                 </div>
                 <div className="d-flex align-items-center mb-4">
                   <Share />

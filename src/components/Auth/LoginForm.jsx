@@ -20,7 +20,6 @@ function LoginForm() {
     email: Yup.string().email("Invalid Email").required("Email is required"),
     password: Yup.string().required("Pasword is required"),
   });
-  console.log(searchParams.get("referrder"));
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const login = await axios.post(
@@ -53,10 +52,10 @@ function LoginForm() {
   };
 
   const googleAuth = () => {
-    window.open(`http://localhost:9000/auth/google/callback`, "_self");
+    window.open(`${config.API_URL}/auth/google/callback`, "_self");
   };
   const facebookAuth = () => {
-    window.open(`http://localhost:9000/auth/facebook/callback`, "_self");
+    window.open(`${config.API_URL}/auth/facebook/callback`, "_self");
   };
   return (
     <>
@@ -73,7 +72,7 @@ function LoginForm() {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ values, setFieldValue, errors, dirty, isValid }) => {
+        {({ dirty, isValid }) => {
           return (
             <Form>
               <div className="position-relative mb-4 ">
@@ -85,6 +84,10 @@ function LoginForm() {
                   required=""
                   name="email"
                 />
+                <ErrorMessage
+                  name="email"
+                  render={(msg) => <small className="text-danger">{msg}</small>}
+                ></ErrorMessage>
               </div>
               <div className="mb-4 position-relative">
                 <i className="fa-solid fa-lock position-absolute top-50 start-0 translate-middle-y ms-3" />
@@ -96,6 +99,10 @@ function LoginForm() {
                   placeholder="Password"
                   required=""
                 />
+                <ErrorMessage
+                  name="password"
+                  render={(msg) => <small className="text-danger">{msg}</small>}
+                ></ErrorMessage>
                 <span className="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3" />
               </div>
               <div className="pb-3">

@@ -53,9 +53,10 @@ function Checkout(props) {
           });
         })
         .catch((err) => {
+          console.log(err);
           setLoading(false);
           const error = err.response;
-          toast.error(error.data && error.data && error.data.message, {
+          toast.error(error && error.data && error.data && error.data.message, {
             position: "top-right",
             autoClose: 2000,
             onClose: () => {},
@@ -65,7 +66,6 @@ function Checkout(props) {
   };
 
   const handleOpenRazorpay = (data) => {
-    console.log(data);
     var options = {
       key: "rzp_test_UX09CkpYTnoeB5", // Enter the Key ID generated from the Dashboard
       amount: Number(data.amount * 100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise

@@ -34,6 +34,7 @@ function ProductInfo(props) {
       {
         ...values,
         pricing: pricing,
+        status: "upcoming",
         amount:
           values && values.slots && parseInt(values.slots.length) * pricing,
         gst:

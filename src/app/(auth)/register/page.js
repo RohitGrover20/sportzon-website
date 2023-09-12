@@ -44,7 +44,7 @@ function Register() {
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const register = await axios.post(
-        `${config.API_URL}/landing/register`,
+        `${config.API_URL}/landing/auth/register`,
         values
       );
       if (register) {
@@ -75,10 +75,10 @@ function Register() {
   };
 
   const googleAuth = () => {
-    window.open(`http://localhost:9000/auth/google/callback`, "_self");
+    window.open(`${config.API_URL}/auth/google/callback`, "_self");
   };
   const facebookAuth = () => {
-    window.open(`http://localhost:9000/auth/facebook/callback`, "_self");
+    window.open(`${config.API_URL}/auth/facebook/callback`, "_self");
   };
   return (
     <>

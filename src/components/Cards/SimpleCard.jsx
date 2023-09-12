@@ -1,8 +1,11 @@
+import { getArenaRating } from "@/libs/fetchData";
 import Link from "next/link";
 import React from "react";
+import Rating from "../Rating";
 
-function SimpleCard(props) {
+async function SimpleCard(props) {
   const item = props && props.item;
+  const { data } = await getArenaRating(item?._id);
   return (
     <div
       className="priocs rounded-0 bg-white p-3 m-1"
@@ -44,7 +47,8 @@ function SimpleCard(props) {
                             <strong>+1 More</strong> */}
             {/* </div> */}
 
-            <div className="d-flex align-items-center">
+            <Rating rating={data} />
+            {/* <div className="d-flex align-items-center">
               <div className="d-flex align-items-center small">
                 <span className="fa-solid fa-star text-warning me-1" />
                 <span className="fa-solid fa-star text-warning me-1" />
@@ -52,10 +56,8 @@ function SimpleCard(props) {
                 <span className="fa-solid fa-star text-warning me-1" />
                 <span className="fa-solid fa-star text-muted" />
               </div>
-              <div className="edlois">
-                <strong className="fw-semibold ms-2">4.6</strong>
-              </div>
-            </div>
+              
+            </div> */}
           </div>
           <div className="col-lg-6 col-sm-6 col-xs-6 p-0 text-end">
             <Link href={`/venues/${item && item.slug}`}>

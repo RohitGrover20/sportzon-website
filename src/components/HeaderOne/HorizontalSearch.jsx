@@ -20,25 +20,25 @@ function HorizontalSearch() {
   };
   return (
     <section
-      className="position-relative p-0 m-0"
-      style={{ top: "-90px", zIndex: "1" }}
+      className="position-relative p-0 m-0 venue-search-bar"
+      id="venue-search-bar"
     >
       <div className="container shadow-lg bg-primary p-5 rounded">
         <div className="col-12">
           <div className="row align-items-center justify-content-center">
-            <div className="col-lg-2">
+            <div className="col-lg-2 p-1">
               <div className="form-floating">
                 <select
                   name="state"
                   id="state"
                   styles={{ minHeight: "53px" }}
-                  classNamePrefix="select"
+                  // classNamePrefix="select"
                   className="form-control"
                   onChange={(e) => {
                     setSearch({ ...search, state: e.target.value });
                   }}
                 >
-                  <option selected disabled value="">
+                  <option disabled value="">
                     --Select one--
                   </option>
                   {state_arr &&
@@ -50,11 +50,11 @@ function HorizontalSearch() {
               </div>
             </div>
 
-            <div className="col-lg-2">
+            <div className="col-lg-2 p-1">
               <div className="form-floating">
                 <select
                   styles={{ minHeight: "53px" }}
-                  classNamePrefix="select"
+                  // classNamePrefix="select"
                   name="city"
                   id="city"
                   className="form-control"
@@ -62,7 +62,7 @@ function HorizontalSearch() {
                     setSearch({ ...search, city: e.target.value });
                   }}
                 >
-                  <option selected disabled value="">
+                  <option disabled value="">
                     --Select one--
                   </option>
                   {s_a[state_arr.indexOf(search?.state)] &&
@@ -76,7 +76,7 @@ function HorizontalSearch() {
                 <label htmlFor="city">City</label>
               </div>
             </div>
-            <div className="col-lg-2">
+            <div className="col-lg-2 p-1">
               <div className="form-floating">
                 <input
                   type="date"
@@ -91,7 +91,7 @@ function HorizontalSearch() {
               </div>
             </div>
 
-            <div className="col-lg-2">
+            <div className="col-lg-2 p-1">
               <div className="form-floating">
                 <select
                   id="activityList"
@@ -100,9 +100,7 @@ function HorizontalSearch() {
                     setSearch({ ...search, activity: e.target.value });
                   }}
                 >
-                  <option selected disabled>
-                    --select one--
-                  </option>
+                  <option disabled>--select one--</option>
                   {option &&
                     option.map((item, index) => {
                       return <option key={index}>{item.value}</option>;
@@ -111,7 +109,7 @@ function HorizontalSearch() {
                 <label htmlFor="activityList">Filter by Activities</label>
               </div>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 p-1">
               <button
                 className="btn btn-orange w-100 mt-0"
                 onClick={() => {

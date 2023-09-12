@@ -9,11 +9,14 @@ import {
   getClasses,
   getEvents,
   getHomeBanner,
+  getTestimonials,
   getVenue,
 } from "@/libs/fetchData";
 
 export default async function Home() {
   const { data } = await getEvents();
+  const testimonialData = await getTestimonials();
+  const testimonials = testimonialData?.data;
   const bannerData = await getHomeBanner();
   const classesData = await getClasses();
   const classes = classesData && classesData.data;
@@ -317,7 +320,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <Testimonials />
+      <Testimonials testimonials={testimonials} />
       <Newsletter />
     </>
   );

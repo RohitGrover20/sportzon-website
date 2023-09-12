@@ -38,27 +38,27 @@ function Information(props) {
             <div className="row">
               {data?.coaches?.map((item, index) => {
                 return (
-                  <div className="col-lg-6" key={index}>
+                  <div className="col-lg-4" key={index}>
                     <div
                       className="d-flex align-items-center justify-content-start p-3 rounded-3 border"
                       key={index}
                     >
                       <div className="flex-shrink-0">
                         <img
-                          src="/assets/img/l-1.png"
-                          className="img-fluid"
+                          src="/assets/img/userplaceholder.png"
+                          className="img-fluid rounded shadow-sm"
                           width={80}
                           alt=""
                         />
                       </div>
                       <div className="ps-3">
                         <h6 className="mb-2">{item?.label}</h6>
-                        <button className="m-0 btn btn-primary btn-sm">
+                        {/* <button className="m-0 btn btn-primary btn-sm">
                           + Follow
-                        </button>
+                        </button> */}
                         <Link href={`/coaches/${item.value}`}>
-                          <button className="m-0 btn btn-secondary btn-sm ms-1">
-                            Profile
+                          <button className="m-0 btn btn-primary btn-sm ms-1">
+                            <i className="fa fa-user me-2" /> Profile
                           </button>
                         </Link>
                       </div>

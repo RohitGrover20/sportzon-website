@@ -17,19 +17,19 @@ async function CoachesById({ params }) {
               <div className="position-relative animated fadeInRight text-center">
                 <img
                   src={
-                    data?.profile
-                      ? data.profile
+                    data?.user?.profile
+                      ? data?.user?.profile
                       : `/assets/img/userplaceholder.png`
                   }
-                  className="img-fluid"
-                  alt=""
+                  className="img-fluid border shadow-sm"
+                  alt="coach"
                 />
                 <div className="d-flex align-items-center justify-content-center">
-                  <button className="btn btn-orange btn-sm mt-2">
+                  {/* <button className="btn btn-orange btn-sm mt-2">
                     + Follow
-                  </button>
-                  <span className="text-orange ms-3 me-3">190 Follows</span>
-                  <span className="text-primary">2 Following</span>
+                  </button> */}
+                  {/* <span className="text-orange ms-3 me-3">190 Follows</span>
+                  <span className="text-primary">2 Following</span> */}
                 </div>
               </div>
             </div>

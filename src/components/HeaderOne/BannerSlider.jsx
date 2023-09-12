@@ -14,7 +14,7 @@ function BannerSlider(props) {
             return (
               <div
                 className="single-items"
-                style={{ height: "500px" }}
+                // style={{ height: "500px" }}
                 key={index}
               >
                 <img className="w-100" src={item.file} alt={item.title} />
