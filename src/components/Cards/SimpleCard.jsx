@@ -1,11 +1,9 @@
-import { getArenaRating } from "@/libs/fetchData";
 import Link from "next/link";
 import React from "react";
 import Rating from "../Rating";
 
 async function SimpleCard(props) {
   const item = props && props.item;
-  const { data } = await getArenaRating(item?._id);
   return (
     <div
       className="priocs rounded-0 bg-white p-3 m-1"
@@ -47,7 +45,7 @@ async function SimpleCard(props) {
                             <strong>+1 More</strong> */}
             {/* </div> */}
 
-            <Rating rating={data} />
+            <Rating rating={item?.rating} />
             {/* <div className="d-flex align-items-center">
               <div className="d-flex align-items-center small">
                 <span className="fa-solid fa-star text-warning me-1" />

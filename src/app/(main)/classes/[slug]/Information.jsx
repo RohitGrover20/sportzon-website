@@ -3,6 +3,7 @@ import DOMPurify from "isomorphic-dompurify";
 // import Link from "next/link";
 import Share from "@/components/Share";
 import Link from "next/link";
+import RatingCard from "@/components/RatingCard";
 function Information(props) {
   const data = props?.data;
   let cleanDescription = DOMPurify.sanitize(data?.description);
@@ -97,6 +98,7 @@ function Information(props) {
                   </strong>
                 </li>
                 <Share />
+                <RatingCard type="Class" class={data?._id} />
               </ul>
             </div>
           </div>

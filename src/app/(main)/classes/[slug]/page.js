@@ -5,6 +5,7 @@ import BreadCrumb from "@/components/BreadCrumb";
 import Registration from "./Registration";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Rating from "@/components/Rating";
 
 async function ClassDetails({ params }) {
   const slug = params.slug;
@@ -40,14 +41,9 @@ async function ClassDetails({ params }) {
                   </span>
                 </div>
               </div>
-              <div className="d-inline-flex align-items-center jbs-kioyer-groups text-sm me-2">
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star me-2" />
-                <span className="aal-reveis fw-bold">4.6</span>
-              </div>
+              {/* <div className="d-inline-flex align-items-center jbs-kioyer-groups text-sm me-2"> */}
+              <Rating rating={data?.rating} />
+              {/* </div> */}
             </div>
           </div>
         </div>

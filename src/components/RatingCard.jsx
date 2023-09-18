@@ -83,7 +83,7 @@ function RatingCard(props) {
         }
         style={{ cursor: "pointer" }}
       >
-        <span className="text-success ms-2"> (Rate Venue?)</span>
+        <span className="text-success ms-2"> (Rate Item?)</span>
       </a>
       <div
         className="modal fade"

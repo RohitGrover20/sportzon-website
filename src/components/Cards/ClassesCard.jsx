@@ -1,6 +1,7 @@
 import React from "react";
 import DOMPurify from "isomorphic-dompurify";
 import Link from "next/link";
+import Rating from "../Rating";
 
 function ClassesCard(props) {
   const classes = props && props.class;
@@ -26,7 +27,9 @@ function ClassesCard(props) {
         <span className="label bg-light-orange font--medium text-orange me-3">
           <i className="fa fa-map-marker" /> {classes?.city}, {classes?.state}
         </span>
-        {/* <span className="font--medium">V00273124</span> */}
+        <span className="label bg-light-success font--medium text-success me-3">
+          <i className="fa fa-bookmark" /> {classes?.activity}
+        </span>
       </div>
       {/* Item Title */}
       <h5 className="pb-1 mb-2 lh-base">{classes?.title}</h5>
@@ -36,25 +39,13 @@ function ClassesCard(props) {
         }}
       />
       {/* Item Rate & review */}
-      <div className="d-flex align-items-center mb-4">
-        <div className="d-flex align-items-center">
-          <div className="d-flex align-items-center small">
-            <span className="fa-solid fa-star text-warning me-1" />
-            <span className="fa-solid fa-star text-warning me-1" />
-            <span className="fa-solid fa-star text-warning me-1" />
-            <span className="fa-solid fa-star text-warning me-1" />
-            <span className="fa-solid fa-star text-muted" />
-          </div>
-          <div className="edlois">
-            <strong className="fw-semibold ms-2">4.6</strong>
-          </div>
-        </div>
-      </div>
+
+      <Rating rating={classes?.rating} />
       {/* Item price */}
 
       {/* Color Selector */}
       <div className="h6">
-        <i className="fa fa-users" /> Trainers:
+        <i className="fa fa-users" /> Trainers
         {classes &&
           classes.coaches &&
           classes.coaches.map((item, index) => {

@@ -19,11 +19,11 @@ async function VenuesBySlug({ params }) {
       <section className="gray-simple">
         <div className="container">
           <div className="row justify-content-between">
-            <div className="col-xl-8 col-lg-8 col-md-12 p-0">
+            <div className="col-xl-8 col-lg-8 col-md-12">
               {/* Post Title */}
               <h1 className="pb-2 pb-lg-3">{venue && venue.title}</h1>
-              <div className="d-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
-                <div className="d-flex align-items-center mb-4 me-4">
+              <div className="d-lg-flex flex-wrap align-items-center justify-content-between border-bottom mb-4">
+                <div className="d-lg-flex align-items-center mb-4 me-4">
                   <span className="fs-sm me-2">
                     {venue && venue.city}, {venue && venue.state}
                   </span>
@@ -34,7 +34,7 @@ async function VenuesBySlug({ params }) {
 
                   <RatingCard type="Arena" arena={venue?._id} />
                 </div>
-                <div className="d-flex align-items-center mb-4">
+                <div className="d-lg-flex align-items-center mb-4">
                   <Share />
                 </div>
               </div>
@@ -73,7 +73,7 @@ async function VenuesBySlug({ params }) {
                     venue.activities.map((item, index) => {
                       return (
                         <li
-                          className="font--medium col-xl-3 col-lg-3 col-3"
+                          className="font--medium col-xl-3 col-lg-3 "
                           key={index}
                         >
                           <span className="square--30 circle d-inline-flex align-items-center justify-content-center text-success bg-light-success me-2">
@@ -95,7 +95,7 @@ async function VenuesBySlug({ params }) {
                     venue.amenities.map((item, index) => {
                       return (
                         <li
-                          className="font--medium col-xl-3 col-lg-3 col-3"
+                          className="font--medium col-xl-3 col-lg-3 "
                           key={index}
                         >
                           <span className="square--30 circle d-inline-flex align-items-center justify-content-center text-success bg-light-success me-2">
@@ -115,7 +115,7 @@ async function VenuesBySlug({ params }) {
               </div>
             </div>
 
-            <div className="col-xl-3 col-lg-4 col-md-12 col-xl-offset-1 p-0">
+            <div className="col-xl-3 col-lg-4 col-md-12 col-xl-offset-1">
               <div className="blogs-sidewraps pt-lg-0 pt-4">
                 <div className="blogs-sides">
                   <BookingSection venue={venue} />

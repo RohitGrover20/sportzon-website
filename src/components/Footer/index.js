@@ -12,7 +12,7 @@ function Footer() {
           <div className="container">
             <div className="row">
               <div className="col-lg-3 col-md-4">
-                <div className="footer-widget">
+                <div className="footer-widget mt-3">
                   <img
                     src="/assets/img/logo/colored.png"
                     className="img-footer"
