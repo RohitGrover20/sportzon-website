@@ -112,16 +112,18 @@ function Footer() {
                       <Link href="/about-us">About Us</Link>
                     </li>
                     <li>
-                      <a href="##">Privacy Policy</a>
+                      <Link href="/privacy-policy">Privacy Policy</Link>
                     </li>
                     <li>
-                      <a href="##">Refund Policy</a>
+                      <Link href="/refund-policy">Refund Policy</Link>
                     </li>
                     <li>
-                      <a href="##">Cancellation Policy</a>
+                      <Link href="/cancellation-policy">
+                        Cancellation Policy
+                      </Link>
                     </li>
                     <li>
-                      <a href="##">Terms & Conditions</a>
+                      <Link href="/terms-conditions">Terms & Conditions</Link>
                     </li>
                   </ul>
                 </div>
@@ -131,7 +133,7 @@ function Footer() {
                   <h4 className="widget-title">Download Apps</h4>
                   <div className="app-wrap">
                     <p>
-                      <a href="##">
+                      <a href="/">
                         <img
                           src="/assets/img/light-play.png"
                           className="img-fluid"
@@ -140,7 +142,7 @@ function Footer() {
                       </a>
                     </p>
                     <p>
-                      <a href="##">
+                      <a href="/">
                         <img
                           src="/assets/img/light-ios.png"
                           className="img-fluid"
