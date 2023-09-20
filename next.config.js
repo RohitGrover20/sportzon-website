@@ -4,6 +4,8 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	skipMiddlewareUrlNormalize: true,
+	skipTrailingSlashRedirect: true,
 }
 
 module.exports = nextConfig
