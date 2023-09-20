@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -14,7 +14,13 @@ import {
 } from "next-share";
 
 function Share() {
-  const page = "http://localhost:8080" + usePathname();
+  let page = "";
+  if (typeof window !== "undefined") {
+    const link = window.location.href;
+    page = link;
+    // console.log(hostname);
+  }
+
   return (
     <div className="d-flex align-items-center">
       <FacebookShareButton url={page}>
