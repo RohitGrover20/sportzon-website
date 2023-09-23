@@ -11,9 +11,10 @@ function Tags() {
                 <i className="fa-solid fa-gift" />
               </div>
               <div className="exljk-caps ps-3">
-                <h5 className="text-light fw-semibold">Fast Delivery</h5>
+                <h5 className="text-light fw-semibold">Fast Booking</h5>
                 <p className="m-0 text-light lh-base opacity-75">
-                  Usually, we prefer the real thing, wine without sulfur based
+                  We strive for speedy booking, so you can secure your sports
+                  events quickly.
                 </p>
               </div>
             </div>
@@ -24,9 +25,10 @@ function Tags() {
                 <i className="fa-solid fa-sack-dollar" />
               </div>
               <div className="exljk-caps ps-3">
-                <h5 className="text-light fw-semibold">Money Back Gaurantee</h5>
+                <h5 className="text-light fw-semibold">No-Hassle Refunds</h5>
                 <p className="m-0 text-light lh-base opacity-75">
-                  Usually, we prefer the real thing, wine without sulfur based
+                  We understand plans can change. Enjoy the convenience of easy
+                  refunds for your sports bookings.
                 </p>
               </div>
             </div>
