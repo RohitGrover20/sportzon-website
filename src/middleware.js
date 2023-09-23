@@ -23,7 +23,7 @@ export async function middleware(req) {
     !path.startsWith("/assets") &&
     path.startsWith("/user")
   ) {
-    return NextResponse.redirect("/login");
+    return NextResponse.redirect(new URL("/login", req.url));
   }
   if (
     verify &&
