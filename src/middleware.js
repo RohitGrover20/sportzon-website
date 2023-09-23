@@ -12,7 +12,7 @@ export async function middleware(req) {
       "Content-Type": "application/json",
       Cookie: `sessionId=${sessionId};sessionId.sig=${sig};`,
     },
-    // cache: "no-store",
+    cache: "no-store",
   };
 
   const verify = await verifySession(options);
@@ -23,7 +23,7 @@ export async function middleware(req) {
     !path.startsWith("/assets") &&
     path.startsWith("/user")
   ) {
-    return NextResponse.redirect(new URL("/login"));
+    return NextResponse.redirect("/login");
   }
   if (
     verify &&
