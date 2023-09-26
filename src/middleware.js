@@ -6,14 +6,14 @@ export async function middleware(req) {
   const sessionId = req.cookies.get("sessionId")?.value;
   const sig = req.cookies.get("sessionId.sig")?.value;
   const options = {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      Cookie: `sessionId=${sessionId};sessionId.sig=${sig};`,
-    },
-    cache: "no-store",
-  };
+		method: "GET",
+		credentials: "include",
+		headers: {
+			"Content-Type": "application/json",
+			Cookie: `sessionId=${sessionId};sessionId.sig=${sig};`,
+		},
+		// cache: "no-store",
+  }
 
   const verify = await verifySession(options);
   if (
