@@ -1,9 +1,9 @@
 const dev = {
-	API_URL: "http://localhost:9000",
+	API_URL: "https://dev.sportzon.in",
 }
 
 const prod = {
-	API_URL: "http://18.235.51.187:9000",
+	API_URL: "https://dev.sportzon.in",
 }
 
 const config = process.env.NODE_ENV == "development" ? dev : prod
