@@ -3,7 +3,7 @@ const dev = {
 };
 
 const prod = {
-  API_URL: "/api",
+  API_URL: "https://dev.sportzon.in",
 };
 
 const config = process.env.NODE_ENV == "development" ? dev : prod;
