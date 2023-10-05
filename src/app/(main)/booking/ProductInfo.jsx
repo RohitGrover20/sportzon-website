@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function ProductInfo(props) {
   const venue = props && props.venue;
+  console.log(venue);
   const courts = props && props.courts;
   const setCart = props && props.setCart;
   const cart = props && props.cart;

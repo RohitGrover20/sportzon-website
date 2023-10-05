@@ -2,9 +2,10 @@ import SearchBar from "@/components/SearchBar";
 import { getEvents } from "@/libs/fetchData";
 import EventList from "./EventList";
 
+export const revalidate = 10;
 async function Events() {
-  const { data } = await getEvents();
-  const events = data;
+  const eventData = await getEvents();
+  const events = eventData?.data;
   return (
     <>
       <SearchBar searchType="events" />

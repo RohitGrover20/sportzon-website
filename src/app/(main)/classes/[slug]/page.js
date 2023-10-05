@@ -7,10 +7,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Rating from "@/components/Rating";
 
+export const revalidate = 10;
+
 async function ClassDetails({ params }) {
   const slug = params.slug;
-  const { data } = await getClassBySlug(slug);
-
+  const classData = await getClassBySlug(slug);
+  const data = classData?.data;
   return (
     <div>
       <ToastContainer />

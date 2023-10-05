@@ -1,7 +1,8 @@
 import config from "@/config";
 import axios from "axios";
+import { cache } from "react";
 
-const getEvents = async () => {
+const getEvents = cache(async () => {
   try {
     const event = await axios.get(`${config.API_URL}/landing/events`);
     if (event) {
@@ -10,9 +11,9 @@ const getEvents = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+});
 
-const getEventBySlug = async (slug) => {
+const getEventBySlug = cache(async (slug) => {
   try {
     const event = await axios.get(`${config.API_URL}/landing/events/${slug}`);
     if (event) {
@@ -21,8 +22,8 @@ const getEventBySlug = async (slug) => {
   } catch (err) {
     console.log(err);
   }
-};
-const getClassBySlug = async (slug) => {
+});
+const getClassBySlug = cache(async (slug) => {
   try {
     const classes = await axios.get(
       `${config.API_URL}/landing/classes/${slug}`
@@ -33,9 +34,9 @@ const getClassBySlug = async (slug) => {
   } catch (err) {
     console.log(err);
   }
-};
+});
 
-const getVenue = async () => {
+const getVenue = cache(async () => {
   try {
     const venue = await axios.get(`${config.API_URL}/landing/venues`);
     if (venue) {
@@ -44,9 +45,9 @@ const getVenue = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+});
 
-const getVenuesBySlug = async (slug) => {
+const getVenuesBySlug = cache(async (slug) => {
   try {
     const venue = await axios.get(`${config.API_URL}/landing/venues/${slug}`);
     if (venue) {
@@ -55,8 +56,8 @@ const getVenuesBySlug = async (slug) => {
   } catch (err) {
     console.log(err);
   }
-};
-const getCoachById = async (id) => {
+});
+const getCoachById = cache(async (id) => {
   try {
     const coach = await axios.get(`${config.API_URL}/landing/coaches/${id}`);
     if (coach) {
@@ -65,8 +66,8 @@ const getCoachById = async (id) => {
   } catch (err) {
     console.log(err);
   }
-};
-const getClassesByCoach = async (id) => {
+});
+const getClassesByCoach = cache(async (id) => {
   try {
     const classes = await axios.get(
       `${config.API_URL}/landing/classes/coach/${id}`
@@ -77,9 +78,9 @@ const getClassesByCoach = async (id) => {
   } catch (err) {
     console.log(err);
   }
-};
+});
 
-const getHomeBanner = async () => {
+const getHomeBanner = cache(async () => {
   try {
     const banners = await axios.get(`${config.API_URL}/landing/banners`, {
       withCredentials: true,
@@ -90,8 +91,8 @@ const getHomeBanner = async () => {
   } catch (err) {
     console.log(err);
   }
-};
-const getClasses = async () => {
+});
+const getClasses = cache(async () => {
   try {
     const classes = await axios.get(`${config.API_URL}/landing/classes`, {
       withCredentials: true,
@@ -102,9 +103,9 @@ const getClasses = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+});
 
-const getTestimonials = async () => {
+const getTestimonials = cache(async () => {
   try {
     const testimonials = await axios.get(
       `${config.API_URL}/landing/testimonials`,
@@ -118,9 +119,9 @@ const getTestimonials = async () => {
   } catch (err) {
     console.log(err);
   }
-};
+});
 
-const getArenaRating = async (values) => {
+const getArenaRating = cache(async (values) => {
   const arena = values?.arena;
   try {
     const rating = await axios.post(`${config.API_URL}/landing/rating/get`, {
@@ -133,7 +134,7 @@ const getArenaRating = async (values) => {
   } catch (err) {
     console.log(err);
   }
-};
+});
 
 export {
   getEvents,

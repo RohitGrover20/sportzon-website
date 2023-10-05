@@ -2,9 +2,11 @@ import ClassesCard from "@/components/Cards/ClassesCard";
 import { getClassesByCoach } from "@/libs/fetchData";
 import React from "react";
 
+export const revalidate = 10;
 async function ClassesByCoaches(props) {
   const coachId = props && props.id;
-  const { data } = await getClassesByCoach(coachId);
+  const getClasses = await getClassesByCoach(coachId);
+  const data = getClasses?.data;
   return (
     <>
       <section className="pt-5">

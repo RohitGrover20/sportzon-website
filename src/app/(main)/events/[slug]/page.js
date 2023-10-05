@@ -5,9 +5,10 @@ import Registration from "./Registration";
 import { getEventBySlug } from "@/libs/fetchData";
 import BreadCrumb from "@/components/BreadCrumb";
 
+export const revalidate = 10;
 async function EventDetails({ params }) {
-  const { data } = await getEventBySlug(params.slug);
-  const event = data;
+  const eventData = await getEventBySlug(params.slug);
+  const event = eventData?.data;
   const totalBooking = event.totalSlots - event.emptySlots;
   const progress = parseInt(parseFloat(totalBooking / event.totalSlots) * 100);
   return (

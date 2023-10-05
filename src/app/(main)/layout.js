@@ -11,7 +11,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 export const metadata = {
   title: "Sportzon",
-  description: "Developed by Rahul Arya",
+  description: "Sports Booking Platform",
 };
 
 export default function RootLayout({ children }) {

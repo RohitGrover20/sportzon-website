@@ -13,8 +13,9 @@ import {
   getVenue,
 } from "@/libs/fetchData";
 
+export const revalidate = 10;
 export default async function Home() {
-  const { data } = await getEvents();
+  const eventData = await getEvents();
   const testimonialData = await getTestimonials();
   const testimonials = testimonialData?.data;
   const bannerData = await getHomeBanner();
@@ -23,7 +24,7 @@ export default async function Home() {
   const banners = bannerData && bannerData.data;
   const venuesData = await getVenue();
   const venues = venuesData && venuesData.data;
-  const events = data;
+  const events = eventData && eventData.data;
 
   return (
     <>

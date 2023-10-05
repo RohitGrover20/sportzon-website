@@ -3,9 +3,10 @@ import SearchBar from "@/components/SearchBar";
 import { getVenue } from "@/libs/fetchData";
 import VenueList from "./VenueList";
 
+export const revalidate = 10;
 async function Venues() {
-  const { data } = await getVenue();
-  const venues = data;
+  const getVenues = await getVenue();
+  const venues = getVenues?.data;
   return (
     <>
       <SearchBar searchType="venues" />

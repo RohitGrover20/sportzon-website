@@ -1,9 +1,20 @@
 import config from "@/config";
+import axios from "axios";
 import Link from "next/link";
 import React from "react";
 
 function UserMenuMobile(props) {
   const user = props && props.user && props.user.data;
+  const logout = () => {
+    axios
+      .get(`${config.API_URL}/auth/logout`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <ul>
       <li>
@@ -33,11 +44,15 @@ function UserMenuMobile(props) {
                 Hi, {user && user.firstName} {user && user.lastName}
               </h4>
               <div className="drp_menu_headr-right">
-                <Link href={`${config.API_URL}/auth/logout`}>
-                  <button type="button" className="btn btn-whites">
-                    Logout
-                  </button>
-                </Link>
+                {/* <Link href={`${config.API_URL}/auth/logout`}> */}
+                <button
+                  type="button"
+                  className="btn btn-whites"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+                {/* </Link> */}
               </div>
             </div>
             <ul>

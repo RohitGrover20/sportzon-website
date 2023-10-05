@@ -2,9 +2,11 @@ import SearchBar from "@/components/SearchBar";
 import { getClasses } from "@/libs/fetchData";
 import ClassList from "./ClassList";
 
+export const revalidate = 10;
+
 async function Classes() {
-  const { data } = await getClasses();
-  const classes = data;
+  const classData = await getClasses();
+  const classes = classData?.data;
   return (
     <>
       <SearchBar searchType="classes" />

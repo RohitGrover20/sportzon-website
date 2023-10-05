@@ -2,10 +2,14 @@
 import config from "@/config";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import ProfileImageModal from "./ProfileImageModal";
+import { UserContext } from "../../context/context";
+import axios from "axios";
 
-function ProfileSideBar(props) {
+function ProfileSideBar() {
+  const context = useContext(UserContext);
+  const user = context && context;
   const path = usePathname();
   var loadScript = function (src) {
     var tag = window.document.createElement("script");
@@ -17,7 +21,18 @@ function ProfileSideBar(props) {
   useEffect(() => {
     loadScript("/assets/js/custom.js");
   }, [path]);
-  const user = props && props.user && props.user.data;
+
+  const logout = () => {
+    axios
+      .get(`${config.API_URL}/auth/logout`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // const user = props && props.user && props.user.data;
   return (
     <div className="col-xl-3 col-lg-4">
       <button
@@ -126,7 +141,7 @@ function ProfileSideBar(props) {
                     Help & Support
                   </Link>
                 </li>
-                <li className="py-3 pb-0">
+                <li className="py-3 pb-0" onClick={logout}>
                   <a
                     href={`${config.API_URL}/auth/logout`}
                     className="fw-medium"

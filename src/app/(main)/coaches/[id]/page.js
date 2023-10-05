@@ -2,9 +2,11 @@ import { getCoachById } from "@/libs/fetchData";
 import React from "react";
 import ClassesByCoaches from "./ClassesByCoaches";
 
+export const revalidate = 10;
 async function CoachesById({ params }) {
   const id = params.id;
-  const { data } = await getCoachById(id);
+  const getCoach = await getCoachById(id);
+  const data = getCoach?.data;
   return (
     <>
       <section className="py-5 bg-light-seegreen">
