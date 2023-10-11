@@ -10,7 +10,7 @@ function page() {
           background:
             "linear-gradient(0deg, rgba(18, 36, 90, 0.4), rgba( 0, 0, 0, 0.9)), url(/assets/img/school_bg.jpg)",
           size: "cover",
-          height: "400px",
+          height: "500px",
           alignItems: "center",
           verticalAlign: "center",
           backgroundRepeat: "no-repeat",

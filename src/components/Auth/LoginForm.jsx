@@ -7,17 +7,24 @@ import Link from "next/link";
 import axios from "axios";
 import config from "@/config";
 function LoginForm() {
+  const [show, setShow] = useState(false);
+  // const phoneRegExp =
+  //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const searchParams = useSearchParams();
   const referrer = searchParams.get("referrer");
   const ID = searchParams.get("ID");
   const [msg, setMessage] = useState("");
   const initialValues = {
-    email: "",
+    username: "",
     password: "",
+    mobile: "",
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid Email").required("Email is required"),
+    username: Yup.string().required("This field is required"),
+    // mobile: Yup.string()
+    //   .matches(phoneRegExp, "Phone number is not valid")
+    //   .required("Mobile is required"),
     password: Yup.string().required("Pasword is required"),
   });
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -63,7 +70,7 @@ function LoginForm() {
       <p className="pb-3 mb-3 mb-lg-4">Welcome Back! Select Method to Login:</p>
       {!msg == "" ? (
         <div className="alert alert-danger" role="alert">
-          {msg}
+          Wrong Credentials entered
         </div>
       ) : null}
       <Formik
@@ -79,21 +86,36 @@ function LoginForm() {
                 <i className="fa-regular fa-envelope position-absolute top-50 start-0 translate-middle-y ms-3" />
                 <Field
                   className="form-control lg ps-5"
-                  type="email"
-                  placeholder="Email address"
+                  type="text"
+                  placeholder="Registered Email address/ Mobile No."
                   required=""
-                  name="email"
+                  name="username"
                 />
                 <ErrorMessage
-                  name="email"
+                  name="username"
                   render={(msg) => <small className="text-danger">{msg}</small>}
                 ></ErrorMessage>
               </div>
+              {/* <h3 className="text-center pb-2">OR</h3>
+              <div className="position-relative mb-4 ">
+                <i className="fa-regular fa-eye position-absolute top-50 start-0 translate-middle-y ms-3" />
+                <Field
+                  className="form-control lg ps-5"
+                  type="text"
+                  placeholder="Mobile Number"
+                  required=""
+                  name="mobile"
+                />
+                <ErrorMessage
+                  name="mobile"
+                  render={(msg) => <small className="text-danger">{msg}</small>}
+                ></ErrorMessage>
+              </div> */}
               <div className="mb-4 position-relative">
                 <i className="fa-solid fa-lock position-absolute top-50 start-0 translate-middle-y ms-3" />
                 <Field
                   className="form-control lg ps-5"
-                  type="password"
+                  type={show ? "type" : "password"}
                   id="password-field"
                   name="password"
                   placeholder="Password"
@@ -103,7 +125,11 @@ function LoginForm() {
                   name="password"
                   render={(msg) => <small className="text-danger">{msg}</small>}
                 ></ErrorMessage>
-                <span className="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3" />
+                <span
+                  className="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setShow(!show)}
+                />
               </div>
               <div className="pb-3">
                 <div className="d-flex flex-wrap align-items-center justify-content-between pb-4">

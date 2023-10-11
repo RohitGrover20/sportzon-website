@@ -62,11 +62,11 @@ function UserMenu(props) {
                 Help & Support
               </Link>
             </li>
-            <li onClick={logout}>
+            {/* <li onClick={logout}>
               <Link href={`${config.API_URL}/auth/logout`}>
                 <i className="fa fa-sign-out me-3"></i>Logout
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

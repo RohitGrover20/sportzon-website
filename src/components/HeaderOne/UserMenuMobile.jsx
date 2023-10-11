@@ -72,11 +72,11 @@ function UserMenuMobile(props) {
                   Help & Support
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href={`${config.API_URL}/auth/logout`}>
                   <i className="fa fa-sign-out me-3"></i>Logout
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

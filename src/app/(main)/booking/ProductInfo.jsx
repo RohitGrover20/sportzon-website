@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function ProductInfo(props) {
   const venue = props && props.venue;
-  console.log(venue);
   const courts = props && props.courts;
   const setCart = props && props.setCart;
   const cart = props && props.cart;
@@ -164,7 +163,15 @@ function ProductInfo(props) {
                         setFieldValue("slots", []);
                       }}
                     >
-                      <option value="">-- Select a court --</option>
+                      {courts.filter((el) => el.activity == values.activity)
+                        .length == 0 ? (
+                        <option disabled selected>
+                          NA
+                        </option>
+                      ) : (
+                        <option value="">-- Select a court --</option>
+                      )}
+
                       {courts &&
                         courts
                           .filter((el) => el.activity == values.activity)
