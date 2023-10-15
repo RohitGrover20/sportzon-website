@@ -444,6 +444,9 @@ function Registration(props) {
                   <div className="col-lg-4 col-sm-4 col-xs-12 col-xl-4 p-1">
                     <div className="form-floating mb-1">
                       <Field as="select" name="state" className="form-select">
+                        <option disabled selected value="">
+                          --Select a State--
+                        </option>
                         {state_arr &&
                           state_arr.map((item, index) => {
                             return <option key={index}>{item}</option>;
@@ -462,11 +465,14 @@ function Registration(props) {
                   <div className="col-lg-4 col-sm-4 col-xs-12 col-xl-4 p-1">
                     <div className="form-floating mb-1">
                       <Field as="select" className="form-select" name="city">
+                        <option selected value="">
+                          --Select a City--
+                        </option>
                         {s_a[state_arr.indexOf(values && values.state)] &&
                           s_a[state_arr.indexOf(values && values.state)].split(
                             "|"
                           ) &&
-                          s_a[state_arr.indexOf(values && values.state) + 1]
+                          s_a[state_arr.indexOf(values && values.state)]
                             .split("|")
                             .map((item, index) => {
                               return <option key={index}>{item}</option>;

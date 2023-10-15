@@ -53,7 +53,8 @@ function Profile() {
           onClose: () => {
             setSubmitting(false);
             resetForm(true);
-            window.open(`${config.API_URL}/auth/logout`, "_self");
+            window.location.reload();
+            // window.open(`${config.API_URL}/auth/logout`, "_self");
           },
         });
       } else {
@@ -181,34 +182,46 @@ function Profile() {
                     </div>
                     <div className="col mb-3">
                       <label className="mb-1">State</label>
-                      <Field
-                        as="select"
-                        className="form-select rounded-1"
-                        name="state"
-                      >
+                      <Field as="select" name="state" className="form-select">
+                        <option disabled selected value="">
+                          --Select a State--
+                        </option>
                         {state_arr &&
-                          state_arr.map((item) => {
-                            return <option key={item}>{item}</option>;
+                          state_arr.map((item, index) => {
+                            return <option key={index}>{item}</option>;
                           })}
                       </Field>
+                      <label>State</label>
+                      <ErrorMessage
+                        name="state"
+                        render={(msg) => (
+                          <small className="text-danger">{msg}</small>
+                        )}
+                      ></ErrorMessage>
                     </div>
                     <div className="col mb-3">
                       <label className="mb-1">City</label>
-                      <Field
-                        as="select"
-                        className="form-select rounded-1"
-                        name="city"
-                      >
+                      <Field as="select" className="form-select" name="city">
+                        <option selected value="">
+                          --Select a City--
+                        </option>
                         {s_a[state_arr.indexOf(values && values.state)] &&
                           s_a[state_arr.indexOf(values && values.state)].split(
                             "|"
                           ) &&
-                          s_a[state_arr.indexOf(values && values.state) + 1]
+                          s_a[state_arr.indexOf(values && values.state)]
                             .split("|")
                             .map((item, index) => {
                               return <option key={index}>{item}</option>;
                             })}
                       </Field>
+                      <label>City</label>
+                      <ErrorMessage
+                        name="city"
+                        render={(msg) => (
+                          <small className="text-danger">{msg}</small>
+                        )}
+                      ></ErrorMessage>
                     </div>
                     <div className="col mb-3">
                       <label className="mb-1">Pincode</label>

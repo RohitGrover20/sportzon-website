@@ -87,19 +87,25 @@ function Footer() {
                   <h4 className="widget-title">Our Resources</h4>
                   <ul className="footer-menu">
                     <li>
-                      <a href="##">News & Events</a>
+                      <a href="http://resource.sportzon.in/news-events">
+                        News & Events
+                      </a>
                     </li>
                     <li>
-                      <a href="##">Blogs</a>
+                      <a href="http://resource.sportzon.in/blogs">Blogs</a>
                     </li>
                     <li>
-                      <a href="##">Media & Gallery</a>
+                      <a href="http://resource.sportzon.in/media-gallery">
+                        Media & Gallery
+                      </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="##">Affiliate Program</a>
-                    </li>
+                    </li> */}
                     <li>
-                      <a href="##">Help &amp; Support</a>
+                      <a href="http://resource.sportzon.in/help-support">
+                        Help &amp; Support
+                      </a>
                     </li>
                   </ul>
                 </div>

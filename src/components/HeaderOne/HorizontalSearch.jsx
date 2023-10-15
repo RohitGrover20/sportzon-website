@@ -10,11 +10,12 @@ function HorizontalSearch() {
     city: "",
     state: "",
     activity: "",
+    referrer: "",
   });
 
   const searchFunc = () => {
     window.open(
-      `/search?state=${search?.state}&city=${search?.city}&activity=${search?.activity}&date=${search.date}&referrer=homepage`,
+      `/search?state=${search?.state}&city=${search?.city}&activity=${search?.activity}&date=${search.date}&referrer=${search.referrer}`,
       "_blank"
     );
   };
@@ -26,6 +27,27 @@ function HorizontalSearch() {
       <div className="container shadow-lg bg-primary p-5 rounded">
         <div className="col-12">
           <div className="row align-items-center justify-content-center">
+            <div className="col-lg-2 p-1">
+              <div className="form-floating">
+                <select
+                  name="searchType"
+                  id="searchType"
+                  styles={{ minHeight: "53px" }}
+                  // classNamePrefix="select"
+                  className="form-control"
+                  onChange={(e) => {
+                    setSearch({ ...search, referrer: e.target.value });
+                  }}
+                >
+                  <option disabled value="" selected>
+                    --Select one--
+                  </option>
+                  <option value="events">Events</option>
+                  <option value="venues">Venues</option>
+                </select>
+                <label htmlFor="searchType">Search Type</label>
+              </div>
+            </div>
             <div className="col-lg-2 p-1">
               <div className="form-floating">
                 <select
@@ -109,7 +131,7 @@ function HorizontalSearch() {
                 <label htmlFor="activityList">Filter by Activities</label>
               </div>
             </div>
-            <div className="col-lg-3 p-1">
+            <div className="col-lg-2 p-1">
               <button
                 className="btn btn-orange w-100 mt-0"
                 onClick={() => {

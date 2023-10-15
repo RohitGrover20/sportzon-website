@@ -1,3 +1,4 @@
+import Offering from "@/components/Offering";
 import React from "react";
 
 function page() {
@@ -197,79 +198,7 @@ function page() {
                   />
                 </div>
                 <div className="card-body p-xl-5 p-lg-5 p-md-4 px-0">
-                  <form className="mx-auto px-xl-5 px-lg-5 px-md-4 z-2 position-relative">
-                    <div className="text-center">
-                      <div className="rounded-5 px-3 py-1 font--medium text-light bg-warning d-inline-flex justify-content-center m-auto">
-                        Contact us
-                      </div>
-                    </div>
-                    <h3 className="h4 card-title text-center pb-4 text-light">
-                      Fill out the form today and learn more about how Sportzon
-                      can help you create a thriving sports culture at your
-                      school!{" "}
-                    </h3>
-                    <div className="row g-4">
-                      <div className="col-sm-6">
-                        <label className="form-label text-light opacity-75">
-                          Name
-                        </label>
-                        <input
-                          className="form-control lg light"
-                          type="text"
-                          placeholder="Your name"
-                        />
-                      </div>
-                      <div className="col-sm-6">
-                        <label className="form-label text-light opacity-75">
-                          Email
-                        </label>
-                        <input
-                          className="form-control lg light"
-                          type="email"
-                          placeholder="Email address"
-                        />
-                      </div>
-                      <div className="col-sm-6">
-                        <label className="form-label text-light opacity-75">
-                          Phone
-                        </label>
-                        <input
-                          className="form-control lg light"
-                          type="text"
-                          placeholder="Phone number"
-                        />
-                      </div>
-                      <div className="col-sm-6">
-                        <label className="form-label text-light opacity-75">
-                          School OR Institution
-                        </label>
-                        <input
-                          className="form-control lg light"
-                          type="text"
-                          placeholder="Your school/ institution name"
-                        />
-                      </div>
-                      <div className="col-sm-12">
-                        <label className="form-label text-light opacity-75">
-                          Message
-                        </label>
-                        <textarea
-                          className="form-control light"
-                          rows={6}
-                          placeholder="Your Message....."
-                          defaultValue={""}
-                        />
-                      </div>
-                      <div className="col-sm-12 text-center pt-4">
-                        <button
-                          className="btn btn-lg btn-whites font--medium px-xl-5 px-4"
-                          type="submit"
-                        >
-                          Send a request
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+                  <Offering />
                 </div>
               </div>
             </div>

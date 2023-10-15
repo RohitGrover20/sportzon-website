@@ -329,6 +329,9 @@ function Registration(props) {
                               name="state"
                               className="form-select"
                             >
+                              <option disabled selected value="">
+                                --Select a State--
+                              </option>
                               {state_arr &&
                                 state_arr.map((item, index) => {
                                   return <option key={index}>{item}</option>;
@@ -350,13 +353,14 @@ function Registration(props) {
                               className="form-select"
                               name="city"
                             >
+                              <option selected value="">
+                                --Select a City--
+                              </option>
                               {s_a[state_arr.indexOf(values && values.state)] &&
                                 s_a[
                                   state_arr.indexOf(values && values.state)
                                 ].split("|") &&
-                                s_a[
-                                  state_arr.indexOf(values && values.state) + 1
-                                ]
+                                s_a[state_arr.indexOf(values && values.state)]
                                   .split("|")
                                   .map((item, index) => {
                                     return <option key={index}>{item}</option>;

@@ -59,12 +59,16 @@ function MyClasses() {
                             {item.admissionIn?.feesFrequency}
                           </div>
                           <div className="text-muted ">
-                            Student ID - <strong>{item._id}</strong>
+                            Student ID - <strong>{item.studentId}</strong>
                           </div>
 
                           <div className="text-muted">
                             Duration -{" "}
                             <strong>{item.admissionIn?.duration} Days</strong>
+                          </div>
+                          <div className="text-muted">
+                            Address -{" "}
+                            <strong>{item.admissionIn?.address}</strong>
                           </div>
                         </div>
                       </div>

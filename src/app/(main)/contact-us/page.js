@@ -1,4 +1,5 @@
 import React from "react";
+import ContactForm from "./ContactForm";
 
 function page() {
   return (
@@ -13,94 +14,7 @@ function page() {
               </p>
             </div>
             <div className="col-lg-8 col-xl-7 offset-xl-1">
-              <form
-                className="row g-4"
-                id="contact-form"
-                method="post"
-                action="contact-2.php"
-                role="form"
-                noValidate="true"
-              >
-                <div className="messages" />
-                <div className="col-sm-6">
-                  <label className="form-label">Name</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="name"
-                    placeholder="Your name"
-                    required=""
-                  />
-                </div>
-                <div className="col-sm-6">
-                  <label className="form-label">Email</label>
-                  <input
-                    className="form-control"
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required=""
-                  />
-                </div>
-                <div className="col-sm-6">
-                  <label className="form-label">Phone</label>
-                  <input
-                    className="form-control"
-                    type="tel"
-                    name="tel"
-                    placeholder="Your Phone"
-                    required=""
-                  />
-                </div>
-                <div className="col-sm-6">
-                  <label className="form-label">Subject</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="subject"
-                    placeholder="Subject"
-                    required=""
-                  />
-                </div>
-                <div className="col-12">
-                  <label className="form-label">Comment</label>
-                  <textarea
-                    className="form-control"
-                    rows={4}
-                    name="messages"
-                    placeholder="Type your comment here..."
-                    required=""
-                    defaultValue={""}
-                  />
-                </div>
-                <div className="col-12">
-                  <div className="form-check mb-2">
-                    <input
-                      className="form-check-input"
-                      name="agree"
-                      defaultValue="Agree Terms & Conditions"
-                      type="checkbox"
-                    />
-                    <label className="form-check-label">
-                      I agree to the{" "}
-                      <a
-                        className="nav-link d-inline fs-normal text-decoration-underline p-0"
-                        href="#"
-                      >
-                        Terms &amp; Conditions
-                      </a>
-                    </label>
-                  </div>
-                </div>
-                <div className="col-12">
-                  <button
-                    className="btn btn-primary px-lg-4 disabled"
-                    type="submit"
-                  >
-                    Send your Message
-                  </button>
-                </div>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </div>
