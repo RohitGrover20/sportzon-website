@@ -166,14 +166,14 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <div className="container">
-            <div className="row align-items-center justify-content-between">
-              <div className="col-xl-4 col-lg-5 col-md-5">
+            <div className="row align-items-center justify-content-center">
+              <div className="col-xl-12 col-lg-12 col-md-12 text-center">
                 <p className="mb-0">
                   Citiskape Sports Pvt. Ltd. © 2023 Sportzon® Design by Yesteq
                   Ventures.
                 </p>
               </div>
-              <div className="col-xl-8 col-lg-7 col-md-7">
+              {/* <div className="col-xl-8 col-lg-7 col-md-7">
                 <div className="job-info-count-group">
                   <div className="single-jb-info-count">
                     <div className="jbs-y7">
@@ -212,7 +212,7 @@ function Footer() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
