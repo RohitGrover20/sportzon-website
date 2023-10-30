@@ -22,9 +22,7 @@ function Footer() {
                     <p>
                       Citiskape Sports Pvt. Ltd.
                       <br />
-                      Collins Street West, Victoria Near Bank Road
-                      <br />
-                      Australia QHR12456.
+                      C-101A, Ansal Plaza, Khel Gaon, Delhi-110017
                     </p>
                   </div>
                   <div className="foot-socials">
