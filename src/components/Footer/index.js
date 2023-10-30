@@ -19,7 +19,13 @@ function Footer() {
                     alt=""
                   />
                   <div className="footer-add">
-                    <p>C-101A, Ansal Plaza, Khel Gaon, Delhi-110017</p>
+                    <p>
+                      Citiskape Sports Pvt. Ltd.
+                      <br />
+                      Collins Street West, Victoria Near Bank Road
+                      <br />
+                      Australia QHR12456.
+                    </p>
                   </div>
                   <div className="foot-socials">
                     <ul>
@@ -158,16 +164,17 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer-bottom bg-light-dark p-3">
+        <div className="footer-bottom">
           <div className="container">
             <div className="row align-items-center justify-content-between">
-              <div className="col-xl-12 col-lg-12 col-md-12 text-center">
+              <div className="col-xl-4 col-lg-5 col-md-5">
                 <p className="mb-0">
-                  © 2023 Sportzon® Design by Yesteq Ventures.
+                  Citiskape Sports Pvt. Ltd. © 2023 Sportzon® Design by Yesteq
+                  Ventures.
                 </p>
               </div>
               <div className="col-xl-8 col-lg-7 col-md-7">
-                {/* <div className="job-info-count-group">
+                <div className="job-info-count-group">
                   <div className="single-jb-info-count">
                     <div className="jbs-y7">
                       <h5 className="ctr">6</h5>
@@ -204,7 +211,7 @@ function Footer() {
                       <p>Companies</p>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
