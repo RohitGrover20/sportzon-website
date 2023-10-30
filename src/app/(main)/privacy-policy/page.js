@@ -6,12 +6,19 @@ function page() {
       <div className="container">
         <h1>Privacy Policy</h1>
         <p>
-          At Sportzon, we respect your privacy and are committed to protecting
-          your personal information. This Privacy Policy explains how we
-          collect, use, and share your personal information when you visit our
-          website, book a venue, event, or class, or contact us.
+          At Sportzon, we take your privacy very seriously. This document
+          outlines the types of personal information we receive and collect when
+          you use our services, as well as some of the steps we take to
+          safeguard information. We hope this will help you make an informed
+          decision about sharing personal information with us.
         </p>
-        <strong>What personal information do we collect?</strong>
+        <p>
+          By using our Services, you are agreeing to the collection, usage and
+          sharing of your information as described in this Privacy Policy. If
+          you do not agree with our policies and practices, we advise that you
+          refrain from using our services.
+        </p>
+        {/* <strong>What personal information do we collect?</strong>
         <p>
           We collect personal information from you in a variety of ways,
           including:
@@ -79,6 +86,66 @@ function page() {
         <p>
           If you have any questions about this Privacy Policy, please contact us
           at info@sportzon.in
+        </p> */}
+
+        <strong>How we allow you to use our data?</strong>
+        <p>
+          We are very strict about our data policies. Your data is safe with us.
+          We will not provide your data to any third party for promotion
+          purposes. It will only be used to provide you information.
+        </p>
+        <strong>What data do we collect?</strong>
+        <ol>
+          <li>
+            We collect data mentioned on the registration form. We may also
+            collect you email from comments posted. Although we don't share your
+            email id with anyone.
+          </li>
+          <li>
+            We collect information to provide better service to our users.
+          </li>
+          <li>
+            We use Google Analytics to analyse the traffic on our website.
+            Google Analytics may collect the following information when you
+            visit our website, read an article, or leave a comment:
+          </li>
+          <li>
+            Device information: Google Analytics collects information about the
+            device you use to access our Services, including the class of the
+            device (smartphone, laptop, tablet, etc), operating system, and your
+            city-level geographical location.
+          </li>
+          <li>
+            Behavioural Information: Google Analytics collects information about
+            the pages visited by visitors on our website, including the time
+            spent on a page, as well as navigational behaviour through the
+            website. However, this information is aggregated, and can’t be used
+            to identify you, individually.
+          </li>
+        </ol>
+
+        <strong>How is the data used?</strong>
+        <p>
+          We will just combine personal information collected from you at
+          different times to provide the services you’ve requested & to provide
+          a better user experience, including customizing content for you.
+        </p>
+        <strong>Do we disclose any information to outside parties?</strong>
+        <p>
+          We do not sell, trade, or otherwise transfer to outside parties your
+          personally identifiable information. We may also release your
+          information when we believe release is appropriate to comply with the
+          law, enforce our site policies, or protect ours or others rights,
+          property, or safety.
+        </p>
+        <strong>Third-party links</strong>
+        <p>
+          Occasionally, at our discretion, we may include or offer third-party
+          products or services on our website. These third-party sites have
+          separate and independent privacy policies. Therefore we have no
+          responsibility or liability for the content and activities of these
+          linked sites. Nonetheless, we seek to protect the integrity of our
+          site and welcome any feedback about these sites.
         </p>
       </div>
     </section>

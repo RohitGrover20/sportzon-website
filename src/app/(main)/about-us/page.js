@@ -70,26 +70,43 @@ function AboutUs() {
                       Our Story
                     </h2>
                     <p className="mb-0 fs-5 fw-light mb-3">
-                      The idea for Sportzon was sparked when our co-founder,
-                      Manoj Atree, noticed a significant gap in the sports
-                      industry. Manoj Atree was always passionate about sports.
-                      But as he got older, he started to notice that it was
-                      becoming more and more difficult to find time to play
-                      sports, especially in the corporate culture. People work
-                      long hours at their jobs and do not have the time to go to
-                      the gym or find a sports complex to play at. There was a
-                      notion in society that, once an adult, only professional
-                      athletes play sports.
+                      Sportzon is a mobile app that aims to make it easier for
+                      people to find and participate in sports activities. It
+                      does this by providing a comprehensive directory of sports
+                      complexes, coaches, personal trainers, and public sports
+                      events. This is particularly useful for people who are new
+                      to an area or who do not have a lot of time to research
+                      sports activities on their own. If you have difficulty
+                      finding the time or resources to do so. This may include
+                      people who work long hours, who do not have access to a
+                      sports complex, or who are new to an area. The app's value
+                      proposition is that it provides a one-stop shop for
+                      finding and participating in sports activities. It saves
+                      users the time and effort of having to research different
+                      sports complexes, coaches, and events on their own.
                     </p>
                     <p className="mb-0 fs-5 fw-light">
-                      Manoj decided to bridge the huge gap in the sports
-                      industry. There were very limited websites and apps that
-                      could help people find sports complexes, but they didn't
-                      offer anything else. There were no apps that could help
-                      people find coaches, personal trainers, or public sports
-                      events.
+                      The app also provides a convenient way to book and pay for
+                      sports activities. It was founded by Manoj Attri, who was
+                      inspired to start the company after noticing a gap in the
+                      sports industry.Mr.Attri wanted to create a platform that
+                      would make it easier for people to find and participate in
+                      sports, regardless of their age or skill level. Sportzon
+                      is a valuable resource for both individuals and
+                      businesses.
                     </p>
-                    <div className="exloi-link mt-4">
+
+                    <p className="mb-0 fs-5 fw-light">
+                      Individuals can use the app to find sports complexes near
+                      them, book court time, and find coaches and personal
+                      trainers. Businesses can use the app to promote their
+                      sports complexes, events, and services. Sportzon is a
+                      great example of how technology can be used to improve
+                      people's lives. The app makes it easier for people to find
+                      and participate in sports, which can lead to a healthier
+                      and happier lifestyle.
+                    </p>
+                    {/* <div className="exloi-link mt-4">
                       <a
                         href="JavaScript:Void(0);"
                         className="btn btn-primary font--medium rounded-5"
@@ -97,7 +114,7 @@ function AboutUs() {
                         Meet Our Team
                         <i className="fa-regular fa-circle-right ms-2" />
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

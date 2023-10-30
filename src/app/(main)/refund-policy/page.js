@@ -5,7 +5,7 @@ function page() {
     <section>
       <div className="container">
         <h1>Refund Policy</h1>
-        <p>
+        {/* <p>
           At Sportzon, we understand that things happen and sometimes you may
           need to cancel your booking. We are here to help you through the
           cancellation process and will do our best to accommodate your needs.
@@ -42,7 +42,27 @@ function page() {
         <p>
           If you have any questions about our refund policy, please do not
           hesitate to contact us.
+        </p> */}
+        <ol>
+          <li>
+            For coaching sessions & tournament,there will be no refund once the
+            payment is made.
+          </li>
+          <li>
+            For "Pay n Play",refunds will be made only 24 hours prior to booking
+            time.
+          </li>
+          <li>
+            For "Events", there will be 100% refund only 7 days prior to event
+            date,50% refund 15 days prior to event date and 100% refund 30 days
+            prior to event date.
+          </li>
+        </ol>
+        <p>
+          Processing time of refund is 5-7 days. The refunded amount will be
+          refunded to source after the mentioned time.
         </p>
+        <small>All the disputes are subject to Delhi jurisdiction only.</small>
       </div>
     </section>
   );

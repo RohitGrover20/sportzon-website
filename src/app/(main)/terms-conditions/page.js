@@ -28,14 +28,12 @@ function page() {
           </li>
           <li>
             <strong> Cancellation:</strong> If you need to cancel your booking,
-            please do so at least [number] days in advance. Cancellations made
-            less than [number] days in advance will be subject to a cancellation
-            fee.
+            please do so at least 1 days in advance. Cancellations made less
+            than 1 days in advance will be subject to a cancellation fee.
           </li>
           <li>
-            <strong>Liability:</strong> [Sports Complex Name] is not liable for
-            any injuries or losses that occur while using our facilities or
-            services.
+            <strong>Liability:</strong> Sportzon is not liable for any injuries
+            or losses that occur while using our facilities or services.
           </li>
         </ol>
       </div>

@@ -6,12 +6,11 @@ function page() {
       <div className="container">
         <h1>Cancellation Policy</h1>
         <p>
-          At Sportzon, we understand that things happen and sometimes you may
-          need to cancel your booking. We are here to help you through the
-          cancellation process and will do our best to accommodate your needs.
+          Sportzon India has a fixed cancellation policy. Please go through our
+          cancellation policy before using anu of our services.
         </p>
         <strong>Cancellations</strong>
-        <p>
+        {/* <p>
           To cancel your booking, please contact us at least [number] days in
           advance. Cancellations made less than [number] days in advance will be
           subject to a cancellation fee. The cancellation fee will be equal to
@@ -36,7 +35,19 @@ function page() {
         <p>
           If you have any questions about our cancellation policy, please do not
           hesitate to contact us.
-        </p>
+        </p> */}
+        <ol>
+          <li>For any tournament booking, No cancellation is allowed.</li>\
+          <li>
+            For "Pay n Play", cancellation is allowed only 24 hours prior. No
+            cancellation on date of play.
+          </li>
+          <li>
+            For "Events", cancellation can only be done 30 days prior to the
+            start of event.
+          </li>
+          <li>For individual coaching sessions,No cancellation is allowed.</li>
+        </ol>
       </div>
     </section>
   );
