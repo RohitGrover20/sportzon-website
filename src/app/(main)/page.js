@@ -1,3 +1,4 @@
+// "use client"
 import ClassesCard from "@/components/Cards/ClassesCard";
 import EventsCard from "@/components/Cards/EventsCard";
 import SimpleCard from "@/components/Cards/SimpleCard";
@@ -31,7 +32,7 @@ export default async function Home() {
       <BannerSlider banners={banners} />
       <HorizontalSearch />
       {/* Nearby Venues------------------------ */}
-      <section className="pt-0 pb-5">
+      <section className="pt-0 pb-5 ">
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
@@ -41,14 +42,19 @@ export default async function Home() {
                 </div>
                 <h2 className="mb-1">Explore Venues Near You</h2>
                 <p className="test-muted fs-6">
-                  At vero eos et accusamus et iusto odio dignissimos ducimus
+                  Discover and explore amazing venues near you for a wide range
+                  of sports and activities.
                 </p>
               </div>
               <div className="row justify-content-center g-4">
                 <div className="venue-slider" id="venue-slider">
                   {venues &&
                     venues.map((item, index) => {
-                      return <SimpleCard key={index} item={item} />;
+                      return (
+                        <div key={index}>
+                          <SimpleCard item={item} />
+                        </div>
+                      );
                     })}
                 </div>
               </div>
@@ -58,7 +64,7 @@ export default async function Home() {
       </section>
 
       {/* Features------------------------------- */}
-      <section className="pt-0 pb-0">
+      <section className="pt-3 pb-0 " style={{ backgroundColor: "#f6f9fc" }}>
         <div className="container">
           <div className="row justify-content-between align-items-center mb-5">
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
@@ -71,7 +77,7 @@ export default async function Home() {
                     Unleash &amp; your athletic journey with the ultimate sports
                     companion!
                   </h2>
-                  <p className="mb-0 fs-5 fw-light">
+                  <p className="mb-0 fs-5 fs-light">
                     We bring together venues, coaches, events, tournaments,
                     marathons, and a host of incredible features to
                     revolutionize your sporting journey.
@@ -149,32 +155,43 @@ export default async function Home() {
       {/* Events---------------- */}
       <section className="pt-0 pb-0">
         <div className="container">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
-              <div className="sec-heading text-center">
+          <div className="row justify-content-center">
+            <div className="col-md-12">
+              <div className="sec-heading text-center mb-4">
                 <div className="label text-orange bg-light-orange d-inline-flex rounded-4 mb-2 font--medium">
                   <span>Events</span>
                 </div>
                 <h2 className="mb-1">Explore Upcoming Events Near You</h2>
-                <p className="test-muted fs-6">
-                  At vero eos et accusamus et iusto odio dignissimos ducimus
+                <p className="text-muted fs-6">
+                  <p className="text-muted fs-6">
+                    Discover exciting events happening nearby and immerse
+                    yourself in a world of entertainment and experiences.
+                  </p>
                 </p>
               </div>
-              <div className="row justify-content-center g-4">
-                <div className="event-slider" id="event-slider">
-                  {events &&
-                    events.map((item, index) => {
-                      return <EventsCard item={item} key={index} />;
-                    })}
-                </div>
-              </div>
             </div>
+          </div>
+          <div className="row g-4">
+            {events &&
+              events.map((item, index) => (
+                <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
+                  <div className="card mb-4">
+                    <EventsCard item={item} />
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </section>
 
       {/* Why Sportzon----------------------- */}
-      <section className="position-relative">
+      <section
+        className="position-relative , mb-3"
+        style={{
+          backgroundColor: "#12245a",
+          clipPath: "polygon(0 0, 100% 0, 100% 95%, 0% 100%)",
+        }}
+      >
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-7 col-lg-7 col-md-11 mb-3">
@@ -182,9 +199,12 @@ export default async function Home() {
                 <div className="label text-success bg-light-success d-inline-flex rounded-4 mb-2 font--medium">
                   <span>Our Features</span>
                 </div>
-                <h2 className="mb-1">Why Choose Sportzon?</h2>
-                <p className="test-muted fs-6">
-                  vero accusamus et iusto odio dignissimos ducimus
+                <h2 className="mb-1 text-white">Why Choose Sportzon?</h2>
+                <p className="text-muted fs-6">
+                  Experience the best in sports with Sportzon — a hub for top
+                  venues, expert coaches, and exciting events. Elevate your
+                  game, whether you're a pro or just starting. Choose Sportzon
+                  for a seamless sports adventure.
                 </p>
               </div>
             </div>
@@ -298,10 +318,12 @@ export default async function Home() {
                 </div>
                 <h2 className="mb-1">Experience Sports at its best</h2>
                 <p className="test-muted fs-6">
-                  At vero eos et accusamus et iusto odio dignissimos ducimus
+                  Elevate your game with us. State-of-the-art facilities, expert
+                  coaching, and a community dedicated to sporting excellence.
+                  Discover the thrill of sports at its best.
                 </p>
               </div>
-              <div className="row justify-content-center g-4">
+              <div className="row justify-content-center g-4 mb-3 mt-3">
                 <div className="hero" id="classes-slider">
                   {classes &&
                     classes.map((item, index) => {

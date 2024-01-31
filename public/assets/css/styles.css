@@ -5221,7 +5221,11 @@ img.img-footer {
 }
 
 h4.widget-title {
+<<<<<<< HEAD
   margin-bottom: 20px;
+=======
+  /* margin-bottom: 20px; */
+>>>>>>> c49956c (changes on Home Page)
   font-size: 15px;
   color: #003a75;
 }
@@ -5317,7 +5321,11 @@ footer.skin-dark-footer .footer-widget .ftp-info {
 .foot-socials {
   position: relative;
   display: block;
+<<<<<<< HEAD
   margin-top: 1.5rem;
+=======
+  margin-top: 1rem;
+>>>>>>> c49956c (changes on Home Page)
 }
 
 .foot-socials ul {
@@ -5354,8 +5362,13 @@ footer.skin-dark-footer .footer-widget .ftp-info {
 .foot-socials ul li a:hover,
 .foot-socials ul li a:focus,
 .foot-socials ul li a:active {
+<<<<<<< HEAD
   background: #12245a;
   color: #ffffff;
+=======
+  /* background: #12245a; */
+  /* color: #ffffff; */
+>>>>>>> c49956c (changes on Home Page)
 }
 
 .job-info-count-group {

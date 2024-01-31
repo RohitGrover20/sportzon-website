@@ -40,7 +40,6 @@ function Report({ params }) {
       });
   }, []);
 
-  console.log(reports);
   return (
     <div>
       <div className="dash-wrapsw card border-0 rounded-4 mb-4">

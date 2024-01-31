@@ -53,15 +53,15 @@ function Menu() {
           <UserMenu user={user} />
         ) : (
           <>
-            <li>
-              <a href="" data-bs-toggle="modal" data-bs-target="#login">
-                <i className="fas fa-sign-in-alt me-2" />
-                Sign In
-              </a>
+            <li className="list-buttons ms-2">
+              <Link  href="" className="bg-blue" data-bs-toggle="modal" data-bs-target="#login">
+                LogIn
+                <i className="fa-regular fa-circle-right ms-2" />
+              </Link>
             </li>
             <li className="list-buttons ms-2">
               <Link href="/register" className="bg-orange">
-                Signup Free!
+                Sign Up!
                 <i className="fa-regular fa-circle-right ms-2" />
               </Link>
             </li>

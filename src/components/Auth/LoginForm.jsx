@@ -29,6 +29,10 @@ function LoginForm() {
   });
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
+<<<<<<< HEAD
+=======
+      debugger
+>>>>>>> c49956c (changes on Home Page)
       const login = await axios.post(
         `${config.API_URL}/auth/landing/login`,
         values,
@@ -59,11 +63,20 @@ function LoginForm() {
   };
 
   const googleAuth = () => {
+<<<<<<< HEAD
     window.open(`${config.API_URL}/auth/google/callback`, "_self");
   };
   const facebookAuth = () => {
     window.open(`${config.API_URL}/auth/facebook/callback`, "_self");
   };
+=======
+    window.open(`${config.API_URL}/auth/google`, "_self");
+  };
+  const facebookAuth = () => {
+    window.open(`${config.API_URL}/auth/facebook`, "_self");
+  };
+
+>>>>>>> c49956c (changes on Home Page)
   return (
     <>
       <h5 className="fs-2">Log in To Your Account</h5>

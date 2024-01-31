@@ -35,9 +35,11 @@ const GeoLocation = () => {
   return (
     <>
       {region ? (
-        <li className="text-white me-5 mb-0">
-          <i className="fa fa-map-marker me-1" />
-          {region && region.locality}, {region && region.city}
+        <li className="text-white me-3 mb-0 " style={{ fontSize:"17px"}}>
+        <i className="fa fa-map-marker me-1" style={{ color: 'red' , fontSize:"15px"}} />
+
+          {/* {region && region.locality},  */}
+          {region && region.city}
         </li>
       ) : null}
     </>

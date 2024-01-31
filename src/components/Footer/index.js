@@ -16,7 +16,7 @@ function Footer() {
                   <img
                     src="/assets/img/logo/colored.png"
                     className="img-footer"
-                    alt=""
+                    alt="Citiskape Sports"
                   />
                   <div className="footer-add">
                     <p>
@@ -25,7 +25,7 @@ function Footer() {
                       C-101A, Ansal Plaza, Khel Gaon, Delhi-110017
                     </p>
                   </div>
-                  <div className="foot-socials">
+                  {/* <div className="foot-socials">
                     <ul>
                       <li>
                         <a href="##">
@@ -53,7 +53,7 @@ function Footer() {
                         </a>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="col-lg-2 col-md-4">
@@ -136,27 +136,78 @@ function Footer() {
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="footer-widget">
-                  <h4 className="widget-title">Download Apps</h4>
-                  <div className="app-wrap">
-                    <p>
-                      <a href="/">
-                        <img
-                          src="/assets/img/light-play.png"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </p>
-                    <p>
-                      <a href="/">
-                        <img
-                          src="/assets/img/light-ios.png"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </p>
+                  <h4 className="widget-title">Download Our Apps</h4>
+                  <div className="app-wrap mt-4 mb-4">
+                    <div className="row">
+                      <div className="col-md-6 mb-3">
+                        <a href="/">
+                          <img
+                            src="/assets/img/light-play.png"
+                            className="img-fluid"
+                            alt="Download from Play Store"
+                            style={{ width: "300px", height: "auto" }}
+                          />
+                        </a>
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <a href="/">
+                          <img
+                            src="/assets/img/light-ios.png"
+                            className="img-fluid"
+                            alt="Download from App Store"
+                            style={{ width: "300px", height: "auto" }}
+                          />
+                        </a>
+                      </div>
+                    </div>
                   </div>
+                  <h4 className="widget-title mt-n4">Get In Touch</h4>
+                  <span className="foot-socials m-0 p-0">
+                    <ul>
+                      <li>
+                        <a href="##">
+                          <i
+                            className="fa-brands fa-facebook"
+                            style={{ color: "#3b5998", fontSize: "30px" }}
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="##">
+                          <i
+                            className="fa-brands fa-linkedin"
+                            style={{ color: "#0077b5", fontSize: "30px" }}
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="##">
+                          <a href="##">
+                            <i
+                              className="fa-brands fa-google-plus"
+                              style={{ color: "#dd4b39", fontSize: "30px" }}
+                            />
+                          </a>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="##">
+                          <i
+                            className="fa-brands fa-twitter"
+                            style={{ color: "#1da1f2", fontSize: "30px" }}
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="##">
+                          <i
+                            className="fa-brands fa-dribbble"
+                            style={{ color: "#ea4c89", fontSize: "30px" }}
+                          />
+                        </a>
+                      </li>
+                    </ul>
+                  </span>
                 </div>
               </div>
             </div>
@@ -167,7 +218,7 @@ function Footer() {
             <div className="row align-items-center justify-content-center">
               <div className="col-xl-12 col-lg-12 col-md-12 text-center">
                 <p className="mb-0">
-                  Citiskape Sports Pvt. Ltd. © 2023 Sportzon® Design by Yesteq
+                  Citiskape Sports Pvt. Ltd. © 2024 Sportzon® Design by Yesteq
                   Ventures.
                 </p>
               </div>

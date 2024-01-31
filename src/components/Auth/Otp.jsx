@@ -7,6 +7,10 @@ import { toast } from "react-toastify";
 import ResetPassword from "./ResetPassword";
 
 function Otp(props) {
+<<<<<<< HEAD
+=======
+  console.log(props, "props")
+>>>>>>> c49956c (changes on Home Page)
   const mobile = props?.mobile?.mobile;
   const [otp, setOtp] = useState("");
   const [verify, setVerify] = useState(false);
@@ -23,7 +27,10 @@ function Otp(props) {
         }
       }
     } catch (err) {
+<<<<<<< HEAD
       console.log(err.response);
+=======
+>>>>>>> c49956c (changes on Home Page)
       toast.error(err.response?.data?.message, {
         position: "top-right",
         autoClose: 2000,
@@ -33,6 +40,10 @@ function Otp(props) {
       });
     }
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> c49956c (changes on Home Page)
   return (
     <div className="card border-0 rounded-5 p-xl-4 p-lg-4 p-3">
       <div className="square--80 circle bg-light-primary text-primary d-flex mb-4 mx-auto">
