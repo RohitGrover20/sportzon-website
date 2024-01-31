@@ -8,10 +8,6 @@ function ClassesCard(props) {
   let cleanDescription = DOMPurify.sanitize(classes.description);
   return (
     <div
-<<<<<<< HEAD
-      className="priocs rounded-0 bg-white p-3 m-1"
-      style={{ border: "3px solid #eee" }}
-=======
       className="priocs rounded-3 bg-white p-3 "
       // style={{ border: "3px solid #eee" }}
       style={{
@@ -20,7 +16,6 @@ function ClassesCard(props) {
       // width: "300px",
       marginBottom: "20px"
     }}
->>>>>>> c49956c (changes on Home Page)
     >
       <div className="zoom-effect-wrapper">
         <div className="zoom-effect-img">
@@ -43,32 +38,6 @@ function ClassesCard(props) {
         </span>
       </div>
       {/* Item Title */}
-<<<<<<< HEAD
-      <h5 className="pb-1 mb-2 lh-base">{classes?.title}</h5>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${cleanDescription.substring(0, 150) + "...."}`,
-        }}
-      />
-      {/* Item Rate & review */}
-
-      <Rating rating={classes?.rating} />
-      {/* Item price */}
-
-      {/* Color Selector */}
-      <div className="h6">
-        <i className="fa fa-users" /> Trainers
-        {classes &&
-          classes.coaches &&
-          classes.coaches.map((item, index) => {
-            return (
-              <span className="badge badge-dark ms-1" key={index}>
-                {item.label}
-              </span>
-            );
-          })}
-      </div>
-=======
       <h5 className="lh-base">{classes?.title}</h5>
       <p
   dangerouslySetInnerHTML={{
@@ -97,7 +66,6 @@ function ClassesCard(props) {
   </div>
 </div>
 
->>>>>>> c49956c (changes on Home Page)
       {/* <div className="d-flex"> */}
       <div
         className="d-flex align-items-center justify-content-between p-0"
@@ -113,11 +81,7 @@ function ClassesCard(props) {
               : classes.feesFrequency}
           </small>
           <div className="h3 fw-semibold text-dark">
-<<<<<<< HEAD
-            <i className="fa fa-rupee me-1"></i>
-=======
             <i className="fa fa-rupee me-1 "></i>
->>>>>>> c49956c (changes on Home Page)
             {classes && classes.fees}
           </div>
         </div>

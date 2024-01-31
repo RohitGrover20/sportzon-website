@@ -6,10 +6,6 @@ async function SimpleCard(props) {
   const item = props && props.item;
   return (
     <div
-<<<<<<< HEAD
-      className="priocs rounded-0 bg-white p-3 m-1"
-      style={{ border: "3px solid #eee" }}
-=======
       className="priocs rounded-3 bg-white p-3 m-1
        "
       style={{
@@ -18,16 +14,10 @@ async function SimpleCard(props) {
         width: "300px",
         marginBottom: "20px"
       }}
->>>>>>> c49956c (changes on Home Page)
     >
       <div className="zoom-effect-wrapper">
         <div className="zoom-effect-img">
           <img
-<<<<<<< HEAD
-            src={item && item.gallery && item.gallery[0]}
-            className="img-fluid rounded-4"
-            alt="Image"
-=======
             src={
               item && item.gallery[0]
                 ? item.gallery[0]
@@ -36,7 +26,6 @@ async function SimpleCard(props) {
             className="img-fluid rounded-4"
             alt="Image"
             style={{ width: "100%", height: "180px", objectFit: "cover" }}
->>>>>>> c49956c (changes on Home Page)
           />
         </div>
       </div>
@@ -44,13 +33,6 @@ async function SimpleCard(props) {
         <div className="d-flex justify-content-between">
           {/* <span className="text-warning bg-light-warning label ms-2"><i className='fa fa-star' /> 4.5</span> */}
         </div>
-<<<<<<< HEAD
-        <h6 className="mb-2 mt-2">
-          <Link href={`/venues/${item && item.slug}`}>
-            {item && item.title}
-          </Link>
-        </h6>
-=======
         <h6
           className="mb-2 mt-2"
           style={{
@@ -69,7 +51,6 @@ async function SimpleCard(props) {
           </Link>
         </h6>
 
->>>>>>> c49956c (changes on Home Page)
         <span className="text-success bg-light-success label">
           <i className="fa fa-map-marker" /> {item && item.city},{" "}
           {item && item.state}
