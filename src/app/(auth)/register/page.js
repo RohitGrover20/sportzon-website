@@ -75,10 +75,10 @@ function Register() {
   };
 
   const googleAuth = () => {
-    window.open(`${config.API_URL}/auth/google/callback`, "_self");
+    window.open(`${config.API_URL}/auth/google`, "_self");
   };
   const facebookAuth = () => {
-    window.open(`${config.API_URL}/auth/facebook/callback`, "_self");
+    window.open(`${config.API_URL}/auth/facebook`, "_self");
   };
   return (
     <>

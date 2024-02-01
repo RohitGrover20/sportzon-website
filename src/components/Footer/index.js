@@ -165,7 +165,7 @@ function Footer() {
                   <span className="foot-socials m-0 p-0">
                     <ul>
                       <li>
-                        <a href="##">
+                        <a href="https://www.facebook.com/sportzonindia/" title="Facebook">
                           <i
                             className="fa-brands fa-facebook"
                             style={{ color: "#3b5998", fontSize: "30px" }}
@@ -173,7 +173,7 @@ function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a href="##">
+                        <a href="https://www.linkedin.com/company/sportzon-india/" title="Linkedln">
                           <i
                             className="fa-brands fa-linkedin"
                             style={{ color: "#0077b5", fontSize: "30px" }}
@@ -181,28 +181,10 @@ function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a href="##">
-                          <a href="##">
-                            <i
-                              className="fa-brands fa-google-plus"
-                              style={{ color: "#dd4b39", fontSize: "30px" }}
-                            />
-                          </a>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="##">
+                        <a href="https://www.instagram.com/sportzonindia/" title="Instagram">
                           <i
-                            className="fa-brands fa-twitter"
-                            style={{ color: "#1da1f2", fontSize: "30px" }}
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="##">
-                          <i
-                            className="fa-brands fa-dribbble"
-                            style={{ color: "#ea4c89", fontSize: "30px" }}
+                            className="fa-brands fa-instagram"
+                            style={{ color: "red", fontSize: "30px" }}
                           />
                         </a>
                       </li>

@@ -3,7 +3,6 @@ import React from "react";
 import config from "@/config";
 import Link from "next/link";
 import axios from "axios";
-// import {} from "next/navigation";
 
 function UserMenu(props) {
   const user = props && props.user && props.user.data;
@@ -41,7 +40,7 @@ function UserMenu(props) {
             </h4>
             <div className="drp_menu_headr-right">
               <button type="button" className="btn btn-whites" onClick={logout}>
-                Logout
+                <a href={`${config.API_URL}/auth/logout`}>Logout!</a>
               </button>
             </div>
           </div>
