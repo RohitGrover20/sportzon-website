@@ -11,11 +11,11 @@ function ClassesCard(props) {
       className="priocs rounded-3 bg-white p-3 "
       // style={{ border: "3px solid #eee" }}
       style={{
-      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)", // Add a box shadow
-      opacity: 0.9,
-      // width: "300px",
-      marginBottom: "20px"
-    }}
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)", // Add a box shadow
+        opacity: 0.9,
+        // width: "300px",
+        marginBottom: "20px",
+      }}
     >
       <div className="zoom-effect-wrapper">
         <div className="zoom-effect-img">
@@ -40,31 +40,32 @@ function ClassesCard(props) {
       {/* Item Title */}
       <h5 className="lh-base">{classes?.title}</h5>
       <p
-  dangerouslySetInnerHTML={{
-    __html: cleanDescription.length > 150
-      ? `${cleanDescription.substring(0, 150) + "...."}`
-      : cleanDescription,
-  }}
-/>
+        dangerouslySetInnerHTML={{
+          __html:
+            cleanDescription.length > 150
+              ? `${cleanDescription.substring(0, 150) + "...."}`
+              : cleanDescription,
+        }}
+      />
       {/* Item Rate & review */}
 
       <div className="d-flex justify-content-between align-items-center">
-  <div>
-    <Rating rating={classes?.rating} />
-  </div>
-  <div className="h6">
-    <i className="fa fa-users" /> Trainers
-    {classes &&
-      classes.coaches &&
-      classes.coaches.map((item, index) => {
-        return (
-          <span className="badge badge-dark ms-1" key={index}>
-            {item.label}
-          </span>
-        );
-      })}
-  </div>
-</div>
+        <div>
+          <Rating rating={classes?.rating} />
+        </div>
+        <div className="h6">
+          <i className="fa fa-users" /> Trainers
+          {classes &&
+            classes.coaches &&
+            classes.coaches.map((item, index) => {
+              return (
+                <span className="badge badge-dark ms-1" key={index}>
+                  {item.label}
+                </span>
+              );
+            })}
+        </div>
+      </div>
 
       {/* <div className="d-flex"> */}
       <div

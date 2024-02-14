@@ -12,7 +12,7 @@ async function SimpleCard(props) {
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)", // Add a box shadow
         opacity: 0.9,
         width: "300px",
-        marginBottom: "20px"
+        marginBottom: "40px"
       }}
     >
       <div className="zoom-effect-wrapper">
