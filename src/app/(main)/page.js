@@ -32,7 +32,7 @@ export default async function Home() {
       <BannerSlider banners={banners} />
       <HorizontalSearch />
       {/* Nearby Venues------------------------ */}
-      <section className="pt-0 pb-5 ">
+      <section className="pt-3 pb-5 ">
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
@@ -47,11 +47,11 @@ export default async function Home() {
                 </p>
               </div>
               <div className="row justify-content-center g-4">
-                <div className="venue-slider" id="venue-slider">
+                <div  id="venue-slider">
                   {venues &&
                     venues.map((item, index) => {
                       return (
-                        <div key={index}>
+                        <div key={index} >
                           <SimpleCard item={item} />
                         </div>
                       );
