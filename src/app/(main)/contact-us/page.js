@@ -1,7 +1,31 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import ContactForm from "./ContactForm";
 
-function page() {
+function Page() {
+  const handleLocationClick = () => {
+    const address = "108, 1st Floor, ABC Complex, Veer Savarkar Block, Shakarpur, Laxmi Nagar, Delhi-110095";
+    const encodedAddress = encodeURIComponent(address);
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+
+    window.open(mapsUrl, "_blank");
+  };
+
+  useEffect(() => {
+    // Attach the event handler here, ensuring it runs on the client side
+    const locationLink = document.getElementById("locationLink");
+    if (locationLink) {
+      locationLink.addEventListener("click", handleLocationClick);
+    }
+
+    // Clean up the event listener on component unmount
+    return () => {
+      if (locationLink) {
+        locationLink.removeEventListener("click", handleLocationClick);
+      }
+    };
+  }, []);
+
   return (
     <>
       <section className="bg-light-success">
@@ -29,9 +53,14 @@ function page() {
                   </li>
                   <li className="d-flex mb-3">
                     <i className="fa-solid fa-location-pin text-primary fs-5 me-2" />
-                    <span className="text-muted">
-                      C-101A, Ansal Plaza, Khel Gaon, Delhi-110017
-                    </span>
+                    <a
+                      className="text-muted"
+                      href=""
+                      onClick={handleLocationClick}
+                    >
+                      108, 1st Floor, ABC Complex, Veer Savarkar Block,
+                      Shakarpur, Laxmi Nagar, Delhi-110095{" "}
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -135,4 +164,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

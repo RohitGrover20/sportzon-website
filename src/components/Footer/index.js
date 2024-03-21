@@ -1,8 +1,33 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Tags from "./Tags";
+import Image from "next/image";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
+  const handleLocationClick = () => {
+    const address =
+      "108, 1st Floor, ABC Complex, Veer Savarkar Block, Shakarpur, Laxmi Nagar, Delhi-110095";
+    const encodedAddress = encodeURIComponent(address);
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+
+    window.open(mapsUrl, "_blank");
+  };
+  useEffect(() => {
+    // Attach the event handler here, ensuring it runs on the client side
+    const locationLink = document.getElementById("locationLink");
+    if (locationLink) {
+      locationLink.addEventListener("click", handleLocationClick);
+    }
+
+    // Clean up the event listener on component unmount
+    return () => {
+      if (locationLink) {
+        locationLink.removeEventListener("click", handleLocationClick);
+      }
+    };
+  }, []);
   return (
     <>
       <Tags />
@@ -13,16 +38,30 @@ function Footer() {
             <div className="row">
               <div className="col-lg-3 col-md-4">
                 <div className="footer-widget mt-3">
-                  <img
+                  <Image
                     src="/assets/img/logo/colored.png"
                     className="img-footer"
                     alt="Citiskape Sports"
+                    width={300}
+                    height={100}
                   />
                   <div className="footer-add">
                     <p>
-                      Citiskape Sports Pvt. Ltd.
+                      <a href="https://www.citiskape.in/" target="_blank">
+                        {" "}
+                        Citiskape Sports Pvt. Ltd.
+                      </a>
                       <br />
-                      C-101A, Ansal Plaza, Khel Gaon, Delhi-110017
+                      <a
+                        className="text-muted"
+                        href=""
+                        onClick={handleLocationClick}
+                      >
+                        {" "}
+                        <i className="fa-solid fa-location-pin text-success fs-6 me-2" />
+                        108, 1st Floor, ABC Complex, Veer Savarkar Block,
+                        Shakarpur, Laxmi Nagar, Delhi-110095{" "}
+                      </a>
                     </p>
                   </div>
                   {/* <div className="foot-socials">
@@ -56,7 +95,7 @@ function Footer() {
                   </div> */}
                 </div>
               </div>
-              <div className="col-lg-2 col-md-4">
+              <div className="col-lg-3 col-md-4">
                 <div className="footer-widget">
                   <h4 className="widget-title">The Navigation</h4>
                   <ul className="footer-menu">
@@ -82,7 +121,7 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-4">
+              {/* <div className="col-lg-2 col-md-4">
                 <div className="footer-widget">
                   <h4 className="widget-title">Our Resources</h4>
                   <ul className="footer-menu">
@@ -99,9 +138,6 @@ function Footer() {
                         Media & Gallery
                       </a>
                     </li>
-                    {/* <li>
-                      <a href="##">Affiliate Program</a>
-                    </li> */}
                     <li>
                       <a href="http://resource.sportzon.in/help-support">
                         Help &amp; Support
@@ -109,8 +145,8 @@ function Footer() {
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div className="col-lg-2 col-md-6">
+              </div> */}
+              <div className="col-lg-3 col-md-6">
                 <div className="footer-widget">
                   <h4 className="widget-title">The Company</h4>
                   <ul className="footer-menu">
@@ -141,21 +177,25 @@ function Footer() {
                     <div className="row">
                       <div className="col-md-6 mb-3">
                         <a href="/">
-                          <img
+                          <Image
                             src="/assets/img/light-play.png"
                             className="img-fluid"
                             alt="Download from Play Store"
                             style={{ width: "300px", height: "auto" }}
+                            width={300}
+                            height={10}
                           />
                         </a>
                       </div>
                       <div className="col-md-6 mb-3">
                         <a href="/">
-                          <img
+                          <Image
                             src="/assets/img/light-ios.png"
                             className="img-fluid"
                             alt="Download from App Store"
                             style={{ width: "300px", height: "auto" }}
+                            width={300}
+                            height={10}
                           />
                         </a>
                       </div>
@@ -165,7 +205,10 @@ function Footer() {
                   <span className="foot-socials m-0 p-0">
                     <ul>
                       <li>
-                        <a href="https://www.facebook.com/sportzonindia/" title="Facebook">
+                        <a
+                          href="https://www.facebook.com/sportzonindia/"
+                          title="Facebook"
+                        >
                           <i
                             className="fa-brands fa-facebook"
                             style={{ color: "#3b5998", fontSize: "30px" }}
@@ -173,7 +216,10 @@ function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.linkedin.com/company/sportzon-india/" title="Linkedln">
+                        <a
+                          href="https://www.linkedin.com/company/sportzon-india/"
+                          title="Linkedln"
+                        >
                           <i
                             className="fa-brands fa-linkedin"
                             style={{ color: "#0077b5", fontSize: "30px" }}
@@ -181,7 +227,10 @@ function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.instagram.com/sportzonindia/" title="Instagram">
+                        <a
+                          href="https://www.instagram.com/sportzonindia/"
+                          title="Instagram"
+                        >
                           <i
                             className="fa-brands fa-instagram"
                             style={{ color: "red", fontSize: "30px" }}
@@ -200,8 +249,10 @@ function Footer() {
             <div className="row align-items-center justify-content-center">
               <div className="col-xl-12 col-lg-12 col-md-12 text-center">
                 <p className="mb-0">
-                  Citiskape Sports Pvt. Ltd. © 2024 Sportzon® Design by Yesteq
-                  Ventures.
+                  <a href="https://www.citiskape.in/" target="_blank">
+                    Citiskape Sports Pvt. Ltd.{" "}
+                  </a>{" "}
+                  © {currentYear} <a href=""></a>Sportzon®
                 </p>
               </div>
               {/* <div className="col-xl-8 col-lg-7 col-md-7">

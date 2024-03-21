@@ -32,7 +32,6 @@ function ProfileSideBar() {
         console.log(err);
       });
   };
-  // const user = props && props.user && props.user.data;
   return (
     <div className="col-xl-3 col-lg-4">
       <button
@@ -64,9 +63,9 @@ function ProfileSideBar() {
               <div className="position-relative mb-2">
                 <img
                   src={
-                    user && user.profile
-                      ? user.profile.includes("http")
-                        ? user.profile
+                    user && user?.data?.profile
+                      ? user?.data?.profile.includes("http")
+                        ? user?.data?.profile
                         : config.API_URL + "/user/profile/" + user.profile
                       : "/assets/img/userplaceholder.png"
                   }

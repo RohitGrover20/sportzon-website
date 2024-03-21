@@ -6,6 +6,7 @@ import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
 import "react-toastify/dist/ReactToastify.css";
+import TermsCondModal from "../terms-conditions/Terms&CondModal";
 
 function ContactForm() {
   const phoneRegExp =
@@ -24,6 +25,7 @@ function ContactForm() {
     email: Yup.string().email("Invalid Email").required("Email is required"),
     phone: Yup.string()
       .matches(phoneRegExp, "Phone number is not valid")
+      .max(12, "Phone number must be at most 12 characters")
       .required("Required"),
     subject: Yup.string().required("Required"),
     message: Yup.string().required("Required"),
@@ -74,6 +76,7 @@ function ContactForm() {
             <Form className="row g-4" id="contact-form">
               <div className="col-sm-6">
                 <label className="form-label">Name</label>
+                <span className="text-danger">*</span>
                 <Field
                   className="form-control"
                   type="text"
@@ -89,6 +92,7 @@ function ContactForm() {
 
               <div className="col-sm-6">
                 <label className="form-label">Email</label>
+                <span className="text-danger">*</span>
                 <Field
                   className="form-control"
                   type="email"
@@ -104,6 +108,7 @@ function ContactForm() {
 
               <div className="col-sm-6">
                 <label className="form-label">Phone</label>
+                <span className="text-danger">*</span>
                 <Field
                   className="form-control"
                   type="text"
@@ -119,6 +124,7 @@ function ContactForm() {
 
               <div className="col-sm-6">
                 <label className="form-label">Subject</label>
+                <span className="text-danger">*</span>
                 <Field
                   className="form-control"
                   type="text"
@@ -134,6 +140,7 @@ function ContactForm() {
 
               <div className="col-12">
                 <label className="form-label">Message</label>
+                <span className="text-danger">*</span>
                 <Field
                   as="textarea"
                   className="form-control"
@@ -147,7 +154,6 @@ function ContactForm() {
                   render={(msg) => <small className="text-danger">{msg}</small>}
                 ></ErrorMessage>
               </div>
-
               <div className="col-12">
                 <div className="form-check mb-2">
                   <Field
@@ -159,8 +165,10 @@ function ContactForm() {
                   <label className="form-check-label">
                     I agree to the{" "}
                     <a
+                      href=""
+                      data-bs-toggle="modal"
+                      data-bs-target="#termsAndConditionsModal"
                       className="nav-link d-inline fs-normal text-decoration-underline p-0"
-                      href="/"
                     >
                       Terms &amp; Conditions
                     </a>
@@ -179,6 +187,7 @@ function ContactForm() {
           );
         }}
       </Formik>
+      <TermsCondModal/>
     </>
   );
 }

@@ -1,11 +1,11 @@
-import config from "@/config";
+// import config from "@/config";
 import React from "react";
 
 function Event(props) {
   const bookings = props && props.booking;
   return (
     <div>
-      {bookings &&
+      {bookings && bookings?.length>0 &&
         bookings.map((booking, index) => {
           return (
             <div

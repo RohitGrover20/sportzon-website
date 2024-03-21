@@ -82,7 +82,7 @@ async function EventDetails({ params }) {
                 <div className="d-flex justify-content-between">
                   <h5 className="text-secondary">Slots Available</h5>
                   <h5 className="text-info">
-                    {parseFloat(event.emptySlots)}/{event && event.totalSlots}
+                    {parseFloat(event?.emptySlots)}/{event && event.totalSlots}
                   </h5>
                 </div>
                 <div

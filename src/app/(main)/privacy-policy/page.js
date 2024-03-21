@@ -88,13 +88,13 @@ function page() {
           at info@sportzon.in
         </p> */}
 
-        <strong>How we allow you to use our data?</strong>
+        <h5 className="pt-2">How we allow you to use our data?</h5>
         <p>
           We are very strict about our data policies. Your data is safe with us.
           We will not provide your data to any third party for promotion
           purposes. It will only be used to provide you information.
         </p>
-        <strong>What data do we collect?</strong>
+        <h5 className="pt-2">What data do we collect?</h5>
         <ol>
           <li>
             We collect data mentioned on the registration form. We may also
@@ -124,13 +124,13 @@ function page() {
           </li>
         </ol>
 
-        <strong>How is the data used?</strong>
+        <h5 className="pt-2">How is the data used?</h5>
         <p>
           We will just combine personal information collected from you at
           different times to provide the services you’ve requested & to provide
           a better user experience, including customizing content for you.
         </p>
-        <strong>Do we disclose any information to outside parties?</strong>
+        <h5 className="pt-2">Do we disclose any information to outside parties?</h5>
         <p>
           We do not sell, trade, or otherwise transfer to outside parties your
           personally identifiable information. We may also release your
@@ -138,7 +138,7 @@ function page() {
           law, enforce our site policies, or protect ours or others rights,
           property, or safety.
         </p>
-        <strong>Third-party links</strong>
+        <h5 className="pt-2">Third-party links</h5>
         <p>
           Occasionally, at our discretion, we may include or offer third-party
           products or services on our website. These third-party sites have

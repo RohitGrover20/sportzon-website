@@ -1,5 +1,6 @@
 "use client";
 import Loading from "@/components/Loading";
+import NoDataFound from "@/components/NoDataFound";
 import config from "@/config";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -50,7 +51,7 @@ function Report({ params }) {
           <Loading />
         ) : (
           <div className="card-body px-4">
-            {reports &&
+            {reports && reports.length>0 ?
               reports.map((report, index) => {
                 return (
                   <div
@@ -77,7 +78,7 @@ function Report({ params }) {
                     </div>
                   </div>
                 );
-              })}
+              }) : <NoDataFound/>}
           </div>
         )}
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 function AboutUs() {
   return (
     <div>
@@ -17,20 +17,29 @@ function AboutUs() {
                 <br />
               </h1>
               <h2 className="text-white">
-                the ultimate destination for sports enthusiasts of all levels.
+                The ultimate destination for sports enthusiasts of all levels.
               </h2>
               <p className="fs-5 fw-light text-light mb-4">
-                Our platform revolutionizes the way you engage with sports and
+                {/* Our platform revolutionizes the way you engage with sports and
                 fitness, allowing you to effortlessly book sports complexes,
                 find expert coaches, and participate in thrilling public events.
                 Whether you're an individual seeking a personal trainer or a
                 team ready to conquer tournaments, Sportzon is here to fuel your
                 passion and make sports accessible to everyone. Embrace a
-                healthier and more active lifestyle with us today.
+                healthier and more active lifestyle with us today. */}
+                At Sportzon, we're not just a platform; we're your ultimate
+                destination for sports and fitness. Whether you're an individual
+                seeking a personal trainer, booking top-notch sports complexes,
+                or a team ready for tournaments, Sportzon revolutionizes the way
+                you engage with sports. Embrace a healthier, more active
+                lifestyle with Sportzon. Join us in redefining the way sports
+                enthusiasts of all levels engage with their passion. Your
+                journey to excellence begins now. Welcome to Sportzon – where
+                passion meets play!
               </p>
-              <a href="/contact" className="btn btn-primary px-5">
+              <Link href="/contact-us" className="btn btn-primary px-5">
                 Know More..
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -47,7 +56,7 @@ function AboutUs() {
                     <img
                       src="/assets/img/pays-3.png"
                       className="img-fluid rounded-4"
-                      alt=""
+                      alt="Loading..."
                     />
                   </div>
                   <div className="position-absolute bottom-0 end-0">
@@ -55,7 +64,7 @@ function AboutUs() {
                       src="assets/img/img-3.png"
                       className="img-fluid rounded-2 shadow"
                       width={230}
-                      alt=""
+                      alt="Loading.."
                     />
                   </div>
                 </div>
@@ -70,30 +79,48 @@ function AboutUs() {
                       Our Story
                     </h2>
                     <p className="mb-0 fs-5 fw-light mb-3">
-                      Sportzon is a mobile app that aims to make it easier for
+                      {/* Sportzon is a mobile app that aims to make it easier for
                       people to find and participate in sports activities. It
                       does this by providing a comprehensive directory of sports
                       complexes, coaches, personal trainers, and public sports
                       events. This is particularly useful for people who are new
                       to an area or who do not have a lot of time to research
-                      sports activities on their own. If you have difficulty
-                      finding the time or resources to do so. This may include
-                      people who work long hours, who do not have access to a
-                      sports complex, or who are new to an area. The app's value
-                      proposition is that it provides a one-stop shop for
-                      finding and participating in sports activities. It saves
-                      users the time and effort of having to research different
-                      sports complexes, coaches, and events on their own.
+                      sports activities on their own. */}
+                      <strong>Sportzon</strong>, your all-encompassing sports companion, extends
+                      its reach through both a dynamic website and a
+                      user-friendly mobile app. Seamlessly integrating
+                      technology into the world of sports, we bring you a
+                      unified platform that caters to all your athletic needs,
+                      whether you're exploring on the web or on the go.
+                      Discover, engage, and elevate your sports experience with
+                      Sportzon - where innovation meets accessibility. If you
+                      have difficulty finding the time or resources to do so.
+                      This may include people who work long hours, who do not
+                      have access to a sports complex, or who are new to an
+                      area.
+                      {/* The app's value proposition is that it provides a
+                      one-stop shop for finding and participating in sports
+                      activities. */}
+                      {/* It saves users the time and effort of having
+                      to research different sports complexes, coaches, and
+                      events on their own. */}
                     </p>
-                    <p className="mb-0 fs-5 fw-light">
-                      The app also provides a convenient way to book and pay for
+                    <p className="mb-3 fs-5 fw-light">
+                      {/* The app also provides a convenient way to book and pay for
                       sports activities. It was founded by Manoj Attri, who was
                       inspired to start the company after noticing a gap in the
                       sports industry.Mr.Attri wanted to create a platform that
                       would make it easier for people to find and participate in
                       sports, regardless of their age or skill level. Sportzon
                       is a valuable resource for both individuals and
-                      businesses.
+                      businesses. */}
+                     <strong> Sportzon </strong>, born out of a vision by founder <span> <strong> Mr. Manoj Attri </strong></span>,
+                      stands as a beacon of convenience in the sports industry.
+                      Recognizing a gap that begged to be filled, Mr. Attri
+                      embarked on a mission to create a platform that transcends
+                      age and skill barriers, making sports easily accessible to
+                      all.    
+
                     </p>
 
                     <p className="mb-0 fs-5 fw-light">

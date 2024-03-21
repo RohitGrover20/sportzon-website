@@ -1,4 +1,5 @@
 "use client";
+import NoDataFound from "@/components/NoDataFound";
 import config from "@/config";
 import axios from "axios";
 import Link from "next/link";
@@ -25,8 +26,9 @@ function MyClasses() {
           <h3>My Classes</h3>
         </div>
         <div className="card-body px-4">
+          {classes?.length<0 ? <NoDataFound/> : 
           <div className="row row-cols-1 row-cols-md-2 g-4">
-            {classes?.map((item, index) => {
+            { classes && classes?.length>0 && classes?.map((item, index) => {
               return (
                 <div className="col" key={index}>
                   <div className="card h-100 rounded-4 border-1 gray-simple">
@@ -81,9 +83,9 @@ function MyClasses() {
                           <i className="fa fa-money me-1"></i> Fees Info
                         </button>
                       </Link>
-                      <button className="btn btn-light btn-sm me-1">
+                      {/* <button className="btn btn-light btn-sm me-1">
                         <i className="fa fa-users me-1"></i> Attendance
-                      </button>
+                      </button> */}
                       <Link
                         href={`./my-classes/reports/${item.admissionIn?._id}/${item._id}`}
                       >
@@ -100,6 +102,7 @@ function MyClasses() {
               );
             })}
           </div>
+}
         </div>
       </div>
     </div>

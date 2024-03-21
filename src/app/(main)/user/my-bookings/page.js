@@ -4,6 +4,7 @@ import Arena from "./Arena";
 import config from "@/config";
 import axios from "axios";
 import Event from "./Event";
+import NoDataFound from "@/components/NoDataFound";
 
 function MyBookings() {
   const [booking, setBooking] = useState([]);
@@ -68,9 +69,11 @@ function MyBookings() {
             aria-labelledby="pills-one-tab"
             tabIndex={0}
           >
+            {booking?.length>0 ? 
             <Arena
               booking={booking.filter((item) => item.bookingType == "arena")}
             />
+            : <NoDataFound/>}
           </div>
           {/* {------------End of Arena Section------------------} */}
           <div
@@ -80,9 +83,11 @@ function MyBookings() {
             aria-labelledby="pills-two-tab"
             tabIndex={0}
           >
+            {booking?.length>0 ? 
             <Event
               booking={booking.filter((item) => item.bookingType == "event")}
             />
+            : <NoDataFound/>}
           </div>
         </div>
       </div>

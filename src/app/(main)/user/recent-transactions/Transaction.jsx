@@ -1,4 +1,5 @@
 "use client";
+import NoDataFound from "@/components/NoDataFound";
 import config from "@/config";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -21,6 +22,7 @@ function Transaction() {
 
   return (
     <div className="table-responsive">
+      {transaction?.length>0 ? 
       <table className="table">
         <thead>
           <tr>
@@ -34,7 +36,7 @@ function Transaction() {
           </tr>
         </thead>
         <tbody>
-          {transaction &&
+          {transaction && transaction?.length>0 &&
             transaction.map((item, index) => {
               const timeStamp = item.value && item.value.created_at;
               const paymentDate = new Date(timeStamp * 1000).toLocaleString();
@@ -79,6 +81,7 @@ function Transaction() {
             })}
         </tbody>
       </table>
+      : <NoDataFound/>}
     </div>
   );
 }

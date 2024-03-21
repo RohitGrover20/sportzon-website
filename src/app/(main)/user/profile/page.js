@@ -191,7 +191,6 @@ function Profile() {
                             return <option key={index}>{item}</option>;
                           })}
                       </Field>
-                      <label>State</label>
                       <ErrorMessage
                         name="state"
                         render={(msg) => (
@@ -215,7 +214,6 @@ function Profile() {
                               return <option key={index}>{item}</option>;
                             })}
                       </Field>
-                      <label>City</label>
                       <ErrorMessage
                         name="city"
                         render={(msg) => (

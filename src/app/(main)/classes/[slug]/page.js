@@ -39,7 +39,7 @@ async function ClassDetails({ params }) {
                 <div className="d-inline-flex align-items-center me-3">
                   <span className="text-muted">
                     <i className="fa-solid fa-bookmark opacity-75 me-1" />
-                    Cricket
+                    {data?.activity}
                   </span>
                 </div>
               </div>

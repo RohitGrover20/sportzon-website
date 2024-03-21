@@ -1,5 +1,4 @@
 import React from "react";
-
 function BannerSlider(props) {
   const banners = props && props.banners;
   return (
@@ -17,7 +16,7 @@ function BannerSlider(props) {
                 // style={{ height: "500px" }}
                 key={index}
               >
-                <img className="w-100" src={item.file} alt={item.title} />
+                <img className="w-100" src={item?.file} alt={item?.title}/>
               </div>
             );
           })}

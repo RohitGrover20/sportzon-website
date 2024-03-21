@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginForm from "@/components/Auth/LoginForm";
 
-function Registration(props) {
+function Registration(props) { 
   const [loader, setLoader] = useState(false);
   const context = useContext(UserContext);
   const user = context && context;
@@ -82,6 +82,8 @@ function Registration(props) {
     } else {
       const _data = {
         ...values,
+        eventDate : event.eventDate,
+        title : event.title,
         amount: values.noOfTickets * values.amount * 100,
       };
       axios
@@ -103,7 +105,8 @@ function Registration(props) {
               },
             });
           } else {
-            handleOpenRazorpay({ ...res.data.data, values });
+            handleOpenRazorpay({ ...res.data.data, _data , eventDate : event.eventDate,
+              title : event.title, });
           }
         })
         .catch((err) => {
@@ -139,7 +142,7 @@ function Registration(props) {
         axios
           .post(
             `${config.API_URL}/landing/bookings/process`,
-            { response: response, data: data.values },
+            { response: response, data: data?._data },
             { withCredentials: true }
           )
           .then((res) => {
@@ -197,11 +200,11 @@ function Registration(props) {
           <div className="modal-header">
             <div className="mdl-title mb-1">
               <h4 className="modal-header-title" style={{ fontSize: "24px" }}>
-                {event.eventType} Registration
+                {event?.eventType} Registration
               </h4>
               <p>
-                Please book for your {event.eventType} by filling the form
-                below, specify the expected number joining the {event.eventType}
+                Please book for your {event?.eventType} by filling the form
+                below, specify the expected number joining the {event?.eventType}
                 .
               </p>
             </div>
@@ -228,13 +231,14 @@ function Registration(props) {
                         {event && event.memberType == "team" ? (
                           <div className="form-floating mb-4">
                             <div className="col-lg-12 col-sm-12 col-xs-12 col-xl-12">
+                            <label>Team Name</label>
                               <Field
                                 type="text"
                                 name="team"
                                 className="form-control"
-                                placeholder="ABC Team"
+                                placeholder="Enter Team Name"
                               />
-                              <label>Team Name</label>
+                              
                             </div>
                           </div>
                         ) : null}

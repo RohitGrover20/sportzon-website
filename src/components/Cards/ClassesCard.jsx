@@ -54,13 +54,13 @@ function ClassesCard(props) {
           <Rating rating={classes?.rating} />
         </div>
         <div className="h6">
-          <i className="fa fa-users" /> Trainers
+          <i className="fa fa-users" /> Trainer
           {classes &&
-            classes.coaches &&
-            classes.coaches.map((item, index) => {
+            classes?.coaches &&
+            classes?.coaches.map((item, index) => {
               return (
                 <span className="badge badge-dark ms-1" key={index}>
-                  {item.label}
+                  {item?.label}
                 </span>
               );
             })}

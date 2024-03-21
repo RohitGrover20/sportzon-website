@@ -14,7 +14,8 @@ function Otp(props) {
     const values = { mobile, otp };
     try {
       const verify = await axios.post(
-        `${config.API_URL}/users/verify-otp`,
+        // `${config.API_URL}/users/verify-otp`, 
+        `${config.API_URL}/otp/verify`,
         values
       );
       if (verify) {
@@ -48,8 +49,8 @@ function Otp(props) {
             onChange={setOtp}
             containerStyle={"d-flex justify-content-center align-item-center"}
             inputStyle="form-control w-25 border-2 shadow-sm"
-            numInputs={4}
-            placeholder={"0000"}
+            numInputs={6}
+            placeholder={"000000"}
             renderSeparator={<span>-</span>}
             renderInput={(props) => <input {...props} />}
           />

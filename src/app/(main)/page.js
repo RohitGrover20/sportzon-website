@@ -1,11 +1,20 @@
 // "use client"
-import ClassesCard from "@/components/Cards/ClassesCard";
-import EventsCard from "@/components/Cards/EventsCard";
-import SimpleCard from "@/components/Cards/SimpleCard";
-import BannerSlider from "@/components/HeaderOne/BannerSlider";
-import HorizontalSearch from "@/components/HeaderOne/HorizontalSearch";
-import Newsletter from "@/components/Newsletter";
-import Testimonials from "@/components/Testimonials";
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
+// import ClassesCard from "@/components/Cards/ClassesCard";
+const ClassesCard = dynamic(() => import('@/components/Cards/ClassesCard'), { ssr: false })
+// import EventsCard from "@/components/Cards/EventsCard";
+const EventsCard = dynamic(() => import('@/components/Cards/EventsCard'), { ssr: false })
+// import SimpleCard from "@/components/Cards/SimpleCard";
+const SimpleCard = dynamic(() => import('@/components/Cards/SimpleCard'), { ssr: false })
+// import BannerSlider from "@/components/HeaderOne/BannerSlider";
+const BannerSlider = dynamic(() => import('@/components/HeaderOne/BannerSlider'), { ssr: false })
+// import HorizontalSearch from "@/components/HeaderOne/HorizontalSearch";
+const HorizontalSearch = dynamic(() => import('@/components/HeaderOne/HorizontalSearch'), { ssr: false })
+// import Newsletter from "@/components/Newsletter";
+const Newsletter = dynamic(() => import('@/components/Newsletter'), { ssr: false })
+// import Testimonials from "@/components/Testimonials";
+const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false })
 import {
   getClasses,
   getEvents,
@@ -29,7 +38,7 @@ export default async function Home() {
 
   return (
     <>
-      <BannerSlider banners={banners} />
+      {banners && <BannerSlider banners={banners} />}
       <HorizontalSearch />
       {/* Nearby Venues------------------------ */}
       <section className="pt-3 pb-5 ">
@@ -49,7 +58,7 @@ export default async function Home() {
               <div className="row justify-content-center g-4">
                 <div  id="venue-slider">
                   {venues &&
-                    venues.map((item, index) => {
+                    venues?.map((item, index) => {
                       return (
                         <div key={index} >
                           <SimpleCard item={item} />
@@ -145,7 +154,7 @@ export default async function Home() {
             </div>
             <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12">
               <div className="position-relative">
-                <img src="assets/img/seo-1.png" className="img-fluid" alt="" />
+                <Image src="/assets/img/seo-1.png" className="img-fluid" alt="" width={500} height={500} ></Image>
               </div>
             </div>
           </div>
@@ -172,8 +181,8 @@ export default async function Home() {
             </div>
           </div>
           <div className="row g-4">
-            {events &&
-              events.map((item, index) => (
+            {events && events?.length>0 && 
+              events?.map((item, index) => (
                 <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
                   <div className="card mb-4">
                     <EventsCard item={item} />
@@ -325,17 +334,17 @@ export default async function Home() {
               </div>
               <div className="row justify-content-center g-4 mb-3 mt-3">
                 <div className="hero" id="classes-slider">
-                  {classes &&
-                    classes.map((item, index) => {
-                      return (
+                  {classes && classes?.length>0 &&
+                    classes.map((item, index) => (
+                      // return (
                         <div
                           className="col-xl-4 col-lg-4 col-md-6 col-sm-6"
                           key={index}
                         >
                           <ClassesCard class={item} />
                         </div>
-                      );
-                    })}
+                      // );
+                    ))}
                 </div>
               </div>
             </div>
@@ -343,7 +352,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <Testimonials testimonials={testimonials} />
+     {testimonials && <Testimonials testimonials={testimonials} />}
       <Newsletter />
     </>
   );

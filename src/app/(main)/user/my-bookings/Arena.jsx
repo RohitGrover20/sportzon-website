@@ -3,7 +3,6 @@ import React from "react";
 
 function Arena(props) {
   const bookings = props && props.booking;
-
   return (
     <div>
       {bookings &&

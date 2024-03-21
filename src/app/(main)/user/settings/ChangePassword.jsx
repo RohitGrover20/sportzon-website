@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
-
+import Link from "next/link";
 function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const initialValues = {
@@ -99,13 +99,20 @@ function ChangePassword() {
                       ></ErrorMessage>
                     </div>
                     <div className="col-sm-6">
-                      <a
+                      {/* <a
                         href="account-password-recovery.html"
                         className="fw-semibold text-primary d-flex mt-sm-4"
                       >
                         <i className="fa-solid fa-question me-2" />
+                        Lost My Passwordss
+                      </a> */}
+                      <Link
+                        href="/forgot-password"
+                        className="fw-semibold text-primary d-flex mt-sm-4"
+                      >
+                        <i className="fa-solid fa-question me-2" />
                         Lost My Password
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-6">
                       <label className="form-label">New Password</label>

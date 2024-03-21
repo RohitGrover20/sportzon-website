@@ -116,7 +116,6 @@ function ProductInfo(props) {
                   );
                 })
               );
-
             return (
               <Form>
                 <div className="row g-4  pb-md-3  mb-md-1 align-items-center mt-2 px-3 ">
@@ -194,7 +193,6 @@ function ProductInfo(props) {
                       selected={values.date}
                       className="form-select"
                       onChange={(e) => {
-                        console.log(e);
                         setFieldValue("date", e);
                       }}
                       placeholderText="Please select a date"

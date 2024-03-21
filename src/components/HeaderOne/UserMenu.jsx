@@ -17,7 +17,6 @@ function UserMenu(props) {
       });
   };
   return (
-    // <ul className="nav-menu nav-menu-social align-to-right">
     <li>
       <div className="btn-group account-drop">
         <button
@@ -28,7 +27,7 @@ function UserMenu(props) {
           aria-expanded="false"
         >
           <img
-            src={user && user.profile}
+            src={user ? user.profile : "/assets/img/userplaceholder.png"}
             className="img-fluid circle"
             alt="Profile"
           />

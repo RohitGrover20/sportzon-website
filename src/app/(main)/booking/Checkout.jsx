@@ -224,7 +224,7 @@ function Checkout(props) {
                         <div className="count-input">
                           <span className="me-2">
                             {" "}
-                            <i className="fa fa-clock me-1"></i>Slots
+                            <i className="fa fa-clock me-1"></i>Sloths
                           </span>
                           {item &&
                             item.slots &&

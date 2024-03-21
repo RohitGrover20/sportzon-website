@@ -6,6 +6,7 @@ import config from "@/config";
 import EventsCard from "@/components/Cards/EventsCard";
 import SimpleCard from "@/components/Cards/SimpleCard";
 import Loading from "@/components/Loading";
+import NoDataFound from "@/components/NoDataFound";
 
 function Search() {
   const [loader, setLoader] = useState(false);
@@ -74,7 +75,7 @@ function Search() {
             </div>
 
             <div className="row justify-content-center g-4">
-              {data &&
+              {data && data?.length>0 ? 
                 data.map((item, index) => {
                   return (
                     <div
@@ -88,7 +89,7 @@ function Search() {
                       )}
                     </div>
                   );
-                })}
+                }) : <NoDataFound/>}
             </div>
           </div>
         </section>

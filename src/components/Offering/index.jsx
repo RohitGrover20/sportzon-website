@@ -23,7 +23,8 @@ function Offering() {
     email: Yup.string().email("Invalid Email").required("Email is required"),
     phone: Yup.string()
       .matches(phoneRegExp, "Phone number is not valid")
-      .required("Required"),
+      .required("Required")
+      .max(12, "Phone number must be at most 12 characters"),
     org: Yup.string().required("Required"),
     message: Yup.string().required("Required"),
   });
@@ -83,7 +84,7 @@ function Offering() {
               <div className="row g-4">
                 <div className="col-sm-6">
                   <label className="form-label text-light opacity-75">
-                    Name
+                    Name <span className="text-danger">*</span>
                   </label>
                   <Field
                     className="form-control lg light"
@@ -102,6 +103,7 @@ function Offering() {
                   <label className="form-label text-light opacity-75">
                     Email
                   </label>
+                  <span className="text-danger">*</span>
                   <Field
                     className="form-control lg light"
                     type="email"
@@ -119,6 +121,7 @@ function Offering() {
                   <label className="form-label text-light opacity-75">
                     Phone
                   </label>
+                  <span className="text-danger">*</span>
                   <Field
                     className="form-control lg light"
                     type="text"
@@ -136,6 +139,7 @@ function Offering() {
                   <label className="form-label text-light opacity-75">
                     Organization / Institution
                   </label>
+                  <span className="text-danger">*</span>
                   <Field
                     className="form-control lg light"
                     type="text"
@@ -153,6 +157,7 @@ function Offering() {
                   <label className="form-label text-light opacity-75">
                     Message
                   </label>
+                  <span className="text-danger">*</span>
                   <Field
                     as="textarea"
                     name="message"

@@ -26,16 +26,18 @@ function ForgotPassword() {
   });
 
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
+    const data = { phone: values.mobile };
     try {
       const forget = await axios.post(
-        `${config.API_URL}/users/forget-password`,
-        values
+        // `${config.API_URL}/users/forget-password`,
+        `${config.API_URL}/otp/send`,
+        data
       );
       if (forget) {
-        if (forget?.data.code == "sent") {
-          setForget(true);
-          setMobile(values);
-        }
+        // if (forget?.data.code == "sent") {
+        setForget(true);
+        setMobile(values);
+        // }
       }
     } catch (err) {
       console.log(err.response);

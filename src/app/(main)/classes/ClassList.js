@@ -8,7 +8,7 @@ function ClassList(props) {
       {classes &&
         classes.map((item, index) => {
           return (
-            <div className="col-sm-4 p-0" key={index}>
+            <div className="col-sm-4" key={index}>
               <ClassesCard class={item} />
             </div>
           );

@@ -1,6 +1,7 @@
 import React from "react";
 // import Registration from './Registration'
 import DOMPurify from "isomorphic-dompurify";
+import NoDataFound from "@/components/NoDataFound";
 
 function ExtraInfo(props) {
   const event = props && props.event;
@@ -63,11 +64,12 @@ function ExtraInfo(props) {
             aria-labelledby="description-tab"
             tabIndex={0}
           >
+            {cleanDescription?.length>0 ? 
             <div
               dangerouslySetInnerHTML={{
                 __html: `${cleanDescription}`,
               }}
-            ></div>
+            ></div> : <NoDataFound/>}
           </div>
           <div
             className="tab-pane fade"

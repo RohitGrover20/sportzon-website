@@ -3,8 +3,9 @@ import { useEffect } from "react";
 export default function Error({ error }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
+    console.error(error , "error");
   }, [error]);
+  // Inside your ErrorBoundary component
 
   return (
     <section>

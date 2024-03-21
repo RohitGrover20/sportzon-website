@@ -17,6 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      
       <head>
         <meta charSet="utf-8" />
         {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
@@ -40,15 +41,15 @@ export default function RootLayout({ children }) {
         ></Script>
 
         <Script
-          strategy="beforeInteractive"
+          strategy={"beforeInteractive"}
           src="/assets/js/jquery.min.js"
         ></Script>
         <Script
-          strategy="beforeInteractive"
+          strategy={"beforeInteractive"}
           src="/assets/js/popper.min.js"
         ></Script>
         <Script
-          strategy="beforeInteractive"
+          strategy={"beforeInteractive"}
           src="/assets/js/bootstrap.min.js"
         ></Script>
 
