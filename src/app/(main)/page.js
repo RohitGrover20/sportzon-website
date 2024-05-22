@@ -1,20 +1,36 @@
 // "use client"
-import dynamic from 'next/dynamic'
-import Image from 'next/image'
+import dynamic from "next/dynamic";
+import Image from "next/image";
 // import ClassesCard from "@/components/Cards/ClassesCard";
-const ClassesCard = dynamic(() => import('@/components/Cards/ClassesCard'), { ssr: false })
+const ClassesCard = dynamic(() => import("@/components/Cards/ClassesCard"), {
+  ssr: false,
+});
 // import EventsCard from "@/components/Cards/EventsCard";
-const EventsCard = dynamic(() => import('@/components/Cards/EventsCard'), { ssr: false })
+const EventsCard = dynamic(() => import("@/components/Cards/EventsCard"), {
+  ssr: false,
+});
 // import SimpleCard from "@/components/Cards/SimpleCard";
-const SimpleCard = dynamic(() => import('@/components/Cards/SimpleCard'), { ssr: false })
+const SimpleCard = dynamic(() => import("@/components/Cards/SimpleCard"), {
+  ssr: false,
+});
 // import BannerSlider from "@/components/HeaderOne/BannerSlider";
-const BannerSlider = dynamic(() => import('@/components/HeaderOne/BannerSlider'), { ssr: false })
+const BannerSlider = dynamic(
+  () => import("@/components/HeaderOne/BannerSlider"),
+  { ssr: false }
+);
 // import HorizontalSearch from "@/components/HeaderOne/HorizontalSearch";
-const HorizontalSearch = dynamic(() => import('@/components/HeaderOne/HorizontalSearch'), { ssr: false })
+const HorizontalSearch = dynamic(
+  () => import("@/components/HeaderOne/HorizontalSearch"),
+  { ssr: false }
+);
 // import Newsletter from "@/components/Newsletter";
-const Newsletter = dynamic(() => import('@/components/Newsletter'), { ssr: false })
+const Newsletter = dynamic(() => import("@/components/Newsletter"), {
+  ssr: false,
+});
 // import Testimonials from "@/components/Testimonials";
-const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false })
+const Testimonials = dynamic(() => import("@/components/Testimonials"), {
+  ssr: false,
+});
 import {
   getClasses,
   getEvents,
@@ -22,7 +38,6 @@ import {
   getTestimonials,
   getVenue,
 } from "@/libs/fetchData";
-
 export const revalidate = 10;
 export default async function Home() {
   const eventData = await getEvents();
@@ -56,11 +71,11 @@ export default async function Home() {
                 </p>
               </div>
               <div className="row justify-content-center g-4">
-                <div  id="venue-slider">
+                <div id="venue-slider">
                   {venues &&
                     venues?.map((item, index) => {
                       return (
-                        <div key={index} >
+                        <div key={index}>
                           <SimpleCard item={item} />
                         </div>
                       );
@@ -71,7 +86,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
       {/* Features------------------------------- */}
       <section className="pt-3 pb-0 " style={{ backgroundColor: "#f6f9fc" }}>
         <div className="container">
@@ -146,7 +160,6 @@ export default async function Home() {
                           </div>
                         </div>
                       </div>
-                      {/* End Col */}
                     </div>
                   </div>
                 </div>
@@ -154,7 +167,13 @@ export default async function Home() {
             </div>
             <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12">
               <div className="position-relative">
-                <Image src="/assets/img/seo-1.png" className="img-fluid" alt="" width={500} height={500} ></Image>
+                <Image
+                  src="/assets/img/sideImg.png"
+                  className="img-fluid"
+                  alt=""
+                  width={500}
+                  height={500}
+                ></Image>
               </div>
             </div>
           </div>
@@ -162,7 +181,7 @@ export default async function Home() {
       </section>
 
       {/* Events---------------- */}
-      <section className="pt-0 pb-0">
+      <section className="pt-0 pb-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-12">
@@ -170,7 +189,7 @@ export default async function Home() {
                 <div className="label text-orange bg-light-orange d-inline-flex rounded-4 mb-2 font--medium">
                   <span>Events</span>
                 </div>
-                <h2 className="mb-1">Explore Upcoming Events Near You</h2>
+                <h2 className="mb-1">Explore Exciting Events Near You</h2>
                 <p className="text-muted fs-6">
                   <p className="text-muted fs-6">
                     Discover exciting events happening nearby and immerse
@@ -180,15 +199,18 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <div className="row g-4">
-            {events && events?.length>0 && 
-              events?.map((item, index) => (
-                <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
-                  <div className="card mb-4">
-                    <EventsCard item={item} />
+          <div className="row justify-content-center g-4">
+            <div id="event-slider">
+              {events &&
+                events?.length > 0 &&
+                events?.map((item, index) => (
+                  <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
+                    <div className="card mb-4">
+                      <EventsCard item={item} />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
         </div>
       </section>
@@ -325,7 +347,7 @@ export default async function Home() {
                 <div className="label text-orange bg-light-orange d-inline-flex rounded-4 mb-2 font--medium">
                   <span>Classes</span>
                 </div>
-                <h2 className="mb-1">Experience Sports at its best</h2>
+                <h2 className="mb-1">Experience sports at its best</h2>
                 <p className="test-muted fs-6">
                   Elevate your game with us. State-of-the-art facilities, expert
                   coaching, and a community dedicated to sporting excellence.
@@ -333,18 +355,93 @@ export default async function Home() {
                 </p>
               </div>
               <div className="row justify-content-center g-4 mb-3 mt-3">
-                <div className="hero" id="classes-slider">
-                  {classes && classes?.length>0 &&
-                    classes.map((item, index) => (
-                      // return (
-                        <div
-                          className="col-xl-4 col-lg-4 col-md-6 col-sm-6"
-                          key={index}
-                        >
-                          <ClassesCard class={item} />
-                        </div>
-                      // );
-                    ))}
+                <ul
+                  className="nav nav-tabs"
+                  id="myTab"
+                  role="tablist"
+                  style={{ margin: "20px" }}
+                >
+                  <li
+                    className="nav-item fs-2"
+                    role="presentation"
+                    style={{ fontSize: "200px" }}
+                  >
+                    <button
+                      className="nav-link active"
+                      id="inSchool-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#inSchool"
+                      type="button"
+                      role="tab"
+                      aria-controls="inSchool"
+                      aria-selected="true"
+                      style={{ fontSize: "15px" }}
+                    >
+                      <i class="fa-solid fa-school"></i> In School Classes
+                    </button>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <button
+                      className="nav-link"
+                      id="afterSchool-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#afterSchool"
+                      type="button"
+                      role="tab"
+                      aria-controls="afterSchool"
+                      aria-selected="false"
+                      style={{ fontSize: "15px" }}
+                    >
+                      <i class="fa fa-clock-o"></i> After School Classes
+                    </button>
+                  </li>
+                </ul>
+                <div className="tab-content" id="myTabContent">
+                  <div
+                    className="tab-pane fade show active"
+                    id="inSchool"
+                    role="tabpanel"
+                    aria-labelledby="inSchool-tab"
+                  >
+                    <div className="row">
+                      <div className="hero" id="classes-slider">
+                        {classes &&
+                          classes.map((item, index) => {
+                            if (item.classType === "inSchool") {
+                              return (
+                                <div className="col-sm-4" key={index}>
+                                  <ClassesCard class={item} />
+                                </div>
+                              );
+                            }
+                            return null;
+                          })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="tab-pane fade"
+                    id="afterSchool"
+                    role="tabpanel"
+                    aria-labelledby="afterSchool-tab"
+                  >
+                    <div className="row">
+                      <div className="hero" id="classes-slider">
+                        {classes &&
+                          classes.map((item, index) => {
+                            if (item.classType === "afterSchool") {
+                              return (
+                                <div className="col-sm-4" key={index}>
+                                  <ClassesCard class={item} />
+                                </div>
+                              );
+                            }
+                            return null;
+                          })}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -352,7 +449,7 @@ export default async function Home() {
         </div>
       </section>
 
-     {testimonials && <Testimonials testimonials={testimonials} />}
+      {testimonials && <Testimonials testimonials={testimonials} />}
       <Newsletter />
     </>
   );

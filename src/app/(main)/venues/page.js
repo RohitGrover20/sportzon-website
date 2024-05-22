@@ -20,9 +20,8 @@ async function Venues() {
                 </div>
                 <h2>Book your nearest Venue</h2>
                 <p>
-                  Temporibus autem quibusdam et place in the web workers toolbox
-                  aut officiis debitis aut rerum necessitatibus saepe eveniet ut
-                  et voluptates repudiandae sint et molestiae.
+                  Secure your booking now and enjoy exclusive access to top venues near
+                  you!
                 </p>
               </div>
             </div>

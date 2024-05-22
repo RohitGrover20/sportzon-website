@@ -5,15 +5,13 @@ import Rating from "../Rating";
 
 function ClassesCard(props) {
   const classes = props && props.class;
-  let cleanDescription = DOMPurify.sanitize(classes.description);
+  let cleanDescription = DOMPurify.sanitize(classes?.description);
   return (
     <div
-      className="priocs rounded-3 bg-white p-3 "
-      // style={{ border: "3px solid #eee" }}
+      className="priocs rounded-3 bg-white p-3"
       style={{
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)", // Add a box shadow
         opacity: 0.9,
-        // width: "300px",
         marginBottom: "20px",
       }}
     >
@@ -54,7 +52,7 @@ function ClassesCard(props) {
           <Rating rating={classes?.rating} />
         </div>
         <div className="h6">
-          <i className="fa fa-users" /> Trainer
+          <i className="fa fa-users" /> Trainer 
           {classes &&
             classes?.coaches &&
             classes?.coaches.map((item, index) => {
@@ -73,23 +71,27 @@ function ClassesCard(props) {
         style={{ justifyContent: "between" }}
       >
         <div className="edlois">
+        {classes?.classType==="afterSchool" && 
           <small
             className="text-success"
             style={{ textTransform: "capitalize" }}
           >
-            {classes && classes.feesFrequency == "oneTime"
+            {classes && classes?.feesFrequency == "oneTime"
               ? "One Time"
-              : classes.feesFrequency}
+              : classes?.feesFrequency}
           </small>
+}
           <div className="h3 fw-semibold text-dark">
-            <i className="fa fa-rupee me-1 "></i>
-            {classes && classes.fees}
+           {classes && classes?.classType==="afterSchool" && 
+            <><i className="fa fa-rupee me-1"></i>
+            { classes?.fees} </>}
           </div>
         </div>
-        <Link href={`/classes/${classes.slug}`}>
+        <Link href={`/classes/${classes?.slug}`}>
+          
           <button className="btn btn-primary btn-md me-2" type="button">
             <i className="fa-solid fa-paper-plane me-2 ms-n1" />
-            Join Now
+            {classes?.classType==="afterSchool" ?  "Join Now ": "View Now"}
           </button>
         </Link>
       </div>

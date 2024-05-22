@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-
+ 
 function EventsCard(props) {
   const item = props && props.item;
   return (
@@ -30,7 +30,7 @@ function EventsCard(props) {
           {item && item.eventTime && item.eventTime.from} -{" "}
           {item && item.eventTime && item.eventTime.to}
         </p>
-        <h6 className="">
+        <h6>
           <Link className="text-nav" href={`events/${item && item.slug}`}>
             {item && item.title}
           </Link>

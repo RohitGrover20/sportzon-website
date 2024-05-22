@@ -35,7 +35,7 @@ function Fees({ params }) {
         ) : (
           <div className="card-body px-4">
             {fees &&
-              fees.map((fee, index) => {
+              fees?.map((fee, index) => {
                 return (
                   <div
                     className="sng-ord border rounded-3 mb-4 px-3 py-3"
@@ -57,7 +57,8 @@ function Fees({ params }) {
                           className="text-dark h6 mb-1"
                           style={{ textTransform: "capitalize" }}
                         >
-                          {fee.paymentMethod}/ {fee.paidAmount} INR
+                          {fee?.paymentMethod ? fee?.paymentMethod : "InSchool"}
+                          / {fee?.paidAmount} INR
                           <span className="text-muted ms-3"></span>
                         </h5>
                         <p className="m-0 text-muted">
@@ -66,15 +67,17 @@ function Fees({ params }) {
                         </p>
                       </div>
                     </a>
-                    <div className="collapse" id={fee._id} style={{}}>
+                    <div className="collapse" id={fee._id}>
                       <div className="card card-body">
-                        <p>{fee && fee.description}</p>
-                        <p className="mb-1">
-                          Transaction ID:
-                          <span className="text-dark fw-medium ms-3">
-                            #{fee?.transactionId.substring(4, 35)}
-                          </span>
-                        </p>
+                        <p>Description: {fee && fee.description}</p>
+                        {fee?.transactionId && (
+                          <p className="mb-1">
+                            Transaction ID:
+                            <span className="text-dark fw-medium ms-3">
+                              #{fee?.transactionId?.substring(4, 35)}
+                            </span>
+                          </p>
+                        )}
                         <div className="article-desc table-responsive">
                           <table className="table table-bordered">
                             <thead className="bg-secondary text-white">

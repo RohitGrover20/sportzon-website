@@ -67,7 +67,9 @@ function Checkout(props) {
 
   const handleOpenRazorpay = (data) => {
     var options = {
-      key: "rzp_test_1KAe5ngzKfHbdN", // Enter the Key ID generated from the Dashboard
+      // Test Key Id 
+      // key: "rzp_test_1KAe5ngzKfHbdN", // Enter the Key ID generated from the Dashboard
+      Key :"rzp_live_gk7iMvPaNzkvr2",
       amount: Number(data.amount * 100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: data.currency,
       name: "Sportzon",
@@ -143,7 +145,7 @@ function Checkout(props) {
           { withCredentials: true }
         )
         .then(() => {
-          alert(response.error.description);
+          alert(response?.error?.description);
         })
         .catch((err) => {
           console.log(err);
@@ -159,7 +161,7 @@ function Checkout(props) {
         className="exploi  rounded py-3 px-3 border"
         style={{ backdropFilter: "blur(10px)" }}
       >
-        {cart.length == 0 ? (
+        {cart?.length == 0 ? (
           <>
             <h3 className="offcanvas-title d-flex align-items-center mb-1">
               Your Cart is empty
@@ -224,7 +226,7 @@ function Checkout(props) {
                         <div className="count-input">
                           <span className="me-2">
                             {" "}
-                            <i className="fa fa-clock me-1"></i>Sloths
+                            <i className="fa fa-clock me-1"></i>Slots
                           </span>
                           {item &&
                             item.slots &&

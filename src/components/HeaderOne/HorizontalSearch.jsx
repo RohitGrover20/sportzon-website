@@ -19,6 +19,11 @@ function HorizontalSearch() {
       "_blank"
     );
   };
+
+  // Function to check if any field is filled
+  const isSearchDataFilled = () => {
+    return Object.values(search).some((value) => value !== "");
+  };
   return (
     <section
       className="position-relative p-0 m-0 venue-search-bar"
@@ -39,11 +44,12 @@ function HorizontalSearch() {
                     setSearch({ ...search, referrer: e.target.value });
                   }}
                 >
-                  <option disabled value="" selected>
+                  <option value="" selected>
                     --Select one--
                   </option>
                   <option value="events">Events</option>
                   <option value="venues">Venues</option>
+                  <option value="classes">Classes</option>
                 </select>
                 <label htmlFor="searchType">Search Type</label>
               </div>
@@ -60,7 +66,7 @@ function HorizontalSearch() {
                     setSearch({ ...search, state: e.target.value });
                   }}
                 >
-                  <option disabled value="">
+                  <option value="">
                     --Select one--
                   </option>
                   {state_arr &&
@@ -84,12 +90,12 @@ function HorizontalSearch() {
                     setSearch({ ...search, city: e.target.value });
                   }}
                 >
-                  <option disabled value="">
+                  <option value="">
                     --Select one--
                   </option>
                   {s_a[state_arr.indexOf(search?.state)] &&
                     s_a[state_arr.indexOf(search?.state)].split("|") &&
-                    s_a[state_arr.indexOf(search?.state) + 1]
+                    s_a[state_arr.indexOf(search?.state) ]
                       .split("|")
                       .map((item, index) => {
                         return <option key={index}>{item}</option>;
@@ -122,7 +128,7 @@ function HorizontalSearch() {
                     setSearch({ ...search, activity: e.target.value });
                   }}
                 >
-                  <option disabled>--select one--</option>
+                  <option value="">--select one--</option>
                   {option &&
                     option.map((item, index) => {
                       return <option key={index}>{item.value}</option>;
@@ -133,11 +139,16 @@ function HorizontalSearch() {
             </div>
             <div className="col-lg-2 p-1">
               <button
-                className="btn btn-orange w-100 mt-0"
+                className={` ${
+                  !isSearchDataFilled()
+                    ? "btn btn-grey w-100 mt-0"
+                    : "btn btn-orange w-100 mt-0"
+                }`}
                 onClick={() => {
                   //   e.preventDefault();
                   searchFunc();
                 }}
+                disabled={!isSearchDataFilled()}
               >
                 Search Availability
               </button>

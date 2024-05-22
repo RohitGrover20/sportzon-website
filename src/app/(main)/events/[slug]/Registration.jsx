@@ -118,7 +118,8 @@ function Registration(props) {
 
   const handleOpenRazorpay = (data) => {
     var options = {
-      key: "rzp_test_1KAe5ngzKfHbdN", // Enter the Key ID generated from the Dashboard
+      // key: "rzp_test_1KAe5ngzKfHbdN", // Enter the Key ID generated from the Dashboard
+      Key :"rzp_live_gk7iMvPaNzkvr2",
       amount: Number(data.amount * 100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: data.currency,
       name: "Sportzon",

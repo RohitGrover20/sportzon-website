@@ -3,7 +3,7 @@ const dev = {
 };
 
 const prod = {
-  API_URL: "https://backend.sportzon.in",
+  API_URL: "https://sportzon.in/api",
   // API_URL: "http://18.234.210.67:9000",
 };
 

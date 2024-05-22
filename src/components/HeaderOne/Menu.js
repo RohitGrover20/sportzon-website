@@ -46,6 +46,9 @@ function Menu() {
         <li>
           <Link href="/contact-us">Contact Us</Link>
         </li>
+        <li>
+          <Link href="/learning-section">Sports Learning Zone</Link>
+        </li>
       </ul>
       <ul className="nav-menu nav-menu-social align-to-right">
         <GeoLocation />

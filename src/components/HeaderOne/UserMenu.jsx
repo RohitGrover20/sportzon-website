@@ -27,7 +27,7 @@ function UserMenu(props) {
           aria-expanded="false"
         >
           <img
-            src={user ? user.profile : "/assets/img/userplaceholder.png"}
+            src={user?.profile!==null ? user?.profile : "/assets/img/userplaceholder.png"}
             className="img-fluid circle"
             alt="Profile"
           />

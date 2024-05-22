@@ -58,9 +58,9 @@ async function ClassDetails({ params }) {
               <Information data={data} />
             </div>
 
-            <div className="col-lg-5 col-md-5">
+           {data?.classType=="afterSchool" && <div className="col-lg-5 col-md-5">
               <Registration data={data} />
-            </div>
+            </div>}
           </div>
         </div>
       </section>

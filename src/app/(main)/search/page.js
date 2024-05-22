@@ -7,6 +7,7 @@ import EventsCard from "@/components/Cards/EventsCard";
 import SimpleCard from "@/components/Cards/SimpleCard";
 import Loading from "@/components/Loading";
 import NoDataFound from "@/components/NoDataFound";
+import ClassesCard from "@/components/Cards/ClassesCard";
 
 function Search() {
   const [loader, setLoader] = useState(false);
@@ -76,7 +77,7 @@ function Search() {
 
             <div className="row justify-content-center g-4">
               {data && data?.length>0 ? 
-                data.map((item, index) => {
+                data?.map((item, index) => {
                   return (
                     <div
                       className="col-xl-4 col-lg-4 col-md-4 col-sm-6"
@@ -84,12 +85,13 @@ function Search() {
                     >
                       {referrer == "venues" || referrer == "homepage" ? (
                         <SimpleCard item={item} />
-                      ) : (
+                      ) : referrer == "events" || referrer == "homepage" ? (
                         <EventsCard item={item} />
-                      )}
+                      ): <ClassesCard class={item}/>
+                      }
                     </div>
                   );
-                }) : <NoDataFound/>}
+                }) : <NoDataFound data={"res"}/>}
             </div>
           </div>
         </section>

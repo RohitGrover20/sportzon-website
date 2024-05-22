@@ -1,12 +1,17 @@
 import Script from 'next/script'
 import React from 'react'
 
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+// import App from './App';
 
 export const metadata = {
     title: 'Sportzon',
-    description: 'Developed by Rudra Arya',
+    description: 'Developed by Citiskape Pvt. ltd.',
 }
 function RootLayout({ children }) {
+    if (process.env.NODE_ENV) {
+        disableReactDevTools();
+      }
     return (
         <html lang="en">
             <head>
