@@ -1,14 +1,13 @@
-// "use client"
 import dynamic from "next/dynamic";
-import Image from "next/image";
+// import Image from "next/image";
 // import ClassesCard from "@/components/Cards/ClassesCard";
 const ClassesCard = dynamic(() => import("@/components/Cards/ClassesCard"), {
   ssr: false,
 });
 // import EventsCard from "@/components/Cards/EventsCard";
-const EventsCard = dynamic(() => import("@/components/Cards/EventsCard"), {
-  ssr: false,
-});
+// const EventsCard = dynamic(() => import("@/components/Cards/EventsCard"), {
+//   ssr: false,
+// });
 // import SimpleCard from "@/components/Cards/SimpleCard";
 const SimpleCard = dynamic(() => import("@/components/Cards/SimpleCard"), {
   ssr: false,
@@ -19,10 +18,10 @@ const BannerSlider = dynamic(
   { ssr: false }
 );
 // import HorizontalSearch from "@/components/HeaderOne/HorizontalSearch";
-const HorizontalSearch = dynamic(
-  () => import("@/components/HeaderOne/HorizontalSearch"),
-  { ssr: false }
-);
+// const HorizontalSearch = dynamic(
+//   () => import("@/components/HeaderOne/HorizontalSearch"),
+//   { ssr: false }
+// );
 // import Newsletter from "@/components/Newsletter";
 const Newsletter = dynamic(() => import("@/components/Newsletter"), {
   ssr: false,
@@ -33,14 +32,13 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"), {
 });
 import {
   getClasses,
-  getEvents,
   getHomeBanner,
   getTestimonials,
   getVenue,
 } from "@/libs/fetchData";
+import AboutUs from "@/components/AboutUs";
 export const revalidate = 10;
 export default async function Home() {
-  const eventData = await getEvents();
   const testimonialData = await getTestimonials();
   const testimonials = testimonialData?.data;
   const bannerData = await getHomeBanner();
@@ -49,306 +47,62 @@ export default async function Home() {
   const banners = bannerData && bannerData.data;
   const venuesData = await getVenue();
   const venues = venuesData && venuesData.data;
-  const events = eventData && eventData.data;
-
   return (
     <>
       {banners && <BannerSlider banners={banners} />}
-      <HorizontalSearch />
-      {/* Nearby Venues------------------------ */}
-      <section className="pt-3 pb-5 ">
-        <div className="container">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
-              <div className="sec-heading text-center">
-                <div className="label text-orange bg-light-orange d-inline-flex rounded-4 mb-2 font--medium">
-                  <span>Venues</span>
-                </div>
-                <h2 className="mb-1">Explore Venues Near You</h2>
-                <p className="test-muted fs-6">
-                  Discover and explore amazing venues near you for a wide range
-                  of sports and activities.
-                </p>
-              </div>
-              <div className="row justify-content-center g-4">
-                <div id="venue-slider">
-                  {venues &&
-                    venues?.map((item, index) => {
-                      return (
-                        <div key={index}>
-                          <SimpleCard item={item} />
-                        </div>
-                      );
-                    })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Features------------------------------- */}
-      <section className="pt-3 pb-0 " style={{ backgroundColor: "#f6f9fc" }}>
-        <div className="container">
-          <div className="row justify-content-between align-items-center mb-5">
-            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-              <div className="position-relative exloi py-lg-0 pb-4">
-                <div className="exloi-caption">
-                  <div className="label text-orange bg-light-orange d-inline-flex rounded-4 mb-2 font--medium">
-                    <span>Analysis</span>
-                  </div>
-                  <h2 className="mb-3 lh-base">
-                    Unleash &amp; your athletic journey with the ultimate sports
-                    companion!
-                  </h2>
-                  <p className="mb-0 fs-5 fs-light">
-                    We bring together venues, coaches, events, tournaments,
-                    marathons, and a host of incredible features to
-                    revolutionize your sporting journey.
-                  </p>
-                  <div className="clixs-serv mt-4">
-                    <div className="row px-3 py-4">
-                      <div className="col-sm-12 ps-0">
-                        <div className="d-flex align-items-start mb-3">
-                          <span className="text-orange px-3 py-2 rounded-2 bg-light-orange fs-2 mb-4">
-                            <i className="fa-solid fa-face-grin-stars" />
-                          </span>
-                          <div className="ps-3">
-                            <h5>Convenience</h5>
-                            <p>
-                              Finding and booking sports venues or coaches is
-                              just a few clicks away with our user-friendly
-                              interface.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="d-flex align-items-start mb-3">
-                          <span className="text-warning px-3 py-2 rounded-2 bg-light-warning fs-2 mb-4">
-                            <i className="fa-solid fa-seedling" />
-                          </span>
-                          <div className="ps-3">
-                            <h5>Extensive Variety</h5>
-                            <p>
-                              We cater to a wide range of sports and activities,
-                              ensuring that every enthusiast finds their perfect
-                              match on SportZon.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="d-flex align-items-start mb-3">
-                          <span className="text-success px-3 py-2 rounded-2 bg-light-success fs-2 mb-4">
-                            <i className="fa-solid fa-wallet" />
-                          </span>
-                          <div className="ps-3">
-                            <h5>Cost-Effective Solutions</h5>
-                            <p>
-                              Take advantage of our exclusive coupons and
-                              discounts to elevate your sports experience
-                              without breaking the bank.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="d-flex align-items-start">
-                          <span className="text-danger px-3 py-2 rounded-2 bg-light-danger fs-2 mb-4">
-                            <i className="fa-solid fa-globe" />
-                          </span>
-                          <div className="ps-3">
-                            <h5>Community Engagement</h5>
-                            <p>
-                              Connect with like-minded individuals, athletes,
-                              and coaches, fostering a vibrant sports community.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-              <div className="position-relative">
-                <Image
-                  src="/assets/img/sideImg.png"
-                  className="img-fluid"
-                  alt=""
-                  width={500}
-                  height={500}
-                ></Image>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* <HorizontalSearch /> */}
+      <AboutUs />
 
-      {/* Events---------------- */}
-      <section className="pt-0 pb-5">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-12">
-              <div className="sec-heading text-center mb-4">
-                <div className="label text-orange bg-light-orange d-inline-flex rounded-4 mb-2 font--medium">
-                  <span>Events</span>
-                </div>
-                <h2 className="mb-1">Explore Exciting Events Near You</h2>
-                <p className="text-muted fs-6">
-                  <p className="text-muted fs-6">
-                    Discover exciting events happening nearby and immerse
-                    yourself in a world of entertainment and experiences.
-                  </p>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-center g-4">
-            <div id="event-slider">
-              {events &&
-                events?.length > 0 &&
-                events?.map((item, index) => (
-                  <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
-                    <div className="card mb-4">
-                      <EventsCard item={item} />
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Sportzon----------------------- */}
       <section
-        className="position-relative , mb-3"
+        className="pt-5 pb-5"
         style={{
-          backgroundColor: "#12245a",
-          clipPath: "polygon(0 0, 100% 0, 100% 95%, 0% 100%)",
+          backgroundImage: 'url("/assets/img/orange-bg.png")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="container">
           <div className="row align-items-center justify-content-center">
-            <div className="col-xl-7 col-lg-7 col-md-11 mb-3">
-              <div className="sec-heading text-center">
-                <div className="label text-success bg-light-success d-inline-flex rounded-4 mb-2 font--medium">
-                  <span>Our Features</span>
+            <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
+              <div className="sec-heading text-center mt-4">
+                <h1 className="mb-1 text-white fw-light display-1 text-center venues-title">
+                  Explore Venues Near You
+                </h1>
+                <div className="d-flex justify-content-center">
+                  <p className="text-white fs-5 w-50 venues-subtitle">
+                    Discover and explore amazing venues near you for a wide
+                    range of sports and activities.
+                  </p>
                 </div>
-                <h2 className="mb-1 text-white">Why Choose Sportzon?</h2>
-                <p className="text-muted fs-6">
-                  Experience the best in sports with Sportzon — a hub for top
-                  venues, expert coaches, and exciting events. Elevate your
-                  game, whether you're a pro or just starting. Choose Sportzon
-                  for a seamless sports adventure.
-                </p>
+              </div>
+              <div className="row justify-content-center g-4">
+                <div id="venue-slider">
+                  {venues &&
+                    venues.map((item, index) => (
+                      <div key={index}>
+                        <SimpleCard item={item} />
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
-          <div className="row g-xl-5 g-lg-5 g-4">
-            <div className="col-xl-6 col-lg-6 col-md-12">
-              <div className="hgh-features-wrap d-flex gray-simple rounded-4 p-3">
-                <div className="row align-items-center">
-                  <div className="col-sm-3 col-3 h-100">
-                    <div className="hgh-features-icons bg-white d-flex align-items-center justify-content-center rounded-3 h-100 py-3 h-mob-auto">
-                      <i className="fa-solid fa-tree text-orange fs-1" />
-                    </div>
-                  </div>
-                  <div className="col-sm-9 col-9">
-                    <div className="hgh-features-captions py-3 pe-3">
-                      <h4 className="mb-2 fs-5">
-                        Comprehensive Sports Ecosystem
-                      </h4>
-                      <p className="m-0">
-                        SportZon provides a complete and diverse sports
-                        ecosystem, bringing together venues, coaches, events,
-                        tournaments, and marathons all in one platform. Say
-                        goodbye to multiple searches and embrace the convenience
-                        of a centralized sports hub.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* End Col */}
-            <div className="col-xl-6 col-lg-6 col-md-12">
-              <div className="hgh-features-wrap d-flex gray-simple rounded-4 p-3">
-                <div className="row align-items-center">
-                  <div className="col-sm-3 col-3 h-100">
-                    <div className="hgh-features-icons bg-white d-flex align-items-center justify-content-center rounded-3 h-100 py-3 h-mob-auto">
-                      <i className="fa fa-football text-orange fs-1" />
-                    </div>
-                  </div>
-                  <div className="col-sm-9 col-9">
-                    <div className="hgh-features-captions py-3 pe-3">
-                      <h4 className="mb-2 fs-5">Top-Notch Venues</h4>
-                      <p className="m-0">
-                        Explore a curated selection of top-notch sports venues,
-                        ensuring you have access to the best facilities for your
-                        favourite sports activities.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* End Col */}
-            <div className="col-xl-6 col-lg-6 col-md-12">
-              <div className="hgh-features-wrap d-flex gray-simple rounded-4 p-3">
-                <div className="row align-items-center">
-                  <div className="col-sm-3 col-3 h-100">
-                    <div className="hgh-features-icons bg-white d-flex align-items-center justify-content-center rounded-3 h-100 py-3 h-mob-auto">
-                      <i className="fa-solid fa-user text-orange fs-1" />
-                    </div>
-                  </div>
-                  <div className="col-sm-9 col-9">
-                    <div className="hgh-features-captions py-3 pe-3">
-                      <h4 className="mb-2 fs-5">Expert Coaches</h4>
-                      <p className="m-0">
-                        Connect with experienced and qualified coaches who can
-                        take your skills to the next level, regardless of your
-                        level of expertise.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* End Col */}
-            <div className="col-xl-6 col-lg-6 col-md-12">
-              <div className="hgh-features-wrap d-flex gray-simple rounded-4 p-3">
-                <div className="row align-items-center">
-                  <div className="col-sm-3 col-3 h-100">
-                    <div className="hgh-features-icons bg-white d-flex align-items-center justify-content-center rounded-3 h-100 py-3 h-mob-auto">
-                      <i className="fa fa-eye text-orange fs-1" />
-                    </div>
-                  </div>
-                  <div className="col-sm-9 col-9">
-                    <div className="hgh-features-captions py-3 pe-3">
-                      <h4 className="mb-2 fs-5">Stay Updated on Events</h4>
-                      <p className="m-0">
-                        Stay ahead of the game with up-to-date event listings,
-                        allowing you to participate in thrilling tournaments and
-                        marathons or be a part of the cheering crowd.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* End Col */}
-          </div>
-          {/* End Row */}
         </div>
       </section>
 
       {/* Classes------------------------ */}
-      <section className="pt-0 pb-3">
+      <section className="pt-5 pb-3">
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-10 col-md-11">
               <div className="sec-heading text-center">
-                <div className="label text-orange bg-light-orange d-inline-flex rounded-4 mb-2 font--medium">
-                  <span>Classes</span>
-                </div>
-                <h2 className="mb-1">Experience sports at its best</h2>
-                <p className="test-muted fs-6">
+                <h1
+                  className="mb-1 fw-light display-1 text-center classes-title"
+                  style={{ color: "#25aeda" }}
+                >
+                  Evolve With <span className="text-orange">Sportzon</span>{" "}
+                </h1>
+                <p className="fs-6 classes-subtitle">
                   Elevate your game with us. State-of-the-art facilities, expert
                   coaching, and a community dedicated to sporting excellence.
                   Discover the thrill of sports at its best.
@@ -356,18 +110,18 @@ export default async function Home() {
               </div>
               <div className="row justify-content-center g-4 mb-3 mt-3">
                 <ul
-                  className="nav nav-tabs"
+                  className="nav nav-tabs "
                   id="myTab"
                   role="tablist"
                   style={{ margin: "20px" }}
                 >
                   <li
-                    className="nav-item fs-2"
+                    className="nav-item fs-2 "
                     role="presentation"
                     style={{ fontSize: "200px" }}
                   >
                     <button
-                      className="nav-link active"
+                      className="nav-link active tabs-title"
                       id="inSchool-tab"
                       data-bs-toggle="tab"
                       data-bs-target="#inSchool"
@@ -375,14 +129,14 @@ export default async function Home() {
                       role="tab"
                       aria-controls="inSchool"
                       aria-selected="true"
-                      style={{ fontSize: "15px" }}
+                      style={{ fontSize: "22px" }}
                     >
-                      <i class="fa-solid fa-school"></i> In School Classes
+                      <i className="fa-solid fa-school"></i> In School Classes
                     </button>
                   </li>
                   <li className="nav-item" role="presentation">
                     <button
-                      className="nav-link"
+                      className="nav-link tabs-title"
                       id="afterSchool-tab"
                       data-bs-toggle="tab"
                       data-bs-target="#afterSchool"
@@ -390,9 +144,9 @@ export default async function Home() {
                       role="tab"
                       aria-controls="afterSchool"
                       aria-selected="false"
-                      style={{ fontSize: "15px" }}
+                      style={{ fontSize: "22px" }}
                     >
-                      <i class="fa fa-clock-o"></i> After School Classes
+                      <i className="fa fa-clock-o"></i> After School Classes
                     </button>
                   </li>
                 </ul>

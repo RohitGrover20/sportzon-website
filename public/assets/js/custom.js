@@ -475,7 +475,7 @@
 
   // Venue Slider
   $("#venue-slider").slick({
-    slidesToShow: 4,
+    slidesToShow: 2,
     dots: true,
     centerMode: false,
     centerPadding: "0px",
@@ -640,7 +640,7 @@
 
   // Our Testimonials
   $("#testimonials-slide").slick({
-    slidesToShow: 3,
+    slidesToShow: 4,
     dots: true,
     centerMode: false,
     centerPadding: "0px",

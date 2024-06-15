@@ -1,29 +1,20 @@
 "use client";
 import NoDataFound from "@/components/NoDataFound";
 import React, { useEffect, useState } from "react";
-// import ContactForm from "./ContactForm";
 
 function Page() {
   const [videos, setVideos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const videosPerPage = 5; // Change videos per page to 5
-
-  // Use different video sizes (width and height) in pixels
-  const videoSizes = [
-    { width: 560, height: 315 },
-    { width: 60, height: 30 },
-    { width: 70, height: 45 },
-  ];
+  const videosPerPage = 5;
 
   // Function to fetch videos from the YouTube API
   const fetchVideos = async (page) => {
     // Sample YouTube video URLs (you can replace these with your own YouTube video URLs or use the YouTube API to fetch them)
     const videoUrls = [
-      "https://youtu.be/CJc-hVDJxcU?si=O5eY6wYkX6V8Crax", // Video 1
-      "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Video 2
-      // Add more YouTube video URLs as needed
+      "https://youtu.be/CJc-hVDJxcU?si=O5eY6wYkX6V8Crax",
+      "https://www.youtube.com/embed/3JZ_D3ELwOQ",
       "https://www.youtube.com/embed/3JZ_D3ELwOQ",
       "https://www.youtube.com/embed/3JZ_D3ELwOQ",
       "https://www.youtube.com/embed/3JZ_D3ELwOQ",
@@ -57,15 +48,9 @@ function Page() {
     setTotalPages(Math.ceil(videosData.length / videosPerPage));
   };
 
-  // Fetch videos when the component mounts and when the current page changes
   useEffect(() => {
     fetchVideos(currentPage);
   }, [currentPage]);
-
-  // Function to handle pagination
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
 
   return (
     <>
@@ -83,44 +68,8 @@ function Page() {
             </div>
           </div>
         </div>
-        {/* <div className="video-grid">
-          {videos.map((video, index) => (
-            index >= (currentPage - 1) * videosPerPage && index < currentPage * videosPerPage && (
-              <div key={video.id} className="video-item">
-                <div style={{ width: "500px" }}>
-                  <iframe
-                    className="card-img-top"
-                    width="100%"
-                    height="315"
-                    src={video.url}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-            )
-          ))}
-        </div> */}
-
-        {/* Pagination Controls */}
-        {/* <div className="pagination-controls">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <span>Page {currentPage}</span>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div> */}
-        <div >
-          <NoDataFound/>
+        <div>
+          <NoDataFound />
         </div>
       </section>
       <div className="clearfix"></div>

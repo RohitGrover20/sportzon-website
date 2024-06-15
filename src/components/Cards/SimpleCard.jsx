@@ -1,94 +1,50 @@
 import Link from "next/link";
 import React from "react";
-import Rating from "../Rating";
 
 async function SimpleCard(props) {
   const item = props && props.item;
   return (
-    <div
-      className="priocs rounded-3 bg-white p-3 m-1
-       "
-      style={{
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)", // Add a box shadow
-        opacity: 0.9,
-        width: "300px",
-        marginBottom: "40px"
-      }}
-    >
-      <div className="zoom-effect-wrapper">
-        <div className="zoom-effect-img">
-          <img
-            src={
-              item && item.gallery[0]
-                ? item.gallery[0]
-                : "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            }
-            className="img-fluid rounded-4"
-            alt="Image"
-            style={{ width: "100%", height: "180px", objectFit: "cover" }}
-          />
-        </div>
-      </div>
-      <div className="pt-3 mt-lg-2 px-2">
-        <div className="d-flex justify-content-between">
-          {/* <span className="text-warning bg-light-warning label ms-2"><i className='fa fa-star' /> 4.5</span> */}
-        </div>
-        <h6
-          className="mb-2 mt-2"
-          style={{
-            maxWidth: "100%",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          <Link
-            href={`/venues/${item && item.slug}`}
-            className="d-inline-block text-truncate"
-            data-bs-toggle="tooltip"
-            title={item && item.title}
-          >
-            {item && item.title}
-          </Link>
-        </h6>
+    <>
+      <div
+        className="rounded-3 position-relative zoom-on-hover border border-outline home-venue-card"
+        style={{
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
+          opacity: 0.9,
+          width: "500px",
+          marginBottom: "40px",
+          marginRight: "10px",
+        }}
+      >
+        <div className="zoom-effect-wrapper">
+          <div className="zoom-effect-img position-relative">
+            <img
+              src={
+                item && item?.gallery[0]
+                  ? item?.gallery[0]
+                  : "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              }
+              className="img-fluid rounded-4"
+              alt="Image"
+              style={{ width: "100%", height: "250px", objectFit: "cover" }}
+            />
 
-        <span className="text-success bg-light-success label">
-          <i className="fa fa-map-marker" /> {item && item.city},{" "}
-          {item && item.state}
-        </span>
-
-        <div className="row justify-content-between align-items-center">
-          <div className="col-lg-6 col-sm-6 col-xs-12">
-            {/* <div className="d-flex justify-content-around">
-                            {item && item.activities && item.activities.map((item, index) => {
-                                return (
-                                    <small key={index}>{item.value}</small>
-                                )
-                            })} */}
-            {/* <img src="assets/sport-icon/cricket.png" style={{ width: "20px", height: "20px" }} />
-                            <img src="assets/sport-icon/football.png" style={{ width: "20px", height: "20px" }} />
-                            <strong>+1 More</strong> */}
-            {/* </div> */}
-
-            <Rating rating={item?.rating} />
-            {/* <div className="d-flex align-items-center">
-              <div className="d-flex align-items-center small">
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star text-warning me-1" />
-                <span className="fa-solid fa-star text-muted" />
-              </div>
-              
-            </div> */}
-          </div>
-          <div className="col-lg-6 col-sm-6 col-xs-6 p-0 text-end">
             <Link href={`/venues/${item && item.slug}`}>
-              <button className="btn btn-md btn-primary">Book Now</button>
+              <button className="btn btn-orange btn-sm position-absolute top-0 end-0 m-3">
+                Book Now
+              </button>
             </Link>
           </div>
         </div>
+        <div className="card-body position-absolute bottom-0 start-0 w-100 text-white d-flex flex-column align-items-center">
+          <h5 className="card-title">{item && item.title}</h5>
+          <p className="card-text">
+            {item && item.state}
+            {" , "}
+            {item && item.city}
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

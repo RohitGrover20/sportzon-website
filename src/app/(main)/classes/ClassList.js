@@ -6,8 +6,17 @@ function ClassList(props) {
 
   return (
     <div>
-      <ul className="nav nav-tabs" id="myTab" role="tablist" style={{margin:"20px"}}>
-        <li className="nav-item fs-2" role="presentation" style={{fontSize:"200px"}}>
+      <ul
+        className="nav nav-tabs"
+        id="myTab"
+        role="tablist"
+        style={{ margin: "20px" }}
+      >
+        <li
+          className="nav-item fs-2"
+          role="presentation"
+          style={{ fontSize: "200px" }}
+        >
           <button
             className="nav-link active"
             id="inSchool-tab"
@@ -17,9 +26,9 @@ function ClassList(props) {
             role="tab"
             aria-controls="inSchool"
             aria-selected="true"
-            style={{fontSize:"15px"}}
+            style={{ fontSize: "15px" }}
           >
-           <i class="fa-solid fa-school"></i> In School Classes
+            <i className="fa-solid fa-school"></i> In School Classes
           </button>
         </li>
         <li className="nav-item" role="presentation">
@@ -32,9 +41,9 @@ function ClassList(props) {
             role="tab"
             aria-controls="afterSchool"
             aria-selected="false"
-            style={{fontSize:"15px"}}
+            style={{ fontSize: "15px" }}
           >
-            <i class="fa fa-clock-o"></i> After School Classes
+            <i className="fa fa-clock-o"></i> After School Classes
           </button>
         </li>
       </ul>
@@ -47,7 +56,7 @@ function ClassList(props) {
         >
           <div className="row">
             {classes &&
-              classes.map((item, index) => {
+              classes?.map((item, index) => {
                 if (item.classType === "inSchool") {
                   return (
                     <div className="col-sm-4" key={index}>
@@ -67,7 +76,7 @@ function ClassList(props) {
         >
           <div className="row">
             {classes &&
-              classes.map((item, index) => {
+              classes?.map((item, index) => {
                 if (item.classType === "afterSchool") {
                   return (
                     <div className="col-sm-4" key={index}>

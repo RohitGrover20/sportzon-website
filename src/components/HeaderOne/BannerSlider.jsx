@@ -1,25 +1,67 @@
 import React from "react";
+import Image from "next/image";
+import HomeSearchBar from "../Header/HomeSearchBar";
 function BannerSlider(props) {
   const banners = props && props.banners;
   return (
     <div className="row">
-      <div
-        className="col-xl-12 col-lg-12 col-md-12 px-0 our-banner"
-        id="hero-slider"
-      >
-        {/* <div className="our-banner" id="hero-slider"> */}
-        {banners &&
-          banners.map((item, index) => {
-            return (
-              <div
-                className="single-items"
-                // style={{ height: "500px" }}
-                key={index}
-              >
-                <img className="w-100" src={item?.file} alt={item?.title}/>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-lg-12 position-relative">
+            <div
+              className="position-absolute start-47 text-left ml-5"
+              style={{ top: "20%" }}
+            >
+              <div className="banner-title">
+                <h1
+                  className="w-100 text-uppercase fs-7 display-1 text-white"
+                  style={{
+                    fontSize: "7vw",
+                    maxWidth: "50vw",
+                    marginLeft: "5vw",
+                    letterSpacing: "-1px",
+                  }}
+                >
+                  What's Your
+                </h1>
+                <h1
+                  className="text-uppercase display-1 mt-n4 fw-bold text-white"
+                  style={{
+                    maxWidth: "90vw",
+                    fontSize: "12vw",
+                    marginLeft: "5vw",
+                    letterSpacing: "-1px",
+                  }}
+                >
+                  Game ?
+                </h1>
+                <h2
+                  className="position-absolute text-white"
+                  style={{
+                    maxWidth: "14em",
+                    marginLeft: "5vw",
+                    marginTop: "110px auto",
+                    fontSize: "3vw",
+                  }}
+                >
+                  Click to find the perfect activity for you
+                </h2>
               </div>
-            );
-          })}
+              <div style={{ marginTop: "190px", marginLeft: "5vw" }}>
+                <HomeSearchBar />
+              </div>
+            </div>
+            <Image
+              src="/assets/img/homebanner.png"
+              width={1000}
+              height={1000} // Set a fixed height for the aspect ratio
+              layout="responsive" // Set the layout to responsive
+              alt="banner"
+              className="w-100 banner-image" // Make the image responsive within its container
+              style={{ height: "50px" }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

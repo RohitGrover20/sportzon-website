@@ -1,101 +1,80 @@
 import React from "react";
 import DOMPurify from "isomorphic-dompurify";
-import Link from "next/link";
-import Rating from "../Rating";
 
 function ClassesCard(props) {
-  const classes = props && props.class;
+  const classes = props && props?.class;
   let cleanDescription = DOMPurify.sanitize(classes?.description);
   return (
     <div
-      className="priocs rounded-3 bg-white p-3"
+      className="rounded-4 zoom-on-hover"
       style={{
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)", // Add a box shadow
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
         opacity: 0.9,
         marginBottom: "20px",
+        overflow: "hidden",
       }}
     >
       <div className="zoom-effect-wrapper">
         <div className="zoom-effect-img">
           <img
             src={classes?.banner}
-            className="img-fluid rounded-4"
+            className="img-fluid"
             alt={classes?.slug}
             style={{ height: "200px", width: "100%", objectFit: "cover" }}
           />
         </div>
       </div>
-      {/* <div className="col-xl-12 col-lg-12 col-md-12 col-xl-12 px-xl-12"> */}
-      {/* Top Item */}
-      <div className="d-flex align-items-center pt-3 py-2">
-        <span className="label bg-light-orange font--medium text-orange me-3">
-          <i className="fa fa-map-marker" /> {classes?.city}, {classes?.state}
-        </span>
-        <span className="label bg-light-success font--medium text-success me-3">
-          <i className="fa fa-bookmark" /> {classes?.activity}
-        </span>
-      </div>
-      {/* Item Title */}
-      <h5 className="lh-base">{classes?.title}</h5>
-      <p
-        dangerouslySetInnerHTML={{
-          __html:
-            cleanDescription.length > 150
-              ? `${cleanDescription.substring(0, 150) + "...."}`
-              : cleanDescription,
-        }}
-      />
-      {/* Item Rate & review */}
-
-      <div className="d-flex justify-content-between align-items-center">
-        <div>
-          <Rating rating={classes?.rating} />
+      <div className="bg-orange" color="#ff611a">
+        <div className="d-flex align-items-center  justify-content-center pt-3">
+          <span className="label font--medium text-orange me-3 bg-white">
+            <i className="fa fa-map-marker" /> {classes?.city}, {classes?.state}
+          </span>
+          <span className="label bg-white text-orange font--medium me-3">
+            <i className="fa fa-bookmark" /> {classes?.activity}
+          </span>
         </div>
-        <div className="h6">
-          <i className="fa fa-users" /> Trainer 
-          {classes &&
-            classes?.coaches &&
-            classes?.coaches.map((item, index) => {
-              return (
-                <span className="badge badge-dark ms-1" key={index}>
-                  {item?.label}
-                </span>
-              );
-            })}
+        <h5 className="lh-base text-center mt-3 fs-3 text-white">
+          {classes?.title}
+        </h5>
+        <div className="m-3 text-white">
+          <p
+            dangerouslySetInnerHTML={{
+              __html:
+                cleanDescription.length > 150
+                  ? `${cleanDescription.substring(0, 150) + "...."}`
+                  : cleanDescription,
+            }}
+          />
+          <h5 className="text-white text-center">Trainer: Richa Kocher</h5>
+          <hr style={{ width: "30" }} />
         </div>
-      </div>
 
-      {/* <div className="d-flex"> */}
-      <div
-        className="d-flex align-items-center justify-content-between p-0"
-        style={{ justifyContent: "between" }}
-      >
-        <div className="edlois">
-        {classes?.classType==="afterSchool" && 
-          <small
-            className="text-success"
-            style={{ textTransform: "capitalize" }}
-          >
-            {classes && classes?.feesFrequency == "oneTime"
-              ? "One Time"
-              : classes?.feesFrequency}
-          </small>
-}
-          <div className="h3 fw-semibold text-dark">
-           {classes && classes?.classType==="afterSchool" && 
-            <><i className="fa fa-rupee me-1"></i>
-            { classes?.fees} </>}
+        <div
+          className="d-flex align-items-center justify-content-between p-0"
+          style={{ justifyContent: "between" }}
+        >
+          <div className="edlois">
+            {classes?.classType === "afterSchool" && (
+              <small
+                className="text-success"
+                style={{ textTransform: "capitalize" }}
+              >
+                {classes && classes?.feesFrequency == "oneTime"
+                  ? "One Time"
+                  : classes?.feesFrequency}
+              </small>
+            )}
+            <div className="h3 fw-semibold text-dark">
+              {classes && classes?.classType === "afterSchool" && (
+                <>
+                  <i className="fa fa-rupee me-1"></i>
+                  {classes?.fees}{" "}
+                </>
+              )}
+            </div>
           </div>
         </div>
-        <Link href={`/classes/${classes?.slug}`}>
-          
-          <button className="btn btn-primary btn-md me-2" type="button">
-            <i className="fa-solid fa-paper-plane me-2 ms-n1" />
-            {classes?.classType==="afterSchool" ?  "Join Now ": "View Now"}
-          </button>
-        </Link>
       </div>
-      {/* </div> */}
     </div>
   );
 }

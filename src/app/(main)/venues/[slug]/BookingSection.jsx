@@ -2,26 +2,33 @@
 import React from "react";
 
 function BookingSection(props) {
-  const venue = props && props.venue;
+  const venue = props && props?.venue;
+  const handleBookNow = () => {
+    const section = document.getElementById("book-now-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
-    <div className="position-relative mb-0 mb-lg-5 p-0 m-0">
-      <div className="d-flex my-1 justify-content-around p-0">
+    <div className="position-relative mb-5 mb-lg-5 p-0 m-5 book-btn">
+      <div className="d-flex my-1 justify-content-around p-0 pb-1">
         <button
-          className="btn btn-primary m-1"
-          onClick={() => {
-            window.location.replace(`/booking?venue=${venue && venue.slug}`);
-          }}
+          className="btn btn-lg"
+          style={{ background: "#0a5993" }}
+          // onClick={() => {
+          //   window.location.replace(`/booking?venue=${venue && venue?.slug}`);
+          // }}
+          onClick={handleBookNow}
         >
-          <i className="fa fa-book me-1" /> Book Now
+          <p className="text-white fs-6 pb-0 mb-0">Book Now</p>
         </button>
-        {/* </a> */}
         <button
-          className="btn btn-outline-orange m-1"
+          className="btn btn-lg bg-orange"
           onClick={() => {
             window.location.replace(`/offering-for-corporates`);
           }}
         >
-          Bulk/ Corporate
+          <p className="text-white fs-6 pb-0 mb-0 ">Bulk/ Corporate</p>
         </button>
       </div>
     </div>

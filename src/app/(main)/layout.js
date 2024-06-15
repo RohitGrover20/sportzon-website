@@ -20,13 +20,12 @@ export default function RootLayout({ children }) {
       
       <head>
         <meta charSet="utf-8" />
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link
           rel="icon"
           type="image/x-icon"
-          href="/assets/img/logo/fav-color.png"
+          href="/assets/img/Sportzon-EIcon.png"
         />
         <link href="/assets/css/styles.css" rel="stylesheet" />
         <link
@@ -74,8 +73,20 @@ export default function RootLayout({ children }) {
         ></Script> */}
       </head>
       <body>
-        <Suspense fallback={<Loading />}>
+        {/* <Suspense fallback={<Loading />}>
           <ErrorBoundary fallback={<Error />}>
+            <Context>
+              <div id="main-wrapper">
+                <HeaderOne />
+                <div className="clearfix"></div>
+                {children}
+              </div>
+              <Footer />
+            </Context>
+          </ErrorBoundary>
+        </Suspense> */}
+        <Suspense fallback={<Loading />}>
+          <ErrorBoundary FallbackComponent={Error}>
             <Context>
               <div id="main-wrapper">
                 <HeaderOne />

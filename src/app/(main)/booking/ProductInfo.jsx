@@ -1,5 +1,5 @@
 "use client";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
 import React, { useState } from "react";
 import Select from "react-select";
 import * as Yup from "yup";
@@ -19,66 +19,47 @@ function ProductInfo(props) {
     date: new Date(),
     court: "",
     slots: [],
-    // quickselecthub: "",
     priceType: "",
     startDate: "",
     endDate: "",
+    discount: "",
   };
 
   const validationSchema = Yup.object({
-    // quickselecthub: Yup.string().required("This is required"),
     activity: Yup.string().required("Activity is required"),
     date: Yup.string().required("Date is required"),
     slots: Yup.array().min(1).required("Slots are required"),
     court: Yup.string().required("Court is required"),
+    discount: Yup.string()
+      .uppercase()
+      .oneOf(["SWC25D", "SWC40D", "SWC50D"], "Invalid coupon code"),
   });
-  // const validationSchema2 = Yup.object({
-  //   quickselecthub: Yup.string().required("This is required"),
-  //   priceType: Yup.string().required("Price Type is required"),
-  //   startDate: Yup.string().required("Date is required"),
-  //   endDate: Yup.string().required("Date is required"),
-  // });
 
-  // const onSubmit = (values, { setFieldValue }) => {
-  //   setCart([
-  //     ...cart,
-  //     {
-  //       ...values,
-  //       pricing: pricing,
-  //       status: "upcoming",
-  //       amount:
-  //         values && values?.slots?.length > 0 && values?.court.length > 0
-  //           ? parseInt(values.slots.length) * pricing
-  //           : venueprice,
-  //       gst:
-  //         ((values && values?.slots?.length > 0 && values?.court.length > 0
-  //           ? parseInt(values.slots.length) * pricing
-  //           : venueprice) *
-  //           18) /
-  //         100,
-  //     },
-  //   ]);
-  //   setFieldValue("court", "");
-  // };
-  const onSubmit = (values, { setFieldValue }) => {
-    // Calculate the original amount based on the number of slots and court selection
-    const originalAmount =
-      values && values?.slots?.length > 0 && values?.court.length > 0
-        ? parseInt(values.slots.length) * pricing
-        : venueprice;
-  
-    // Define the discount rate
-    const discountRate = 0.25;
-  
-    // Apply the discount conditionally based on disval
-    const discountedAmount =
-    props?.venue?.slug == "sportzon-wave-city"
-        ? originalAmount * (1 - discountRate)
-        : originalAmount;
-  
-    // Calculate GST on the discounted amount
+  const onSubmit = (values, { resetForm }) => {
+    let originalAmount = 0;
+    if (values?.slots.length > 0 && values?.court.length > 0) {
+      originalAmount =
+        values.slots.length === 1 ? pricing : pricing * values.slots.length;
+    } else {
+      originalAmount = venueprice;
+    }
+
+    // Define the discount rates
+    const discountRates = {
+      SWC25D: 0.25,
+      SWC40D: 0.4,
+      SWC50D: 0.5,
+    };
+
+    const discountRate =
+      values.discount && discountRates[values.discount.toUpperCase()]
+        ? discountRates[values.discount.toUpperCase()]
+        : 0;
+
+    let discountedAmount = originalAmount * (1 - discountRate);
+
     const gst = (discountedAmount * 18) / 100;
-  
+
     // Add the item to the cart with the discounted amount and GST
     setCart([
       ...cart,
@@ -90,38 +71,21 @@ function ProductInfo(props) {
         gst: gst,
       },
     ]);
-  
-    // Reset the court field
-    setFieldValue("court", "");
+    resetForm(true);
   };
-  
-  
+
   return (
-    <div className="col-xl-4 col-lg-4 col-lg-offset-1">
-      <div className="border gray-simple rounded">
-        <div className="bg-primary py-3 px-3 rounded-top">
-          <h5 className="pb-0 text-white" style={{ fontWeight: "normal" }}>
-            {venue && venue.title}
-          </h5>
-          <small className="d-flex align-items-center fs-15 lh-base text-white">
-            <i className="fa fa-map-marker text-white me-1" />
-            {venue && venue.city}
-          </small>
-        </div>
+    <div className="col-xl-12 col-lg-12 col-lg-offset-1 pt-3">
+      <div className="border rounded card">
         <Formik
           initialValues={initialValues}
-          // validationSchema={() => {
-          //   return val !== "playzone"
-          //     ? validationSchema2
-          //     : validationSchema;
-          // }}
           validationSchema={() => validationSchema}
           onSubmit={onSubmit}
         >
           {({ values, setFieldValue, dirty, isValid }) => {
             let slots = [];
             const filteredCourt =
-              courts && courts.filter((ele) => ele.slug == values.court);
+              courts && courts?.filter((ele) => ele.slug == values?.court);
             pricing =
               filteredCourt && filteredCourt[0] && filteredCourt[0].pricing;
 
@@ -175,29 +139,30 @@ function ProductInfo(props) {
             return (
               <Form>
                 <div className="row g-4  pb-md-3  mb-md-1 align-items-center mt-2 px-3 ">
-                  <h5 className="text-center pb-0 mb-0">Book Your Play Zone</h5>
-                  <div className="col-sm-4">
-                    {/* <label className="form-label">
-                      <strong>SwiftPick Hub</strong>
-                    </label> */}
+                  <h5 className="text-center pb-0 mb-0 theme-color fw-bold">
+                    Book Your Play Zone
+                  </h5>
+                  <div>
+                    {props?.venue?.slug == "sportzon-wave-city" && (
+                      <div className="alert alert-info text-center">
+                        <strong className="fw-bold fs-4 text-success">
+                          Special Offer!
+                        </strong>{" "}
+                        <br />
+                        Get a{" "}
+                        <span className="text-danger font-weight-bold">
+                          25% discount
+                        </span>{" "}
+                        on your booking! Use{" "}
+                        <span className="badge badge-warning fs-6">
+                          CODE: SWC25D
+                        </span>
+                      </div>
+                    )}
                   </div>
-
-                  <div className="col-sm-8">
-                    {/* <Field
-                      name="quickselecthub"
-                      as="select"
-                      className="form-select"
-                      onChange={(e) => {
-                        setFieldValue("quickselecthub", e?.target?.value);
-                        setVal(e.target.value)
-                      }}
-                    >
-                      <option value="">-- Select an activity --</option>
-                      <option value="venuebook">Instant Booking Venue</option>
-                      <option value="playzone">QuickPlay Zone</option>
-                    </Field> */}
-                  </div>
-                  {values.quickselecthub == "venuebook" && (
+                  <div className="col-sm-4"></div>
+                  <div className="col-sm-8"></div>
+                  {values?.quickselecthub == "venuebook" && (
                     <>
                       <div className="col-sm-4">
                         <label className="form-label">
@@ -219,7 +184,6 @@ function ProductInfo(props) {
                                 ? props?.venue?.weekPrice
                                 : props?.venue?.monthPrice
                             );
-                            //  venueprice(e.target.value);
                           }}
                         >
                           <option value="">-- Select a price --</option>
@@ -268,11 +232,12 @@ function ProductInfo(props) {
                       </div>
                     </>
                   )}
-                  {/* {values?.quickselecthub == "playzone" && ( */}
                   <>
                     <div className="col-sm-4">
                       <label className="form-label">
-                        <strong>Activity</strong>
+                        <strong className="theme-color">
+                          Activity<span className="text-danger">*</span>
+                        </strong>
                       </label>
                     </div>
                     <div className="col-sm-8">
@@ -300,7 +265,9 @@ function ProductInfo(props) {
                     </div>
                     <div className="col-sm-4">
                       <label className="form-label">
-                        <strong>Court</strong>
+                        <strong className="theme-color">
+                          Court<span className="text-danger">*</span>
+                        </strong>
                       </label>
                     </div>
                     <div className="col-sm-8">
@@ -313,11 +280,12 @@ function ProductInfo(props) {
                           setFieldValue("slots", []);
                         }}
                       >
-                        {courts.filter((el) => el.activity == values.activity)
-                          .length == 0 ? (
+                        {courts?.filter(
+                          (el) => el?.activity == values?.activity
+                        ).length == 0 ? (
                           <>
                             <option value="">--Select a court--</option>
-                            <option disabled selected>
+                            <option disabled selected value="">
                               No Courts Available
                             </option>
                           </>
@@ -331,7 +299,8 @@ function ProductInfo(props) {
                             .map((item, index) => {
                               return (
                                 <option key={index} value={item.slug}>
-                                  {item.title} - Rs.{item.pricing}
+                                  {item.title} - Rs.
+                                  {item.pricing + item.pricing * (18 / 100)}
                                 </option>
                               );
                             })}
@@ -339,7 +308,9 @@ function ProductInfo(props) {
                     </div>
                     <div className="col-sm-4">
                       <label className="form-label">
-                        <strong>Date</strong>
+                        <strong className="theme-color">
+                          Date<span className="text-danger">*</span>
+                        </strong>
                       </label>
                     </div>
                     <div className="col-sm-8">
@@ -355,11 +326,13 @@ function ProductInfo(props) {
                     </div>
                     <div className="col-sm-12 mb-0 pb-0">
                       <label className="form-label">
-                        <strong>Slots</strong>
+                        <strong className="theme-color">
+                          Slots<span className="text-danger">*</span>
+                        </strong>
                       </label>
                     </div>
                     <div className="col-sm-12 mt-0">
-                      {slots && slots.length == 0 && values.court !== "" ? (
+                      {slots && slots?.length == 0 && values?.court !== "" ? (
                         <div className="alert alert-danger">
                           No Slots are available
                         </div>
@@ -378,14 +351,35 @@ function ProductInfo(props) {
                         />
                       )}
                     </div>
-                  </>
-                  {/* )} */}
-                  <div className="col-sm-12">
                     {props?.venue?.slug == "sportzon-wave-city" && (
-                      <div className="alert alert-info text-center">
-                        Get a 25% discount on your booking!
+                      <div className="col-sm-12 mb-3">
+                        <label className="form-label">
+                          <strong className="theme-color">Discount Code</strong>
+                        </label>
+                        <div className="input-group">
+                          <Field
+                            name="discount"
+                            className="form-control lg"
+                            type="text"
+                            placeholder="Enter Coupon Code"
+                            onChange={(e) =>
+                              setFieldValue(
+                                "discount",
+                                e.target.value.toUpperCase()
+                              )
+                            }
+                          />
+                        </div>
+                        <ErrorMessage
+                          name="discount"
+                          render={(msg) => (
+                            <small className="text-danger">{msg}</small>
+                          )}
+                        ></ErrorMessage>
                       </div>
                     )}
+                  </>
+                  <div className="col-sm-12">
                     <button
                       className="btn btn-lg btn-primary w-100"
                       disabled={!(dirty && isValid)}

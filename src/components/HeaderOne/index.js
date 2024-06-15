@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext } from "react";
 import Menu from "./Menu";
-// import { usePathname } from "next/navigation";
+import Image from "next/image";
 import LoginForm from "../Auth/LoginForm";
 import { UserContext } from "../../../context/context";
 import UserMenuMobile from "./UserMenuMobile";
@@ -30,21 +30,21 @@ function HeaderOne() {
       <div className="container">
         <nav id="navigation" className="navigation navigation-landscape">
           <div className="nav-header">
-            <a className="nav-brand static-logo" href="#">
-              <img
-                src="/assets/img/logo/fav-color.png"
-                className="logo"
+            <a className="nav-brand static-logo" href="/">
+              <Image
+                src="/assets/img/Logo-Header.png"
+                width={200}
+                height={50}
                 alt="logo"
-                style={{ width: "60px" }}
-              />
+              ></Image>
             </a>
-            <a className="nav-brand fixed-logo" href="#">
-              <img
-                src="/assets/img/logo/fav-color.png"
-                className="logo"
+            <a className="nav-brand fixed-logo" href="/">
+              <Image
+                src="/assets/img/Logo-Header.png"
+                width={110}
+                height={50}
                 alt="logo"
-                style={{ width: "60px" }}
-              />
+              ></Image>
             </a>
             <div className="nav-toggle" />
             <div className="mobile_nav">

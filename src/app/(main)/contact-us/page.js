@@ -8,7 +8,7 @@ function Page() {
     const encodedAddress = encodeURIComponent(address);
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
 
-    window.open(mapsUrl, "_blank");
+    window?.open(mapsUrl, "_blank");
   };
 
   useEffect(() => {

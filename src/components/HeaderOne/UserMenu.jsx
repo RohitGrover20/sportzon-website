@@ -27,7 +27,11 @@ function UserMenu(props) {
           aria-expanded="false"
         >
           <img
-            src={user?.profile!==null ? user?.profile : "/assets/img/userplaceholder.png"}
+            src={
+              user?.profile !== null && user?.profile !== undefined
+                ? user?.profile
+                : "/assets/img/userplaceholder.png"
+            }
             className="img-fluid circle"
             alt="Profile"
           />
@@ -46,30 +50,29 @@ function UserMenu(props) {
           <ul>
             <li>
               <Link href="/user/profile">
-                <i className="fa fa-user me-3"></i>Profile
+                <i className="fa fa-user me-3" style={{ color: "#0a5993" }}></i>
+                Profile
               </Link>
             </li>
             <li>
               <Link href="/user/settings">
-                <i className="fa fa-cog me-3"></i>Settings
+                <i className="fa fa-cog me-3" style={{ color: "#0a5993" }}></i>
+                Settings
               </Link>
             </li>
             <li>
               <Link href="/user/help-support">
-                <i className="fa-solid fa-question-circle me-3" />
+                <i
+                  className="fa-solid fa-question-circle me-3 "
+                  style={{ color: "#0a5993" }}
+                />
                 Help & Support
               </Link>
             </li>
-            {/* <li onClick={logout}>
-              <Link href={`${config.API_URL}/auth/logout`}>
-                <i className="fa fa-sign-out me-3"></i>Logout
-              </Link>
-            </li> */}
           </ul>
         </div>
       </div>
     </li>
-    // </ul>
   );
 }
 

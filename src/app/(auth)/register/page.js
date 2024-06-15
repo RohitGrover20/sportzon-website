@@ -6,7 +6,7 @@ import React from "react";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Image from "next/image";
 function Register() {
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -75,7 +75,6 @@ function Register() {
   };
 
   const googleAuth = () => {
-    // window.open(`${config.API_URL}/auth/google/callback`, "_self");
     window.open(`${config.API_URL}/auth/google`, "_self");
   };
   const facebookAuth = () => {
@@ -84,8 +83,29 @@ function Register() {
   return (
     <>
       <ToastContainer />
-      <h1 className="fs-1">Create An Account</h1>
-      <p className="pb-3 mb-3 mb-lg-4">
+      <div className="text-center">
+        <a className="" href="/">
+          <Image
+            src="/assets/img/Footer-logo.png"
+            width={200}
+            height={100}
+            alt="logo"
+          ></Image>
+        </a>
+      </div>
+      <p className="pt-4 text-center">
+        <span className="text-orange">Have an account already?</span>{" "}
+        <a
+          className="text-orange fw-bold text-decoration-underline"
+          href="/login"
+        >
+          Login
+        </a>
+      </p>
+      <h1 className="fs-1 text-orange text-uppercase text-center">
+        Create An Account
+      </h1>
+      <p className=" mb-lg-4 text-center text-black">
         Welcome Back! Select Method to Register:
       </p>
       <Formik
@@ -187,8 +207,8 @@ function Register() {
                 ></ErrorMessage>
               </div>
 
-              <div className="pb-3">
-                <div className="d-flex flex-wrap align-items-center justify-content-between pb-4">
+              <div className="pb-1">
+                <div className="d-flex flex-wrap align-items-center justify-content-between pb-2">
                   <form-check className="my-1">
                     <Field
                       name="checked"
@@ -205,21 +225,31 @@ function Register() {
                   </form-check>
                 </div>
               </div>
-              <button
-                className="btn btn-lg btn-primary w-100"
-                disabled={!(dirty && isValid)}
-              >
-                Sign Up
-              </button>
+              <div className="d-flex justify-content-center">
+                <button
+                  className="btn btn-lg btn-primary w-50 text-uppercase"
+                  disabled={!(dirty && isValid)}
+                >
+                  Sign Up
+                </button>
+              </div>
             </Form>
           );
         }}
       </Formik>
-      <h2 className="h6 font--medium text-muted text-center py-4">
-        Or sign in with your social account
+      <h2 className="h6 font-medium text-muted text-center py-4">
+        <div className="d-flex align-items-center">
+          <div className="flex-grow-1">
+            <hr className="theme-color border-2" />
+          </div>
+          <div className="px-2 theme-color">OR</div>
+          <div className="flex-grow-1 theme-color">
+            <hr className="theme-color border-2" />
+          </div>
+        </div>
       </h2>
-      <div className="row row-cols-1 row-cols-sm-2 gy-3">
-        <div className="col">
+      <div className="row row-cols-1 row-cols-sm-2 gy-3 justify-content-center">
+        <div className="col-6 col-md-4">
           <button
             className="btn btn--googleplus w-100 font--medium"
             onClick={googleAuth}
@@ -228,7 +258,7 @@ function Register() {
             Google
           </button>
         </div>
-        <div className="col">
+        <div className="col-6 col-md-4">
           <button
             className="btn btn--facebook w-100 font--medium"
             onClick={facebookAuth}
@@ -238,12 +268,6 @@ function Register() {
           </button>
         </div>
       </div>
-      <p className="pt-4 text-center">
-        <span className="text-muted">Have an account already?</span>{" "}
-        <a className="text-primary font--medium" href="/login">
-          Login Your Account
-        </a>
-      </p>
     </>
   );
 }

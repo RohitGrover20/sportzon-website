@@ -10,20 +10,19 @@ function BreadCrumb(props) {
           <div className="col-xl-12 col-lg-12 col-12">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb m-0">
-                <li className="breadcrumb-item font--medium">
-                  {/* <a href="#">Home</a> */}
+                <li className="breadcrumb-item theme-color ">
                   <Link href="/">Home</Link>
                 </li>
                 {data &&
-                  data.map((item, index) => {
+                  data?.map((item, index) => {
                     return (
                       <li
                         className="breadcrumb-item font--medium active text-white"
                         key={index}
                         aria-current="page"
                       >
-                        <Link href={item.link} className="text-white">
-                          {item.title}
+                        <Link href={item?.link} className="text-white">
+                          {item?.title}
                         </Link>
                       </li>
                     );

@@ -9,7 +9,7 @@ var state_arr = [
   "Chhattisgarh",
   "Dadra & Nagar Haveli",
   "Daman & Diu",
-  "Delhi",
+  "Delhi NCR",
   "Goa",
   "Gujarat",
   "Haryana",
@@ -57,7 +57,7 @@ s_a[7] =
 s_a[8] =
   " Brancavare | Dagasi | Daman | Diu | Magarvara | Nagwa | Pariali | Passo Covo ";
 s_a[9] =
-  " Central Delhi | East Delhi | New Delhi | North Delhi | North East Delhi | North West Delhi | South Delhi | South West Delhi | West Delhi ";
+  "Noida | Delhi NCR | Ghaziabad | Faridabad | Gurgaon";
 s_a[10] =
   " Canacona | Candolim | Chinchinim | Cortalim | Goa | Jua | Madgaon | Mahem | Mapuca | Marmagao | Panji | Ponda | Sanvordem | Terekhol ";
 s_a[11] =

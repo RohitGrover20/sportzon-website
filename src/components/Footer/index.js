@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import Tags from "./Tags";
 import Image from "next/image";
 
 function Footer() {
@@ -30,16 +29,23 @@ function Footer() {
   }, []);
   return (
     <>
-      <Tags />
+      {/* <Tags /> */}
       <div className="clearfix" />
-      <footer className="footer bg-light">
+      <footer
+        className="footer bg-light"
+        style={{
+          backgroundImage: 'url("/assets/img/footer_bgimg.png")',
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
         <div>
           <div className="container">
-            <div className="row">
-              <div className="col-lg-3 col-md-4">
+            <div className="row ml-9">
+              <div className="col-lg-4 col-md-4">
                 <div className="footer-widget mt-3">
                   <Image
-                    src="/assets/img/logo/colored.png"
+                    src="/assets/img/Footer-logo.png"
                     className="img-footer"
                     alt="Citiskape Sports"
                     width={300}
@@ -47,52 +53,27 @@ function Footer() {
                   />
                   <div className="footer-add">
                     <p>
-                      <a href="https://www.citiskape.in/" target="_blank">
+                      <a
+                        href="https://www.citiskape.in/"
+                        target="_blank"
+                        className="text-white"
+                      >
                         {" "}
                         Citiskape Sports Pvt. Ltd.
                       </a>
                       <br />
                       <a
-                        className="text-muted"
+                        className="text-white"
                         href=""
                         onClick={handleLocationClick}
                       >
                         {" "}
-                        <i className="fa-solid fa-location-pin text-success fs-6 me-2" />
+                        <i className="fa-solid fa-location-pin text-white fs-6 me-2" />
                         108, 1st Floor, ABC Complex, Veer Savarkar Block,
                         Shakarpur, Laxmi Nagar, Delhi-110095{" "}
                       </a>
                     </p>
                   </div>
-                  {/* <div className="foot-socials">
-                    <ul>
-                      <li>
-                        <a href="##">
-                          <i className="fa-brands fa-facebook" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="##">
-                          <i className="fa-brands fa-linkedin" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="##">
-                          <i className="fa-brands fa-google-plus" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="##">
-                          <i className="fa-brands fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="##">
-                          <i className="fa-brands fa-dribbble" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div> */}
                 </div>
               </div>
               <div className="col-lg-3 col-md-4">
@@ -121,32 +102,8 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              {/* <div className="col-lg-2 col-md-4">
-                <div className="footer-widget">
-                  <h4 className="widget-title">Our Resources</h4>
-                  <ul className="footer-menu">
-                    <li>
-                      <a href="http://resource.sportzon.in/news-events">
-                        News & Events
-                      </a>
-                    </li>
-                    <li>
-                      <a href="http://resource.sportzon.in/blogs">Blogs</a>
-                    </li>
-                    <li>
-                      <a href="http://resource.sportzon.in/media-gallery">
-                        Media & Gallery
-                      </a>
-                    </li>
-                    <li>
-                      <a href="http://resource.sportzon.in/help-support">
-                        Help &amp; Support
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
-              <div className="col-lg-3 col-md-6">
+
+              <div className="col-lg-3 col-md-4">
                 <div className="footer-widget">
                   <h4 className="widget-title">The Company</h4>
                   <ul className="footer-menu">
@@ -170,30 +127,31 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-3 col-md-6">
+
+              <div className="col-lg-2 col-md-4">
                 <div className="footer-widget">
                   <h4 className="widget-title">Download Our Apps</h4>
-                  <div className="app-wrap mt-4 mb-4">
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
+                  <div className="mt-4 mb-0">
+                    <div className="d-flex flex-column justify-content-center">
+                      <div className="mb-3">
                         <a href="/">
                           <Image
-                            src="/assets/img/light-play.png"
+                            src="/assets/img/google_playstore_logo.png"
                             className="img-fluid"
                             alt="Download from Play Store"
-                            style={{ width: "300px", height: "auto" }}
+                            style={{ width: "170px", height: "auto" }}
                             width={300}
                             height={10}
                           />
                         </a>
                       </div>
-                      <div className="col-md-6 mb-3">
+                      <div className="mb-3">
                         <a href="/">
                           <Image
-                            src="/assets/img/light-ios.png"
+                            src="/assets/img/apple_store_logo.png"
                             className="img-fluid"
                             alt="Download from App Store"
-                            style={{ width: "300px", height: "auto" }}
+                            style={{ width: "170px", height: "auto" }}
                             width={300}
                             height={10}
                           />
@@ -201,42 +159,69 @@ function Footer() {
                       </div>
                     </div>
                   </div>
-                  <h4 className="widget-title mt-n4">Get In Touch</h4>
+
                   <span className="foot-socials m-0 p-0">
                     <ul>
                       <li>
                         <a
                           href="https://www.facebook.com/sportzonindia/"
                           title="Facebook"
+                          style={{ background: "none" }}
+                          target="_blank"
                         >
-                          <i
-                            className="fa-brands fa-facebook"
-                            style={{ color: "#3b5998", fontSize: "30px" }}
-                          />
+                          <Image
+                            src="/assets/img/Facebook_icon.png"
+                            width={30}
+                            height={30}
+                            alt="facebook"
+                          ></Image>
                         </a>
                       </li>
                       <li>
                         <a
                           href="https://www.linkedin.com/company/sportzon-india/"
                           title="Linkedln"
+                          style={{ background: "none" }}
+                          target="_blank"
                         >
-                          <i
-                            className="fa-brands fa-linkedin"
-                            style={{ color: "#0077b5", fontSize: "30px" }}
-                          />
+                          <Image
+                            src="/assets/img/Linkedin_icon.png"
+                            width={30}
+                            height={30}
+                            alt="linkedln"
+                          ></Image>
                         </a>
                       </li>
+                      <a
+                        href="https://www.instagram.com/sportzonindia/"
+                        title="Instagram"
+                        style={{ background: "none" }}
+                        target="_blank"
+                      >
+                        <li>
+                          <Image
+                            src="/assets/img/Instagram_icon.png"
+                            width={30}
+                            height={30}
+                            alt="instagram"
+                          ></Image>
+                        </li>
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@sportzongameon"
+                        title="Youtube"
+                        style={{ background: "none" }}
+                        target="_blank"
+                      >
                       <li>
-                        <a
-                          href="https://www.instagram.com/sportzonindia/"
-                          title="Instagram"
-                        >
-                          <i
-                            className="fa-brands fa-instagram"
-                            style={{ color: "red", fontSize: "30px" }}
-                          />
-                        </a>
+                        <Image
+                          src="/assets/img/Youtube_icon.png"
+                          width={30}
+                          height={30}
+                          alt="youtube"
+                        ></Image>
                       </li>
+                      </a>
                     </ul>
                   </span>
                 </div>
@@ -246,55 +231,10 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <div className="container">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-xl-12 col-lg-12 col-md-12 text-center">
-                <p className="mb-0">
-                  <a href="https://www.citiskape.in/" target="_blank">
-                    Citiskape Sports Pvt. Ltd.{" "}
-                  </a>{" "}
-                  © {currentYear} <a href=""></a>Sportzon®
-                </p>
+            <div className="row">
+              <div className="col-xl-12 col-lg-12 col-md-12">
+                <p className="mb-4">© Copyright {currentYear}</p>
               </div>
-              {/* <div className="col-xl-8 col-lg-7 col-md-7">
-                <div className="job-info-count-group">
-                  <div className="single-jb-info-count">
-                    <div className="jbs-y7">
-                      <h5 className="ctr">6</h5>
-                      <span className="theme-2-cl">K</span>
-                    </div>
-                    <div className="jbs-y5">
-                      <p>Active users</p>
-                    </div>
-                  </div>
-                  <div className="single-jb-info-count">
-                    <div className="jbs-y7">
-                      <h5 className="ctr">5</h5>
-                      <span className="theme-2-cl">M</span>
-                    </div>
-                    <div className="jbs-y5">
-                      <p>Happy Customers</p>
-                    </div>
-                  </div>
-                  <div className="single-jb-info-count">
-                    <div className="jbs-y7">
-                      <h5 className="ctr">38</h5>
-                      <span className="theme-2-cl">K</span>
-                    </div>
-                    <div className="jbs-y5">
-                      <p>Followers</p>
-                    </div>
-                  </div>
-                  <div className="single-jb-info-count">
-                    <div className="jbs-y7">
-                      <h5 className="ctr">100</h5>
-                      <span className="theme-2-cl">+</span>
-                    </div>
-                    <div className="jbs-y5">
-                      <p>Companies</p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

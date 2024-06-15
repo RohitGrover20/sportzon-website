@@ -29,7 +29,7 @@ function Newsletter() {
           )}
           {status === "success" && (
             <div
-              className="alert alert-success text-white"
+              className="alert alert-success text-orange"
               dangerouslySetInnerHTML={{ __html: message }}
             />
           )}
@@ -37,12 +37,15 @@ function Newsletter() {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter Your email"
+              placeholder="Enter Your Email"
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              style={{ border: "2px solid #0a5993" }}
             />
-            <button type="button" className="btn btn-dark" onClick={submit}>
+          </div>
+          <div className="text-center mt-2">
+            <button type="button" className="btn btn-orange" onClick={submit}>
               Subscribe
             </button>
           </div>
@@ -51,40 +54,65 @@ function Newsletter() {
     );
   };
   return (
-    <section className="bg-cover call-action-container bg-orange position-relative">
-      <div className="position-absolute top-0 end-0 z-0">
-        <img src="assets/img/alert-bg.png" alt="SVG" width={300} />
-      </div>
-      <div className="position-absolute bottom-0 start-0 me-10 z-0">
-        <img src="assets/img/circle.png" alt="SVG" width={150} />
-      </div>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-xl-7 col-lg-10 col-md-12 col-sm-12">
-            <div className="call-action-wrap">
-              <div className="call-action-caption">
-                <h2 className="text-light">
-                  Want to stay updated for upcoming events and offers?
-                </h2>
-                {/* <p className="text-light fs-5 fw-light">
-                  Deleniti corrupti quos dolores et quas molestias
-                </p> */}
+    <>
+      <section
+        className="call-action-container  position-relative"
+        style={{ backgroundImage: 'url("assets/img/bg-subscribe.png")' }}
+      >
+        <div className="container">
+          <div className="row align-items-center">
+            {/* Left Image */}
+            <div className="col-lg-6 position-relative subscribe-main-img">
+              <div className="ms-5 ps-5 ">
+                <img
+                  src="/assets/img/Subscribe-Img.png"
+                  alt="Left Image"
+                  className="img-fluid"
+                />
               </div>
-              <MailchimpSubscribe
-                url={url}
-                render={({ subscribe, status, message }) => (
-                  <CustomForm
-                    status={status}
-                    message={message}
-                    onValidated={(formData) => subscribe(formData)}
+            </div>
+            {/* Content */}
+            <div className="col-lg-6 position-relative">
+              <div
+                className="card start-20 subscribe-section"
+                style={{ marginLeft: "-140px", borderRadius: "34px" }}
+              >
+                <div className="card-body m-2">
+                  <p className="text-orange display-5 fw-bold subscribe-title text-center">
+                    Stay in game with Sportzon
+                  </p>
+                  <p className="fs-5 text-center fw-bold subscribe-subtitle">
+                    <span className="text-orange">Subscribe</span> &{" "}
+                    <span className="text-orange">Follow</span> For Updates &
+                    Exclusive Offers !
+                  </p>
+                  <p className="text-center">
+                    {" "}
+                    Don't miss out the action!{" "}
+                    <span className="text-orange fw-bold">
+                      Subscribe to Sportzon
+                    </span>{" "}
+                    for latest news , upcoming events , and exclusive offers .
+                    Follow us on social media to stay connected and join the
+                    Sportzon community!
+                  </p>
+                  <MailchimpSubscribe
+                    url={url}
+                    render={({ subscribe, status, message }) => (
+                      <CustomForm
+                        status={status}
+                        message={message}
+                        onValidated={(formData) => subscribe(formData)}
+                      />
+                    )}
                   />
-                )}
-              />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

@@ -27,13 +27,7 @@ async function CoachesById({ params }) {
                   className="img-fluid border shadow-sm"
                   alt="coach"
                 />
-                <div className="d-flex align-items-center justify-content-center">
-                  {/* <button className="btn btn-orange btn-sm mt-2">
-                    + Follow
-                  </button> */}
-                  {/* <span className="text-orange ms-3 me-3">190 Follows</span>
-                  <span className="text-primary">2 Following</span> */}
-                </div>
+                <div className="d-flex align-items-center justify-content-center"></div>
               </div>
             </div>
             <div className="col-xl-9 col-lg-9 col-md-9">
@@ -52,37 +46,42 @@ async function CoachesById({ params }) {
                   </div>
                 </div>
 
-                <p className="animated fadeInLeft"><h5 className="lh-base animated fadeInLeft">
-                    Bio
-                  </h5>{data?.bio}</p>
+                <p className="animated fadeInLeft">
+                  <h5 className="lh-base animated fadeInLeft">Bio</h5>
+                  {data?.bio}
+                </p>
                 <div className="position-relative features-slec mt-4">
                   <h5 className="lh-base animated fadeInLeft">
                     Certifications
                   </h5>
                   <ul className="simple-list p-0">
-                    {data?.certification && data?.certification?.length>0 ?
+                    {data?.certification && data?.certification?.length > 0 ? (
                       data?.certification.map((item, index) => {
                         return (
                           <li className="animated fadeInLeft mb-3" key={index}>
                             <div className="ms-2 me-auto">{item}</div>
                           </li>
                         );
-                      }) : <div>There is no certificates added ! </div>}
+                      })
+                    ) : (
+                      <div>There is no certificates added ! </div>
+                    )}
                   </ul>
                 </div>
                 <div className="position-relative features-slec mt-4">
-                  <h5 className="lh-base animated fadeInLeft">
-                    Expertise
-                  </h5>
+                  <h5 className="lh-base animated fadeInLeft">Expertise</h5>
                   <ul className="simple-list p-0">
-                    {data?.expertise && data?.expertise?.length>0 ?
+                    {data?.expertise && data?.expertise?.length > 0 ? (
                       data?.expertise.map((item, index) => {
                         return (
                           <li className="animated fadeInLeft mb-3" key={index}>
                             <div className="ms-2 me-auto">{item.label}</div>
                           </li>
                         );
-                      }) : <div>There is no expertise added ! </div>}
+                      })
+                    ) : (
+                      <div>There is no expertise added ! </div>
+                    )}
                   </ul>
                 </div>
               </div>

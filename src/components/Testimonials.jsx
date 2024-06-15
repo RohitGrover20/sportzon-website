@@ -4,59 +4,60 @@ import Rating from "./Rating";
 function Testimonials(props) {
   return (
     <section className="gray">
-      <div className="container">
-        <div className="row justify-content-center">
+      <div className="container" style={{ overflow: "visible" }}>
+        <div
+          className="row justify-content-center"
+          style={{ overflow: "visible" }}
+        >
           <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 mb-5">
-            <div className="sec-heading center">
-              <div className="d-inline-flex px-4 py-1 rounded-5 text-success bg-light-success font--medium mb-2">
-                <span>What People Says</span>
-              </div>
-              <h2>What Our Happy Customer Says</h2>
+            <div className="sec-heading text-center">
+              <h1 className="display-1 text-orange text-uppercase fw-bold">
+                Wall of Love
+              </h1>
+              <p className="fs-5">What Our Happy Customer Says</p>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-xl-12 col-lg-12 col-md-12 px-0">
-            <div className="our-testimonials" id="testimonials-slide">
-              {props?.testimonials?.map((item, index) => {
-                const comment = item?.comment;
-            const showTooltip = comment.length > 450;
-                return (
-                  <div className="single-items" key={index}>
-                    <div className="card border-0 mb-4">
-                      <div className="card-body" style={{height:"400px"}}>
-                        <div className="d-flex align-items-center mb-3 ">
-                          <img
-                            className="rounded-circle"
-                            src={item?.profile}
-                            width={60}
-                            alt="Users"
-                          />
-                          <div className="ps-3">
-                            <div className="mb-1">
-                              <h5 className="fs-6 font--medium mb-0">
-                                {item?.fullName}
-                              </h5>
-                            </div>
-                            <div className="fs-sm text-muted">
-                              {item?.designation}
-                            </div>
-                          </div>
-                        </div>
+        <div className="row" style={{ overflow: "visible" }}>
+          <div id="testimonials-slide" style={{ overflow: "visible" }}>
+            {props?.testimonials?.map((item, index) => {
+              const comment = item?.comment;
+              const showTooltip = comment?.length > 200;
+              return (
+                <div className="single-items zoom-on-hover" key={index}>
+                  <div
+                    className="card border-0 mb-4 position-relative w-30"
+                    style={{ borderRadius: "5%", overflow: "visible"  , height:"400px"}}
+                  >
+                    <div className="card-body d-flex flex-column align-items-center">
+                      <img
+                        className="rounded-circle mb-3"
+                        src={item?.profile}
+                        width={120}
+                        height={120}
+                        alt="User"
+                      />
+                      <div className="text-center mb-3">
                         <Rating rating={item?.rating} />
-                        {showTooltip ? (
-                      <p className="card-text comment-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title={comment}>
-                        {comment.substring(0, 450) + '...'}
-                      </p>
-                    ) : (
-                      <p className="card-text">{comment}</p>
-                    )}
+                        <h5 className="fs-4 fw-bold mb-0">{item?.fullName}</h5>
                       </div>
+                      {showTooltip ? (
+                        <p
+                          className="card-text comment-tooltip"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title={comment}
+                        >
+                          {comment.substring(0, 200) + "..."}
+                        </p>
+                      ) : (
+                        <p className="card-text">{comment}</p>
+                      )}
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
