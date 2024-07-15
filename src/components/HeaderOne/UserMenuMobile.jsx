@@ -41,10 +41,11 @@ function UserMenuMobile(props) {
           <div className="dropdown-menu pull-right animated flipInX">
             <div className="drp_menu_headr">
               <h4>
-                Hi, {user && user.firstName} {user && user.lastName}
+                Hi, {user && user?.firstName} {user && user?.lastName}
               </h4>
               <div className="drp_menu_headr-right">
                 {/* <Link href={`${config.API_URL}/auth/logout`}> */}
+                <a href={`${config.API_URL}/auth/logout`}>
                 <button
                   type="button"
                   className="btn btn-whites"
@@ -52,6 +53,7 @@ function UserMenuMobile(props) {
                 >
                   Logout
                 </button>
+                </a>
                 {/* </Link> */}
               </div>
             </div>

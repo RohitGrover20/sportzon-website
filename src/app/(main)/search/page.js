@@ -67,15 +67,15 @@ function Search() {
   return (
     <>
       <section className="position-relative py-4 theme-bg pt-0">
-        <SearchBar searchType={referrer} />
+        {/* <SearchBar searchType={referrer} /> */}
       </section>
       {loader == true ? (
         <Loading />
       ) : (
         <section className="position-relative theme-bg pt-0">
           <div className="container">
-            <div className="row justify-content-center g-4">
-              {currentItems.length > 0 ? (
+            <div className="row justify-content-center g-4 pt-5">
+              {currentItems?.length > 0 ? (
                 currentItems.map((item, index) => (
                   <React.Fragment key={index}>
                     <>
@@ -88,7 +88,7 @@ function Search() {
                         </div>
                       ) : referrer == "events" || referrer == "homepage" ? (
                         <div
-                          className="col-xl-4 col-lg-4 col-md-4 col-sm-6"
+                          className="col-xl-3 col-lg-3 col-md-3 col-sm-3"
                           key={index}
                         >
                           <EventsCard item={item} />

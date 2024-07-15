@@ -1,19 +1,22 @@
 "use client";
 import Share from "@/components/Share";
 import { getVenuesBySlug } from "@/libs/fetchData";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useRef} from "react";
 import BookingSection from "./BookingSection";
 import BreadCrumb from "@/components/BreadCrumb";
 import RatingCard from "@/components/RatingCard";
 import Rating from "@/components/Rating";
 import Link from "next/link";
 import Booking from "../../booking/page";
+import Loading from "@/components/Loading";
 export const revalidate = 10;
 
 function VenuesBySlug({ params }) {
   const [venue, setVenue] = useState(null);
+  const [loading , setLoading] = useState(true);
   const [booking, setBooking] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(null);
+  const cartRef = useRef(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -23,6 +26,11 @@ function VenuesBySlug({ params }) {
         const response = await getVenuesBySlug(params?.slug);
         if (isMounted) {
           setVenue(response?.data);
+          setLoading(false);
+          // Scroll to the "Book a Slot" section
+          if (cartRef.current) {
+            cartRef.current.scrollIntoView({ behavior: "smooth" });
+          }
         }
       } catch (error) {
         console.error("Error fetching venue:", error);
@@ -39,6 +47,7 @@ function VenuesBySlug({ params }) {
   useEffect(() => {
     console.log(venue, "===venue");
   }, [venue]);
+  if (loading) return <Loading />; // Render loading state
 
   return (
     <div>
@@ -82,15 +91,17 @@ function VenuesBySlug({ params }) {
                 <div className="row">
                   <div
                     className="col-xl-8 col-lg-8 col-md-12 px-0"
-                    id="venuebyslug-slider"
+                    id="venuebook-slider"
                   >
-                    {venue?.gallery?.length > 0 ? (
+                    {loading ? <Loading/> :
+                    venue?.gallery?.length > 0 ? (
                       // venue?.gallery?.map((item, index) => (
                       //   <div className="single-items" key={index}>
                       //     <img
                       //       className="img-fluid rounded"
                       //       src={item}
                       //       style={{ objectFit: "cover", width: "100%", height: "350px" }}
+                      //       alt="banner"
                       //     />
                       //   </div>
                       // ))
@@ -117,11 +128,15 @@ function VenuesBySlug({ params }) {
                           }}
                         />
                       </div>
-                    )}
+                    )
+                  }
                   </div>
                   <div className="col-xl-4 col-lg-4 col-md-12">
                     <div className="card card-body border">
-                      <p className="fs-5 pt-3 pt-sm-3 text-dark fw-bold">
+                      <p
+                        className="fs-5 pt-3 pt-sm-3 text-dark text-truncate fw-bold"
+                        title={venue?.address}
+                      >
                         {venue?.address}
                       </p>
                       <div className="gmap_canvas">
@@ -135,22 +150,24 @@ function VenuesBySlug({ params }) {
                     </div>
                   </div>
                   {/* Tabs */}
-                  <div className="container mt-4" id="book-now-section">
+                  <div className="container mt-4" id="book-now-section" ref={cartRef}>
                     <ul className="nav nav-tabs" id="venueTabs" role="tablist">
-                      <li className="nav-item" role="presentation">
-                        <button
-                          className="nav-link active text-dark fs-6"
-                          id="sports-tab"
-                          data-bs-toggle="tab"
-                          data-bs-target="#sports"
-                          type="button"
-                          role="tab"
-                          aria-controls="sports"
-                          aria-selected="true"
-                        >
-                          Book a Slot{" "}
-                        </button>
-                      </li>
+                      {/* {venue && venue?.slug === "sportzon-wave-city" && ( */}
+                        <li className="nav-item" role="presentation">
+                          <button
+                            className="nav-link active text-dark fs-6"
+                            id="sports-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#sports"
+                            type="button"
+                            role="tab"
+                            aria-controls="sports"
+                            aria-selected="true"
+                          >
+                            Book a Slot{" "}
+                          </button>
+                        </li>
+                      {/* )} */}
                       <li className="nav-item" role="presentation">
                         <button
                           className="nav-link text-dark fs-6"
@@ -168,22 +185,21 @@ function VenuesBySlug({ params }) {
                     </ul>
                     <div className="tab-content" id="venueTabsContent">
                       {/* Book a slot section */}
-                      <div
-                        className="tab-pane fade show active"
+                        <div
+                        className={`tab-pane fade show active`}
                         id="sports"
-                        role="tabpanel"
-                        aria-labelledby="sports-tab"
-                      >
-                        <div>
-                          <Booking
-                            setBooking={setBooking}
-                            setPaymentInfo={setPaymentInfo}
-                          />
+                          role="tabpanel"
+                          aria-labelledby="sports-tab"
+                        >
+                          <div>
+                            <Booking
+                              setBooking={setBooking}
+                              setPaymentInfo={setPaymentInfo}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      {/* Details Section */}
                       <div
-                        className="tab-pane fade"
+                        className={`tab-pane fade`}
                         id="description"
                         role="tabpanel"
                         aria-labelledby="description-tab"

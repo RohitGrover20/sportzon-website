@@ -1,18 +1,20 @@
 import React from "react";
-// import Registration from './Registration'
 import DOMPurify from "isomorphic-dompurify";
 import NoDataFound from "@/components/NoDataFound";
 
 function ExtraInfo(props) {
-  const event = props && props.event;
+  const event = props && props?.event;
   let cleanDescription = DOMPurify.sanitize(event?.description);
+
+  const totalBooking = event?.totalSlots - event?.emptySlots;
+  const progress = parseInt(parseFloat(totalBooking / event?.totalSlots) * 100);
   return (
     <div className="row pt-0">
       <div className="col-xl-12 col-lg-12 col-md-12">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link active"
+              className="nav-link active fs-6"
               id="description-tab"
               data-bs-toggle="tab"
               data-bs-target="#description-tab-pane"
@@ -24,24 +26,10 @@ function ExtraInfo(props) {
               Description
             </button>
           </li>
-          <li className="nav-item" role="presentation">
-            <button
-              className="nav-link"
-              id="location-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#location-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="location-tab-pane"
-              aria-selected="true"
-            >
-              Location
-            </button>
-          </li>
-          {event && event.eventType == "tournament" ? (
+          {event && event?.eventType == "tournament" ? (
             <li className="nav-item" role="presentation">
               <button
-                className="nav-link"
+                className="nav-link fs-6"
                 id="info-tab"
                 data-bs-toggle="tab"
                 data-bs-target="#team-tab-pane"
@@ -58,40 +46,48 @@ function ExtraInfo(props) {
         </ul>
         <div className="tab-content pt-4" id="myTabContent">
           <div
-            className="tab-pane fade show active"
+            className="tab-pane fade show active text-dark card p-3"
             id="description-tab-pane"
             role="tabpanel"
             aria-labelledby="description-tab"
             tabIndex={0}
           >
-            {cleanDescription?.length>0 ? 
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `${cleanDescription}`,
-              }}
-            ></div> : <NoDataFound/>}
+            {cleanDescription?.length > 0 ? (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${cleanDescription}`,
+                }}
+              ></div>
+            ) : (
+              <NoDataFound />
+            )}
           </div>
-          <div
-            className="tab-pane fade"
-            id="location-tab-pane"
-            role="tabpanel"
-            aria-labelledby="location-tab"
-            tabIndex={0}
-          >
-            <div className="mapouter">
-              <div className="gmap_canvas">
-                <iframe
-                  className="gmap_iframe"
-                  width="100%"
-                  height="400px"
-                  src={`https://maps.google.com/maps?width=600&height=400&hl=en&q=${
-                    event && event.address
-                  }&t=p&z=14&ie=UTF8&iwloc=B&output=embed`}
+          <div className="card mt-4 p-3 overflow-visible">
+            <div className="">
+              <div className="d-flex justify-content-between">
+                <h5 classN ame="text-secondary">
+                  Slots Available
+                </h5>
+                <h5 className="text-info">
+                  {parseFloat(event?.emptySlots)}/{event && event?.totalSlots}
+                </h5>
+              </div>
+              <div
+                className="progress"
+                role="progressbar"
+                aria-label="Animated striped example"
+                aria-valuenow={progress}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              >
+                <div
+                  className="progress-bar progress-bar-striped progress-bar-animated"
+                  style={{ width: progress + "%" }}
                 />
               </div>
             </div>
           </div>
-          {event && event.eventType == "tournament" ? (
+          {event && event?.eventType == "tournament" ? (
             <div
               className="tab-pane fade"
               id="team-tab-pane"
@@ -129,7 +125,6 @@ function ExtraInfo(props) {
           ) : null}
         </div>
       </div>
-      {/* <Registration event={event} /> */}
     </div>
   );
 }

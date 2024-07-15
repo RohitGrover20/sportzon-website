@@ -32,9 +32,10 @@ function Footer() {
       {/* <Tags /> */}
       <div className="clearfix" />
       <footer
-        className="footer bg-light"
+        className="footer"
         style={{
-          backgroundImage: 'url("/assets/img/footer_bgimg.png")',
+          // backgroundImage: 'url("/assets/img/footer_bgimg.png")',
+          backgroundColor:"#808080b",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
@@ -45,122 +46,16 @@ function Footer() {
               <div className="col-lg-4 col-md-4">
                 <div className="footer-widget mt-3">
                   <Image
-                    src="/assets/img/Footer-logo.png"
+                    // src="/assets/img/Footer-logo.png"
+                    src="/assets/img/SportzonLogo.png"
                     className="img-footer"
                     alt="Citiskape Sports"
                     width={300}
                     height={100}
                   />
-                  <div className="footer-add">
-                    <p>
-                      <a
-                        href="https://www.citiskape.in/"
-                        target="_blank"
-                        className="text-white"
-                      >
-                        {" "}
-                        Citiskape Sports Pvt. Ltd.
-                      </a>
-                      <br />
-                      <a
-                        className="text-white"
-                        href=""
-                        onClick={handleLocationClick}
-                      >
-                        {" "}
-                        <i className="fa-solid fa-location-pin text-white fs-6 me-2" />
-                        108, 1st Floor, ABC Complex, Veer Savarkar Block,
-                        Shakarpur, Laxmi Nagar, Delhi-110095{" "}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4">
-                <div className="footer-widget">
-                  <h4 className="widget-title">The Navigation</h4>
-                  <ul className="footer-menu">
-                    <li>
-                      <Link href="/venues">Venues Booking</Link>
-                    </li>
-                    <li>
-                      <Link href="/events">Events Booking</Link>
-                    </li>
-                    <li>
-                      <Link href="/classes">Classes</Link>
-                    </li>
-                    <li>
-                      <Link href="/offering-for-schools">
-                        Offering for Schools
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/offering-for-corporates">
-                        Offering for Corporates
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="col-lg-3 col-md-4">
-                <div className="footer-widget">
-                  <h4 className="widget-title">The Company</h4>
-                  <ul className="footer-menu">
-                    <li>
-                      <Link href="/about-us">About Us</Link>
-                    </li>
-                    <li>
-                      <Link href="/privacy-policy">Privacy Policy</Link>
-                    </li>
-                    <li>
-                      <Link href="/refund-policy">Refund Policy</Link>
-                    </li>
-                    <li>
-                      <Link href="/cancellation-policy">
-                        Cancellation Policy
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/terms-conditions">Terms & Conditions</Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="col-lg-2 col-md-4">
-                <div className="footer-widget">
-                  <h4 className="widget-title">Download Our Apps</h4>
-                  <div className="mt-4 mb-0">
-                    <div className="d-flex flex-column justify-content-center">
-                      <div className="mb-3">
-                        <a href="/">
-                          <Image
-                            src="/assets/img/google_playstore_logo.png"
-                            className="img-fluid"
-                            alt="Download from Play Store"
-                            style={{ width: "170px", height: "auto" }}
-                            width={300}
-                            height={10}
-                          />
-                        </a>
-                      </div>
-                      <div className="mb-3">
-                        <a href="/">
-                          <Image
-                            src="/assets/img/apple_store_logo.png"
-                            className="img-fluid"
-                            alt="Download from App Store"
-                            style={{ width: "170px", height: "auto" }}
-                            width={300}
-                            height={10}
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <span className="foot-socials m-0 p-0">
+                  <div className="footer-add mt-0 pt-0">
+                    
+                      <span className="foot-socials m-0 p-0">
                     <ul>
                       <li>
                         <a
@@ -224,6 +119,117 @@ function Footer() {
                       </a>
                     </ul>
                   </span>
+                  
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-4">
+                <div className="footer-widget">
+                  <ul className="footer-menu">
+                    <li>
+                      <Link href="/venues">Venues Booking</Link>
+                    </li>
+                    <li>
+                      <Link href="/events">Events Booking</Link>
+                    </li>
+                    <li>
+                      <Link href="/classes">Classes</Link>
+                    </li>
+                    <li>
+                      <Link href="/offering-for-schools">
+                        Offering for Schools
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/offering-for-corporates">
+                        Offering for Corporates
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="col-lg-3 col-md-4">
+                <div className="footer-widget">
+                  {/* <h4 className="widget-title">The Company</h4> */}
+                  <ul className="footer-menu">
+                    <li>
+                      <Link href='/'>Home</Link>
+                    </li>
+                    <li>
+                      <Link href="/privacy-policy">Privacy Policy</Link>
+                    </li>
+                    <li>
+                      <Link href="/refund-policy">Refund Policy</Link>
+                    </li>
+                    <li>
+                      <Link href="/cancellation-policy">
+                        Cancellation Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/terms-conditions">Terms & Conditions</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="col-lg-2 col-md-4">
+                <div className="footer-widget">
+                  {/* <h4 className="widget-title">Download Our Apps</h4>
+                  <div className="mt-4 mb-0">
+                    <div className="d-flex flex-column justify-content-center">
+                      <div className="mb-3">
+                        <a href="/">
+                          <Image
+                            src="/assets/img/google_playstore_logo.png"
+                            className="img-fluid"
+                            alt="Download from Play Store"
+                            style={{ width: "170px", height: "auto" }}
+                            width={300}
+                            height={10}
+                          />
+                        </a>
+                      </div>
+                      <div className="mb-3">
+                        <a href="/">
+                          <Image
+                            src="/assets/img/apple_store_logo.png"
+                            className="img-fluid"
+                            alt="Download from App Store"
+                            style={{ width: "170px", height: "auto" }}
+                            width={300}
+                            height={10}
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </div> */}
+                
+                  {/* <h4 className="widget-title">The Company</h4> */}
+                  <ul className="footer-menu">
+                    <li>
+                      <Link href="/event-gallery">Event Gallery</Link>
+                    </li>
+                    <li>
+                      <Link href="/contact-us">Contact Us</Link>
+                    </li>
+                    <li>
+                      <Link href="/about-us">About Us</Link>
+                    </li>
+                    {/* <li>
+                      <Link href="/refund-policy">Refund Policy</Link>
+                    </li>
+                    <li>
+                      <Link href="/cancellation-policy">
+                        Cancellation Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/terms-conditions">Terms & Conditions</Link>
+                    </li> */}
+                  </ul>
+                
                 </div>
               </div>
             </div>
@@ -233,7 +239,14 @@ function Footer() {
           <div className="container">
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12">
-                <p className="mb-4">© Copyright {currentYear}</p>
+                <p className="mb-4">© {currentYear} <span> <a
+                        href="https://www.citiskape.in/"
+                        target="_blank"
+                        className="text-white"
+                      >
+                        {" "}
+                        Citiskape Sports Pvt. Ltd.
+                      </a></span> All Rights Reserved</p>
               </div>
             </div>
           </div>

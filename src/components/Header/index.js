@@ -9,10 +9,10 @@ function Header() {
                     <nav id="navigation" className="navigation navigation-landscape">
                         <div className="nav-header">
                             <a className="nav-brand static-logo" href="#">
-                                <img src="assets/img/logo/fav-color.png" className="logo w-50" alt="" />
+                                <img src="assets/img/Sportzon-EIcon.png" className="logo w-50" alt="" />
                             </a>
                             <a className="nav-brand fixed-logo" href="#">
-                                <img src="assets/img/logo/fav-color.png" className="logo w-50" alt="" />
+                                <img src="assets/img/Sportzon-EIcon.png" className="logo w-50" alt="" />
                             </a>
                             <div className="nav-toggle" />
                             <div className="mobile_nav">

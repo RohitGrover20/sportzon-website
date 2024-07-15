@@ -22,7 +22,7 @@ function ContactForm() {
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
-    email: Yup.string().email("Invalid Email").required("Email is required"),
+    email: Yup.string().email("Invalid Email").required("Required"),
     phone: Yup.string()
       .matches(phoneRegExp, "Phone number is not valid")
       .max(12, "Phone number must be at most 12 characters")
@@ -40,10 +40,10 @@ function ContactForm() {
       );
       if (send) {
         const myToast =
-          send.data && send.data && send.data.code == "duplicate"
+          send?.data && send?.data && send?.data?.code == "duplicate"
             ? toast.warning
             : toast.success;
-        myToast(send && send.data && send.data.message, {
+        myToast(send && send?.data && send?.data?.message, {
           position: "top-right",
           autoClose: 2000,
           onClose: () => {
@@ -74,24 +74,24 @@ function ContactForm() {
         {({ dirty, isValid }) => {
           return (
             <Form className="row g-4" id="contact-form">
-              <div className="col-sm-6">
-                <label className="form-label">Name</label>
+              <div className="col-sm-6 pt-2">
+                <label className="form-label text-white"> Name </label>
                 <span className="text-danger">*</span>
                 <Field
                   className="form-control"
                   type="text"
                   name="name"
-                  placeholder="Your name"
+                  placeholder="Enter Your Name"
                   required=""
                 />
                 <ErrorMessage
                   name="name"
-                  render={(msg) => <small className="text-danger">{msg}</small>}
+                  render={(msg) => <small className="text-danger fw-bold">{msg}</small>}
                 ></ErrorMessage>
               </div>
 
-              <div className="col-sm-6">
-                <label className="form-label">Email</label>
+              <div className="col-sm-6 pt-2">
+                <label className="form-label text-white"> Email </label>
                 <span className="text-danger">*</span>
                 <Field
                   className="form-control"
@@ -102,12 +102,12 @@ function ContactForm() {
                 />
                 <ErrorMessage
                   name="email"
-                  render={(msg) => <small className="text-danger">{msg}</small>}
+                  render={(msg) => <small className="text-danger fw-bold">{msg}</small>}
                 ></ErrorMessage>
               </div>
 
               <div className="col-sm-6">
-                <label className="form-label">Phone</label>
+                <label className="form-label text-white"> Phone </label>
                 <span className="text-danger">*</span>
                 <Field
                   className="form-control"
@@ -118,12 +118,12 @@ function ContactForm() {
                 />
                 <ErrorMessage
                   name="phone"
-                  render={(msg) => <small className="text-danger">{msg}</small>}
+                  render={(msg) => <small className="text-danger fw-bold">{msg}</small>}
                 ></ErrorMessage>
               </div>
 
               <div className="col-sm-6">
-                <label className="form-label">Subject</label>
+                <label className="form-label text-white"> Subject </label>
                 <span className="text-danger">*</span>
                 <Field
                   className="form-control"
@@ -134,12 +134,12 @@ function ContactForm() {
                 />
                 <ErrorMessage
                   name="subject"
-                  render={(msg) => <small className="text-danger">{msg}</small>}
+                  render={(msg) => <small className="text-danger fw-bold">{msg}</small>}
                 ></ErrorMessage>
               </div>
 
               <div className="col-12">
-                <label className="form-label">Message</label>
+                <label className="form-label text-white"> Message </label>
                 <span className="text-danger">*</span>
                 <Field
                   as="textarea"
@@ -151,7 +151,7 @@ function ContactForm() {
                 />
                 <ErrorMessage
                   name="message"
-                  render={(msg) => <small className="text-danger">{msg}</small>}
+                  render={(msg) => <small className="text-danger fw-bold">{msg}</small>}
                 ></ErrorMessage>
               </div>
               <div className="col-12">
@@ -162,13 +162,13 @@ function ContactForm() {
                     defaultValue="Agree Terms & Conditions"
                     type="checkbox"
                   />
-                  <label className="form-check-label">
+                  <label className="form-check-label text-white">
                     I agree to the{" "}
                     <a
                       href=""
                       data-bs-toggle="modal"
                       data-bs-target="#termsAndConditionsModal"
-                      className="nav-link d-inline fs-normal text-decoration-underline p-0"
+                      className="nav-link d-inline fs-normal text-decoration-underline p-0 text-orange"
                     >
                       Terms &amp; Conditions
                     </a>
@@ -177,10 +177,10 @@ function ContactForm() {
               </div>
               <div className="col-12">
                 <button
-                  className="btn btn-primary px-lg-4"
+                  className="btn btn-orange px-lg-4 border border-4-white"
                   disabled={!(dirty && isValid)}
                 >
-                  Send your Message
+                  Send Your Message
                 </button>
               </div>
             </Form>

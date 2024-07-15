@@ -38,23 +38,23 @@ async function CoachesById({ params }) {
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
                     <span className="label bg-light-primary text-primary animated fadeInLeft">
-                      {data?.experience} Years of experience
+                      {data?.experience} of experience
                     </span>
-                    <h2 className="lh-base animated fadeInLeft">
+                    <h2 className="lh-base animated fadeInLeft theme-color">
                       {data?.user?.firstName} {data?.user?.lastName}
                     </h2>
                   </div>
                 </div>
 
-                <p className="animated fadeInLeft">
-                  <h5 className="lh-base animated fadeInLeft">Bio</h5>
+                <p className="animated fadeInLeft text-dark">
+                  <h5 className="lh-base animated fadeInLeft text-orange">Bio</h5>
                   {data?.bio}
                 </p>
                 <div className="position-relative features-slec mt-4">
-                  <h5 className="lh-base animated fadeInLeft">
+                  <h5 className="lh-base animated fadeInLeft text-orange">
                     Certifications
                   </h5>
-                  <ul className="simple-list p-0">
+                  <ul className="simple-list p-0 text-dark">
                     {data?.certification && data?.certification?.length > 0 ? (
                       data?.certification.map((item, index) => {
                         return (
@@ -69,12 +69,12 @@ async function CoachesById({ params }) {
                   </ul>
                 </div>
                 <div className="position-relative features-slec mt-4">
-                  <h5 className="lh-base animated fadeInLeft">Expertise</h5>
+                  <h5 className="lh-base animated fadeInLeft text-orange">Expertise</h5>
                   <ul className="simple-list p-0">
                     {data?.expertise && data?.expertise?.length > 0 ? (
                       data?.expertise.map((item, index) => {
                         return (
-                          <li className="animated fadeInLeft mb-3" key={index}>
+                          <li className="animated fadeInLeft mb-3 text-dark" key={index}>
                             <div className="ms-2 me-auto">{item.label}</div>
                           </li>
                         );

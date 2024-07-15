@@ -11,11 +11,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginForm from "@/components/Auth/LoginForm";
 
-function Registration(props) { 
+function Registration(props) {
   const [loader, setLoader] = useState(false);
   const context = useContext(UserContext);
   const user = context && context;
-  const event = props && props.event;
+  const event = props && props?.event;
   const initialValues = {
     bookingType: "event",
     eventType: event && event.eventType,
@@ -82,17 +82,17 @@ function Registration(props) {
     } else {
       const _data = {
         ...values,
-        eventDate : event.eventDate,
-        title : event.title,
-        amount: values.noOfTickets * values.amount * 100,
+        eventDate: event?.eventDate,
+        title: event?.title,
+        amount: values?.noOfTickets * values?.amount * 100,
       };
       axios
         .post(`${config.API_URL}/landing/payments/orders`, _data, {
           withCredentials: true,
         })
         .then((res) => {
-          if (res.data && res.data.code == "duplicate") {
-            toast.warning(res.data && res.data && res.data.message, {
+          if (res?.data && res?.data?.code == "duplicate") {
+            toast.warning(res?.data && res?.data && res?.data?.message, {
               position: "top-right",
               autoClose: 2000,
               onClose: () => {
@@ -105,8 +105,12 @@ function Registration(props) {
               },
             });
           } else {
-            handleOpenRazorpay({ ...res.data.data, _data , eventDate : event.eventDate,
-              title : event.title, });
+            handleOpenRazorpay({
+              ...res.data.data,
+              _data,
+              eventDate: event.eventDate,
+              title: event.title,
+            });
           }
         })
         .catch((err) => {
@@ -119,19 +123,19 @@ function Registration(props) {
   const handleOpenRazorpay = (data) => {
     var options = {
       // key: "rzp_test_1KAe5ngzKfHbdN", // Enter the Key ID generated from the Dashboard
-      Key :"rzp_live_gk7iMvPaNzkvr2",
+      Key: "rzp_live_gk7iMvPaNzkvr2",
       amount: Number(data.amount * 100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currency: data.currency,
+      currency: data?.currency,
       name: "Sportzon",
       description:
         "Description of the purchase item shown on the Checkout form. It should start with an alphanumeric character.",
-      image: "http://localhost:8080/assets/img/logo/fav-color.png",
-      order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      image: "http://localhost:8080/assets/img/Sportzon-EIcon.png",
+      order_id: data?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       // "callback_url": "",
       prefill: {
-        name: data.values && data.values.fullName,
-        email: data.values && data.values.email,
-        contact: data.values && data.values.mobile,
+        name: data?.values && data.values.fullName,
+        email: data?.values && data.values.email,
+        contact: data?.values && data.values.mobile,
       },
       notes: {
         address: "Razorpay Corporate Office",
@@ -147,10 +151,11 @@ function Registration(props) {
             { withCredentials: true }
           )
           .then((res) => {
-            toast.success(res.data && res.data && res.data.message, {
+            toast.success(res?.data && res?.data && res?.data?.message, {
               position: "top-right",
               autoClose: 2000,
               onClose: () => {
+                props.setPaymentCfm(res?.data)
                 setLoader(false);
                 const closeBtn =
                   document && document.getElementById("registrationClose");
@@ -187,30 +192,34 @@ function Registration(props) {
     });
     rzp.open();
   };
-
   return (
     <>
       <ToastContainer />
-
       {user && user.code == "unauthorised" ? (
         <div className="modal-body">
           <LoginForm />
         </div>
       ) : (
         <>
-          <div className="modal-header">
+          <div className="modal-header theme-bg">
             <div className="mdl-title mb-1">
-              <h4 className="modal-header-title" style={{ fontSize: "24px" }}>
+              <h4
+                className="modal-header-title text-white"
+                style={{ fontSize: "24px" }}
+              >
                 {event?.eventType} Registration
               </h4>
-              <p>
+              <p className="text-white" style={{ fontSize: "12px" }}>
                 Please book for your {event?.eventType} by filling the form
-                below, specify the expected number joining the {event?.eventType}
-                .
+                below, specify the expected number joining the{" "}
+                {event?.eventType}.
               </p>
             </div>
           </div>
-          <div className="modal-body">
+          <div
+            className="modal-body mb-0 pb-0"
+            style={{ border: "5px solid #0a5993" }}
+          >
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
@@ -230,16 +239,17 @@ function Registration(props) {
                     ) : (
                       <Form className="row">
                         {event && event.memberType == "team" ? (
-                          <div className="form-floating mb-4">
-                            <div className="col-lg-12 col-sm-12 col-xs-12 col-xl-12">
-                            <label>Team Name</label>
+                          <div className="col-lg-12 col-sm-12 col-xs-12 col-xl-12">
+                            <div className="form-floating mb-1">
                               <Field
                                 type="text"
                                 name="team"
                                 className="form-control"
                                 placeholder="Enter Team Name"
                               />
-                              
+                              <label className="text-black fw-bold">
+                                Team Name
+                              </label>
                             </div>
                           </div>
                         ) : null}
@@ -250,7 +260,9 @@ function Registration(props) {
                               name="fullName"
                               className="form-control"
                             />
-                            <label>Full Name</label>
+                            <label className="text-black fw-bold">
+                              Full Name
+                            </label>
                             <ErrorMessage
                               name="fullName"
                               render={(msg) => (
@@ -266,7 +278,7 @@ function Registration(props) {
                               name="email"
                               className="form-control"
                             />
-                            <label>Email</label>
+                            <label className="text-black fw-bold">Email</label>
                             <ErrorMessage
                               name="email"
                               render={(msg) => (
@@ -282,7 +294,7 @@ function Registration(props) {
                               name="mobile"
                               className="form-control"
                             />
-                            <label>Mobile</label>
+                            <label className="text-black fw-bold">Mobile</label>
                             <ErrorMessage
                               name="mobile"
                               render={(msg) => (
@@ -302,7 +314,7 @@ function Registration(props) {
                               <option value="female">Female</option>
                               <option value="other">Other</option>
                             </Field>
-                            <label>Gender</label>
+                            <label className="text-black fw-bold">Gender</label>
                             <ErrorMessage
                               name="gender"
                               render={(msg) => (
@@ -318,7 +330,9 @@ function Registration(props) {
                               name="address"
                               className="form-control"
                             ></Field>
-                            <label>Address</label>
+                            <label className="text-black fw-bold">
+                              Address
+                            </label>
                             <ErrorMessage
                               name="address"
                               render={(msg) => (
@@ -342,7 +356,7 @@ function Registration(props) {
                                   return <option key={index}>{item}</option>;
                                 })}
                             </Field>
-                            <label>State</label>
+                            <label className="text-black fw-bold">State</label>
                             <ErrorMessage
                               name="state"
                               render={(msg) => (
@@ -371,7 +385,7 @@ function Registration(props) {
                                     return <option key={index}>{item}</option>;
                                   })}
                             </Field>
-                            <label>City</label>
+                            <label className="text-black fw-bold">City</label>
                             <ErrorMessage
                               name="city"
                               render={(msg) => (
@@ -387,7 +401,9 @@ function Registration(props) {
                               name="pincode"
                               className="form-control"
                             />
-                            <label>Pincode</label>
+                            <label className="text-black fw-bold">
+                              Pincode
+                            </label>
                             <ErrorMessage
                               name="pincode"
                               render={(msg) => (
@@ -414,7 +430,9 @@ function Registration(props) {
                                   setFieldValue("noOfTickets", e.target.value);
                                 }}
                               />
-                              <label>No. of Tickets</label>
+                              <label className="text-black fw-bold">
+                                No. of Tickets
+                              </label>
                               <ErrorMessage
                                 name="noOfTickets"
                                 render={(msg) => (
@@ -441,13 +459,13 @@ function Registration(props) {
                                   >
                                     <i className="fa fa-plus me-2" /> Add Member
                                   </button>
-                                  {values.members.length > 0 &&
-                                    values.members.map((member, index) => (
+                                  {values?.members?.length > 0 &&
+                                    values?.members?.map((member, index) => (
                                       <div
                                         className="row row-xs align-items-center"
                                         key={index}
                                       >
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-4 ps-0">
                                           <div className="form-floating mt-2">
                                             <Field
                                               type="text"
@@ -455,7 +473,12 @@ function Registration(props) {
                                               className="form-control"
                                               placeholder="ABC Team"
                                             />
-                                            <label>Player&#39;s Name</label>
+                                            <label
+                                              className="text-black fw-bold"
+                                              style={{ fontSize: "12px" }}
+                                            >
+                                              Player&#39;s Name
+                                            </label>
                                             <ErrorMessage
                                               name={`members.${index}.name`}
                                               render={(msg) => (
@@ -482,7 +505,9 @@ function Registration(props) {
                                               <option>25-35 Years</option>
                                               <option>Above 35 Years</option>
                                             </Field>
-                                            <label>Age</label>
+                                            <label className="text-black fw-bold">
+                                              Age
+                                            </label>
                                           </div>
                                         </div>
                                         <div className="col-sm-4 ps-0">
@@ -493,10 +518,15 @@ function Registration(props) {
                                               className="form-control"
                                               placeholder="ABC Team"
                                             />
-                                            <label>Player&#39;s Contact</label>
+                                            <label
+                                              className="text-black fw-bold"
+                                              style={{ fontSize: "12px" }}
+                                            >
+                                              Player&#39;s Contact
+                                            </label>
                                           </div>
                                         </div>
-                                        <div className="col-sm-1 ps-0">
+                                        <div className="col-sm-1 ps-0 member-del-btn">
                                           <button
                                             type="button"
                                             className="btn btn-outline-danger btn-sm me-1"
@@ -513,30 +543,29 @@ function Registration(props) {
                           </>
                         ) : null}
 
-                        <div className="form-group mt-2">
-                          <h3 className="text-primary text-end">
-                            ₹{values.amount}
-                          </h3>
-
+                        <div className="form-group mt-4">
                           <Field
                             name="checked"
                             type="checkbox"
                             className="form-check-input me-2"
                             id="flexCheckDefault"
                           ></Field>
-                          <span htmlFor="flexCheckDefault">
+                          <span htmlFor="flexCheckDefault" className="fs-7">
                             I understand that I am responsible for reading and
                             understanding the terms and conditions of the event
                             or service I am registering for.
                           </span>
+                          <h3 className="text-success text-center mt-3">
+                            ₹{values?.amount}/-
+                          </h3>
                         </div>
-                        <div className="form-group mt-5">
+                        <div className="form-group mt-1 mb-0">
                           <button
                             disabled={!(dirty && isValid)}
-                            className="btn btn-primary full-width font--bold btn-lg"
+                            className="btn btn-lg full-width font--bold btn-lg" style={{background:"#0a5993" , color:"white"}}
                           >
                             <i className="fa-solid fa-paper-plane me-2 ms-n1" />
-                            Registration
+                            Register Now
                           </button>
                         </div>
                       </Form>

@@ -38,21 +38,21 @@ function BannerSlider(props) {
                 <h2
                   className="position-absolute text-white"
                   style={{
-                    maxWidth: "14em",
+                    maxWidth: "13em",
                     marginLeft: "5vw",
                     marginTop: "110px auto",
                     fontSize: "3vw",
                   }}
                 >
-                  Click to find the perfect activity for you
+                  Click to find the perfect sport for you!
                 </h2>
               </div>
-              <div style={{ marginTop: "190px", marginLeft: "5vw" }}>
+              <div style={{ marginTop: "160px", marginLeft: "5vw" }}>
                 <HomeSearchBar />
               </div>
             </div>
             <Image
-              src="/assets/img/homebanner.png"
+              src="/assets/img/homebannerimage.png"
               width={1000}
               height={1000} // Set a fixed height for the aspect ratio
               layout="responsive" // Set the layout to responsive

@@ -68,7 +68,7 @@ function Page() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="text-center d-flex align-items-center justify-content-center">
           <NoDataFound />
         </div>
       </section>

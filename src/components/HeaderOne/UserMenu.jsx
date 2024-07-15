@@ -17,6 +17,10 @@ function UserMenu(props) {
       });
   };
   return (
+    <>
+    <li className="text-white">
+              Hi, {user && user?.firstName} {user && user?.lastName}
+            </li>
     <li>
       <div className="btn-group account-drop">
         <button
@@ -73,6 +77,7 @@ function UserMenu(props) {
         </div>
       </div>
     </li>
+    </>
   );
 }
 

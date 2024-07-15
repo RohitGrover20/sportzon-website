@@ -1,6 +1,6 @@
 import React from "react";
 import DOMPurify from "isomorphic-dompurify";
-
+import Link from "next/link";
 function ClassesCard(props) {
   const classes = props && props?.class;
   let cleanDescription = DOMPurify.sanitize(classes?.description);
@@ -40,21 +40,21 @@ function ClassesCard(props) {
           <p
             dangerouslySetInnerHTML={{
               __html:
-                cleanDescription.length > 150
+                cleanDescription?.length > 150
                   ? `${cleanDescription.substring(0, 150) + "...."}`
                   : cleanDescription,
             }}
           />
-          <h5 className="text-white text-center">Trainer: Richa Kocher</h5>
+          <h5 className="text-white text-center">Trainer: {classes?.coaches[0]?.label}</h5>
           <hr style={{ width: "30" }} />
         </div>
 
         <div
-          className="d-flex align-items-center justify-content-between p-0"
+          className="d-flex align-items-center justify-content-between p-0 ms-3"
           style={{ justifyContent: "between" }}
         >
           <div className="edlois">
-            {classes?.classType === "afterSchool" && (
+            {/* {classes?.classType === "afterSchool" && ( */}
               <small
                 className="text-success"
                 style={{ textTransform: "capitalize" }}
@@ -63,9 +63,11 @@ function ClassesCard(props) {
                   ? "One Time"
                   : classes?.feesFrequency}
               </small>
-            )}
-            <div className="h3 fw-semibold text-dark">
-              {classes && classes?.classType === "afterSchool" && (
+             {/* )}  */}
+            <div className="h3 fw-semibold theme-color">
+              {classes 
+              // && classes?.classType === "afterSchool" 
+              && (
                 <>
                   <i className="fa fa-rupee me-1"></i>
                   {classes?.fees}{" "}
@@ -73,6 +75,12 @@ function ClassesCard(props) {
               )}
             </div>
           </div>
+          <Link href={`/classes/${classes?.slug}`}>
+           <button className="btn btn-md text-white btn-md me-2" type="button" style={{background:"#0a5993"}}>
+             <i className="fa-solid fa-paper-plane me-2 ms-n1" />
+             Join Now
+           </button>
+         </Link>
         </div>
       </div>
     </div>

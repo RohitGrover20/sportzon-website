@@ -46,7 +46,7 @@ export default async function Home() {
   const classes = classesData && classesData.data;
   const banners = bannerData && bannerData.data;
   const venuesData = await getVenue();
-  const venues = venuesData && venuesData.data;
+  const venues = venuesData && venuesData?.data;
   return (
     <>
       {banners && <BannerSlider banners={banners} />}
@@ -65,20 +65,19 @@ export default async function Home() {
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
               <div className="sec-heading text-center mt-4">
-                <h1 className="mb-1 text-white fw-light display-1 text-center venues-title">
+                {/* <h1 className="mb-1 text-white fw-light display-1 text-center venues-title">
                   Explore Venues Near You
-                </h1>
-                <div className="d-flex justify-content-center">
+                </h1> */}
+                {/* <div className="d-flex justify-content-center">
                   <p className="text-white fs-5 w-50 venues-subtitle">
-                    Discover and explore amazing venues near you for a wide
-                    range of sports and activities.
+                    Discover and Explore ...
                   </p>
-                </div>
+                </div> */}
               </div>
               <div className="row justify-content-center g-4">
                 <div id="venue-slider">
                   {venues &&
-                    venues.map((item, index) => (
+                    venues?.map((item, index) => (
                       <div key={index}>
                         <SimpleCard item={item} />
                       </div>
@@ -100,7 +99,7 @@ export default async function Home() {
                   className="mb-1 fw-light display-1 text-center classes-title"
                   style={{ color: "#25aeda" }}
                 >
-                  Evolve With <span className="text-orange">Sportzon</span>{" "}
+                  Play Beyond <span className="text-orange">Limits</span>{" "}
                 </h1>
                 <p className="fs-6 classes-subtitle">
                   Elevate your game with us. State-of-the-art facilities, expert
@@ -108,7 +107,22 @@ export default async function Home() {
                   Discover the thrill of sports at its best.
                 </p>
               </div>
-              <div className="row justify-content-center g-4 mb-3 mt-3">
+              <div className="row justify-content-center g-4">
+                <div className="hero" id="classes-slider">
+                  {classes &&
+                    classes.map((item, index) => {
+                      return (
+                        <div
+                          className="col-xl-4 col-lg-4 col-md-6 col-sm-6"
+                          key={index}
+                        >
+                          <ClassesCard class={item} />
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+              {/* <div className="row justify-content-center g-4 mb-3 mt-3">
                 <ul
                   className="nav nav-tabs "
                   id="myTab"
@@ -197,7 +211,7 @@ export default async function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -3,6 +3,12 @@ import React from "react";
 
 async function SimpleCard(props) {
   const item = props && props.item;
+  // Check if updatedAt is within the last month
+  const updatedAt = new Date(item.createdAt);
+  const lastMonth = new Date();
+  lastMonth.setMonth(lastMonth.getMonth() - 1);
+
+  const isNew = updatedAt > lastMonth;
   return (
     <>
       <div
@@ -28,19 +34,22 @@ async function SimpleCard(props) {
               style={{ width: "100%", height: "250px", objectFit: "cover" }}
             />
 
-            <Link href={`/venues/${item && item.slug}`}>
-              <button className="btn btn-orange btn-sm position-absolute top-0 end-0 m-3">
-                Book Now
+            <Link href={`/venues/${item && item?.slug}`}>
+              <button className="btn btn-orange btn-md position-absolute top-0 end-0 m-3">
+                {/* {item?.slug === "sportzon-wave-city"
+                  ? "Book Now"
+                  : "Coming Soon !"} */}
+                  Book Now
               </button>
             </Link>
           </div>
         </div>
         <div className="card-body position-absolute bottom-0 start-0 w-100 text-white d-flex flex-column align-items-center">
-          <h5 className="card-title">{item && item.title}</h5>
+          <h5 className="card-title">{item && item?.title}{isNew && <span class="badge badge-secondary theme-bg">New</span>}</h5>
           <p className="card-text">
-            {item && item.state}
+            {item && item?.state}
             {" , "}
-            {item && item.city}
+            {item && item?.city}
           </p>
         </div>
       </div>

@@ -44,14 +44,10 @@ function Booking({ setBooking, setPaymentInfo }) {
     if (payment === true) {
       setBooking(true);
       setPaymentInfo(paymentType);
-      setCart([]);
+      setCart([]); // Empty the cart when payment is true
+      localStorage.setItem("cart", JSON.stringify([]));
     }
-  }, [payment]);
-  useEffect(() => {
-    if (payment === true) {
-      setCart([]);
-    }
-  }, []);
+  }, [payment, paymentType, setBooking, setPaymentInfo]);
 
   useEffect(() => {
     if (lastValue) {
@@ -88,7 +84,6 @@ function Booking({ setBooking, setPaymentInfo }) {
         });
     }
   }, [lastValue]);
-
   return (
     <div>
       <ToastContainer />

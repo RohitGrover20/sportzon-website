@@ -1,8 +1,7 @@
 "use client";
 import config from "@/config";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import ProfileImageModal from "./ProfileImageModal";
 import { UserContext } from "../../context/context";
 import axios from "axios";
@@ -10,18 +9,8 @@ import axios from "axios";
 function ProfileSideBar() {
   const context = useContext(UserContext);
   const user = context && context;
-  const path = usePathname();
-  var loadScript = function (src) {
-    var tag = window.document.createElement("script");
-    tag.async = false;
-    tag.src = src;
-    window.document.getElementsByTagName("body")[0].appendChild(tag);
-    window.document.getElementsByTagName("body")[0].removeChild(tag);
-  };
-  useEffect(() => {
-    loadScript("/assets/js/custom.js");
-  }, [path]);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [open , setOpen] = useState(false);
   const logout = () => {
     axios
       .get(`${config.API_URL}/auth/logout`)
@@ -32,29 +21,31 @@ function ProfileSideBar() {
         console.log(err);
       });
   };
+
+  const closeSidebar = () => {
+    setIsOpen(false); // Close the sidebar by setting isOpen to false
+  };
+
   return (
     <div className="col-xl-3 col-lg-4">
       <button
         type="button"
         className="d-lg-none btn btn-md btn-orange w-100 rounded-0 fixed-bottom"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#Sidebaruser"
+        onClick={() => setIsOpen(true)} // Open sidebar when this button is clicked
       >
         <i className="fa-solid fa-filter me-2"></i>Dashboard Navigation
       </button>
       <div
-        className="offcanvas-lg offcanvas-start"
+        className={`offcanvas-lg offcanvas-start${isOpen ? " show" : ""}`}
         data-bs-scroll="true"
         data-bs-backdrop="false"
         id="Sidebaruser"
       >
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title">Filters</h5>
           <button
             className="btn-close"
             type="button"
-            data-bs-dismiss="offcanvas"
-            data-bs-target="#Sidebaruser"
+            onClick={closeSidebar} // Close sidebar when close button is clicked
           ></button>
         </div>
         <div className="offcanvas-body pt-0 pe-lg-4">
@@ -71,7 +62,7 @@ function ProfileSideBar() {
                   }
                   className="img-fluid circle"
                   style={{
-                    border: "5px solid #e9e9e9",
+                    border: "5px solid #0a5993",
                     objectFit: "contain",
                     width: "120px",
                     height: "120px",
@@ -81,10 +72,11 @@ function ProfileSideBar() {
                 <i
                   className="fa fa-pen position-absolute bg-orange p-2 circle text-white"
                   data-bs-toggle="modal"
-                  data-bs-target="#profileImage"
+                  data-bs-target="#profileImg"
+                  onClick={()=>setOpen(true)}
                   style={{ right: "25%", bottom: "5%" }}
                 />
-                <ProfileImageModal />
+                <ProfileImageModal open={open} />
               </div>
               <div className="user-caps">
                 <h5 className="mb-0">
@@ -99,27 +91,30 @@ function ProfileSideBar() {
                   <Link
                     href="/user/profile"
                     className="fw-medium active text-primary"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
                   >
-                    <i className="fa-solid fa-user me-2" />
+                    <i className="fa-solid fa-user me-2 theme-color" />
                     Personal Information
                   </Link>
                 </li>
                 <li className="py-3">
-                  <Link href="/user/my-bookings" className="fw-medium">
-                    <i className="fa-solid fa-file me-2" />
+                  <Link
+                    href="/user/my-bookings"
+                    className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
+                  >
+                    <i className="fa-solid fa-file me-2 theme-color" />
                     My Bookings
                   </Link>
                 </li>
                 <li className="py-3">
-                  <Link href="/user/my-classes" className="fw-medium">
-                    <i className="fa-solid fa-id-card me-2" />
-                    My Classes
-                  </Link>
-                </li>
-                <li className="py-3">
-                  <Link href="/user/recent-transactions" className="fw-medium">
-                    <i className="fa-solid fa-wallet me-2" />
-                    Recent Transactions
+                  <Link
+                    href="/user/recent-transactions"
+                    className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
+                  >
+                    <i className="fa-solid fa-wallet me-2 theme-color" />
+                    Order History
                   </Link>
                 </li>
                 {/* <li className="py-3">
@@ -129,14 +124,22 @@ function ProfileSideBar() {
                   </Link>
                 </li> */}
                 <li className="py-3">
-                  <Link href="/user/settings" className="fw-medium">
-                    <i className="fa-solid fa-gear me-2" />
-                    Settings
+                  <Link
+                    href="/user/settings"
+                    className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
+                  >
+                    <i className="fa-solid fa-gear me-2 theme-color" />
+                    Password Settings
                   </Link>
                 </li>
                 <li className="py-3">
-                  <Link href="/user/help-support" className="fw-medium">
-                    <i className="fa-solid fa-question-circle me-2" />
+                  <Link
+                    href="/user/help-support"
+                    className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
+                  >
+                    <i className="fa-solid fa-question-circle me-2 theme-color" />
                     Help & Support
                   </Link>
                 </li>
@@ -144,8 +147,9 @@ function ProfileSideBar() {
                   <a
                     href={`${config.API_URL}/auth/logout`}
                     className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
                   >
-                    <i className="fa fa-sign-out me-2" />
+                    <i className="fa fa-sign-out me-2 theme-color" />
                     Logout
                   </a>
                 </li>

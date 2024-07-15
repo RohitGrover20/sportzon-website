@@ -481,6 +481,38 @@
     centerPadding: "0px",
     infinite: true,
     speed: 700,
+    arrows: true,
+    autoplay: false,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: true,
+          centerMode: false,
+          centerPadding: "15px",
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          arrows: true,
+          centerMode: false,
+          centerPadding: "15px",
+          slidesToShow: 1,
+        },
+      },
+    ],
+  });
+  
+  $("#venuebook-slider").slick({
+    slidesToShow: 1,
+    dots: true,
+    centerMode: false,
+    centerPadding: "0px",
+    infinite: true,
+    speed: 700,
     arrows: false,
     autoplay: true,
     slidesToScroll: 1,
@@ -491,7 +523,7 @@
           arrows: false,
           centerMode: false,
           centerPadding: "15px",
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
       {
@@ -505,7 +537,6 @@
       },
     ],
   });
-
   //Venue BY Slug Slider
 
   $("#venuebyslug-slider").slick({

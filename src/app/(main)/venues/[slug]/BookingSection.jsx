@@ -15,9 +15,6 @@ function BookingSection(props) {
         <button
           className="btn btn-lg"
           style={{ background: "#0a5993" }}
-          // onClick={() => {
-          //   window.location.replace(`/booking?venue=${venue && venue?.slug}`);
-          // }}
           onClick={handleBookNow}
         >
           <p className="text-white fs-6 pb-0 mb-0">Book Now</p>

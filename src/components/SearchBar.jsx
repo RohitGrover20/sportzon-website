@@ -15,7 +15,7 @@ function SearchBar(props) {
   const SearchFunc = () => {
     window.open(
       `/search?keyword=${search?.keyword
-        ?.replace(/[^A-Z0-9]/gi, "-")
+        ?.replace(/[^A-Z0-9.]/gi, "-")
         ?.toLowerCase()}&state=${search?.state}&city=${search?.city}&activity=${
         search?.activity
       }&referrer=${searchType}`,

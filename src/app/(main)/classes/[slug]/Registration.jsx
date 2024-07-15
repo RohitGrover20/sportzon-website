@@ -145,7 +145,7 @@ function Registration(props) {
       name: "Sportzon",
       description:
         "Description of the purchase item shown on the Checkout form. It should start with an alphanumeric character.",
-      image: "http://localhost:8080/assets/img/logo/fav-color.png",
+      image: "http://localhost:8080/assets/img/Sportzon-EIcon.png",
       order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       // "callback_url": "",
       prefill: {
@@ -209,7 +209,7 @@ function Registration(props) {
   };
   return (
     <div className="detail-side-block border overflow-hidden rounded-3 mt-md-0 mt-4  shadow-lg">
-      <div className="detail-side-head d-flex align-items-center bg-primary text-white p-3">
+      <div className="detail-side-head d-flex align-items-center theme-bg text-white p-3">
         <div className="side-flex-thumb">
           <img
             src={data?.banner}
@@ -226,7 +226,7 @@ function Registration(props) {
           <div className="jbs-locat-oiu text-sm-white">
             <span>
               <i className="fa-solid fa-check me-1" />
-              Fill out the form carefully for registration
+              Fill Out The Form Carefully For Registration
             </span>
           </div>
         </div>
@@ -242,8 +242,8 @@ function Registration(props) {
               {isSubmitting ? (
                 <Loading />
               ) : (
-                <div className="detail-side-middle py-3 px-3 row">
-                  <div className="form-group col-lg-4">
+                <div className="detail-side-middle px-3 row">
+                  <div className="col-lg-4">
                     <label>Class Timing</label>
                     <Field
                       as="select"
@@ -423,7 +423,7 @@ function Registration(props) {
                     ></ErrorMessage>
                   </div>
 
-                  <h5> Address Information</h5>
+                  <h5 className="theme-color"> Address Information</h5>
                   <div className="col-lg-12 col-sm-12 col-xs-12 col-xl-12 p-1">
                     <div className="form-floating mb-1">
                       <Field
@@ -505,7 +505,7 @@ function Registration(props) {
                     </div>
                   </div>
 
-                  <h5> Parent's Information (if participant is under 18)</h5>
+                  <h5 className="theme-color mt-3"> Parent's Information (If Participant Is Under 18)</h5>
 
                   <div className="col-lg-4 col-sm-4 col-xs-12 col-xl-4 p-1">
                     <div className="form-floating mb-1">
@@ -555,7 +555,7 @@ function Registration(props) {
                       ></ErrorMessage>
                     </div>
                   </div>
-                  <h5> Emergency Contact</h5>
+                  <h5 className="theme-color mt-3"> Emergency Contact</h5>
 
                   <div className="col-lg-6 col-sm-6 col-xs-12 col-xl-6 p-1">
                     <div className="form-floating mb-1">
@@ -610,19 +610,20 @@ function Registration(props) {
                     </ul>
                     <div className="d-flex align-items-center justify-content-between border-top pt-4">
                       Total:
-                      <span className="fs-3 font--bold text-dark ms-2">
+                      <span className="fs-3 font--bold text-success ms-2">
                         <i className="fa fa-rupee"></i>
                         {totalAmount}
                       </span>
                     </div>
                   </div>
 
-                  <div className="form-group">
+                  <div className="d-flex justify-content-center">
                     <button
                       disabled={!(dirty && isValid)}
-                      className="btn btn-primary full-width font-sm"
+                      className="btn btn-primary font-sm"
+                      style={{width:"65%"}}
                     >
-                      Register Now
+                      REGISTER NOW
                     </button>
                   </div>
                 </div>

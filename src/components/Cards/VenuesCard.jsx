@@ -32,7 +32,10 @@ async function VenuesCard(props) {
               className="btn btn-orange btn-md position-absolute top-50 start-50 translate-middle"
               style={{ transform: "translate(-50%, -50%)" }}
             >
-              Book Now
+              {/* {item?.slug === "sportzon-wave-city"
+                ? "Book Now"
+                : "Coming Soon !"}{" "} */}
+                Book Now
             </button>
           </Link>
         </div>
@@ -47,7 +50,7 @@ async function VenuesCard(props) {
           }}
         >
           <Link
-            href={`/venues/${item && item.slug}`}
+            href={`/venues/${item && item?.slug}`}
             className="d-inline-block text-truncate text-orange fw-bold"
             data-bs-toggle="tooltip"
             title={item && item?.title}
@@ -73,26 +76,26 @@ async function VenuesCard(props) {
         </div>
       </div>
       {/* Half Circle */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-25px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "50px",
-          height: "50px",
-          backgroundColor: "#009EE2",
-          borderRadius: "50%",
-          border: "1px solid #ddd",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Link href={`/venues/${item && item?.slug}`}>
+      <Link href={`/venues/${item && item?.slug}`}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-25px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "50px",
+            height: "50px",
+            backgroundColor: "#009EE2",
+            borderRadius: "50%",
+            border: "1px solid #ddd",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <i class="fa fa-arrow-right text-white"></i>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 }

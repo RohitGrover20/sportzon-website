@@ -78,23 +78,13 @@ function Newsletter() {
                 style={{ marginLeft: "-140px", borderRadius: "34px" }}
               >
                 <div className="card-body m-2">
-                  <p className="text-orange display-5 fw-bold subscribe-title text-center">
-                    Stay in game with Sportzon
-                  </p>
+                  {/* <p className="text-orange display-6 fw-bold subscribe-title text-center">
+                    Hit the Field and Create Your Own Sports Squad!{" "}
+                  </p> */}
                   <p className="fs-5 text-center fw-bold subscribe-subtitle">
                     <span className="text-orange">Subscribe</span> &{" "}
                     <span className="text-orange">Follow</span> For Updates &
                     Exclusive Offers !
-                  </p>
-                  <p className="text-center">
-                    {" "}
-                    Don't miss out the action!{" "}
-                    <span className="text-orange fw-bold">
-                      Subscribe to Sportzon
-                    </span>{" "}
-                    for latest news , upcoming events , and exclusive offers .
-                    Follow us on social media to stay connected and join the
-                    Sportzon community!
                   </p>
                   <MailchimpSubscribe
                     url={url}

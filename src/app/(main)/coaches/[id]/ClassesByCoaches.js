@@ -9,22 +9,18 @@ async function ClassesByCoaches(props) {
   const data = getClasses?.data;
   return (
     <>
-      <section className="pt-5">
+      <section className="pt-5 theme-bg">
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-7 col-lg-7 col-md-11 mb-3">
               <div className="sec-heading text-center">
-                <div className="label text-success bg-light-success d-inline-flex rounded-4 mb-2 font--medium">
-                  <span>Classes by Coach</span>
+              <div className="d-inline-flex px-4 py-1 rounded-5 text-info font--medium border border-2 border-white">
+                  <span className="text-white">Classes by Coach</span>
                 </div>
-                <h2 className="mb-1">
-                  Learn from the Best: Train with Our Experienced Coaches!
+                <h2 className="mb-1 text-white">
+                  Learn from the Best 
+                  <br/> Train with Our Experienced Coaches!
                 </h2>
-                <p className="test-muted fs-6">
-                  Our coaches are experts in their field and have a passion for
-                  teaching. They will help you reach your full potential and
-                  achieve your goals.
-                </p>
               </div>
             </div>
           </div>

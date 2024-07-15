@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { getClasses, getEvents, getVenue } from "@/libs/fetchData";
+import Link from "next/link";
 function HomeSearchBar() {
   const [venues, setVenues] = useState([]);
   const [events, setEvents] = useState([]);
@@ -13,19 +14,19 @@ function HomeSearchBar() {
     activity: "",
     keyword: "",
   });
-
   useEffect(() => {
     async function fetchData() {
       const venuesData = await getVenue();
       setVenues(venuesData?.data || []);
       const eventsData = await getEvents();
-      setEvents(eventsData?.data || []);
+      const upcomingEvents = eventsData?.data?.length > 0 ? eventsData?.data?.filter(item =>  new Date(item?.eventDate) >= new Date()) : [];
+      setEvents(upcomingEvents || []);
       const classesData = await getClasses();
       setClasses(classesData?.data || []);
     }
     fetchData();
   }, []);
-  const SearchFunc = () => {
+  const SearchFunc = () => { 
     window.open(
       `/search?keyword=${search?.keyword
         ?.replace(/[^A-Z0-9.]/gi, "-")
@@ -37,19 +38,19 @@ function HomeSearchBar() {
   };
   const handleDropDown = () => {
     if (type === "venues") {
-      return venues.map((venue, index) => (
+      return venues?.map((venue, index) => (
         <option key={index} value={venue.id}>
           {venue?.slug}
         </option>
       ));
     } else if (type === "events") {
-      return events.map((event, index) => (
+      return events?.map((event, index) => (
         <option key={index} value={event.id}>
           {event?.slug}
         </option>
       ));
     } else if (type === "classes") {
-      return classes.map((classItem, index) => (
+      return classes?.map((classItem, index) => (
         <option key={index} value={classItem.id}>
           {classItem?.slug}
         </option>
@@ -78,9 +79,9 @@ function HomeSearchBar() {
                   <option value="" selected disabled>
                     --Select one--
                   </option>
-                  <option value="events">Events</option>
                   <option value="venues">Venues</option>
                   <option value="classes">Classes</option>
+                  <option value="events">Events</option>
                 </select>
                 <label htmlFor="locationField">Select Category</label>
               </div>
@@ -108,14 +109,16 @@ function HomeSearchBar() {
 
             <div className="col-lg-3 col-md-3 col-sm-6 col-12">
               <div className="form-floating">
-                {search?.referrer ? (
+                {search?.referrer && search?.keyword ? (
+                  <Link href={`/${search?.referrer}/${search && search?.keyword}`}>
                   <button
                     className="btn btn-orange w-100"
                     type="button"
-                    onClick={SearchFunc}
+                    // onClick={SearchFunc}
                   >
                     Search
                   </button>
+                  </Link>
                 ) : (
                   <button className="btn btn-secondary w-100" type="button">
                     Search

@@ -2,100 +2,47 @@ import React from "react";
 
 function page() {
   return (
-    <section>
-      <div className="container">
-        <h1>Privacy Policy</h1>
-        <p>
+    <section style={{ background: "#e9e9e9" }} className="p-5 policy-section">
+      <div
+        className="fluid-container card m-0 policy-section"
+        style={{
+          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+          transition: "0.3s",
+          padding: "60px",
+          borderRadius: "10px",
+        }}
+      >
+         <h3
+          className="text-orange ms-4"
+          style={{
+            fontFamily:
+              '"Playfair Display", "Open Sans", Calibri, Tahoma, serif',
+          }}
+        >
+          Privacy Policy 
+          </h3>
+        <p className="ms-4 text-dark">
           At Sportzon, we take your privacy very seriously. This document
           outlines the types of personal information we receive and collect when
           you use our services, as well as some of the steps we take to
           safeguard information. We hope this will help you make an informed
           decision about sharing personal information with us.
         </p>
-        <p>
+        <p className="ms-4 text-dark">
           By using our Services, you are agreeing to the collection, usage and
           sharing of your information as described in this Privacy Policy. If
           you do not agree with our policies and practices, we advise that you
           refrain from using our services.
         </p>
-        {/* <strong>What personal information do we collect?</strong>
-        <p>
-          We collect personal information from you in a variety of ways,
-          including:
-        </p>
-        <ol>
-          <li>
-            When you book a venue, event, or class, we may collect your name,
-            contact information, billing information, and other personal
-            information.
-          </li>
-          <li>
-            When you visit our website, we may collect your IP address, browser
-            type, and other information about your visit.
-          </li>
-          <li>
-            When you contact us, we may collect your name, contact information,
-            and other personal information.
-          </li>
-        </ol>
 
-        <strong>How do we use your personal information?</strong>
-        <p>We use your personal information for the following purposes:</p>
-        <ol>
-          <li>
-            To provide you with the services you have requested, such as booking
-            a venue, event, or class.
-          </li>
-          <li>To communicate with you about your booking or other services.</li>
-          <li>To improve our website and services.</li>
-          <li>
-            To send you marketing and promotional materials, if you have
-            consented to receive them.
-          </li>
-        </ol>
-
-        <strong>How do we share your personal information?</strong>
-        <p>
-          We may share your personal information with third-party vendors who
-          help us provide our services, such as payment processors and marketing
-          partners. We may also share your personal information with law
-          enforcement or other government agencies, as required by law.
-        </p>
-
-        <strong>How do we protect your personal information?</strong>
-        <p>
-          We take reasonable steps to protect your personal information from
-          unauthorized access, use, disclosure, alteration, or destruction. We
-          use a variety of security measures, including encryption, firewalls,
-          and physical security controls.
-        </p>
-
-        <strong>How can you manage your privacy settings?</strong>
-        <p>
-          You can manage your privacy settings by contacting us at [email
-          protected] You can also unsubscribe from our marketing and promotional
-          materials at any time.
-        </p>
-
-        <strong>Changes to this Privacy Policy</strong>
-        <p>
-          We may update this Privacy Policy from time to time. We will post any
-          changes to this Privacy Policy on our website.
-        </p>
-        <strong>Contact us</strong>
-        <p>
-          If you have any questions about this Privacy Policy, please contact us
-          at info@sportzon.in
-        </p> */}
-
-        <h5 className="pt-2">How we allow you to use our data?</h5>
-        <p>
+        <h5 className="pt-2 ms-4 theme-color">How we allow you to use our data?</h5>
+        <p className="ms-4 text-dark">
           We are very strict about our data policies. Your data is safe with us.
           We will not provide your data to any third party for promotion
           purposes. It will only be used to provide you information.
         </p>
-        <h5 className="pt-2">What data do we collect?</h5>
-        <ol>
+        <h5 className="pt-2 ms-4 theme-color">What data do we collect?</h5>
+        <ol className="ms-4 text-dark">
           <li>
             We collect data mentioned on the registration form. We may also
             collect you email from comments posted. Although we don't share your
@@ -124,22 +71,22 @@ function page() {
           </li>
         </ol>
 
-        <h5 className="pt-2">How is the data used?</h5>
-        <p>
+        <h5 className="pt-2 theme-color ms-4">How is the data used?</h5>
+        <p className="ms-4 text-dark">
           We will just combine personal information collected from you at
           different times to provide the services you’ve requested & to provide
           a better user experience, including customizing content for you.
         </p>
-        <h5 className="pt-2">Do we disclose any information to outside parties?</h5>
-        <p>
+        <h5 className="pt-2 theme-color ms-4">Do we disclose any information to outside parties?</h5>
+        <p  className="ms-4 text-dark">
           We do not sell, trade, or otherwise transfer to outside parties your
           personally identifiable information. We may also release your
           information when we believe release is appropriate to comply with the
           law, enforce our site policies, or protect ours or others rights,
           property, or safety.
         </p>
-        <h5 className="pt-2">Third-party links</h5>
-        <p>
+        <h5 className="pt-2 theme-color ms-4">Third-party links</h5>
+        <p  className="ms-4 text-dark">
           Occasionally, at our discretion, we may include or offer third-party
           products or services on our website. These third-party sites have
           separate and independent privacy policies. Therefore we have no

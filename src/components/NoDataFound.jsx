@@ -1,13 +1,24 @@
 import React from "react";
-
+import Image from "next/image";
 const NoDataFound = (data) => {
   return (
-    <div className="text-center card p-5" style={{width:"60%" , height:"40%" , borderRadius:"40px"}}>
-      <i className="fas fa-exclamation-triangle fa-10x text-warning"></i>
-      <h5 className="mt-4">{data?.data=="res" ? "Great things are on the way!": "No Data has been found !"}</h5>
-      <p className="text-muted">Our team is hard at work to bring you exciting updates. Keep an eye out for what's coming!</p>
-    </div>
+    <div
+    className="text-center card p-4 justify-content-center"
+    style={{
+      width: data?.data == "profile" ? "auto" : "60%",
+      height: "60%",
+      borderRadius: "40px",
+      backgroundImage: "url('/assets/img/stadium-bg.png')",
+    }}
+  >
+       <h5 className="mt-4 text-dark">Great things are on the way!</h5>
+       <p className="fs-7 mb-4 text-dark">Our team is hard at work to bring you exciting updates. Keep an eye out for what's coming!</p>
+       <div style={{alignContent:"center"}}><Image src={"/assets/img/jersey-person.png"} width={200} height={200} alt="imga" ></Image>
+        </div>
+  </div>
   );
 };
 
 export default NoDataFound;
+
+

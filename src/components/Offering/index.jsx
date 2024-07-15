@@ -71,26 +71,22 @@ function Offering() {
         {({ dirty, isValid }) => {
           return (
             <Form className="mx-auto px-xl-5 px-lg-5 px-md-4 z-2 position-relative">
-              <div className="text-center">
-                <div className="rounded-5 px-3 py-1 font--medium text-light bg-warning d-inline-flex justify-content-center m-auto">
-                  Contact us
-                </div>
-              </div>
-              <h3 className="h4 card-title text-center pb-4 text-light">
+              <h3 className="h4 card-title text-center pb-4 text-dark offerings-form-heading">
                 Fill out the form today and learn more about how Sportzon can
                 help you create a thriving sports culture at your School/
                 Office!{" "}
               </h3>
               <div className="row g-4">
                 <div className="col-sm-6">
-                  <label className="form-label text-light opacity-75">
+                  <label className="form-label text-dark">
                     Name <span className="text-danger">*</span>
                   </label>
                   <Field
-                    className="form-control lg light"
+                    className="form-control lg offerings-form-field"
                     type="text"
                     name="name"
                     placeholder="Your name"
+                    style={{width:"80%"}}
                   />
                   <ErrorMessage
                     name="name"
@@ -100,15 +96,16 @@ function Offering() {
                   ></ErrorMessage>
                 </div>
                 <div className="col-sm-6">
-                  <label className="form-label text-light opacity-75">
+                  <label className="form-label text-dark">
                     Email
                   </label>
                   <span className="text-danger">*</span>
                   <Field
-                    className="form-control lg light"
+                    className="form-control lg offerings-form-field"
                     type="email"
                     name="email"
                     placeholder="Email address"
+                    style={{width:"80%"}}
                   />
                   <ErrorMessage
                     name="email"
@@ -118,15 +115,16 @@ function Offering() {
                   ></ErrorMessage>
                 </div>
                 <div className="col-sm-6">
-                  <label className="form-label text-light opacity-75">
+                  <label className="form-label text-dark">
                     Phone
                   </label>
                   <span className="text-danger">*</span>
                   <Field
-                    className="form-control lg light"
+                    className="form-control lg offerings-form-field"
                     type="text"
                     name="phone"
                     placeholder="Phone number"
+                    style={{width:"80%"}}
                   />
                   <ErrorMessage
                     name="phone"
@@ -136,15 +134,16 @@ function Offering() {
                   ></ErrorMessage>
                 </div>
                 <div className="col-sm-6">
-                  <label className="form-label text-light opacity-75">
+                  <label className="form-label text-dark">
                     Organization / Institution
                   </label>
                   <span className="text-danger">*</span>
                   <Field
-                    className="form-control lg light"
+                    className="form-control lg offerings-form-field"
                     type="text"
                     name="org"
                     placeholder="Your organization/ Institution name"
+                    style={{width:"80%"}}
                   />
                   <ErrorMessage
                     name="org"
@@ -154,16 +153,17 @@ function Offering() {
                   ></ErrorMessage>
                 </div>
                 <div className="col-sm-12">
-                  <label className="form-label text-light opacity-75">
+                  <label className="form-label text-dark">
                     Message
                   </label>
                   <span className="text-danger">*</span>
                   <Field
                     as="textarea"
                     name="message"
-                    className="form-control light"
+                    className="form-control offerings-form-field"
                     rows={6}
                     placeholder="Your Message....."
+                    style={{width:"90%"}}
                   />
                   <ErrorMessage
                     name="message"
@@ -175,7 +175,7 @@ function Offering() {
 
                 <div className="col-sm-12 text-center pt-4">
                   <button
-                    className="btn btn-lg btn-success font--medium px-xl-5 px-4"
+                    className="btn btn-lg btn-orange font--medium px-xl-5 px-4 position-relative"
                     disabled={!(dirty && isValid)}
                   >
                     Send a request

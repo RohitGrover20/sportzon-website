@@ -32,7 +32,7 @@ function HeaderOne() {
           <div className="nav-header">
             <a className="nav-brand static-logo" href="/">
               <Image
-                src="/assets/img/Logo-Header.png"
+                src="/assets/img/SportzonLogo.png"
                 width={200}
                 height={50}
                 alt="logo"
@@ -40,7 +40,7 @@ function HeaderOne() {
             </a>
             <a className="nav-brand fixed-logo" href="/">
               <Image
-                src="/assets/img/Logo-Header.png"
+                src="/assets/img/SportzonLogo.png"
                 width={110}
                 height={50}
                 alt="logo"
@@ -48,7 +48,7 @@ function HeaderOne() {
             </a>
             <div className="nav-toggle" />
             <div className="mobile_nav">
-              {user && user.code == "authorised" ? (
+              {user && user?.code == "authorised" ? (
                 <UserMenuMobile user={user} />
               ) : (
                 <ul>
@@ -57,7 +57,8 @@ function HeaderOne() {
                       href="#"
                       data-bs-toggle="modal"
                       data-bs-target="#login"
-                      className="btn btn-orange"
+                      // className="btn btn-orange"
+                      className="text-orange"
                     >
                       <i className="fas fa-sign-in-alt me-2" />
                       Log In

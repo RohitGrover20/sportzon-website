@@ -101,7 +101,7 @@ function Checkout(props) {
             setLoading(false);
             const error = err.response;
             toast.error(
-              error && error.data && error.data && error.data.message,
+              error && error?.data && error?.data && error?.data?.message,
               {
                 position: "top-right",
                 autoClose: 2000,
@@ -118,13 +118,15 @@ function Checkout(props) {
 
   const handleOpenRazorpay = (data) => {
     var options = {
+      // key: "rzp_test_1KAe5ngzKfHbdN", // Enter the Key ID generated from the Dashboard
+
       key: "rzp_live_gk7iMvPaNzkvr2",
       amount: Number(data.amount * 100),
       currency: data.currency,
       name: "Sportzon",
       description:
         "Description of the purchase item shown on the Checkout form.",
-      image: "http://localhost:8080/assets/img/logo/fav-color.png",
+      image: "http://localhost:8080/assets/img/Sportzon-EIcon.png",
       order_id: data.id,
       prefill: {
         name: data.values && data.values.firstName + " " + data.values.lastName,

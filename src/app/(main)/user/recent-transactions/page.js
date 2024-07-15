@@ -5,7 +5,7 @@ function RecentTransaction() {
 	return (
 		<div className="dash-wrapsw card border-0 rounded-4">
 			<div className="card-header">
-				<h3>Recent Transaction</h3>
+				<h3 className="theme-color p-2">Order History</h3>
 			</div>
 			<div className="card-body">
 				<Transaction />

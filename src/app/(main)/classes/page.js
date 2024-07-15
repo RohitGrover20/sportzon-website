@@ -1,4 +1,3 @@
-import SearchBar from "@/components/SearchBar";
 import { getClasses } from "@/libs/fetchData";
 import ClassList from "./ClassList";
 
@@ -9,17 +8,17 @@ async function Classes() {
   const classes = classData?.data;
   return (
     <>
-      <SearchBar searchType="classes" />
-      <section className="gray-simple">
+      <section className="theme-bg mt-0 pt-3">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-6 col-lg-10 col-md-12 col-sm-12 mb-1">
               <div className="sec-heading center">
-                <div className="d-inline-flex px-4 py-1 rounded-5 text-info bg-light-info font--medium">
-                  <span>Classes</span>
+                <div className="d-inline-flex px-4 py-1 rounded-5 text-info font--medium border border-2 border-white">
+                  <span className="text-white">Classes</span>
                 </div>
-                <h2>Learn a new sport and make new friends!</h2>
-                <p>Find, Register and Excel in Top-notch Sports Events.</p>
+                <h2 className="text-white mt-3">
+                  Learn a new sport and make new friends!
+                </h2>
               </div>
             </div>
           </div>

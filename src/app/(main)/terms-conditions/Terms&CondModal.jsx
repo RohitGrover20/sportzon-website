@@ -11,9 +11,9 @@ const TermsCondModal = () => {
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
-            <div className="modal-body">
+            <div className="modal-body text-black">
               {" "}
-                <h3>Terms & Conditions</h3>
+                <h3 className="theme-color">Terms & Conditions</h3>
                 <p>
                   At Sportzon, we are committed to providing our customers with
                   a safe and enjoyable experience. By using our facilities and
@@ -21,7 +21,7 @@ const TermsCondModal = () => {
                 </p>
                 <ul>
                   <li className="pt-4">
-                    <h6>Acceptance of Terms:</h6>
+                    <h6 className="text-orange">Acceptance of Terms:</h6>
                     <span>
                       By accessing or using Sportzon, you agree to be bound by
                       these Terms and Conditions ("Terms"). If you disagree with
@@ -29,7 +29,7 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Eligibility:</h6>
+                    <h6 className="text-orange">Eligibility:</h6>
                     <span>
                       Sportzon is only available to users who are at least 14
                       years old and have the legal capacity to enter into
@@ -37,7 +37,7 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Account Creation:</h6>
+                    <h6 className="text-orange">Account Creation:</h6>
                     <span>
                       To access certain features of Sportzon, you may need to
                       create an account. You are responsible for maintaining the
@@ -47,7 +47,7 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>User Content:</h6>
+                    <h6 className="text-orange">User Content:</h6>
                     <span>
                       You may be able to submit content to Sportzon, such as
                       comments, reviews, or photos. You retain all ownership
@@ -60,7 +60,7 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Prohibited Conduct:</h6>
+                    <h6 className="text-orange">Prohibited Conduct:</h6>
                     <span>
                       You agree not to use Sportzon for any purpose that is
                       unlawful, harmful, or prohibited by these Terms. This
@@ -74,7 +74,7 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Disclaimer:</h6>
+                    <h6 className="text-orange">Disclaimer:</h6>
                     <span>
                       Sportzon is provided on an "as is" and "as available"
                       basis. We make no warranties, express or implied,
@@ -84,7 +84,7 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Limitation of Liability:</h6>
+                    <h6 className="text-orange">Limitation of Liability:</h6>
                     <span>
                       To the extent permitted by law, we shall not be liable for
                       any damages arising out of or related to your use of
@@ -93,14 +93,14 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Termination:</h6>
+                    <h6 className="text-orange">Termination:</h6>
                     <span>
                       We may terminate your access to Sportzon at any time, for
                       any reason, with or without notice.
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Governing Law:</h6>
+                    <h6 className="text-orange">Governing Law:</h6>
                     <span>
                       These Terms shall be governed by and construed in
                       accordance with the laws of Delhi Jurisdiction, without
@@ -108,14 +108,14 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Entire Agreement:</h6>
+                    <h6 className="text-orange">Entire Agreement:</h6>
                     <span>
                       These Terms constitute the entire agreement between you
                       and Sportzon regarding your use of the platform.
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Updates to Terms:</h6>
+                    <h6 className="text-orange">Updates to Terms:</h6>
                     <span>
                       We may update these Terms at any time. We will notify you
                       of any changes by posting the revised Terms on Sportzon.
@@ -125,7 +125,7 @@ const TermsCondModal = () => {
                     </span>
                   </li>
                   <li className="pt-4">
-                    <h6>Contact Us:</h6>
+                    <h6 className="text-orange">Contact Us:</h6>
                     <span>
                       If you have any questions about these Terms, please
                       contact us at{" "}

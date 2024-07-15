@@ -5,25 +5,32 @@ import config from "@/config";
 import axios from "axios";
 import Event from "./Event";
 import NoDataFound from "@/components/NoDataFound";
+import Loading from "@/components/Loading";
+import Classes from "./Classes";
 
 function MyBookings() {
   const [booking, setBooking] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${config.API_URL}/landing/bookings`, { withCredentials: true })
       .then((result) => {
-        setBooking(result.data && result.data.data);
+        setBooking(result?.data && result?.data?.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
   return (
-    <div className="dash-wrapsw card border-0 rounded-4 mb-4">
+    <div className="dash-wrapsw card border-0 rounded-4 mb-4 p-2">
       <div className="card-header">
-        <h3>My Bookings</h3>
+        <h3 className="theme-color">My Bookings</h3>
       </div>
-      <div className="card-body px-4">
+      <div className="card-body px-4 profile-booking">
         <ul
           className="nav nav-pills lights mb-3 mt-3"
           id="pills-tab1"
@@ -41,7 +48,7 @@ function MyBookings() {
               aria-selected="true"
             >
               <i className="me-1 fa fa-map-marker" />
-              Venue/ Arena
+              Venue
             </button>
           </li>
           <li className="nav-item" role="presentation">
@@ -59,6 +66,21 @@ function MyBookings() {
               Events
             </button>
           </li>
+          <li className="nav-item" role="presentation">
+            <button
+              className="nav-link"
+              id="pills-three-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-three"
+              type="button"
+              role="tab"
+              aria-controls="pills-three"
+              aria-selected="false"
+            >
+              <i className="me-1 fa fa-calendar-check-o" />
+              Classes
+            </button>
+          </li>
         </ul>
         <div className="tab-content" id="pills-tab1Content">
           {/* {------------Start of Arena Section------------------} */}
@@ -69,11 +91,17 @@ function MyBookings() {
             aria-labelledby="pills-one-tab"
             tabIndex={0}
           >
-            {booking?.length>0 ? 
-            <Arena
-              booking={booking.filter((item) => item.bookingType == "arena")}
-            />
-            : <NoDataFound/>}
+            {loading ? (
+              <Loading />
+            ) : booking?.length > 0 ? (
+              <Arena
+                booking={booking.filter(
+                  (item) => item?.bookingType === "arena"
+                )}
+              />
+            ) : (
+              <NoDataFound data="profile" />
+            )}
           </div>
           {/* {------------End of Arena Section------------------} */}
           <div
@@ -83,11 +111,32 @@ function MyBookings() {
             aria-labelledby="pills-two-tab"
             tabIndex={0}
           >
-            {booking?.length>0 ? 
-            <Event
-              booking={booking.filter((item) => item.bookingType == "event")}
-            />
-            : <NoDataFound/>}
+            {loading ? (
+              <Loading />
+            ) : booking?.length > 0 ? (
+              <Event
+                booking={booking.filter((item) => item?.bookingType == "event")}
+              />
+            ) : (
+              <div className="text-center">
+                <NoDataFound data="profile" />
+              </div>
+            )}
+          </div>
+
+          {/* classes bookings */}
+          <div
+            className="tab-pane fade"
+            id="pills-three"
+            role="tabpanel"
+            aria-labelledby="pills-three-tab"
+            tabIndex={0}
+          >
+            {loading ? (
+              <Loading />
+            ) : 
+              <Classes/>
+        }
           </div>
         </div>
       </div>
