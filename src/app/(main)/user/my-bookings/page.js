@@ -22,6 +22,7 @@ function MyBookings() {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
   }, []);
 
@@ -93,14 +94,14 @@ function MyBookings() {
           >
             {loading ? (
               <Loading />
-            ) : booking?.length > 0 ? (
+            ) : booking?.filter(item => item?.bookingType === "arena").length > 0 ? (
               <Arena
                 booking={booking.filter(
                   (item) => item?.bookingType === "arena"
                 )}
               />
             ) : (
-              <NoDataFound data="profile" />
+              <NoDataFound data="profile"  page="venues"/>
             )}
           </div>
           {/* {------------End of Arena Section------------------} */}
@@ -113,18 +114,16 @@ function MyBookings() {
           >
             {loading ? (
               <Loading />
-            ) : booking?.length > 0 ? (
+            ) : booking?.filter(item => item?.bookingType === "event").length > 0 ? (
               <Event
-                booking={booking.filter((item) => item?.bookingType == "event")}
+                booking={booking.filter((item) => item?.bookingType === "event")}
               />
             ) : (
-              <div className="text-center">
-                <NoDataFound data="profile" />
-              </div>
+              <NoDataFound data="profile" page="events"/>
             )}
           </div>
 
-          {/* classes bookings */}
+          {/* {------------Start of Classes Section------------------} */}
           <div
             className="tab-pane fade"
             id="pills-three"
@@ -134,10 +133,9 @@ function MyBookings() {
           >
             {loading ? (
               <Loading />
-            ) : 
-              <Classes/>
-        }
+            ) : <Classes/>}
           </div>
+          {/* {------------End of Classes Section------------------} */}
         </div>
       </div>
     </div>

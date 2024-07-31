@@ -6322,6 +6322,14 @@ footer.skin-dark-footer .footer-widget .ftp-info {
     padding-top:16px;
     padding-bottom:20px
   }
+  .profile-card{
+    max-width: 100% !important;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .no-data-mobile{
+    width: 100% !important;
+  }
   .welcome-image{
     max-width:100% !important;
     height: auto;
@@ -6405,7 +6413,7 @@ footer.skin-dark-footer .footer-widget .ftp-info {
 }
 
 .slick-next {
-  right: 30px; /* Adjust as needed */
+  right: -20px; /* Adjust as needed */
 }
 
 .slick-prev:hover, .slick-next:hover {

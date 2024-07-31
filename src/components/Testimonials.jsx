@@ -3,7 +3,7 @@ import Rating from "./Rating";
 
 function Testimonials(props) {
   return (
-    <section className="gray pt-5 mt-4">
+    <section className="gray pt-5">
       <div className="container" style={{ overflow: "visible" }}>
         <div
           className="row justify-content-center"

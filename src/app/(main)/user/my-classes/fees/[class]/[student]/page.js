@@ -28,7 +28,7 @@ function Fees({ params }) {
     <div>
       <div className="dash-wrapsw card border-0 rounded-4 mb-4">
         <div className="card-header">
-          <h3>Fees Info</h3>
+          <h3 className="theme-color">Fees Info</h3>
         </div>
         {loading ? (
           <Loading />
@@ -88,21 +88,19 @@ function Fees({ params }) {
                                 <th className="p-1">Discount</th>
                                 <th className="p-1">Total Amount</th>
                                 <th className="p-1">Paid Amount</th>
-                                <th className="p-1">Balance</th>
                                 <th className="p-1">Status</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
                                 <td className="p-1">
-                                  {fee?.month} - {fee?.year}
+                                  {fee?.feeDate && new Date(fee?.feeDate)?.getMonth()+1} - {new Date(fee?.feeDate)?.getFullYear()}
                                 </td>
-                                <td className="p-1">{fee?.subtotal} INR</td>
+                                <td className="p-1">{fee?.feeWithoutGst} INR</td>
                                 <td className="p-1">{fee?.gst} INR</td>
                                 <td className="p-1">{fee?.discount} INR</td>
-                                <td className="p-1">{fee?.totalAmount} INR</td>
+                                <td className="p-1">{fee?.feeWithGst} INR</td>
                                 <td className="p-1">{fee?.paidAmount} INR</td>
-                                <td className="p-1">{fee?.balance} INR</td>
                                 <td className="p-1">{fee?.status}</td>
                               </tr>
                             </tbody>

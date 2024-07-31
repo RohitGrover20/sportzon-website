@@ -28,7 +28,7 @@ function RootLayout({ children }) {
             <div
               className="position-absolute "
               style={{
-                backgroundImage: "url(/assets/img/Loginpages-bg.png)",
+                backgroundImage: "url(/assets/img/auth-bg-img.png)",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",

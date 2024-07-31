@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 
 function Classes() {
   const [classes, setClasses] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .get(`${config.API_URL}/landing/class-registration/my-classes`, {
@@ -26,12 +26,11 @@ function Classes() {
   return (
     <div>
       <div className="dash-wrapsw card border-0 rounded-4 mb-4 p-2">
-        
         <div className="card-body px-4">
           {loading ? (
             <Loading />
           ) : classes?.length <= 0 ? (
-            <NoDataFound data="profile" />
+            <NoDataFound data="profile" page="classes" />
           ) : (
             <div className="row row-cols-1 row-cols-md-2 g-4">
               {classes &&
@@ -47,10 +46,7 @@ function Classes() {
                           <h5 className="h5 fw-bold mb-0 text-primary">
                             {item.admissionIn?.title}
                           </h5>
-                          <span className="label text-success bg-light-success ms-3">
-                            {/* {item?.classTiming && JSON.parse(item?.classTiming).from} -{" "}
-                  {item?.classTiming && JSON.parse(item?.classTiming).to} */}
-                          </span>
+                          <span className="label text-success bg-light-success ms-3"></span>
                         </div>
                         <div className="d-flex align-items-center">
                           <img
@@ -90,21 +86,13 @@ function Classes() {
                             <i className="fa fa-money me-1"></i> Fees Info
                           </button>
                         </Link>
-                        {/* <button className="btn btn-light btn-sm me-1">
-                  <i className="fa fa-users me-1"></i> Attendance
-                </button> */}
                         <Link
                           href={`./my-classes/reports/${item.admissionIn?._id}/${item._id}`}
                         >
-                          {/* {item?.admissionIn?.classType === "afterSchool" && ( */}
                           <button className="btn btn-light btn-sm me-1">
                             <i className="fa fa-file me-1"></i> Reports
                           </button>
-                          {/* )} */}
                         </Link>
-                        {/* <button className="btn btn-dark btn-sm me-1">
-                  More Info
-                </button> */}
                       </div>
                     </div>
                   </div>

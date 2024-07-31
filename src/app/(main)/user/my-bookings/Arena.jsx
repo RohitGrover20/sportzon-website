@@ -64,7 +64,7 @@ function Arena(props) {
                 </a>
                 <Link href={`/venues/${booking?.arena?.slug}`}>
                   <button
-                    className="btn btn-orange btn-md ms-auto me-5 p-4"
+                    className="btn btn-orange btn-md ms-auto me-5 p-2"
                     type="button"
                     style={{ whiteSpace: "nowrap" }}
                   >

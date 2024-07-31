@@ -475,7 +475,7 @@
 
   // Venue Slider
   $("#venue-slider").slick({
-    slidesToShow: 2,
+    slidesToShow: 4,
     dots: true,
     centerMode: false,
     centerPadding: "0px",

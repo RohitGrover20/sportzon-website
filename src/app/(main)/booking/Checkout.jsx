@@ -20,7 +20,7 @@ function Checkout(props) {
     cart &&
     cart.length > 0 &&
     cart.reduce(function (acc, obj) {
-      return acc + obj.amount;
+      return acc + (obj.amount-(obj.amount*18/100));
     }, 0);
   const gst =
     cart &&
@@ -299,11 +299,11 @@ function Checkout(props) {
             <ul className="list-unstyled py-3 mb-0 border-top">
               <li className="d-flex justify-content-between mb-2 text-dark fw-bold">
                 Subtotal:
-                <span className="fw-semibold ms-2">Rs. {subtotal}</span>
+                <span className="fw-semibold ms-2">Rs. {subtotal.toFixed(2)}</span>
               </li>
               <li className="d-flex justify-content-between mb-2 text-dark fw-bold">
                 GST (18%):
-                <span className="fw-semibold ms-2">Rs. {gst}</span>
+                <span className="fw-semibold ms-2">Rs. {gst.toFixed(2)}</span>
               </li>
               <li className="d-flex justify-content-between mb-0 text-dark fw-bold">
                 Total:

@@ -19,22 +19,12 @@ function Venues() {
     }
     fetchData();
   }, []);
-  // const SearchFunc = () => {
-  //   window.open(
-  //     `/search?keyword=${search?.keyword
-  //       ?.replace(/[^A-Z0-9.]/gi, "-")
-  //       ?.toLowerCase()}&state=${search?.state}&activity=${
-  //       search?.activity
-  //     }&city=${search?.city}&referrer=${"venues"}`,
-  //     "_blank"
-  //   );
-  // };
 
   return (
     <div className="position-relative">
       <div className="position-relative w-100">
         <Image
-          src="/assets/img/venue-bg.png"
+          src="/assets/img/Venue-bg-img.png"
           layout="responsive"
           width={1800}
           height={1000}
@@ -95,5 +85,4 @@ function Venues() {
     </div>
   );
 }
-
 export default Venues;

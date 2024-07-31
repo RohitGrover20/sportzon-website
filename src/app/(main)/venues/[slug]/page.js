@@ -242,7 +242,7 @@ function VenuesBySlug({ params }) {
                           <hr className="theme-color fs-1" />
                           <div className="mt-4">
                             <h6 className="mb-0 fs-5 text-dark">
-                              <i className="fas fa-clipboard-list text-orange fs-4"></i>
+                              <i className="fas fa-clipboard-list theme-color fs-4"></i>
                               {"    "}
                               Amenities Available
                             </h6>
@@ -258,6 +258,21 @@ function VenuesBySlug({ params }) {
                                   {item?.label}
                                 </li>
                               ))}
+                            </ul>
+                          </div>
+                          <hr className="theme-color fs-1" />
+                          <div className="mt-4">
+                            <h6 className="mb-0 fs-5 text-dark">
+                              <i className="fas fa-info-circle text-orange fs-4"></i>
+                              {"    "}
+                              Terms & Conditions
+                            </h6>
+                            <ul className="row gy-4 p-0 my-1 mt-0">
+                            <li>1. All the prices are for 1 hour use of the facility except Cricket ground. cricket ground booking would be for 3.5 hours</li>
+                            <li>2. Football Turf and Box Cricket allows a maximum of 12 people in one booking. INR100 per person would be charged for extra players.
+                            </li><li>3. Skating and basketball allows a maximum of 6 people and INR100 Per Person would be charged for extra players. </li>
+                            <li>4. Tennis allows a maximum of two players. INR500 Per Person would be charged for extra players</li>
+                            <li>5. All other terms and conditions and all rights to change or add anything anytime are reserved with Sportzon.</li>
                             </ul>
                           </div>
                           <hr className="theme-color fs-1" />

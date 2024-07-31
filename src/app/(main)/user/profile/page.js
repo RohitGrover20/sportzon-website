@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState , useEffect } from "react";
 import { UserContext } from "../../../../../context/context";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -9,6 +9,7 @@ import { s_a, state_arr } from "@/components/CIties";
 import axios from "axios";
 import config from "@/config";
 import Loading from "@/components/Loading";
+import Link from "next/link";
 import Image from "next/image";
 function Profile() {
   const [loader, setLoader] = useState(false);
@@ -16,17 +17,17 @@ function Profile() {
   const context = useContext(UserContext);
   const user = context && context.data;
   const initialValues = {
-    firstName: (user && user.firstName) || "",
-    lastName: (user && user.lastName) || "",
-    email: (user && user.email) || "",
-    mobile: (user && user.mobile) || "",
-    gender: (user && user.gender) || "",
-    state: (user && user.state) || "",
-    city: (user && user.city) || "",
-    pincode: (user && user.pincode) || "",
+    firstName: (user && user?.firstName) || "",
+    lastName: (user && user?.lastName) || "",
+    email: (user && user?.email) || "",
+    mobile: (user && user?.mobile) || "",
+    gender: (user && user?.gender) || "",
+    state: (user && user?.state) || "",
+    city: (user && user?.city) || "",
+    pincode: (user && user?.pincode) || "",
   };
   const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+    /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
   const validationSchema = Yup.object({
     firstName: Yup.string().required("First Name is required"),
     lastName: Yup.string().required("Last Name is required"),
@@ -55,7 +56,6 @@ function Profile() {
             setSubmitting(false);
             resetForm(true);
             window.location.reload();
-            // window.open(`${config.API_URL}/auth/logout`, "_self");
           },
         });
       } else {
@@ -81,7 +81,30 @@ function Profile() {
       });
     }
   };
-
+const [bookingCount , setBookingCount] = useState();
+const [classesCount , setClassesCount] = useState();
+useEffect(() => {
+  axios
+    .get(`${config.API_URL}/landing/class-registration/my-classes`, {
+      withCredentials: true,
+    })
+    .then((result) => {
+      setClassesCount(result?.data && result?.data?.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, []);
+  useEffect(() => {
+    axios
+      .get(`${config.API_URL}/landing/bookings`, { withCredentials: true })
+      .then((result) => {
+        setBookingCount(result?.data && result?.data?.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="dash-wrapsw card border-0 rounded-4 mb-4">
       <div className="card-header">
@@ -94,8 +117,87 @@ function Profile() {
         <div className="card-body">
           {!showProfile ? (
             <div className="text-center">
-              <h2 className="theme-color"><span>Welcome ,</span><span className="text-orange">{user.firstName} {user.lastName}</span> </h2>
-              <Image src="/assets/img/Welcome-Page-Img.jpg" alt="Welcome" className="mb-3 welcome-image" width="500" height="400"/>
+              <h2 className="theme-color mb-4">
+                <span>Welcome ,</span>
+                <span className="text-orange">
+                  {user?.firstName} {user?.lastName}
+                </span>
+              </h2>
+              <Image src="/assets/img/welcome.jpg" alt="welcome" width={700} height={350}/>
+              <div>
+              <p className="fs-6 text-orange">
+                  Here's a quick look at your profile and activities !
+                </p>
+                <div className="d-flex justify-content-around fs-6 text-dark m-3 profile-card">
+                  <span>Name : {user?.firstName}</span>{" "}
+                  <span>Email Id : {user?.email}</span>
+                  <span>Mobile No. : {user?.mobile}</span>
+                </div>
+              </div>
+              <div className="d-flex justify-content-around profile-card">
+                <div
+                  className="card profile-card"
+                  style={{
+                    zIndex: 10,
+                    maxWidth: "45%",
+                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                  }}
+                >
+                  <div className="card-body">
+                    <h2 className="text-orange">My Bookings</h2>
+                    <h6>Count: {bookingCount && bookingCount?.length}</h6>
+                    <p className="card-text">
+                      You have a total of <strong> {bookingCount && bookingCount?.length} bookings</strong> for venues
+                      and events.Manage and review your bookings easily through
+                      our platform.
+                    </p>
+                    <Link href={`/venues`} className="me-2">
+                      <button className="btn btn-md btn-success text-white">
+                        Book Venue Now
+                      </button>
+                    </Link>
+                    <Link href={`/events`}>
+                      <button className="btn btn-md btn-success text-white">
+                        Book Event Now
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+                <div
+                  className="card profile-card"
+                  style={{
+                    zIndex: 10,
+                    maxWidth: "45%",
+                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                  }}
+                >
+                  <div className="card-body">
+                    <h2 className="text-orange">My Classes</h2>
+                    <h6>Count: {classesCount && classesCount?.length}</h6>
+                    <p className="card-text">
+                      You have a total of <strong>{classesCount && classesCount?.length} learning</strong> classes.
+                      Manage and review your classes easily through our
+                      platform.
+                    </p>
+                    <Link href={`/classes`}>
+                      <button className="btn btn-md btn-success text-white">
+                        Book Class Now
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="alert alert-info mt-4"
+                style={{
+                  fontSize: "18px",
+                  padding: "15px",
+                  borderRadius: "5px",
+                }}
+              >
+                You have upcoming bookings for venues and events. Stay organized
+                and prepare for your next visit!
+              </div>{" "}
               <p>Click the button below to edit your profile information.</p>
               <button
                 className="btn btn-orange"
@@ -131,7 +233,7 @@ function Profile() {
                           render={(msg) => (
                             <small className="text-danger">{msg}</small>
                           )}
-                        ></ErrorMessage>
+                        />
                       </div>
                       <div className="col mb-3">
                         <label className="mb-1">
@@ -149,7 +251,7 @@ function Profile() {
                           render={(msg) => (
                             <small className="text-danger">{msg}</small>
                           )}
-                        ></ErrorMessage>
+                        />
                       </div>
                       <div className="col mb-3">
                         <label className="mb-1">
@@ -167,7 +269,7 @@ function Profile() {
                           render={(msg) => (
                             <small className="text-danger">{msg}</small>
                           )}
-                        ></ErrorMessage>
+                        />
                       </div>
                       <div className="col mb-3">
                         <label className="mb-1">
@@ -185,11 +287,15 @@ function Profile() {
                           render={(msg) => (
                             <small className="text-danger">{msg}</small>
                           )}
-                        ></ErrorMessage>
+                        />
                       </div>
                       <div className="col mb-3">
                         <label className="mb-1">Gender</label>
-                        <Field as="select" name="gender" className="form-select">
+                        <Field
+                          as="select"
+                          name="gender"
+                          className="form-select"
+                        >
                           <option>Male</option>
                           <option>Female</option>
                         </Field>
@@ -210,7 +316,7 @@ function Profile() {
                           render={(msg) => (
                             <small className="text-danger">{msg}</small>
                           )}
-                        ></ErrorMessage>
+                        />
                       </div>
                       <div className="col mb-3">
                         <label className="mb-1">City</label>
@@ -219,9 +325,9 @@ function Profile() {
                             --Select a City--
                           </option>
                           {s_a[state_arr.indexOf(values && values.state)] &&
-                            s_a[state_arr.indexOf(values && values.state)].split(
-                              "|"
-                            ) &&
+                            s_a[
+                              state_arr.indexOf(values && values.state)
+                            ].split("|") &&
                             s_a[state_arr.indexOf(values && values.state)]
                               .split("|")
                               .map((item, index) => {
@@ -233,7 +339,7 @@ function Profile() {
                           render={(msg) => (
                             <small className="text-danger">{msg}</small>
                           )}
-                        ></ErrorMessage>
+                        />
                       </div>
                       <div className="col mb-3">
                         <label className="mb-1">Pincode</label>

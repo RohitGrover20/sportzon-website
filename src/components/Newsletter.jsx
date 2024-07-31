@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
-
+import Image from "next/image";
 function Newsletter() {
   const url =
     "https://citiskape.us9.list-manage.com/subscribe/post?u=cc271862d8898b333e8af345a&amp;id=2bbcc6b9dd&amp;f_id=003a3be1f0";
@@ -56,18 +56,20 @@ function Newsletter() {
   return (
     <>
       <section
-        className="call-action-container  position-relative"
+        className="call-action-container position-relative p-3"
         style={{ backgroundImage: 'url("assets/img/bg-subscribe.png")' }}
       >
         <div className="container">
           <div className="row align-items-center">
             {/* Left Image */}
             <div className="col-lg-6 position-relative subscribe-main-img">
-              <div className="ms-5 ps-5 ">
-                <img
-                  src="/assets/img/Subscribe-Img.png"
-                  alt="Left Image"
-                  className="img-fluid"
+              <div className="ps-5">
+                <Image
+                  src="/assets/img/subscribe-img.jpg"
+                  alt="Subscribe Now"
+                  width={500}
+                  height={400}
+                  style={{ borderRadius: "30px" }}
                 />
               </div>
             </div>
@@ -78,9 +80,6 @@ function Newsletter() {
                 style={{ marginLeft: "-140px", borderRadius: "34px" }}
               >
                 <div className="card-body m-2">
-                  {/* <p className="text-orange display-6 fw-bold subscribe-title text-center">
-                    Hit the Field and Create Your Own Sports Squad!{" "}
-                  </p> */}
                   <p className="fs-5 text-center fw-bold subscribe-subtitle">
                     <span className="text-orange">Subscribe</span> &{" "}
                     <span className="text-orange">Follow</span> For Updates &

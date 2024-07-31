@@ -9,12 +9,16 @@ import { UserContext } from "../../context/context";
 import Loading from "./Loading";
 
 function RatingCard(props) {
-  const [loading, setLoading] = useState(false);
+  const pathname =
+    typeof window !== "undefined" ? window?.location?.pathname : null;
+  const pathSegments = pathname ? pathname.split("/") : [];
+  const lastSegment =
+    pathSegments.length >= 2 ? pathSegments[pathSegments.length - 2] : "";
   const context = useContext(UserContext);
   const user = context && context;
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-
+  const [loading, setLoading] = useState(true);
   const on = {
     color: "#f69520",
     fontSize: "35px",
@@ -83,7 +87,10 @@ function RatingCard(props) {
         }
         style={{ cursor: "pointer" }}
       >
-        <span className="text-success ms-2"> (Rate Item?)</span>
+        <span className="text-success ms-2">
+          {" "}
+          {`(Rate this ${lastSegment == "venues" ? "venues " : "classes "}!)`}
+        </span>
       </a>
       <div
         className="modal fade"

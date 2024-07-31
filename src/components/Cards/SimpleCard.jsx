@@ -16,7 +16,7 @@ async function SimpleCard(props) {
         style={{
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
           opacity: 0.9,
-          width: "500px",
+          width: "300px",
           marginBottom: "40px",
           marginRight: "10px",
         }}
@@ -45,7 +45,7 @@ async function SimpleCard(props) {
           </div>
         </div>
         <div className="card-body position-absolute bottom-0 start-0 w-100 text-white d-flex flex-column align-items-center">
-          <h5 className="card-title">{item && item?.title}{isNew && <span class="badge badge-secondary theme-bg">New</span>}</h5>
+          <h5 className="card-title text-center">{item && item?.title}{isNew && <span class="badge badge-secondary theme-bg">New</span>}</h5>
           <p className="card-text">
             {item && item?.state}
             {" , "}
