@@ -105,6 +105,17 @@ const getClasses = cache(async () => {
   }
 });
 
+const getSubscriptionPlan = cache(async () => {
+  try {
+    const subscription = await axios.get(`${config.API_URL}/landing/subscription`);
+    if (subscription) {
+      return subscription && subscription?.data;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 const getTestimonials = cache(async () => {
   try {
     const testimonials = await axios.get(
@@ -148,4 +159,5 @@ export {
   getClassesByCoach,
   getTestimonials,
   getArenaRating,
+  getSubscriptionPlan,
 };

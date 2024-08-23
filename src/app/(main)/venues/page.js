@@ -37,9 +37,9 @@ function Venues() {
         <h2 className="text-uppercase text-white fw-bolder">
           Find Your Perfect Play At
         </h2>
-        <h2 className="text-orange display-2 fw-bold bolder text-center">
+        <p className="text-orange display-2 fw-bold bolder text-center">
           SPORTZON
-        </h2>
+        </p>
         <div className="p-4 pb-3 venue-form">
           <h5 className="text-white text-center">
             Availability Form - Secure Your Play Time!

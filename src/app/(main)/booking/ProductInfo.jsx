@@ -70,8 +70,43 @@ function ProductInfo(props) {
       });
   }, []);
 
+  // Fetch subscription plans from the API
+  const [subscriptionPlans, setSubscriptionPlans] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${config.API_URL}/landing/subscription`, { withCredentials: true })
+      .then((result) => {
+        setSubscriptionPlans(result?.data?.data || []);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const [userPlan, setUserPlan] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${config.API_URL}/landing/subscription/mysubscriptions`, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        setUserPlan(result?.data?.data?.[0] || {}); // Assuming the response is an array
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // Determine the user's current subscription plan
+  const usersubscriptionPlan =
+    subscriptionPlans &&
+    subscriptionPlans?.filter((plan) => plan.planName === userPlan?.planName);
+  console.log(userPlan, subscriptionPlans, "===dataaa", usersubscriptionPlan);
   return (
-    <div className="col-xl-12 col-lg-12 col-lg-offset-1 pt-3" style={{ overflow: "visible", position: "relative" }}>
+    <div
+      className="col-xl-12 col-lg-12 col-lg-offset-1 pt-3"
+      style={{ overflow: "visible", position: "relative" }}
+    >
       <div className="border rounded card overflow-visible">
         <Formik
           initialValues={initialValues}
@@ -80,7 +115,9 @@ function ProductInfo(props) {
         >
           {({ values, setFieldValue, dirty, isValid }) => {
             let slots = [];
-            const filteredCourt = courts?.filter((ele) => ele.slug === values?.court);
+            const filteredCourt = courts?.filter(
+              (ele) => ele.slug === values?.court
+            );
             pricing = filteredCourt?.[0]?.pricing || 0;
 
             const filteredSlots = filteredCourt?.[0]?.slots?.map((slot) => {
@@ -89,11 +126,15 @@ function ProductInfo(props) {
               return { label: slot.label, value: slot.value };
             });
 
-            const isToday = new Date().toDateString() === new Date(values.date).toDateString();
+            const isToday =
+              new Date().toDateString() ===
+              new Date(values.date).toDateString();
             const currentHour = new Date().getHours();
             const currentMinute = new Date().getMinutes();
 
-            const selectedDateString = new Date(values.date).toISOString().split('T')[0];
+            const selectedDateString = new Date(values.date)
+              .toISOString()
+              .split("T")[0];
 
             // Adjust the filtering based on your data structure
             const bookedSlots = booked
@@ -104,11 +145,15 @@ function ProductInfo(props) {
                     try {
                       const bookingDate = new Date(b.date);
                       if (isNaN(bookingDate.getTime())) {
-                        console.error(`Invalid date format for booking: ${b.date}`);
+                        console.error(
+                          `Invalid date format for booking: ${b.date}`
+                        );
                         return false;
                       }
-                      
-                      const bookingDateString = bookingDate.toISOString().split('T')[0];
+
+                      const bookingDateString = bookingDate
+                        .toISOString()
+                        .split("T")[0];
                       return bookingDateString === selectedDateString;
                     } catch (error) {
                       console.error("Error processing booking date:", error);
@@ -119,12 +164,14 @@ function ProductInfo(props) {
               );
 
             slots = filteredSlots?.filter((ele) => {
-              const [startHour, startMinute] = ele.label.split(" to ")[0].split(":");
+              const [startHour, startMinute] = ele.label
+                .split(" to ")[0]
+                .split(":");
               return (
                 ele &&
                 (!isToday ||
-                  (startHour > currentHour ||
-                    (startHour === currentHour && startMinute > currentMinute))) &&
+                  startHour > currentHour ||
+                  (startHour === currentHour && startMinute > currentMinute)) &&
                 !bookedSlots.includes(ele.value)
               );
             });
@@ -132,6 +179,34 @@ function ProductInfo(props) {
             return (
               <Form style={{ overflow: "visible", position: "relative" }}>
                 <div className="row g-4 pb-md-3 mb-md-1 align-items-center mt-2 px-3">
+                  {userPlan && (
+                    <div className="container mt-4">
+                      <div
+                        className="alert alert-success d-flex align-items-center"
+                        role="alert"
+                      >
+                        <svg
+                          className="bi flex-shrink-0 me-2"
+                          width="24"
+                          height="24"
+                          role="img"
+                          aria-label="Success:"
+                        >
+                          <path d="M8.293 11.293a1 1 0 0 1 1.414 0L12 13.414l3.293-3.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z" />
+                        </svg>
+                        <div>
+                          <h4 className="mb-1">
+                            🎉 You're a valued Sportzon member!
+                          </h4>
+                          <p className="mb-0">
+                            Enjoy exclusive discounts on venues and additional
+                            benefits.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="col-sm-4">
                     <label className="form-label">
                       <strong className="theme-color">
@@ -175,7 +250,8 @@ function ProductInfo(props) {
                         setFieldValue("slots", []);
                       }}
                     >
-                      {courts?.filter((el) => el?.activity === values?.activity).length === 0 ? (
+                      {courts?.filter((el) => el?.activity === values?.activity)
+                        .length === 0 ? (
                         <>
                           <option value="">--Select--</option>
                           <option disabled selected value="">
@@ -185,11 +261,13 @@ function ProductInfo(props) {
                       ) : (
                         <option value="">-- Select--</option>
                       )}
-                      {courts?.filter((el) => el.activity === values.activity).map((item, index) => (
-                        <option key={index} value={item.slug}>
-                          {item.title} - Rs.{item?.pricing}
-                        </option>
-                      ))}
+                      {courts
+                        ?.filter((el) => el.activity === values.activity)
+                        .map((item, index) => (
+                          <option key={index} value={item.slug}>
+                            {item.title} - Rs.{item?.pricing}
+                          </option>
+                        ))}
                     </Field>
                   </div>
                   <div className="col-sm-4">
@@ -222,7 +300,9 @@ function ProductInfo(props) {
                         No Slots are available
                       </div>
                     ) : (
-                      <div style={{ overflow: "visible", position: "relative" }}>
+                      <div
+                        style={{ overflow: "visible", position: "relative" }}
+                      >
                         <Select
                           isMulti={true}
                           closeMenuOnSelect={false}
@@ -255,5 +335,3 @@ function ProductInfo(props) {
 }
 
 export default ProductInfo;
-
-

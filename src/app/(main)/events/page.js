@@ -1,4 +1,3 @@
-import SearchBar from "@/components/SearchBar";
 import { getEvents } from "@/libs/fetchData";
 import EventList from "./EventList";
 

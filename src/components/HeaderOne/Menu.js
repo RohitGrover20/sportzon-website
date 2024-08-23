@@ -444,7 +444,7 @@ function Menu() {
             </li>
           </ul>
         </li>
-        <li className="">
+        <li>
           <Link href="/classes" onClick={handleLinkClick} className="nav-link">
             Classes
           </Link>
@@ -474,6 +474,11 @@ function Menu() {
               </Link>
             </li>
           </ul>
+        </li>
+        <li>
+          <Link href="/membership" onClick={handleLinkClick} className="nav-link">
+            Membership Plans
+          </Link>
         </li>
       </ul>
     </div>

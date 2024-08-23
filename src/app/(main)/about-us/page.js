@@ -58,13 +58,27 @@ function AboutUs() {
                   or who are new to an area.
                 </p>
                 <p className="mb-0 fs-6 fw-light text-dark">
-                  Individuals can use the app to find sports complexes near
-                  them, book court time, and find coaches and personal trainers.
-                  Businesses can use the app to promote their sports complexes,
-                  events, and services. Sportzon is a great example of how
-                  technology can be used to improve people's lives. The app
-                  makes it easier for people to find and participate in sports,
-                  which can lead to a healthier and happier lifestyle.
+                  Individuals can use the Sportzon app to find nearby sports
+                  complexes, book court time, and connect with coaches and
+                  personal trainers. Businesses can utilize the app to promote
+                  their sports complexes, events, and services. Sportzon is a
+                  prime example of how technology can enhance lives by making it
+                  easier for people to discover and engage in sports, ultimately
+                  leading to a healthier and happier lifestyle.
+                  <br />
+                  <br />
+                  For any inquiries or assistance, feel free to contact us via
+                  email at{" "}
+                  <a href="mailto:info@sportzon.in" className="fw-bold">
+                    info@sportzon.in
+                  </a>{" "}
+                  or call our enquiry number at{" "}
+                  <a href="tel:+919654696000" className="fw-bold">
+                    9654696000
+                  </a>
+                  . Our support team is available from{" "}
+                  <span className="fw-bold">9 AM to 7 PM</span>. We aim to
+                  respond to enquiries within 1 to 3 business days.
                 </p>
               </div>
             </div>

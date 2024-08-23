@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 import Image from "next/image";
-
 function Footer() {
   const currentYear = new Date().getFullYear();
   const handleLocationClick = () => {
@@ -27,15 +26,14 @@ function Footer() {
       }
     };
   }, []);
+
   return (
     <>
-      {/* <Tags /> */}
       <div className="clearfix" />
       <footer
         className="footer"
         style={{
-          // backgroundImage: 'url("/assets/img/footer_bgimg.png")',
-          backgroundColor:"#808080b",
+          backgroundColor: "#808080b",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
@@ -46,7 +44,6 @@ function Footer() {
               <div className="col-lg-4 col-md-4">
                 <div className="footer-widget mt-3">
                   <Image
-                    // src="/assets/img/Footer-logo.png"
                     src="/assets/img/SportzonLogo.png"
                     className="img-footer"
                     alt="Citiskape Sports"
@@ -54,72 +51,86 @@ function Footer() {
                     height={100}
                   />
                   <div className="footer-add mt-0 pt-0">
-                    
-                      <span className="foot-socials m-0 p-0">
-                    <ul>
-                      <li>
-                        <a
-                          href="https://www.facebook.com/sportzonindia/"
-                          title="Facebook"
-                          style={{ background: "none" }}
-                          target="_blank"
-                        >
-                          <Image
-                            src="/assets/img/Facebook_icon.png"
-                            width={30}
-                            height={30}
-                            alt="facebook"
-                          ></Image>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.linkedin.com/company/sportzon-india/"
-                          title="Linkedln"
-                          style={{ background: "none" }}
-                          target="_blank"
-                        >
-                          <Image
-                            src="/assets/img/Linkedin_icon.png"
-                            width={30}
-                            height={30}
-                            alt="linkedln"
-                          ></Image>
-                        </a>
-                      </li>
-                      <a
-                        href="https://www.instagram.com/sportzonindia/"
-                        title="Instagram"
-                        style={{ background: "none" }}
-                        target="_blank"
-                      >
+                    <span className="foot-socials m-0 p-0">
+                      <ul>
                         <li>
-                          <Image
-                            src="/assets/img/Instagram_icon.png"
-                            width={30}
-                            height={30}
-                            alt="instagram"
-                          ></Image>
+                          <a
+                            href="https://www.facebook.com/sportzonindia/"
+                            title="Facebook"
+                            style={{ background: "none" }}
+                            target="_blank"
+                          >
+                            <Image
+                              src="/assets/img/Facebook_icon.png"
+                              width={30}
+                              height={30}
+                              alt="facebook"
+                            ></Image>
+                          </a>
                         </li>
-                      </a>
-                      <a
-                        href="https://www.youtube.com/@sportzongameon"
-                        title="Youtube"
-                        style={{ background: "none" }}
-                        target="_blank"
-                      >
-                      <li>
-                        <Image
-                          src="/assets/img/Youtube_icon.png"
-                          width={30}
-                          height={30}
-                          alt="youtube"
-                        ></Image>
-                      </li>
-                      </a>
-                    </ul>
-                  </span>
-                  
+                        <li>
+                          <a
+                            href="https://www.linkedin.com/company/sportzon-india/"
+                            title="Linkedln"
+                            style={{ background: "none" }}
+                            target="_blank"
+                          >
+                            <Image
+                              src="/assets/img/Linkedin_icon.png"
+                              width={30}
+                              height={30}
+                              alt="linkedln"
+                            ></Image>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://wa.me/9654696000"
+                            title="WhatsApp"
+                            style={{ background: "none" }}
+                            target="_blank"
+                          >
+                            <i
+                              className="fa fa-whatsapp"
+                              aria-hidden="true"
+                              style={{ fontWeight: "normal", fontSize: "36px" }}
+                            ></i>
+                          </a>
+                        </li>
+
+                        <a
+                          href="https://www.instagram.com/sportzonindia/"
+                          title="Instagram"
+                          style={{ background: "none" }}
+                          className="fw-bold"
+                          target="_blank"
+                        >
+                          <li>
+                            <Image
+                              src="/assets/img/Instagram_icon.png"
+                              width={30}
+                              height={30}
+                              alt="instagram"
+                            ></Image>
+                          </li>
+                        </a>
+                        <a
+                          href="https://www.youtube.com/@sportzongameon"
+                          title="Youtube"
+                          style={{ background: "none" }}
+                          target="_blank"
+                        >
+                          <li>
+                            <Image
+                              src="/assets/img/Youtube_icon.png"
+                              width={30}
+                              height={30}
+                              alt="youtube"
+                            ></Image>
+                          </li>
+                        </a>
+                      </ul>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -151,10 +162,9 @@ function Footer() {
 
               <div className="col-lg-3 col-md-4">
                 <div className="footer-widget">
-                  {/* <h4 className="widget-title">The Company</h4> */}
                   <ul className="footer-menu">
                     <li>
-                      <Link href='/'>Home</Link>
+                      <Link href="/">Home</Link>
                     </li>
                     <li>
                       <Link href="/privacy-policy">Privacy Policy</Link>
@@ -176,38 +186,10 @@ function Footer() {
 
               <div className="col-lg-2 col-md-4">
                 <div className="footer-widget">
-                  {/* <h4 className="widget-title">Download Our Apps</h4>
-                  <div className="mt-4 mb-0">
-                    <div className="d-flex flex-column justify-content-center">
-                      <div className="mb-3">
-                        <a href="/">
-                          <Image
-                            src="/assets/img/google_playstore_logo.png"
-                            className="img-fluid"
-                            alt="Download from Play Store"
-                            style={{ width: "170px", height: "auto" }}
-                            width={300}
-                            height={10}
-                          />
-                        </a>
-                      </div>
-                      <div className="mb-3">
-                        <a href="/">
-                          <Image
-                            src="/assets/img/apple_store_logo.png"
-                            className="img-fluid"
-                            alt="Download from App Store"
-                            style={{ width: "170px", height: "auto" }}
-                            width={300}
-                            height={10}
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div> */}
-                
-                  {/* <h4 className="widget-title">The Company</h4> */}
                   <ul className="footer-menu">
+                    <li>
+                      <Link href="/carrers">Carrers</Link>
+                    </li>
                     <li>
                       <Link href="/event-gallery">Event Gallery</Link>
                     </li>
@@ -217,19 +199,7 @@ function Footer() {
                     <li>
                       <Link href="/about-us">About Us</Link>
                     </li>
-                    {/* <li>
-                      <Link href="/refund-policy">Refund Policy</Link>
-                    </li>
-                    <li>
-                      <Link href="/cancellation-policy">
-                        Cancellation Policy
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/terms-conditions">Terms & Conditions</Link>
-                    </li> */}
                   </ul>
-                
                 </div>
               </div>
             </div>
@@ -239,14 +209,21 @@ function Footer() {
           <div className="container">
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12">
-                <p className="mb-4">© {currentYear} <span> <a
-                        href="https://www.citiskape.in/"
-                        target="_blank"
-                        className="text-white"
-                      >
-                        {" "}
-                        Citiskape Sports Pvt. Ltd.
-                      </a></span> All Rights Reserved</p>
+                <p className="mb-4">
+                  © {currentYear}{" "}
+                  <span>
+                    {" "}
+                    <a
+                      href="https://www.citiskape.in/"
+                      target="_blank"
+                      className="text-white"
+                    >
+                      {" "}
+                      Citiskape Sports Pvt. Ltd.
+                    </a>
+                  </span>{" "}
+                  All Rights Reserved
+                </p>
               </div>
             </div>
           </div>

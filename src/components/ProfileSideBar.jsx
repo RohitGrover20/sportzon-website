@@ -109,6 +109,16 @@ function ProfileSideBar() {
                 </li>
                 <li className="py-3">
                   <Link
+                    href="/user/my-subscription"
+                    className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
+                  >
+                    <i className="fa-solid fa-file me-2 theme-color" />
+                    My Membership
+                  </Link>
+                </li>
+                <li className="py-3">
+                  <Link
                     href="/user/recent-transactions"
                     className="fw-medium"
                     onClick={closeSidebar} // Close sidebar when link is clicked
