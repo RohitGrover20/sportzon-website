@@ -2,10 +2,6 @@ import dynamic from "next/dynamic";
 const ClassesCard = dynamic(() => import("@/components/Cards/ClassesCard"), {
   ssr: false,
 });
-// import EventsCard from "@/components/Cards/EventsCard";
-// const EventsCard = dynamic(() => import("@/components/Cards/EventsCard"), {
-//   ssr: false,
-// });
 const SimpleCard = dynamic(() => import("@/components/Cards/SimpleCard"), {
   ssr: false,
 });
@@ -24,7 +20,7 @@ import {
   getHomeBanner,
   getTestimonials,
   getVenue,
-  getEvents
+  getEvents,
 } from "@/libs/fetchData";
 import AboutUs from "@/components/AboutUs";
 import EventsCard from "@/components/Cards/EventsCard";
@@ -110,8 +106,8 @@ export default async function Home() {
         </div>
       </section>
 
-       {/* Events------------------------- */}
-       <section
+      {/* Events------------------------- */}
+      <section
         className="p-3"
         style={{
           backgroundImage: 'url("/assets/img/orange-bg.png")',
@@ -122,13 +118,23 @@ export default async function Home() {
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
-              <div className="sec-heading text-center mt-4"></div>
+              <div className="sec-heading text-center">
+                <h1
+                  className="mb-1 fw-light display-1 text-center classes-title text-white"
+                >
+                  Exciting Sports <span className="theme-color">Events</span>{" "}
+                </h1>
+                <p className="fs-6 text-white">
+                  Catch the action with our thrilling sports events. Don’t miss
+                  out on the excitement!
+                </p>
+              </div>{" "}
               <div className="row justify-content-center g-4">
                 <div id="event-slider">
                   {events &&
                     events?.map((item, index) => (
                       <div key={index}>
-                        <EventsCard item={item}/>
+                        <EventsCard item={item} />
                       </div>
                     ))}
                 </div>

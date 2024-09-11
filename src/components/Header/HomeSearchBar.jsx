@@ -60,11 +60,11 @@ function HomeSearchBar() {
   };
 
   return (
-    <div className="container home-search-bar">
+    <div className="home-search-bar">
       <div className="d-flex flex-wrap justify-content-center">
         <form className="w-100" style={{ maxWidth: "1200px" }}>
-          <div className="row w-100 gx-2 gy-2">
-            <div className="col-lg-3 col-md-3 col-sm-6 col-12">
+          <div className="row w-100 gx-2 gy-2" style={{alignItems:"center" , textAlign:"center"}}>
+            <div className="col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="form-floating">
                 <select
                   name="searchType"
@@ -87,7 +87,7 @@ function HomeSearchBar() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 col-sm-6 col-12">
+            <div className="col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="form-floating">
                 <select
                   name="searchName"
@@ -107,7 +107,7 @@ function HomeSearchBar() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 col-sm-6 col-12">
+            <div className="col-lg-4 col-md-4 col-sm-4 col-12">
               <div className="form-floating">
                 {search?.referrer && search?.keyword ? (
                   <Link href={`/${search?.referrer}/${search && search?.keyword}`}>

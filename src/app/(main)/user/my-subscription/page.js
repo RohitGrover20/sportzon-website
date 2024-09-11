@@ -3,7 +3,6 @@ import Loading from "@/components/Loading";
 import NoDataFound from "@/components/NoDataFound";
 import config from "@/config";
 import axios from "axios";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function MySubscription() {
@@ -39,7 +38,7 @@ function MySubscription() {
                 <th scope="col">Plan Name</th>
                 <th scope="col">Start Date</th>
                 <th scope="col">End Date</th>
-                <th scope="col">Amount</th>
+                <th scope="col">Paid Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -60,7 +59,7 @@ function MySubscription() {
                     </td>
                     <td>
                       <i className="fa fa-rupee me-1"></i>
-                      {999}
+                      {item?.amount/100}
                     </td>
                   </tr>
                 );

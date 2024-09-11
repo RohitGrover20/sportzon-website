@@ -5,7 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { s_a, state_arr } from "@/components/CIties";
+import { state_arr } from "@/components/CIties";
 import axios from "axios";
 import config from "@/config";
 import Loading from "@/components/Loading";
@@ -25,6 +25,7 @@ function Profile() {
   const [showProfile, setShowProfile] = useState(false);
   const context = useContext(UserContext);
   const user = context && context.data;
+
   const initialValues = {
     firstName: (user && user?.firstName) || "",
     lastName: (user && user?.lastName) || "",
@@ -94,7 +95,7 @@ function Profile() {
   const [bookingCount, setBookingCount] = useState();
   const [classesCount, setClassesCount] = useState();
   const [membership, setMembership] = useState([]);
-
+  const [totalCoins , setTotalCoins] =useState(0);
   useEffect(() => {
     axios
       .get(`${config.API_URL}/landing/subscription/mysubscriptions`, {
@@ -131,6 +132,24 @@ function Profile() {
         console.log(error);
       });
   }, []);
+// Total Coins 
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(
+          `${config.API_URL}/landing/wallet/${user?._id}/total-coins`,
+          {
+            withCredentials: true,
+          }
+        )
+        .then((result) => {
+          setTotalCoins(result?.data?.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [user]);
 
   return (
     <div className="dash-wrapsw card border-0 rounded-4 mb-4">
@@ -159,26 +178,26 @@ function Profile() {
                   )}
                   {membership[0]?.planName === "Silver" && (
                     <i
-                      className="fa fa-medal"
+                      className="fa fa-medal fa-3x"
                       style={iconStyles.Silver}
                       aria-hidden="true"
                     ></i>
                   )}
                   {membership[0]?.planName === "Platinum" && (
                     <i
-                      className="fa fa-crown"
+                      className="fa fa-crown fa-3x"
                       style={iconStyles.Platinum}
                       aria-hidden="true"
                     ></i>
                   )}
                   {membership[0]?.planName === "Corporate / Institutional" && (
                     <i
-                      className="fa fa-briefcase"
+                      className="fa fa-briefcase fa-3x"
                       style={iconStyles["Corporate / Institutional"]}
                       aria-hidden="true"
                     ></i>
                   )}
-                  <h4 className="text-dark">&nbsp; &nbsp;Current Credits: {membership[0]?.coins || 0}</h4>
+                  <h4 className="text-dark">&nbsp; &nbsp;Current Credits: {totalCoins?.totalCoins}</h4>
                 </div>
               </div>
               <Image

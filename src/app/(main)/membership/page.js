@@ -30,8 +30,8 @@ async function Membership() {
                     margin: "0 auto",
                   }}
                 >
-                  ** 1 CREDIT = 1 RUPEE **
-                </p> {/* Added this line for highlighting the credit information */}
+                  ** 1 CREDIT COIN = 1 RUPEE **
+                </p>
               </div>
             </div>
           </div>

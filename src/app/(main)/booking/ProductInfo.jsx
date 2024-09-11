@@ -1,8 +1,6 @@
 "use client";
 import { Field, Form, Formik } from "formik";
-import config from "@/config";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
@@ -57,51 +55,6 @@ function ProductInfo(props) {
     resetForm(true);
   };
 
-  // Fetch bookings from the API
-  const [booking, setBooking] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${config.API_URL}/landing/bookings`, { withCredentials: true })
-      .then((result) => {
-        setBooking(result?.data?.data || []);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  // Fetch subscription plans from the API
-  const [subscriptionPlans, setSubscriptionPlans] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${config.API_URL}/landing/subscription`, { withCredentials: true })
-      .then((result) => {
-        setSubscriptionPlans(result?.data?.data || []);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const [userPlan, setUserPlan] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${config.API_URL}/landing/subscription/mysubscriptions`, {
-        withCredentials: true,
-      })
-      .then((result) => {
-        setUserPlan(result?.data?.data?.[0] || {}); // Assuming the response is an array
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  // Determine the user's current subscription plan
-  const usersubscriptionPlan =
-    subscriptionPlans &&
-    subscriptionPlans?.filter((plan) => plan.planName === userPlan?.planName);
-  console.log(userPlan, subscriptionPlans, "===dataaa", usersubscriptionPlan);
   return (
     <div
       className="col-xl-12 col-lg-12 col-lg-offset-1 pt-3"
@@ -179,34 +132,6 @@ function ProductInfo(props) {
             return (
               <Form style={{ overflow: "visible", position: "relative" }}>
                 <div className="row g-4 pb-md-3 mb-md-1 align-items-center mt-2 px-3">
-                  {userPlan && (
-                    <div className="container mt-4">
-                      <div
-                        className="alert alert-success d-flex align-items-center"
-                        role="alert"
-                      >
-                        <svg
-                          className="bi flex-shrink-0 me-2"
-                          width="24"
-                          height="24"
-                          role="img"
-                          aria-label="Success:"
-                        >
-                          <path d="M8.293 11.293a1 1 0 0 1 1.414 0L12 13.414l3.293-3.293a1 1 0 0 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z" />
-                        </svg>
-                        <div>
-                          <h4 className="mb-1">
-                            🎉 You're a valued Sportzon member!
-                          </h4>
-                          <p className="mb-0">
-                            Enjoy exclusive discounts on venues and additional
-                            benefits.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
                   <div className="col-sm-4">
                     <label className="form-label">
                       <strong className="theme-color">

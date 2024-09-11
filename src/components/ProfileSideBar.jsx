@@ -119,6 +119,16 @@ function ProfileSideBar() {
                 </li>
                 <li className="py-3">
                   <Link
+                    href="/user/credit-wallet"
+                    className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
+                  >
+                    <i class="fa-solid fa-wallet me-2 theme-color"></i>
+                    Credit Wallet
+                  </Link>
+                </li>
+                <li className="py-3">
+                  <Link
                     href="/user/recent-transactions"
                     className="fw-medium"
                     onClick={closeSidebar} // Close sidebar when link is clicked

@@ -639,7 +639,7 @@
   // Hero Slider
   $("#hero-slider").slick({
     slidesToShow: 1,
-    dots: false,
+    dots: true,
     centerMode: true,
     centerPadding: "0px",
     infinite: true,

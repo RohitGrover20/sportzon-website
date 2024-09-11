@@ -6176,9 +6176,8 @@ footer.skin-dark-footer .footer-widget .ftp-info {
 }
 @media (max-width: 768px) {
   .home-search-bar .form-floating {
-    margin-bottom: 10px; /* Add spacing between form elements */
+    margin-bottom: 10px;
   }
-
   .home-search-bar .form-control {
     min-height: 40px; /* Adjust form control height */
   }
@@ -6420,3 +6419,14 @@ footer.skin-dark-footer .footer-widget .ftp-info {
 .slick-prev:hover, .slick-next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.credit-text {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .credit-text {
+    display: inline;
+  }
+}
+

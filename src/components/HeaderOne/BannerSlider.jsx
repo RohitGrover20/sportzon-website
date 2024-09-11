@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import HomeSearchBar from "../Header/HomeSearchBar";
-function BannerSlider(props) {
-  const banners = props && props.banners;
+function BannerSlider() {
   return (
     <div className="row">
       <div className="container-fluid">
