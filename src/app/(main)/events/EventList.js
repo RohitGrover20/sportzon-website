@@ -5,7 +5,7 @@ import React from 'react';
 function EventList(props) {
     const pathname = typeof window!='undefined' && window?.location?.pathname;
     const events = props && props?.events;
-    const upcomingEvents = events?.length > 0 && events.filter(item => new Date(item?.eventDate) >= new Date());
+    const upcomingEvents = events?.length > 0 && events.filter(item => new Date(item?.eventEndDate) >= new Date());
 
     return (
         <>

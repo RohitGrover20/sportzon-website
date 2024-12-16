@@ -95,7 +95,7 @@ function Profile() {
   const [bookingCount, setBookingCount] = useState();
   const [classesCount, setClassesCount] = useState();
   const [membership, setMembership] = useState([]);
-  const [totalCoins , setTotalCoins] =useState(0);
+  const [totalCoins, setTotalCoins] = useState(0);
   useEffect(() => {
     axios
       .get(`${config.API_URL}/landing/subscription/mysubscriptions`, {
@@ -132,16 +132,13 @@ function Profile() {
         console.log(error);
       });
   }, []);
-// Total Coins 
+  // Total Coins
   useEffect(() => {
     if (user) {
       axios
-        .get(
-          `${config.API_URL}/landing/wallet/${user?._id}/total-coins`,
-          {
-            withCredentials: true,
-          }
-        )
+        .get(`${config.API_URL}/landing/wallet/${user?._id}/total-coins`, {
+          withCredentials: true,
+        })
         .then((result) => {
           setTotalCoins(result?.data?.data);
         })
@@ -164,48 +161,72 @@ function Profile() {
           {!showProfile ? (
             <div className="text-center">
               {/* Membership Plan Section */}
-              <div className="membership-plan mb-4">
-                <h2 className="theme-color mb-3">
-                  Welcome , {user?.firstName} {user?.lastName}
-                </h2>
-                <div className="d-flex justify-content-center align-items-center mb-2">
-                  {membership[0]?.planName === "Gold" && (
-                    <i
-                      className="fa fa-trophy fa-3x"
-                      style={iconStyles.Gold}
-                      aria-hidden="true"
-                    ></i>
-                  )}
-                  {membership[0]?.planName === "Silver" && (
-                    <i
-                      className="fa fa-medal fa-3x"
-                      style={iconStyles.Silver}
-                      aria-hidden="true"
-                    ></i>
-                  )}
-                  {membership[0]?.planName === "Platinum" && (
-                    <i
-                      className="fa fa-crown fa-3x"
-                      style={iconStyles.Platinum}
-                      aria-hidden="true"
-                    ></i>
-                  )}
-                  {membership[0]?.planName === "Corporate / Institutional" && (
-                    <i
-                      className="fa fa-briefcase fa-3x"
-                      style={iconStyles["Corporate / Institutional"]}
-                      aria-hidden="true"
-                    ></i>
-                  )}
-                  <h4 className="text-dark">&nbsp; &nbsp;Current Credits: {totalCoins?.totalCoins}</h4>
+              <div className="membership-plan mb-4 p-3 bg-light rounded shadow-lg d-flex flex-column flex-md-row align-items-center justify-content-center">
+                {/* Text Section */}
+                <div className="text-section text-center text-md-start mb-3 mb-md-0">
+                  <h2
+                    className="text-primary mb-2"
+                    style={{
+                      fontStyle: "italic",
+                      fontSize: "2.5rem", // Smaller size for mobile
+                      fontWeight: "300",
+                      color: "#6C63FF",
+                      letterSpacing: "0.5px",
+                      textShadow: "1px 1px 4px rgba(0,0,0,0.1)",
+                    }}
+                  >
+                    Welcome
+                  </h2>
+                  <h1
+                    className="name-gradient mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "2.5rem", // Adjusted size for mobile
+                      background:
+                        "linear-gradient(90deg, #ff6f61 0%, #ffa751 50%, #ff6f61 100%)",
+                      WebkitBackgroundClip: "text",
+                      color: "transparent",
+                      letterSpacing: "2px",
+                      lineHeight: "1.2",
+                      textTransform: "uppercase",
+                      textShadow: "2px 2px 4px rgba(0,0,0,0.15)",
+                    }}
+                  >
+                    {user?.firstName} {user?.lastName}
+                  </h1>
+                  {/* Membership Info and Credits */}
+                  <div className="d-flex flex-column align-items-center align-items-md-start">
+                    {membership[0]?.planName === "Gold" && (
+                      <i className="fa fa-trophy fa-2x text-warning mb-2"></i>
+                    )}
+                    {membership[0]?.planName === "Silver" && (
+                      <i className="fa fa-medal fa-2x text-secondary mb-2"></i>
+                    )}
+                    {membership[0]?.planName === "Platinum" && (
+                      <i className="fa fa-crown fa-2x text-dark mb-2"></i>
+                    )}
+                    {membership[0]?.planName ===
+                      "Corporate / Institutional" && (
+                      <i className="fa fa-briefcase fa-2x text-info mb-2"></i>
+                    )}
+                    <h4 className="text-muted">
+                      Current Credits: {totalCoins?.totalCoins}
+                    </h4>
+                  </div>
+                </div>
+
+                {/* Image Section */}
+                <div className="image-section text-center">
+                  <Image
+                    src="/assets/img/welcome-men.png"
+                    alt="welcome"
+                    width={300} // Adjust width for smaller screens
+                    height={200} // Adjust height for smaller screens
+                    className="img-fluid rounded"
+                  />
                 </div>
               </div>
-              <Image
-                src="/assets/img/welcome.jpg"
-                alt="welcome"
-                width={700}
-                height={350}
-              />
+
               <div>
                 <p className="fs-6 text-orange">
                   Here's a quick look at your profile and activities !

@@ -115,14 +115,22 @@ function EventDetails({ params }) {
               {/* Right Section */}
               <div className="col-xl-4 col-lg-4 col-md-6 col-xl-4 px-xl-5">
                 <div className="card card-body border">
-                  <div className="d-flex align-items-center pb-0 mb-0">
+                  <div className="pb-0 mb-0">
                     <p className="m-0 fs-6 theme-color">
                       <i
                         className="fa fa-calendar"
                         style={{ color: "orange" }}
                       />{" "}
                       {event?.eventDate &&
-                        new Date(event.eventDate).toDateString()}{" "}
+                        new Date(event.eventDate).toDateString()}{" "}{" - "}
+                       {event?.eventEndDate &&
+                        new Date(event.eventEndDate).toDateString()}{" "}
+                    </p>
+                    <p className="m-0 fs-6 theme-color">
+                      <i
+                        className="fa fa-clock"
+                        style={{ color: "orange" }}
+                      />{" "}Timings -  
                       {event?.eventTime && event?.eventTime?.from} to{" "}
                       {event?.eventTime && event?.eventTime?.to}
                     </p>

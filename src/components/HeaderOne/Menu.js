@@ -8,7 +8,7 @@ import axios from "axios";
 
 function Menu() {
   const user = useContext(UserContext);
-  const [subscriptionData , setSubscriptionData] = useState();
+  const [subscriptionData, setSubscriptionData] = useState();
   const [isWrapperClosed, setIsWrapperClosed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -56,7 +56,6 @@ function Menu() {
     setIsMobileMenuOpen(false);
     setIsWrapperClosed((prevState) => !prevState); // Toggle the wrapper class state
   };
-
 
   useEffect(() => {
     axios
@@ -172,41 +171,6 @@ function Menu() {
             Classes
           </Link>
         </li>
-        <li
-          className="nav-item dropdown mobile-dropdown"
-          style={{ margin: "14px" }}
-        >
-          <div
-            className={`text-white nav-link dropdown-toggle ${
-              openDropdown === "offerings" ? "active" : ""
-            }`}
-            role="button"
-            onClick={() => toggleDropdown("offerings")}
-            aria-expanded={openDropdown === "offerings" ? "true" : "false"}
-          >
-            Our Offerings
-          </div>
-          <ul
-            className={`dropdown-menu ${
-              openDropdown === "offerings" ? "show" : ""
-            }`}
-          >
-            <li>
-              <Link href="/offering-for-schools">
-                <div className="dropdown-item" onClick={handleLinkClick}>
-                  For Schools
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link href="/offering-for-corporates">
-                <div className="dropdown-item" onClick={handleLinkClick}>
-                  For Corporates
-                </div>
-              </Link>
-            </li>
-          </ul>
-        </li>
         <li>
           <Link
             href="/membership"
@@ -216,25 +180,37 @@ function Menu() {
             Membership Plans
           </Link>
         </li>
-        {subscriptionData?.length>0 && 
-        <li>
-          {/* <Link
-            href="user/credit-wallet"
+        {/* <li>
+          <Link
+            href="/sports-prog"
             onClick={handleLinkClick}
             className="nav-link"
-            title="Credit Wallet"
-          > */}
-           <Link
-                href=""
-                data-bs-toggle="modal"
-                data-bs-target="#walletRecharge"
-                style={{ background: "none", color: "orange" }}
-              >
-            <span className="credit-text ms-2">Credit Coins</span>
-            <i className="fa-solid fa-wallet fs-5 text-orange"></i>
+          >
+            SportPro
           </Link>
-        </li>
-}
+        </li> */}
+        {/* <li>
+          <Link
+            href="/merchandise"
+            onClick={handleLinkClick}
+            className="nav-link"
+          >
+            Merchandise Hub
+          </Link>
+        </li> */}
+        {subscriptionData?.length > 0 && (
+          <li>
+            <Link
+              href=""
+              data-bs-toggle="modal"
+              data-bs-target="#walletRecharge"
+              style={{ background: "none", color: "orange" }}
+            >
+              <span className="credit-text ms-2">Credit Coins</span>
+              <i className="fa-solid fa-wallet fs-5 text-orange"></i>
+            </Link>
+          </li>
+        )}
       </ul>
       <div
         className="modal fade"
@@ -258,7 +234,7 @@ function Menu() {
             </span>
             <div className="modal-body">
               <div className="modal-login-form p-2">
-                <WalletModal/>
+                <WalletModal />
               </div>
             </div>
           </div>

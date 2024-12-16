@@ -1,4 +1,6 @@
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import Image from "next/image";
 const ClassesCard = dynamic(() => import("@/components/Cards/ClassesCard"), {
   ssr: false,
 });
@@ -119,9 +121,7 @@ export default async function Home() {
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-10 col-md-11 mb-3">
               <div className="sec-heading text-center">
-                <h1
-                  className="mb-1 fw-light display-1 text-center classes-title text-white"
-                >
+                <h1 className="mb-1 fw-light display-1 text-center classes-title text-white">
                   Exciting Sports <span className="theme-color">Events</span>{" "}
                 </h1>
                 <p className="fs-6 text-white">
@@ -144,8 +144,246 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Partner Section */}
+      <section className="pt-5 pb-5 bg-light">
+        <div className="container">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-xl-12 col-lg-10 col-md-11 text-center">
+              <div className="sec-heading mb-4">
+                <h2
+                  className="mb-1 fw-light display-1 text-center"
+                  style={{ color: "#25aeda" }}
+                >
+                  Our Trusted <span className="text-orange">Partners</span>
+                </h2>
+                <p className="fs-6">
+                  We're proud to collaborate with leading companies in the
+                  sports industry to bring you the best.
+                </p>
+              </div>
+              <div className="mb-4">
+                <Link href="/partner-with-us">
+                  <button
+                    className="btn btn-orange btn-md ms-auto me-5 p-2"
+                    type="button"
+                    style={{ whiteSpace: "nowrap" }}
+                  >
+                    Want to Join Us as a Partner?
+                  </button>
+                </Link>
+              </div>
+              <div className="row justify-content-center g-4">
+                {/* Partner Logos Section */}
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/pine-labs.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 1"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/hcl.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 2"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/dabur.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 3"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Capgimini.jpeg"
+                      width="150"
+                      height="100"
+                      alt="Partner 4"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Easemytrip.jpeg"
+                      width="150"
+                      height="100"
+                      alt="Partner 5"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Resource-Logistics.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 6"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Statesman.jpeg"
+                      width="150"
+                      height="100"
+                      alt="Partner 7"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Adobe.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 8"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Coforge.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 9"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Honda.png"
+                      width="100"
+                      height="100"
+                      alt="Partner 10"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Hero.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 11"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Wave.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 12"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Tcs.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 13"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/GreenFarm.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 14"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Sarvodhya.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 15"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-2 col-sm-4 col-6">
+                  <div className="partner-logo text-center">
+                    <Image
+                      src="/assets/img/partner-company/Axa.jpeg"
+                      width="100"
+                      height="100"
+                      alt="Partner 16"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {testimonials && <Testimonials testimonials={testimonials} />}
       <Newsletter />
+
+      <a
+        href="https://wa.me/9654696000"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="position-fixed bottom-0 end-0 m-3 p-3 bg-white text-white shadow-lg text-center"
+        style={{
+          zIndex: 9999,
+          borderRadius: "9%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "10px 15px",
+        }}
+      >
+        <i
+          className="fab fa-whatsapp"
+          aria-hidden="true"
+          style={{ fontSize: "40px", color: "green", marginRight: "10px" }}
+        ></i>
+        <span
+          style={{ color: "green", fontSize: "16px", fontWeight: "normal" }}
+        >
+          Chat With Us
+        </span>
+      </a>
     </>
   );
 }

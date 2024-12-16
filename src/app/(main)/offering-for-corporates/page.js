@@ -28,7 +28,10 @@ function page() {
           }}
         >
           {" "}
-          <h1 className="mb-0 text-white offerings-heading2" style={{ fontSize: "35px" }}>
+          <h1
+            className="mb-0 text-white offerings-heading2"
+            style={{ fontSize: "35px" }}
+          >
             Empower Your Corporate Team to Get Fit Through Sports
           </h1>
           <p className="offerings-para">
@@ -65,7 +68,7 @@ function page() {
                   <div className="row justify-content-center gy-xl-5 gy-lg-4 gy-5 gx-xl-5 gx-lg-4 gx-3">
                     <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                       <div
-                        className=" text-center wow  fadeInUp animated theme-bg"
+                        className="text-center wow  fadeInUp animated theme-bg"
                         style={{
                           color: "white",
                           height: "220px",
@@ -157,7 +160,9 @@ function page() {
                           />
                         </div>
                         <div className="benifits-title mb-3 text-center">
-                          <h4 className="fs-5 text-white">Enhanced brand reputation</h4>
+                          <h4 className="fs-5 text-white">
+                            Enhanced brand reputation
+                          </h4>
                         </div>
                       </div>
                     </div>

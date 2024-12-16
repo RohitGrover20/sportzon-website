@@ -8,7 +8,7 @@ function BannerSlider() {
         <div className="row">
           <div className="col-lg-12 position-relative">
             <div
-              className="position-absolute start-47 text-left ml-5"
+              className="position-absolute start-47 text-left ml-5 fadeInUp animated"
               style={{ top: "20%" }}
             >
               <div className="banner-title">

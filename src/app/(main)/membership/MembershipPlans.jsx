@@ -23,7 +23,8 @@ function MembershipPlans({ data }) {
           style={{
             height: "100%",
             width: "100%",
-            transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+            transition:
+              "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 1)",
           }}
           onMouseEnter={(e) => applyHoverEffect(e, true)}
@@ -62,7 +63,7 @@ function MembershipPlans({ data }) {
               onClick={() => setSelectedPlan(item)}
               style={{ background: "#ff611a", color: "white" }}
             >
-              Pay Securely
+              Buy Now
             </button>
             <p className="text-muted fs-6" style={{ fontStyle: "italic" }}>
               * This is a one-time payment, and there will be no auto-renewal.

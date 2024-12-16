@@ -107,7 +107,9 @@ const getClasses = cache(async () => {
 
 const getSubscriptionPlan = cache(async () => {
   try {
-    const subscription = await axios.get(`${config.API_URL}/landing/subscription`);
+    const subscription = await axios.get(
+      `${config.API_URL}/landing/subscription`
+    );
     if (subscription) {
       return subscription && subscription?.data;
     }
@@ -147,6 +149,32 @@ const getArenaRating = cache(async (values) => {
   }
 });
 
+const getMerchandise = cache(async () => {
+  try {
+    const products = await axios.get(`${config.API_URL}/landing/merchandise`, {
+      withCredentials: true,
+    });
+    if (products) {
+      return products && products?.data;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+const getMerchandiseBySlug = cache(async (slug) => {
+  try {
+    const product = await axios.get(
+      `${config.API_URL}/landing/merchandise//${slug}`
+    );
+    if (product) {
+      return product && product?.data;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 export {
   getEvents,
   getEventBySlug,
@@ -160,4 +188,6 @@ export {
   getTestimonials,
   getArenaRating,
   getSubscriptionPlan,
+  getMerchandise,
+  getMerchandiseBySlug,
 };

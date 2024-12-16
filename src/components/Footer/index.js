@@ -164,9 +164,6 @@ function Footer() {
                 <div className="footer-widget">
                   <ul className="footer-menu">
                     <li>
-                      <Link href="/">Home</Link>
-                    </li>
-                    <li>
                       <Link href="/privacy-policy">Privacy Policy</Link>
                     </li>
                     <li>
@@ -180,6 +177,9 @@ function Footer() {
                     <li>
                       <Link href="/terms-conditions">Terms & Conditions</Link>
                     </li>
+                    <li>
+                      <Link href="/faq">FAQs</Link>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -188,7 +188,7 @@ function Footer() {
                 <div className="footer-widget">
                   <ul className="footer-menu">
                     <li>
-                      <Link href="/carrers">Carrers</Link>
+                      <Link href="/careers">Careers</Link>
                     </li>
                     <li>
                       <Link href="/event-gallery">Event Gallery</Link>
@@ -198,6 +198,9 @@ function Footer() {
                     </li>
                     <li>
                       <Link href="/about-us">About Us</Link>
+                    </li>
+                    <li>
+                      <Link href="/partner-with-us">Partner With Us</Link>
                     </li>
                   </ul>
                 </div>

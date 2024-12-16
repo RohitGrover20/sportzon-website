@@ -50,13 +50,13 @@ function EventsCard(props) {
             {" "}
             <i className="fas fa-calendar"></i>
             {"     "}
-            {item &&
-              new Date(item.eventDate).toLocaleDateString("en-US", {
+            {item && 
+              new Date(item?.eventDate).toLocaleDateString("en-US", {
                 month: "short",
                 day: "numeric",
                 year:"numeric"
               })}
-              {item.eventDate !==item.eventEndDate && ` - ${new Date(item.eventEndDate).toLocaleDateString("en-US", {
+              {item?.eventDate !==item?.eventEndDate && `-${new Date(item?.eventEndDate).toLocaleDateString("en-US", {
                 month: "short",
                 day: "numeric",
                 year: "numeric",

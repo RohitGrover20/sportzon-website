@@ -16,7 +16,7 @@ async function Events() {
             <div className="d-inline-flex px-4 py-1 rounded-5 text-info font--medium border border-2 border-white">
               <span className="text-white">Events</span>
             </div>
-            <h2 className="text-white mt-3">Join Upcoming Events Near You</h2>
+            <h2 className="text-white mt-3">Join Events Near You</h2>
           </div>
         </div>
       </div>

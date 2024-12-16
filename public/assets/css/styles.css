@@ -6351,6 +6351,21 @@ footer.skin-dark-footer .footer-widget .ftp-info {
     padding:1rem !important
   }
 }
+/* For screens up to 740px */
+@media(max-width: 700px){
+  .testimonial-mobile{
+    width: 315px !important;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* For screens wider than 740px but up to 950px */
+@media(min-width: 701px) and (max-width: 950px){
+  .testimonial-mobile{
+    width: 325px !important;
+  }
+}
 
 /* Mobile-specific styles */
 @media(max-width: 765px) {
@@ -6367,29 +6382,6 @@ footer.skin-dark-footer .footer-widget .ftp-info {
 }
 
 /* Desktop and larger screens */
-#venue-slider {
-  /* position: relative;
-  margin: 0 auto;
-  padding-left: 80px ;
-  padding-right: 80px; */
-}
-/* .slick-prev, .slick-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s ease;
-} */
 .slick-prev, .slick-next {
   position: absolute;
   top: 50%;

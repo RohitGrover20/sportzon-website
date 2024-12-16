@@ -146,6 +146,28 @@ function Booking({ setBooking, setPaymentInfo }) {
                     setLoading={setLoading}
                     booked={booked}
                   />
+                  <div className="card mt-1 p-3">
+                    <div className="mb-3">
+                      <h5 className="text-black">Reschedule Policy :</h5>
+                      <div className="d-flex">
+                        <span className="text-muted">
+                          Rescheduling is allowed 6 hours prior to slot time.
+                          Rescheduling of a booking can be done only 2 times.
+                          Once rescheduled, booking cannot be cancelled.
+                        </span>
+                      </div>
+                    </div>
+                    <div>
+                      <h5 className="text-black">Cancellation Policy :</h5>
+                      <div className="d-flex">
+                        <span className="text-muted">
+                          0-6 hrs prior to slot: Cancellations not allowed.
+                          &gt;6 hrs prior to slot: 15.0% of Gross Amount will be
+                          deducted as cancellation fee.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="col-md-5">
                   <Checkout

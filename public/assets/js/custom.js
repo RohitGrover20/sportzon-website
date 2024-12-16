@@ -579,7 +579,7 @@
     centerPadding: "0px",
     infinite: true,
     speed: 700,
-    arrows: false,
+    arrows: true,
     autoplay: true,
     slidesToScroll: 1,
     responsive: [
@@ -611,7 +611,7 @@
     centerPadding: "0px",
     infinite: true,
     speed: 700,
-    arrows: false,
+    arrows: true,
     autoplay: true,
     slidesToScroll: 1,
     responsive: [

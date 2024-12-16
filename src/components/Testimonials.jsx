@@ -3,7 +3,7 @@ import Rating from "./Rating";
 
 function Testimonials(props) {
   return (
-    <section className="gray pt-5">
+    <section className="gray pt-5 pb-4">
       <div className="container" style={{ overflow: "visible" }}>
         <div
           className="row justify-content-center"
@@ -25,14 +25,14 @@ function Testimonials(props) {
               return (
                 <div className="single-items zoom-on-hover" key={index}>
                   <div
-                    className="card border-0 mb-4 position-relative w-30"
-                    style={{ overflow: "visible"  , height:"300px" , width:"300px"}}
+                    className="card border-0 mb-4 position-relative w-40 testimonial-mobile"
+                    style={{ overflow: "visible"  , height:"300px" , width:"260px"}}
                   >
                     <div className="card-body d-flex flex-column align-items-center">
                       <div className="text-center mb-3">
                         <Rating rating={item?.rating} />
                       </div>
-                      <div style={{height:"120px"}}>
+                      <div style={{height:"140px"}}>
                       {showTooltip ? (
                         <p
                           className="card-text comment-tooltip"

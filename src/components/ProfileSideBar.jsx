@@ -103,10 +103,20 @@ function ProfileSideBar() {
                     className="fw-medium"
                     onClick={closeSidebar} // Close sidebar when link is clicked
                   >
-                    <i className="fa-solid fa-file me-2 theme-color" />
+                    <i class="fa fa-calendar-check me-2 theme-color" aria-hidden="true"></i>
                     My Bookings
                   </Link>
                 </li>
+                {/* <li className="py-3">
+                  <Link
+                    href="/user/my-orders"
+                    className="fw-medium"
+                    onClick={closeSidebar} // Close sidebar when link is clicked
+                  >
+                    <i class="fa fa-shopping-cart me-2 theme-color" aria-hidden="true"></i>
+                    Order History
+                  </Link>
+                </li> */}
                 <li className="py-3">
                   <Link
                     href="/user/my-subscription"
@@ -133,8 +143,9 @@ function ProfileSideBar() {
                     className="fw-medium"
                     onClick={closeSidebar} // Close sidebar when link is clicked
                   >
-                    <i className="fa-solid fa-wallet me-2 theme-color" />
-                    Order History
+                    <i class="fa fa-receipt me-2 theme-color" aria-hidden="true"></i>
+
+                    Transactions History
                   </Link>
                 </li>
                 <li className="py-3">
